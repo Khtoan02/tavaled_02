@@ -83,19 +83,19 @@ get_header(); ?>
         .network-center-logo { padding: 16px 24px; background-color: #ffffff; background-image: radial-gradient(circle, rgba(240, 90, 37, 0.08) 1.5px, transparent 1.5px); background-size: 14px 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(240, 90, 37, 0.3); border: 3px solid #f05a25; position: relative; }
         .network-center-logo img { height: 60px; width: auto; max-width: 180px; object-fit: contain; position: relative; z-index: 2; }
         
-        .network-story { position: absolute; width: 300px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid #f05a25; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; z-index: 101; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .story-bottom { top: 100%; left: 50%; transform: translate(-50%, 15px); }
-        .story-top { bottom: 100%; left: 50%; transform: translate(-50%, -15px); }
-        .story-left { right: 100%; top: 50%; transform: translate(-15px, -50%); }
-        .story-right { left: 100%; top: 50%; transform: translate(15px, -50%); }
-        .network-node:hover .story-bottom { opacity: 1; visibility: visible; transform: translate(-50%, 8px); }
-        .network-node:hover .story-top { opacity: 1; visibility: visible; transform: translate(-50%, -8px); }
-        .network-node:hover .story-left { opacity: 1; visibility: visible; transform: translate(-8px, -50%); }
-        .network-node:hover .story-right { opacity: 1; visibility: visible; transform: translate(8px, -50%); }
-        .story-cover { height: 120px; position: relative; background: #1e293b; }
-        /* Tắt mờ ảnh trên thẻ tooltip */
-        .story-cover img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
-        .story-cover-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,15,26,0.9), transparent); display: flex; align-items: flex-end; padding: 12px 16px; }
+        .network-story { position: absolute; width: 320px; background: rgba(255,255,255,0.98); border: 1px solid rgba(240, 90, 37, 0.3); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 101; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
+        .story-bottom { top: calc(100% + 15px); left: 50%; transform: translate(-50%, 15px); }
+        .story-top { bottom: calc(100% + 15px); left: 50%; transform: translate(-50%, -15px); }
+        .story-left { right: calc(100% + 15px); top: 50%; transform: translate(-15px, -50%); }
+        .story-right { left: calc(100% + 15px); top: 50%; transform: translate(15px, -50%); }
+        .network-node:hover .story-bottom { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+        .network-node:hover .story-top { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+        .network-node:hover .story-left { opacity: 1; visibility: visible; transform: translate(0, -50%); }
+        .network-node:hover .story-right { opacity: 1; visibility: visible; transform: translate(0, -50%); }
+        .story-cover { padding: 24px 20px 16px; position: relative; background: linear-gradient(135deg, #0a0f1a, #111827); border-bottom: 2px solid #f05a25; }
+        .story-cover-title { color: white; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: bold; line-height: 1.3; letter-spacing: -0.02em; }
+        .story-content { padding: 16px 20px 20px; }
+        .story-content p { color: #475569; font-size: 0.875rem; line-height: 1.6; border-left: 2px solid #f05a25; padding-left: 12px; font-style: italic; margin: 0; }
     </style>
 </head>
 <body class="relative">
@@ -466,8 +466,8 @@ get_header(); ?>
             </div>
 
             <!-- Khung Map Hoàn Toàn Trải Rộng (Freedom) -->
-            <div class="w-full relative reveal-up reveal-delay-1 overflow-hidden">
-                <div id="networkCanvas" class="w-full h-[800px] md:h-[1000px] relative pointer-events-auto">
+            <div class="w-full relative reveal-up reveal-delay-1 pb-20">
+                <div id="networkCanvas" class="w-full h-[800px] md:h-[900px] relative pointer-events-auto mx-auto max-w-[1400px]">
                     <!-- SVG Lưới nối tâm -->
                     <svg id="networkLines" class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
                         <defs>
@@ -567,49 +567,83 @@ get_header(); ?>
         $partners_arr = [];
         
         if (!empty($partner_ids)) {
-            // Hệ thống rải lưới cố định, không random để layout luôn luôn đồng nhất
+            // 1. Tự động tính toán số cột (Cols) và số hàng (Rows) dựa trên lượng đối tác (Scale động)
+            $total_partners = count($partner_ids);
+            
+            // Thêm một khoảng đệm 20% dung lượng trống và cộng thêm khoảng chừa logo TT
+            $required_spots = $total_partners + floor($total_partners * 0.2) + 6; 
+            
+            // Phân bổ trên tỷ lệ khung màn hình ~ 4:3 (Ngang rộng hơn)
+            $rows = max(5, ceil(sqrt($required_spots / 1.33))); 
+            $cols = max(6, ceil($rows * 1.33));
+            
+            // 2. Xác định Tâm của lưới để chừa chỗ cho Logo TavaLLS
+            $center_r = floor($rows / 2);
+            $center_c = floor($cols / 2);
+
             $grid_spots = [];
-            $cols = 6;
-            $rows = 5;
             for ($r = 0; $r < $rows; $r++) {
                 for ($c = 0; $c < $cols; $c++) {
-                    // Chừa ra không gian rộng ở giữa (Tọa độ 2,2 và 3,2) cho center logo
-                    if (($r >= 1 && $r <= 3) && ($c >= 2 && $c <= 3)) continue; 
+                    // Phóng to bán kính né Logo trung tâm (né 2 cột giữa, 2 hàng giữa)
+                    if ($r >= $center_r - 1 && $r <= $center_r && $c >= $center_c - 1 && $c <= $center_c) continue;
                     $grid_spots[] = [$c, $r];
                 }
             }
+            // Trộn mảng để lúc nào các icon cũng phân bố nhẫu nhiên rộng khắp
+            shuffle($grid_spots);
+
             $total_spots = count($grid_spots);
             $spot_index = 0;
+            
+            // Tính toán khoảng cách % an toàn giữa mỗi nút (Spacing)
+            $stepX = 84 / max(1, $cols - 1); // Trải dài từ 8% đến 92%
+            $stepY = 84 / max(1, $rows - 1);
 
             foreach($partner_ids as $id) {
                 $post = get_post($id);
                 if (!$post) continue;
                 $url = wp_get_attachment_image_url($id, 'medium');
                 $title = $post->post_title;
-                $desc = get_post_meta($id, '_tavaled_partner_desc', true) ?: 'Đối tác của TavaLLS';
+                $desc = get_post_meta($id, '_tavaled_partner_desc', true) ?: 'Đối tác chiến lược của TavaLLS';
                 $level = get_post_meta($id, '_tavaled_partner_level', true) ?: 'sm';
                 
-                // Toán học phân bổ tọa độ CỐ ĐỊNH, KHÔNG DÙNG RAND()
                 if ($spot_index < $total_spots) {
                     $c = $grid_spots[$spot_index][0];
                     $r = $grid_spots[$spot_index][1];
-                    // Chia container thành các ô 16.6% width, 20% height. Cộng padding tĩnh.
-                    // Sử dụng một ít sine/cosine từ index để có cảm giác tự nhiên nhẹ mà vẫn cố định
-                    $offset_x = 5 + (sin($spot_index) * 4); // Dao động tự nhiên từ 1% đến 9%
-                    $offset_y = 5 + (cos($spot_index) * 4); 
                     
-                    $x = ($c * 16.66) + $offset_x;
-                    $y = ($r * 20.00) + $offset_y;
+                    // Thêm rung lắc ngẫu nhiên nhưng kiểm soát không quá 1 nửa khoảng cách bước (tránh chồng chéo)
+                    $maxOffsetX = ($stepX * 0.4);
+                    $maxOffsetY = ($stepY * 0.4);
+                    
+                    $offsetX = (rand(-100, 100) / 100) * $maxOffsetX;
+                    $offsetY = (rand(-100, 100) / 100) * $maxOffsetY;
+                    
+                    $x = 8 + ($c * $stepX) + $offsetX;
+                    $y = 8 + ($r * $stepY) + $offsetY;
                     $spot_index++;
                 } else {
-                    // Nếu quá nhiều logo (trên 24 cái), bắt đầu stack theo hàng dọc/ngang cố định
-                    $extra_index = ($spot_index - $total_spots) * 4;
-                    $x = 5 + ($extra_index % 90);
-                    $y = 5 + ($extra_index % 90);
+                    // Trường hợp cực an toàn nếu vẫn dư (Không bao giờ xảy ra nhờ công thức dynamic kia)
+                    $x = rand(80, 920) / 10;
+                    $y = rand(80, 920) / 10;
+                    // Tránh tâm điểm
+                    if ($x >= 40 && $x <= 60 && $y >= 40 && $y <= 60) {
+                        $x = (rand(0, 1) == 0) ? rand(50, 250) / 10 : rand(750, 950) / 10;
+                    }
                     $spot_index++;
                 }
                 
-                $tooltipPos = ($spot_index % 2 == 0) ? 'bottom' : 'top';
+                // Tính toán vị trí tooltip thông minh để không bao giờ bị cắt ngoài container
+                if ($y < 25) {
+                    $tooltipPos = 'bottom';
+                } elseif ($y > 75) {
+                    $tooltipPos = 'top';
+                } elseif ($x < 25) {
+                    $tooltipPos = 'right';
+                } elseif ($x > 75) {
+                    $tooltipPos = 'left';
+                } else {
+                    $tooltipPos = ($spot_index % 2 == 0) ? 'bottom' : 'top';
+                }
                 
                 $partners_arr[] = [
                     'name' => $title,
@@ -660,21 +694,17 @@ get_header(); ?>
                 nodeDiv.style.left = `${partner.pos[0]}%`;
                 nodeDiv.style.top = `${partner.pos[1]}%`;
 
-                const isImageLogo = partner.logo.startsWith('http');
-                const logoContent = isImageLogo ? `<img src="${partner.logo}" alt="">` : partner.logo;
-                const storyText = partner.size === 'lg' ? "Đồng hành kiến tạo không gian nghệ thuật đỉnh cao chuẩn quốc tế." : "Giải pháp thiết bị ổn định, mượt mà và tối ưu hóa ngân sách.";
+                const isImageLogo = partner.logo && partner.logo.startsWith('http');
+                const logoContent = isImageLogo ? `<img src="${partner.logo}" alt="">` : `<span class="font-bold text-sm" style="padding: 10px;">${partner.name}</span>`;
 
                 nodeDiv.innerHTML = `
                     <div class="network-logo logo-${partner.size}">${logoContent}</div>
                     <div class="network-story story-${partner.tooltipPos}">
                         <div class="story-cover">
-                            <img src="${defaultCoverImg}" alt="">
-                            <div class="story-cover-overlay">
-                                <h4 class="text-white font-serif text-xl leading-tight">${partner.name}</h4>
-                            </div>
+                            <h4 class="story-cover-title">${partner.name}</h4>
                         </div>
-                        <div class="story-content p-4 bg-white">
-                            <p class="text-gray-600 text-sm italic border-l-[2px] border-brand-orange pl-3">${partner.desc || ""}</p>
+                        <div class="story-content">
+                            <p>${partner.desc || ""}</p>
                         </div>
                     </div>
                 `;
