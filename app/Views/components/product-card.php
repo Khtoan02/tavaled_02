@@ -1,0 +1,86 @@
+<?php
+/**
+ * View Component: Product Card
+ * Variables expected: $post (WP_Post object)
+ */
+global $post;
+// Lấy ảnh Fallback được cấu hình, nếu không có thì mặc định lấy hình hộp
+$fallback_img = \App\Helpers\ThemeHelper::getOption('fallback_image');
+if (empty($fallback_img)) {
+    $fallback_img = 'https://placehold.co/600x450/fff8f6/f05a25?text=Updating...'; // Màu nền và text ăn theo bộ mã màu CSS
+}
+
+$thumbnail_url = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'medium_large') : $fallback_img;
+$title = get_the_title($post->ID);
+$permalink = get_permalink($post->ID);
+
+// Lấy meta & taxonomy
+$model = get_post_meta($post->ID, '_product_model', true);
+
+$terms_sub = wp_get_post_terms($post->ID, 'product_subcat');
+$subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : 'Sản phẩm';
+
+$terms_brand = wp_get_post_terms($post->ID, 'product_brand');
+$brand_name = !empty($terms_brand) ? $terms_brand[0]->name : '';
+
+$terms_badge = wp_get_post_terms($post->ID, 'product_badge');
+$badge_slug = !empty($terms_badge) ? $terms_badge[0]->slug : '';
+$badge_label = '';
+if ($badge_slug === 'new') $badge_label = 'Mới';
+elseif ($badge_slug === 'hot') $badge_label = 'Hot';
+elseif ($badge_slug === 'sale') $badge_label = 'Sale';
+elseif (!empty($badge_slug)) $badge_label = $terms_badge[0]->name;
+?>
+<div class="product-card group/pcard bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+    <!-- Image Section -->
+    <a href="<?php echo esc_url($permalink); ?>" class="relative block pt-[75%] overflow-hidden bg-gray-50/50">
+        <img src="<?php echo esc_url($thumbnail_url); ?>" 
+             alt="<?php echo esc_attr($title); ?>" 
+             class="absolute inset-0 w-full h-full object-contain p-6 transition-transform duration-700 group-hover/pcard:scale-110"
+             onerror="this.onerror=null;this.src='<?php echo esc_url($fallback_img); ?>';">
+        
+        <?php if ($badge_label): ?>
+        <div class="absolute top-4 right-4 translate-x-1 -translate-y-1">
+            <span class="bg-brand-orange text-white text-[10px] font-black px-2.5 py-1 rounded-none shadow-lg shadow-orange-500/30 uppercase tracking-widest"><?php echo esc_html($badge_label); ?></span>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($brand_name): ?>
+        <div class="absolute top-4 left-4">
+            <span class="bg-[#1d2857] text-white text-[10px] font-black px-2.5 py-1 rounded-none shadow-lg uppercase tracking-widest"><?php echo esc_html($brand_name); ?></span>
+        </div>
+        <?php endif; ?>
+    </a>
+
+    <!-- Body Section -->
+    <div class="p-5 flex flex-col flex-1">
+        <h3 class="text-[17px] font-bold text-[#1d2857] mb-2 line-clamp-2 leading-tight min-h-[42px] hover:text-brand-orange transition-colors">
+            <a href="<?php echo esc_url($permalink); ?>"><?php echo esc_html($title); ?></a>
+        </h3>
+        <div class="text-[11px] font-bold text-gray-400 mb-4 tracking-widest uppercase"><?php echo esc_html($model ? $model . ' - ' : '') . esc_html($subcat_name); ?></div>
+        
+        <!-- Tech Specs Placeholder -->
+        <div class="flex items-center gap-3 mb-4">
+            <div class="flex items-center gap-1 text-[12px] text-gray-400 font-medium">
+                <i class="ph ph-cpu"></i>
+                <span>Smart Chip</span>
+            </div>
+            <div class="w-1 h-1 bg-gray-200 rounded-none"></div>
+            <div class="flex items-center gap-1 text-[12px] text-gray-400 font-medium">
+                <i class="ph ph-shield-check"></i>
+                <span>Bảo hành 24T</span>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between gap-3">
+            <a href="<?php echo esc_url($permalink); ?>" class="flex-1 flex items-center justify-center gap-2 bg-[#1d2857] hover:bg-brand-orange text-white py-2.5 rounded-none text-[13px] font-bold transition-all shadow-md active:scale-95 group/btn">
+                <span>Nhận báo giá</span>
+                <i class="ph-bold ph-paper-plane-tilt transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"></i>
+            </a>
+            <a href="<?php echo esc_url($permalink); ?>" class="w-10 h-10 flex items-center justify-center bg-gray-100 text-[#1d2857] rounded-none hover:bg-[#1d2857] hover:text-white transition-all">
+                <i class="ph-bold ph-eye text-lg"></i>
+            </a>
+        </div>
+    </div>
+</div>

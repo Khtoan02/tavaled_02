@@ -1,0 +1,376 @@
+/**
+ * Main Styles
+ * Hướng dẫn: Bạn có thể thay đổi các giá trị ở rễ (:root) này để áp dụng cho toàn bộ Website.
+ */
+:root {
+    /* 1. MÀU SẮC (Colors) */
+    --primary-color: #f05a25;      /* Màu cam rực rỡ - Call-to-Action, Hover, Icon */
+    --secondary-color: #ff7a4c;    /* Màu phụ trợ (biến thể sáng hơn của primary) */
+    --text-color: #1f2937;         /* Màu chữ (xám than đậm) để dễ đọc trên nền sáng */
+    --text-muted: #6b7280;         /* Màu chữ nhạt / mô tả */
+    
+    /* Cấu hình Nền (Backgrounds) */
+    --bg-color: #fff8f6;           /* Màu nền phớt cam nhẹ (dùng chung) */
+    --bg-white: #ffffff;           /* Màu nền trắng tinh (dùng cho vùng nổi bật) */
+    --bg-gradient: linear-gradient(180deg, #fff8f6 0%, #ffffff 100%); /* Nền Gradient theo yêu cầu */
+    
+    --border-color: #f3e5e1;       /* Màu đường viền / border */
+
+    /* 2. FONT CHỮ (Typography) */
+    /* Hãy import font chữ bằng @import ở trên cùng file này hoặc wp_head nếu bạn dùng font custom */
+    --font-heading: 'League Spartan', sans-serif; /* Font dàn cho các thẻ tiêu đề (H1, H2,...) */
+    --font-body: 'League Spartan', sans-serif;    /* Font dàn cho nội dung chữ thường */
+
+    /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
+    --container-width: 1600px;     /* Độ rộng siêu lớn cho Desktop hiện đại (hiển thị nhiều sản phẩm hơn) */
+    --border-radius-sm: 0px;
+    --border-radius-md: 0px;
+    --border-radius-lg: 0px;
+    --transition-speed: 0.3s;
+    --box-shadow-lite: 0 4px 6px rgba(0,0,0,0.05);
+    --box-shadow-hover: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+/* KHÓA CUỘN NGANG: Đảm bảo không bị layout shift và tràn viền ngang trên Mobile */
+html, body {
+    overflow-x: clip !important; /* Dùng clip thay vì hidden để không phá sticky */
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Ép bẻ từ đối với các đường link, text siêu dài gây tràn ngang */
+}}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 5%; /* Nhấn thêm tỷ lệ % để hiển thị tốt trên mọi khổ màn hình */
+}
+
+/* =========================================================================
+   HEADER TAILWIND STYLES (New Premium Header)
+   ========================================================================= */
+/* Hiệu ứng Header khi cuộn */
+.header-sticky {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Mega Menu Animation */
+.group:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.mega-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Nút cam có hiệu ứng glow nhẹ */
+.btn-brand {
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s ease;
+}
+.btn-brand:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 14px 0 rgba(240, 90, 37, 0.39);
+}
+
+/* Animation cho Mega Menu Tabs nội bộ */
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-tab {
+    animation: fadeInTab 0.3s ease forwards;
+}
+
+/* Thêm CSS cho Slider Sản phẩm (Hiệu ứng mờ & chiều sâu) */
+.mega-slide-item {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.mega-slide-item.is-blurred {
+    filter: blur(2.5px) grayscale(20%);
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+    transform: scale(0.92);
+    transform-origin: left center;
+}
+
+/* Tùy chỉnh thanh cuộn cho Mobile Menu */
+.mobile-menu-scroll::-webkit-scrollbar { width: 4px; }
+.mobile-menu-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 0; }
+
+/* Animation Search Popup nay được quản lý bằng Tailwind Utility Classes */
+
+/* OLD HEADER CSS REMOVED DUE TO TAILWIND UPGRADE */
+
+.mobile-submenu li.highlight a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Main */
+.site-main {
+    padding: 40px 0;
+}
+
+.site-main h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.post-item {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    box-shadow: var(--box-shadow-lite);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.post-item h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.post-item h2 a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.post-item h2 a:hover {
+    color: var(--primary-color);
+}
+
+.post-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+
+/* =========================================================================
+   COMPONENTS: PRODUCT CARD & POST CARD
+   ========================================================================= */
+
+/* Product Card */
+.product-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-lite);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(240, 90, 37, 0.15); /* bóng đổ theo primary */
+}
+.product-card-img {
+    position: relative;
+    display: block;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #fdfdfd;
+}
+.product-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Do sản phẩm thiết bị cần hiển thị rõ tỷ lệ */
+    mix-blend-mode: multiply; /* Nền trắng của thiết bị mix tốt hơn */
+    transition: transform 0.5s;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.product-card:hover .product-card-img img {
+    transform: scale(1.05);
+}
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+.product-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.product-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+.product-card-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.product-card-title a:hover {
+    color: var(--primary-color);
+}
+.product-card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+.product-card-actions {
+    margin-top: auto;
+}
+.btn-outline-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Post Card */
+.post-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-lite);
+    transition: transform var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+.post-card-img {
+    display: block;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+.post-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s;
+}
+.post-card:hover .post-card-img img {
+    transform: scale(1.08);
+}
+.post-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.post-card-meta {
+    margin-bottom: 10px;
+}
+.post-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.post-card-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+.post-card-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card-title a:hover {
+    color: var(--primary-color);
+}
+.post-card-excerpt {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+.post-read-more {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: gap 0.2s;
+    margin-top: auto;
+}
+.post-read-more:hover {
+    gap: 10px;
+}
+
+/* Footer */
+/* Bẻ góc vuông cho toàn bộ giao diện chuẩn Tech */
+*, *::before, *::after { border-radius: 0 !important; }
+
+/* Background Gradient chuẩn TavaLLS */
+.bg-tavalls-gradient {
+    background: linear-gradient(135deg, rgb(28, 40, 87) 0%, rgb(42, 58, 107) 50%, rgb(28, 40, 87) 100%);
+}
+
+/* Hiệu ứng viền công nghệ (Tech Border) cho map và box */
+.tech-border { position: relative; }
+.tech-border::before, .tech-border::after { 
+    content: ''; position: absolute; width: 15px; height: 15px; 
+    border: 2px solid #f05a25; transition: all 0.4s ease; pointer-events: none; z-index: 10;
+}
+.tech-border::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+.tech-border::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+.tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; opacity: 0.1; }
