@@ -477,7 +477,7 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÂM THANH -->
-            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-12 pb-24 scroll-mt-24">
+            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
                     <div>
                         <div class="flex items-center gap-3 mb-3">
@@ -517,7 +517,7 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÁNH SÁNG -->
-            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-12 pb-24 scroll-mt-24">
+            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
                     <div>
                         <div class="flex items-center gap-3 mb-3">
