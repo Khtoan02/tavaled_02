@@ -29,9 +29,9 @@ get_header(); ?>
                         brand: { 
                             orange: '#f05a25', 
                             orangedark: '#c8451a',
-                            navy: '#334ca2',
+                            navy: '#1c2857',
                             navy2: '#1e293b',
-                            navy3: '#334ca2',
+                            navy3: '#1c2857',
                             light: '#f8fafc'
                         }
                     },
@@ -52,10 +52,10 @@ get_header(); ?>
     <style>
         /* BASE & RESET */
         *, *::before, *::after { border-radius: 0 !important; }
-        body { font-family: 'Inter', sans-serif; background: #334ca2; color: #ffffff; overflow-x: hidden; cursor: none; }
+        body { font-family: 'Inter', sans-serif; background: #1c2857; color: #ffffff; overflow-x: hidden; cursor: none; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #334ca2; }
+        ::-webkit-scrollbar-track { background: #1c2857; }
         ::-webkit-scrollbar-thumb { background: #f05a25; }
 
         /* CUSTOM CURSOR */
@@ -74,7 +74,7 @@ get_header(); ?>
         .delay-2 { transition-delay: 0.3s; }
 
         /* HERO VIDEO OVERLAY */
-        .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #334ca2; pointer-events: none; }
+        .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c2857; pointer-events: none; }
         .hero-video-wrap iframe { 
             position: absolute; top: 50%; left: 50%; 
             width: 100vw; height: 56.25vw; /* Tỷ lệ 16:9 */
@@ -82,7 +82,7 @@ get_header(); ?>
             transform: translate(-50%, -50%); 
             pointer-events: none; filter: brightness(0.5) saturate(1.2); border: none;
         }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(51,76,162,0.3) 0%, rgba(51,76,162,0.8) 60%, #334ca2 100%); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(28,40,87,0.3) 0%, rgba(28,40,87,0.8) 60%, #1c2857 100%); }
         .text-stroke-light { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); }
 
         /* SOLUTIONS LIST */
@@ -123,7 +123,7 @@ get_header(); ?>
             left: 0;
             width: 100%;
             height: 400px;
-            background: linear-gradient(to bottom, transparent, #334ca2 80%, #334ca2 100%);
+            background: linear-gradient(to bottom, transparent, #1c2857 80%, #1c2857 100%);
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -539,7 +539,7 @@ get_header(); ?>
                 <p class="text-white/60 max-w-2xl mx-auto">Không gì chứng minh năng lực tốt hơn những công trình thực tế. Dưới đây là một phần nhỏ trong số hơn 500+ dự án mà TavaLLS đã kiến tạo trên khắp Việt Nam.</p>
             </div>
 
-            <div class="w-full relative gallery-wrap bg-[#334ca2]" id="homeGalleryWrap">
+            <div class="w-full relative gallery-wrap bg-[#1c2857]" id="homeGalleryWrap">
                 <!-- GRID 1: Bức tường ảnh tĩnh (Masonry Grid đảm bảo luôn khít dòng) -->
                 <div class="gallery-grid reveal-up delay-1" id="homeGalleryGrid">
                     <?php
@@ -596,7 +596,7 @@ get_header(); ?>
         </section>
 
         <!-- ================= SECTION 5: BLOG (EDITORIAL STYLE) ================= -->
-        <section id="editorial" class="py-32 bg-[#334ca2] border-t border-white/5">
+        <section id="editorial" class="py-32 bg-[#1c2857] border-t border-white/5">
             
             <div class="container mx-auto px-6 lg:px-16 max-w-[1400px]">
 
@@ -1037,7 +1037,7 @@ get_header(); ?>
                         <!-- Tech Image Support -->
                         <div class="relative overflow-hidden mb-8 aspect-video border border-white/10 group interactive">
                             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Hỗ trợ kỹ thuật" class="w-full h-full object-cover filter brightness-[0.6] group-hover:brightness-90 group-hover:scale-105 transition-all duration-700">
-                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#334ca2] to-transparent p-6">
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#1c2857] to-transparent p-6">
                                 <p class="text-white font-bold tracking-wide uppercase text-sm">Trung Tâm Hỗ Trợ Kỹ Thuật</p>
                             </div>
                         </div>
@@ -1048,7 +1048,7 @@ get_header(); ?>
                     <!-- Right Column: Premium Accordion -->
                     <div class="lg:col-span-7 space-y-4 reveal-up delay-1 mt-8 lg:mt-0">
                         
-                        <div class="faq-item border-b border-white/10 bg-[#334ca2] group">
+                        <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                             <button class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
                                 <div class="flex items-center gap-6 pr-4">
                                     <span class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">01</span>
@@ -1065,7 +1065,7 @@ get_header(); ?>
                             </div>
                         </div>
 
-                        <div class="faq-item border-b border-white/10 bg-[#334ca2] group">
+                        <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                             <button class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
                                 <div class="flex items-center gap-6 pr-4">
                                     <span class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">02</span>
@@ -1082,7 +1082,7 @@ get_header(); ?>
                             </div>
                         </div>
 
-                        <div class="faq-item border-b border-white/10 bg-[#334ca2] group">
+                        <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                             <button class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
                                 <div class="flex items-center gap-6 pr-4">
                                     <span class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">03</span>
@@ -1099,7 +1099,7 @@ get_header(); ?>
                             </div>
                         </div>
 
-                        <div class="faq-item border-b border-white/10 bg-[#334ca2] group">
+                        <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                             <button class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
                                 <div class="flex items-center gap-6 pr-4">
                                     <span class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">04</span>
@@ -1116,7 +1116,7 @@ get_header(); ?>
                             </div>
                         </div>
 
-                        <div class="faq-item border-b border-white/10 bg-[#334ca2] group">
+                        <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                             <button class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
                                 <div class="flex items-center gap-6 pr-4">
                                     <span class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">05</span>
@@ -1139,7 +1139,7 @@ get_header(); ?>
         </section>
 
         <!-- ================= SECTION 7: CTA ================= -->
-        <section class="relative py-40 overflow-hidden bg-[#334ca2] flex items-center justify-center border-t border-brand-orange">
+        <section class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Background" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.2] saturate-50">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]"></div>
             
