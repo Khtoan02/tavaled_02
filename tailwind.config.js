@@ -17,9 +17,9 @@ module.exports = {
           dark:       '#1d2857',
           light:      '#fff8f6',
           // Homepage dark theme
-          navy:       '#0f172a',
+          navy:       '#334ca2',
           navy2:      '#1e293b',
-          navy3:      '#020617',
+          navy3:      '#334ca2',
           navyLight:  '#1e293b',
           navyBg:     '#f8fafc',
           // About page extras

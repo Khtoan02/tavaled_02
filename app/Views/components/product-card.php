@@ -10,7 +10,8 @@ if (empty($fallback_img)) {
     $fallback_img = 'https://placehold.co/600x450/fff8f6/f05a25?text=Updating...'; // Màu nền và text ăn theo bộ mã màu CSS
 }
 
-$thumbnail_url = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'medium_large') : $fallback_img;
+$product_img_meta = get_post_meta($post->ID, '_product_img', true);
+$thumbnail_url = has_post_thumbnail($post->ID) ? get_the_post_thumbnail_url($post->ID, 'medium_large') : (!empty($product_img_meta) ? $product_img_meta : $fallback_img);
 $title = get_the_title($post->ID);
 $permalink = get_permalink($post->ID);
 

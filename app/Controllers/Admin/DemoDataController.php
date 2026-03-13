@@ -51,67 +51,114 @@ class DemoDataController {
     }
 
     private function generateDemo() {
+        // Tăng giới hạn thời gian thực thi để tránh timeout khi tạo 200 sản phẩm
+        set_time_limit(300);
+
+        $led_brands = ['BOE', 'Absen', 'Leyard', 'Unilumin', 'LianTronics', 'NovaStar', 'Colorlight'];
+        $led_subcats = ['LED Trong nhà', 'LED Ngoài trời', 'LED Trong suốt', 'LED Cong', 'Màn hình ghép LCD'];
+        
+        $audio_brands = ['JBL', 'Yamaha', 'Shure', 'FBT', 'Crown', 'Bose', 'Sennheiser'];
+        $audio_subcats = ['Loa Line Array', 'Mixer', 'Micro', 'Loa Sub', 'Loa Full', 'Cục đẩy', 'Vang số'];
+        
+        $light_brands = ['Chauvet', 'Martin', 'MA Lighting', 'Claypaky', 'Robe', 'Khác'];
+        $light_subcats = ['Moving Head', 'Par LED', 'Khói', 'Bàn điều khiển', 'Laser', 'Đèn Blinder', 'Đèn Follow'];
+        
+        $badges = ['Bán chạy', 'Mới', 'Premium', 'Cho thuê', 'Hot', 'Sale', 'Khuyên dùng', ''];
+
         $data = [
-            [
-                'cat' => 'Màn hình LED',
+            'Màn hình LED' => [
                 'img' => 'https://tavaled.vn/wp-content/uploads/2023/01/P2.5-indoor.png',
-                'products' => [
-                    ['title' => 'Màn hình LED BOE P2.5 Indoor Pro', 'model' => 'P2.5-ID', 'tag' => 'Bán chạy', 'subcat' => 'LED Trong nhà', 'brand' => 'BOE', 'spec' => 'P2.5'],
-                    ['title' => 'Màn hình LED Absen P3.0 Outdoor', 'model' => 'P3.0-OD', 'tag' => 'Mới', 'subcat' => 'LED Ngoài trời', 'brand' => 'Absen', 'spec' => 'P3'],
-                    ['title' => 'Màn hình LED Leyard P1.53 High-End', 'model' => 'P1.53-CB', 'tag' => 'Premium', 'subcat' => 'LED Trong nhà', 'brand' => 'Leyard', 'spec' => 'P1.53'],
-                    ['title' => 'Màn hình LED BOE P4 Outdoor Stage', 'model' => 'P4-OD', 'tag' => 'Cho thuê', 'subcat' => 'LED Ngoài trời', 'brand' => 'BOE', 'spec' => 'P4'],
-                    ['title' => 'Màn hình LED Absen P2 Indoor', 'model' => 'P2-ID', 'tag' => 'Hot', 'subcat' => 'LED Trong nhà', 'brand' => 'Absen', 'spec' => 'P2'],
-                    ['title' => 'Màn hình LED Leyard P5 Outdoor', 'model' => 'P5-OD', 'tag' => 'Mới', 'subcat' => 'LED Ngoài trời', 'brand' => 'Leyard', 'spec' => 'P5'],
-                ]
+                'products' => []
             ],
-            [
-                'cat' => 'Âm thanh',
+            'Âm thanh' => [
                 'img' => 'https://tavaled.vn/wp-content/uploads/2025/11/16-TD-Classic-.jpg',
-                'products' => [
-                    ['title' => 'Loa JBL Line Array VTX V25', 'model' => 'VTX-V25', 'tag' => 'Công suất lớn', 'subcat' => 'Loa Line Array', 'brand' => 'JBL', 'spec' => 'Trên 1000W'],
-                    ['title' => 'Mixer Yamaha CL5 Professional', 'model' => 'CL5-YH', 'tag' => 'Sân khấu', 'subcat' => 'Mixer', 'brand' => 'Yamaha', 'spec' => 'Digital'],
-                    ['title' => 'Bộ Micro Shure ULX-D', 'model' => 'ULXD-SR', 'tag' => 'Sóng ổn định', 'subcat' => 'Micro', 'brand' => 'Shure', 'spec' => 'Không dây'],
-                    ['title' => 'Loa FBT Subwoofer 18 inch', 'model' => 'SUB-18P', 'tag' => 'Bass sâu', 'subcat' => 'Loa Sub', 'brand' => 'FBT', 'spec' => '500W-1000W'],
-                    ['title' => 'Loa JBL Full Range 15 inch', 'model' => 'SRX815', 'tag' => 'Mới', 'subcat' => 'Loa Full', 'brand' => 'JBL', 'spec' => '500W-1000W'],
-                    ['title' => 'Cục đẩy công suất Crown XTi', 'model' => 'XTi-4002', 'tag' => 'Premium', 'subcat' => 'Cục đẩy', 'brand' => 'Crown', 'spec' => 'Từ 1000W'],
-                ]
+                'products' => []
             ],
-            [
-                'cat' => 'Ánh sáng',
+            'Ánh sáng' => [
                 'img' => 'https://tavaled.vn/wp-content/uploads/2025/12/TavaLED-2-400x400.png',
-                'products' => [
-                    ['title' => 'Moving Head Beam Chauvet 230W', 'model' => 'BM-230', 'tag' => 'Sân khấu', 'subcat' => 'Moving Head', 'brand' => 'Chauvet', 'spec' => '230W'],
-                    ['title' => 'Đèn Par LED Martin 54x3W RGBW', 'model' => 'PL-543', 'tag' => 'Nền màu', 'subcat' => 'Par LED', 'brand' => 'Martin', 'spec' => 'Màu RGBW'],
-                    ['title' => 'Máy khói 1500W High Output', 'model' => 'SMK-1500', 'tag' => 'Hiệu ứng', 'subcat' => 'Khói', 'brand' => 'Khác', 'spec' => '1500W'],
-                    ['title' => 'Bàn khiển MA2 Command Wing', 'model' => 'MA2-CW', 'tag' => 'Chuyên nghiệp', 'subcat' => 'Bàn điều khiển', 'brand' => 'MA Lighting', 'spec' => 'Digital'],
-                    ['title' => 'Đèn Laser 3W RGB Animation', 'model' => 'LS-3W', 'tag' => 'Hot', 'subcat' => 'Laser', 'brand' => 'Khác', 'spec' => '3W'],
-                    ['title' => 'Đèn Blinder 4 bóng 400W', 'model' => 'BL-400', 'tag' => 'Mới', 'subcat' => 'Đèn Blinder', 'brand' => 'Khác', 'spec' => '400W'],
-                ]
+                'products' => []
             ]
         ];
 
-        foreach ($data as $cat_data) {
-            $cat_id = $this->insertTermIfNotExists($cat_data['cat'], 'product_cat');
+        // Tạo 75 sản phẩm LED
+        $pitch_values = [1.2, 1.53, 1.86, 2.0, 2.5, 3.0, 3.91, 4.0, 4.81, 5.0, 6.0, 8.0, 10.0];
+        for ($i = 1; $i <= 75; $i++) {
+            $pitch = $pitch_values[array_rand($pitch_values)];
+            $brand = $led_brands[array_rand($led_brands)];
+            $subcat = $led_subcats[array_rand($led_subcats)];
+            $badge = $badges[array_rand($badges)];
+            $title = "Màn hình {$subcat} {$brand} P{$pitch}";
+            if ($i % 5 === 0) $title .= " Cao Cấp";
+            
+            $data['Màn hình LED']['products'][] = [
+                'title' => "{$title} - Demo {$i}",
+                'model' => "{$brand}-P{$pitch}-" . rand(100, 999),
+                'badge' => $badge,
+                'subcat' => $subcat,
+                'brand' => $brand,
+                'spec' => "P{$pitch}"
+            ];
+        }
+
+        // Tạo 65 sản phẩm Âm thanh
+        for ($i = 1; $i <= 65; $i++) {
+            $brand = $audio_brands[array_rand($audio_brands)];
+            $subcat = $audio_subcats[array_rand($audio_subcats)];
+            $badge = $badges[array_rand($badges)];
+            $power = rand(5, 50) * 100 . "W";
+            if (in_array($subcat, ['Micro', 'Mixer', 'Vang số'])) {
+                $power = "Digital";
+            }
+            
+            $data['Âm thanh']['products'][] = [
+                'title' => "{$subcat} {$brand} V-Series - Demo {$i}",
+                'model' => strtoupper(substr($brand, 0, 2)) . rand(1000, 9000),
+                'badge' => $badge,
+                'subcat' => $subcat,
+                'brand' => $brand,
+                'spec' => $power
+            ];
+        }
+
+        // Tạo 65 sản phẩm Ánh sáng
+        for ($i = 1; $i <= 65; $i++) {
+            $brand = $light_brands[array_rand($light_brands)];
+            $subcat = $light_subcats[array_rand($light_subcats)];
+            $badge = $badges[array_rand($badges)];
+            $w = rand(20, 300) * 10 . "W";
+            if ($subcat === 'Bàn điều khiển') {
+                $w = "Digital";
+            }
+            
+            $data['Ánh sáng']['products'][] = [
+                'title' => "Đèn {$subcat} {$brand} Studio - Demo {$i}",
+                'model' => strtoupper(substr($subcat, 0, 2)) . "-" . rand(100, 999),
+                'badge' => $badge,
+                'subcat' => $subcat,
+                'brand' => $brand,
+                'spec' => $w
+            ];
+        }
+
+        foreach ($data as $cat_name => $cat_data) {
+            $cat_id = $this->insertTermIfNotExists($cat_name, 'product_cat');
 
             foreach ($cat_data['products'] as $p) {
-                // Kiểm tra xem sản phẩm đã có chưa để tránh tạo trùng khi ấn nhiều lần (tùy chọn)
-                
+                // Tạo post
                 $post_id = wp_insert_post([
                     'post_title'   => $p['title'],
                     'post_status'  => 'publish',
                     'post_type'    => 'tava_product',
                     'meta_input'   => [
                         '_product_model' => $p['model'],
-                        '_product_tag'   => $p['tag'],
                         '_product_img'   => $cat_data['img'],
                         '_is_demo'       => '1'
                     ]
                 ]);
 
                 if ($post_id && !is_wp_error($post_id)) {
-                    if ($cat_id) {
-                        wp_set_object_terms($post_id, [$cat_id], 'product_cat');
-                    }
+                    if ($cat_id) wp_set_object_terms($post_id, [$cat_id], 'product_cat');
+                    
                     if (!empty($p['subcat'])) {
                         $subcat_id = $this->insertTermIfNotExists($p['subcat'], 'product_subcat');
                         if ($subcat_id) wp_set_object_terms($post_id, [$subcat_id], 'product_subcat');
@@ -124,12 +171,19 @@ class DemoDataController {
                         $spec_id = $this->insertTermIfNotExists($p['spec'], 'product_spec');
                         if ($spec_id) wp_set_object_terms($post_id, [$spec_id], 'product_spec');
                     }
+                    if (!empty($p['badge'])) {
+                        $badge_id = $this->insertTermIfNotExists($p['badge'], 'product_badge');
+                        if ($badge_id) wp_set_object_terms($post_id, [$badge_id], 'product_badge');
+                    }
                 }
             }
         }
     }
 
     private function deleteDemo() {
+        // Tăng giới hạn thời gian thực thi
+        set_time_limit(300);
+
         $posts = get_posts([
             'post_type'  => 'tava_product',
             'posts_per_page' => -1,
