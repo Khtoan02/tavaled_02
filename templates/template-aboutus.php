@@ -526,8 +526,6 @@ get_header(); ?>
                     </div>
 
                     <div class="lg:col-span-7">
-                        <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương Cuối: Lời Hứa</h3>
-                        <i class="ph-fill ph-quotes text-6xl text-white/10 mb-6 block"></i>
                         <h4 class="font-serif text-4xl md:text-5xl text-white mb-10 leading-tight">Đồng Hành Kiến Tạo <br>Những Tầm Nhìn Lớn</h4>
                         
                         <div class="space-y-6 text-gray-300 leading-relaxed text-base md:text-lg font-light text-justify">

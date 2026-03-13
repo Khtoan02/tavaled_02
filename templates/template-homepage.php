@@ -216,53 +216,7 @@ get_header(); ?>
         .sk-grid .card-big .card__thumb { height: 268px; }
         .sk-right { display:flex; flex-direction:column; gap:10px; }
 
-        .quote-editorial { margin: 64px 0; display: grid; grid-template-columns: 1fr 1fr 1fr; height: 260px; border-radius: 0px; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(29, 40, 87, 0.3); }
-        .qe__panel { position: relative; padding: 36px 32px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-        .qe__panel--a { background: #1d2857; }
-        .qe__panel--b { background: #f05a25; }
-        .qe__panel--c { background: linear-gradient(135deg, #1d2857 0%, #2c3e8c 100%); }
-        .qe__panel--navy { background: linear-gradient(180deg, #1d2857 0%, #2c3e8c 100%); }
-        .qe__bg-letter { position: absolute; font-family: 'Cormorant Garamond', serif !important; font-size: 26rem; font-weight: 700; font-style: italic; line-height: 0.8; top: -40px; left: -20px; color: rgba(255,255,255,0.06); pointer-events: none; user-select: none; letter-spacing: -0.05em; z-index: 0; }
-        .qe__text { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-size: 1.2rem; line-height: 1.6; color: #ffffff; position: relative; z-index: 2; }
-        .qe__author { margin-top: 14px; font-size: 11px; font-weight: 800; font-family: "League Spartan", sans-serif !important; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); position: relative; z-index: 2; }
-        .qe__panel--b .qe__author { color: #ffffff; }
-        .qe__panel:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); }
 
-        .quote-cinematic { margin: 80px 0; position: relative; background: linear-gradient(135deg, #1d2857 0%, #2c3e8c 100%); border-radius: 0px; overflow: hidden; display: flex; align-items: center; padding: 80px 100px; box-shadow: 0 40px 100px -20px rgba(29,40,87,0.45); border: 1px solid rgba(255,255,255,0.1); }
-        .quote-cinematic::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 32px 32px; pointer-events: none; z-index: 1; }
-        .quote-cinematic::after { content: ''; position: absolute; left:0; top:0; bottom:0; width:8px; background: linear-gradient(180deg, #f05a25 0%, #ff8c61 100%); box-shadow: 4px 0 20px rgba(240,90,37,0.4); }
-        .qc__mark { font-family: 'Cormorant Garamond', serif !important; font-size: 12rem; font-weight: 700; font-style: italic; color: #f05a25; opacity: 0.25; line-height: 1; margin-right: 48px; margin-top: -32px; flex-shrink: 0; user-select: none; position: relative; z-index: 2; }
-        .qc__body { flex: 1; position: relative; z-index: 2; }
-        .qc__text { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-size: 1.85rem; line-height: 1.5; color: #ffffff; letter-spacing: -0.01em; }
-        .qc__foot { display: flex; align-items: center; gap: 16px; margin-top: 32px; }
-        .qc__dash { width: 48px; height: 2px; background: #f05a25; border-radius: 0; }
-        .qc__author { font-family: "League Spartan", sans-serif !important; font-size: 13px; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #f05a25; }
-        .qc__ghost-char { position: absolute; right: 40px; bottom: -80px; font-family: 'Cormorant Garamond', serif; font-size: 32rem; font-weight: 700; color: #ffffff; opacity: 0.06; font-style: italic; user-select: none; pointer-events: none; z-index: 0; letter-spacing: -0.1em; }
-        .qc__ghost-num { position: absolute; right: 52px; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 700; color: rgba(255,255,255,.025); line-height: 1; user-select: none; pointer-events: none; }
-
-        .quote-mosaic { margin: 80px 0; display: grid; grid-template-columns: 2fr 1.1fr 1.1fr; border-radius: 0px; overflow: hidden; box-shadow: 0 50px 100px -30px rgba(29, 40, 87, 0.4); background: #1d2857; padding: 2px; }
-        .qm__cell { padding: 60px 50px; position: relative; overflow: hidden; }
-        .qm__cell--main { background: linear-gradient(135deg, #1d2857 0%, #2c3e8c 100%); }
-        .qm__cell--b { background: linear-gradient(180deg, #1d2857 0%, #151d3d 100%); border-left: 1px solid rgba(255,255,255,0.1); }
-        .qm__cell--c { background: linear-gradient(180deg, #f05a25 0%, #ff8c61 100%); }
-        .qm__oq { font-family: 'Cormorant Garamond', serif !important; font-size: 5rem; line-height: .7; font-style: italic; color: #ffffff; opacity: 0.4; display: block; margin-bottom: 20px; }
-        .qm__text { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-size: 1.35rem; line-height: 1.6; color: #ffffff; position: relative; z-index: 2; }
-        .qm__cell--c .qm__text { color: #ffffff; font-size: 1.1rem; }
-        .qm__author { margin-top: 24px; font-size: 11px; font-weight: 800; font-family: "League Spartan", sans-serif !important; letter-spacing: 0.18em; text-transform: uppercase; color: #f05a25; display: flex; align-items: center; gap: 10px; }
-        .qm__author::before { content: ''; display: inline-block; width: 24px; height: 2px; background: #f05a25; flex-shrink:0; }
-        .qm__cell--c .qm__author { color: #ffffff; }
-        .qm__cell--c .qm__author::before { background: #ffffff; }
-        .qm__cell--main::after { content: 'T'; position: absolute; right: -20px; bottom: -50px; font-family: 'Cormorant Garamond', serif; font-size: 26rem; color: #ffffff; opacity: 0.08; pointer-events: none; font-weight: 700; user-select: none; font-style: italic; z-index: 1; }
-        .qm__cell--b::after { content: 'V'; position: absolute; left: -30px; top: -40px; font-family: 'Cormorant Garamond', serif; font-size: 20rem; color: #ffffff; opacity: 0.07; pointer-events: none; font-weight: 700; user-select: none; font-style: italic; z-index: 1; }
-        .qm__cell--c::after { content: 'L'; position: absolute; right: -20px; top: -30px; font-family: 'Cormorant Garamond', serif; font-size: 18rem; color: #ffffff; opacity: 0.15; pointer-events: none; font-weight: 700; user-select: none; font-style: italic; z-index: 1; }
-
-        .quote-solo { margin: 80px 0; background: linear-gradient(135deg, #1d2857 0%, #2c3e8c 100%); border-radius: 0px; padding: 100px; position: relative; overflow: hidden; box-shadow: 0 60px 120px -30px rgba(29,40,87,0.5); display: flex; align-items: center; gap: 80px; border: 1px solid rgba(255,255,255,0.1); }
-        .quote-solo::before { content: ''; position: absolute; width:700px; height:700px; border-radius:0; background: radial-gradient(circle, rgba(29,40,87,0.4) 0%, transparent 70%); top:50%; left:0%; transform:translate(-50%, -50%); pointer-events:none; }
-        .quote-solo::after { content: ''; position: absolute; width: 100%; height: 100%; inset: 0; background: linear-gradient(45deg, transparent 48%, rgba(240,90,37,0.05) 50%, transparent 52%); background-size: 200% 200%; animation: shine 8s infinite linear; pointer-events: none; }
-        @keyframes shine { from { background-position: -200% 0; } to { background-position: 200% 0; } }
-        .qs__mark { font-family: 'Cormorant Garamond', serif !important; font-size: 12rem; font-weight: 700; font-style: italic; color: #f05a25; opacity: 0.25; line-height: 1; flex-shrink:0; user-select:none; position:relative; z-index:1; }
-        .qs__body { flex: 1; position: relative; z-index: 2; display: flex; flex-direction: column; }
-        .qs__text { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-size: 1.7rem; line-height: 1.6; color: #ffffff; letter-spacing: -0.01em; text-shadow: 0 4px 15px rgba(0,0,0,0.4); margin-bottom: 24px;}
         .qs__attr { display: flex; align-items: center; gap: 16px; }
         .qs__dash { width: 48px; height: 2px; background: #f05a25; border-radius: 0; }
         .qs__author { font-family: "League Spartan", sans-serif !important; font-size: 12px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; }
@@ -276,14 +230,6 @@ get_header(); ?>
           .featured-grid { grid-template-columns:1fr 1fr; }
           .card-big { grid-column:1/3; grid-row:auto; }
           .sk-grid { grid-template-columns:1fr; }
-          .quote-editorial { grid-template-columns:1fr; height:auto; }
-          .qe__panel { min-height:155px; }
-          .qe__panel:not(:last-child) { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
-          .quote-cinematic { padding:36px 32px; }
-          .quote-mosaic { grid-template-columns:1fr; }
-          .qm__cell--main { border-right:none; border-bottom:1px solid rgba(255,255,255,0.1); }
-          .qm__cell--b { border-left:none; border-bottom:1px solid rgba(255,255,255,0.1); }
-          .quote-solo { padding:40px 36px; gap:28px; }
         }
 
         @media (max-width:640px) {
@@ -292,12 +238,6 @@ get_header(); ?>
           .project-row, .project-row3 { grid-template-columns:1fr; gap: 20px; }
           .featured-grid { grid-template-columns:1fr; gap: 20px; }
           .card-big { grid-column:1; }
-          .quote-cinematic { padding:36px 24px; gap: 24px; }
-          .qc__text { font-size:1.05rem; line-height:1.6; }
-          .qc__ghost-char { font-size:150px; opacity:0.04; right: 10px; bottom: -20px; }
-          .quote-solo { flex-direction:column; padding:40px 24px; gap:20px; text-align:center; }
-          .qs__text { font-size:1.15rem; line-height:1.6; }
-          .qs__attr { justify-content: center; }
         }
 
         /* HEADER SEC OVERRIDE HEADER BLOGPAGE TO KEEP DARK TONE */
@@ -783,29 +723,7 @@ get_header(); ?>
                   </div>
                 </div>
 
-                <!-- ══ QUOTE A — after Dự Án ══ -->
-                <div class="reveal-up delay-1">
-                  <div class="quote-editorial">
-                    <div class="qe__panel qe__panel--a">
-                      <span class="qe__bg-letter">C</span>
-                      <div class="qe__rule"></div>
-                      <p class="qe__text">Mỗi công trình không phải là điểm cuối — đó là minh chứng sống cho sự tin tưởng của khách hàng trao gửi vào chúng tôi.</p>
-                      <span class="qe__author">— TavaLLS</span>
-                    </div>
-                    <div class="qe__panel qe__panel--b">
-                      <span class="qe__bg-letter">Q</span>
-                      <div class="qe__rule"></div>
-                      <p class="qe__text">Chất lượng không bao giờ là sự trùng hợp ngẫu nhiên — nó luôn là kết quả của nỗ lực thông minh và nhất quán.</p>
-                      <span class="qe__author">— John Ruskin</span>
-                    </div>
-                    <div class="qe__panel qe__panel--c">
-                      <span class="qe__bg-letter">A</span>
-                      <div class="qe__rule"></div>
-                      <p class="qe__text">Ánh sáng đẹp nhất không chiếu từ thiết bị — nó chiếu từ tâm huyết của người đứng sau mỗi dự án.</p>
-                      <span class="qe__author">— Khuyết danh</span>
-                    </div>
-                  </div>
-                </div>
+
                 
                 <!-- ════════════════════════════════════════
                      02 — CHIA SẺ KINH NGHIỆM
@@ -875,21 +793,7 @@ get_header(); ?>
                   </div>
                 </div>
 
-                <!-- ══ QUOTE B — Cinematic dark wide ══ -->
-                <div class="reveal-up delay-1">
-                  <div class="quote-cinematic">
-                    <span class="qc__ghost-char">V</span>
-                    <span class="qc__ghost-num">03</span>
-                    <div class="qc__mark">"</div>
-                    <div class="qc__body">
-                      <p class="qc__text">Kiến thức chia sẻ là ánh sáng nhân lên — mỗi kinh nghiệm được truyền đi không chỉ giúp một người, mà lan toả cho cả một ngành.</p>
-                      <div class="qc__foot">
-                        <div class="qc__dash"></div>
-                        <span class="qc__author">TavaLLS · Triết lý chia sẻ</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
 
 
                 <!-- ════════════════════════════════════════
@@ -952,26 +856,7 @@ get_header(); ?>
                   </div>
                 </div>
 
-                <!-- ══ QUOTE C — Warm mosaic ══ -->
-                <div class="reveal-up delay-1">
-                  <div class="quote-mosaic">
-                    <div class="qm__cell qm__cell--main">
-                      <span class="qm__oq">"</span>
-                      <p class="qm__text">Những đối tác tốt nhất không chỉ mang lại sản phẩm tốt — họ mang lại tầm nhìn và sự tin tưởng lâu dài vượt ra ngoài từng hợp đồng.</p>
-                      <div class="qm__author">TavaLLS</div>
-                    </div>
-                    <div class="qm__cell qm__cell--b">
-                      <span class="qm__oq">"</span>
-                      <p class="qm__text">Mình không chỉ bán sản phẩm — mình xây dựng mối quan hệ bền vững theo thời gian.</p>
-                      <div class="qm__author">Khuyết danh</div>
-                    </div>
-                    <div class="qm__cell qm__cell--c">
-                      <span class="qm__oq">"</span>
-                      <p class="qm__text">Thành công của doanh nghiệp được đo bằng chất lượng của những mối quan hệ mà nó gây dựng.</p>
-                      <div class="qm__author">Henry Ford</div>
-                    </div>
-                  </div>
-                </div>
+
 
 
                 <!-- ════════════════════════════════════════
@@ -1027,20 +912,7 @@ get_header(); ?>
                   </div>
                 </div>
 
-                <!-- ══ QUOTE D — closing solo dark ══ -->
-                <div class="reveal-up delay-1">
-                  <div class="quote-solo">
-                    <span class="qc__ghost-char" style="left:auto; right:20px; top:auto; bottom:-40px; opacity:0.04;">A</span>
-                    <div class="qs__mark">"</div>
-                    <div class="qs__body">
-                      <p class="qs__text">Ánh sáng không chỉ chiếu sáng không gian — nó định hình cảm xúc, khắc sâu ký ức và kể câu chuyện của thương hiệu bạn.</p>
-                      <div class="qs__attr">
-                        <div class="qs__dash"></div>
-                        <span class="qs__author">TavaLLS · Sứ mệnh</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
 
             </div>
         </section>

@@ -309,15 +309,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .desc-content ul li:last-child { border-bottom: none; }
 .desc-content ul li::before { content: ''; position: absolute; left: 0; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); opacity: .65; }
 
-.product-quote { margin-top: 56px; background: var(--ink); border-radius: 14px; padding: 44px 56px; display: flex; align-items: center; gap: 44px; position: relative; overflow: hidden; }
-.product-quote::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
-.product-quote::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--orange), var(--orange-dk)); }
-.pq__mark { font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 700; font-style: italic; color: var(--orange); opacity: .14; line-height: 1; flex-shrink: 0; user-select: none; position: relative; z-index: 1; margin-top: -14px; }
-.pq__body { position: relative; z-index: 1; flex: 1; }
-.pq__text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; line-height: 1.55; color: rgba(255,255,255,.9); letter-spacing: -0.01em; margin-bottom:0;}
-.pq__foot { display: flex; align-items: center; gap: 11px; margin-top: 16px; }
-.pq__dash { width: 26px; height: 2px; background: var(--orange); border-radius: 2px; }
-.pq__author { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--orange); }
+
 
 /* ══════════════════════════════════
    RELATED PRODUCTS
@@ -362,13 +354,10 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   .product-wrap { grid-template-columns: 1fr; gap: 32px; }
   .product-info { position: static; }
   .rel-grid { grid-template-columns: repeat(2, 1fr); }
-  .product-quote { padding: 36px 28px; }
 }
 @media (max-width: 560px) {
   .sp-breadcrumb, .product-wrap, .prod-detail, .related-products { padding-left: 16px; padding-right: 16px; }
   .rel-grid { grid-template-columns: 1fr; }
-  .product-quote { flex-direction: column; gap: 14px; padding: 28px 22px; }
-  .pq__mark { font-size: 4rem; opacity: .2; }
 }
 </style>
 
@@ -603,17 +592,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         </div>
     </div>
 
-    <!-- Quote widget -->
-    <div class="product-quote">
-        <span class="pq__mark">"</span>
-        <div class="pq__body">
-        <p class="pq__text">Một hệ thống đúng chuẩn không chỉ truyền tải thông tin — nó kể câu chuyện đẳng cấp của doanh nghiệp bạn qua ngôn ngữ biểu đạt của hệ thống vận hành.</p>
-        <div class="pq__foot">
-            <div class="pq__dash"></div>
-            <span class="pq__author">TavaLLS · Triết lý giải pháp</span>
-        </div>
-        </div>
-    </div>
+
 
     </div>
 
