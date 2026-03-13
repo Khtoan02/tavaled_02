@@ -437,10 +437,19 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
-            <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-16 scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <h3 class="font-serif text-3xl font-bold text-brand-navy">Màn Hình LED & Xử Lý</h3>
-                    <span class="h-[1px] flex-grow bg-gray-300"></span>
+            <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="w-8 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Hiển Thị Đỉnh Cao</span>
+                        </div>
+                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Màn Hình LED & Xử Lý</h3>
+                    </div>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
+                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Xem tất cả kho LED</span>
+                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    </a>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
                     <?php
@@ -468,10 +477,19 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÂM THANH -->
-            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-16 scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <h3 class="font-serif text-3xl font-bold text-brand-navy">Hệ Thống Âm Thanh</h3>
-                    <span class="h-[1px] flex-grow bg-gray-300"></span>
+            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-12 pb-24 scroll-mt-24">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="w-8 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Âm Thanh Sân Khấu</span>
+                        </div>
+                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Hệ Thống Âm Thanh</h3>
+                    </div>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
+                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị âm thanh</span>
+                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    </a>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
                     <?php
@@ -499,10 +517,19 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÁNH SÁNG -->
-            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-16 scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <h3 class="font-serif text-3xl font-bold text-brand-navy">Hệ Thống Ánh Sáng</h3>
-                    <span class="h-[1px] flex-grow bg-gray-300"></span>
+            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-12 pb-24 scroll-mt-24">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
+                    <div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="w-8 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Hiệu Ứng Nghệ Thuật</span>
+                        </div>
+                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Hệ Thống Ánh Sáng</h3>
+                    </div>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
+                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị ánh sáng</span>
+                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    </a>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
                     <?php

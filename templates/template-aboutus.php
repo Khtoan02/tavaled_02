@@ -459,7 +459,7 @@ get_header(); ?>
             
             <div class="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10 flex flex-col items-center text-center mb-16 reveal-up">
                 <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương VIII: Niềm Tin Rộng Khắp</h3>
-                <h4 class="font-serif text-4xl md:text-6xl text-gray-900 mb-6">Hệ Sinh Thái 39+ Đối Tác</h4>
+                <h4 class="font-serif text-4xl md:text-6xl text-gray-900 mb-6">Hệ Sinh Thái 500+ Đối Tác</h4>
                 <p class="text-gray-600 max-w-2xl text-base leading-relaxed">
                     Từ tâm điểm kỹ thuật tinh hoa, TavaLLS vươn xa kết nối cùng đài truyền hình, chuỗi rạp chiếu phim và các tổ hợp giải trí hàng đầu. <strong class="text-brand-orange">Hãy rê chuột vào bản đồ</strong> để trải nghiệm không gian mạng lưới đa chiều.
                 </p>
