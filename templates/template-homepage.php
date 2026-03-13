@@ -304,67 +304,14 @@ get_header(); ?>
                 </p>
                 
                 <div class="flex flex-wrap items-center justify-center gap-6">
-                    <a href="#solutions" class="btn-primary interactive">
+                    <a href="#product-led" class="btn-primary interactive">
                         Khám phá giải pháp <i class="ph-bold ph-arrow-down-right text-lg"></i>
                     </a>
                 </div>
             </div>
 
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-                <a href="#solutions" class="text-white/50 hover:text-brand-orange interactive transition-colors"><i class="ph ph-caret-double-down text-3xl"></i></a>
-            </div>
-        </section>
-
-        <!-- ================= SECTION 2: GIẢI PHÁP ================= -->
-        <section id="solutions" class="py-32 bg-brand-navy3 border-b border-white/10 relative scroll-mt-20">
-            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-                
-                <div class="mb-16 reveal-up">
-                    <h2 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-2">Hệ Sinh Thái</h2>
-                    <h3 class="font-serif text-4xl md:text-5xl text-white">Giải Pháp Cung Cấp</h3>
-                </div>
-
-                <div class="flex flex-col">
-                    <!-- LED -->
-                    <div class="sol-list-item interactive reveal-up flex flex-col md:flex-row gap-8 items-center group">
-                        <div class="w-full md:w-1/3 flex items-center gap-6">
-                            <span class="font-mono text-5xl font-black text-white/10 group-hover:text-brand-orange transition-colors">01</span>
-                            <h4 class="font-serif text-3xl md:text-4xl text-white">Màn Hình<br><em class="text-brand-orange">LED</em></h4>
-                        </div>
-                        <div class="w-full md:w-2/3 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                            <p class="text-white/60 text-sm leading-relaxed max-w-md">Lắp đặt màn hình LED Indoor/Outdoor, LED Cong, LED Transparent. Hình ảnh sắc nét 4K/8K, độ bền cực cao, chịu mọi điều kiện thời tiết.</p>
-                            <!-- Link cuộn mượt xuống Section LED -->
-                            <a href="#product-led" class="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-brand-orange hover:border-brand-orange transition-colors whitespace-nowrap">Chi tiết <i class="ph-bold ph-arrow-down"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Audio -->
-                    <div class="sol-list-item interactive reveal-up delay-1 flex flex-col md:flex-row gap-8 items-center group">
-                        <div class="w-full md:w-1/3 flex items-center gap-6">
-                            <span class="font-mono text-5xl font-black text-white/10 group-hover:text-brand-orange transition-colors">02</span>
-                            <h4 class="font-serif text-3xl md:text-4xl text-white">Hệ Thống<br><em class="text-brand-orange">Âm Thanh</em></h4>
-                        </div>
-                        <div class="w-full md:w-2/3 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                            <p class="text-white/60 text-sm leading-relaxed max-w-md">Phân phối và setup dàn loa Line Array ngoài trời, hệ thống Subwoofer mạnh mẽ cho Club/Lounge, cùng các thiết bị Digital Mixer chuyên nghiệp.</p>
-                            <!-- Link cuộn mượt xuống Section Audio -->
-                            <a href="#product-audio" class="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-brand-orange hover:border-brand-orange transition-colors whitespace-nowrap">Chi tiết <i class="ph-bold ph-arrow-down"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Lighting -->
-                    <div class="sol-list-item interactive reveal-up delay-2 flex flex-col md:flex-row gap-8 items-center group">
-                        <div class="w-full md:w-1/3 flex items-center gap-6">
-                            <span class="font-mono text-5xl font-black text-white/10 group-hover:text-brand-orange transition-colors">03</span>
-                            <h4 class="font-serif text-3xl md:text-4xl text-white">Hệ Thống<br><em class="text-brand-orange">Ánh Sáng</em></h4>
-                        </div>
-                        <div class="w-full md:w-2/3 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                            <p class="text-white/60 text-sm leading-relaxed max-w-md">Thiết kế ánh sáng nghệ thuật với các dòng đèn Moving Head, Par LED, Laser Mapping và hệ thống Kinetic chuyển động 3D ảo diệu.</p>
-                            <!-- Link cuộn mượt xuống Section Light -->
-                            <a href="#product-light" class="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-brand-orange hover:border-brand-orange transition-colors whitespace-nowrap">Chi tiết <i class="ph-bold ph-arrow-down"></i></a>
-                        </div>
-                    </div>
-                </div>
-
+                <a href="#product-led" class="text-white/50 hover:text-brand-orange interactive transition-colors"><i class="ph ph-caret-double-down text-3xl"></i></a>
             </div>
         </section>
 
