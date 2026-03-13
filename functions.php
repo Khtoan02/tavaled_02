@@ -96,6 +96,9 @@ if (is_admin()) {
 
     $partner_gallery_admin = new \App\Controllers\Admin\PartnerGalleryController();
     $partner_gallery_admin->register();
+
+    $demo_data_admin = new \App\Controllers\Admin\DemoDataController();
+    $demo_data_admin->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')
