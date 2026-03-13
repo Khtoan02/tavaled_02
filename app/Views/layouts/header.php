@@ -72,10 +72,103 @@
 
                 <!-- DESKTOP MENU -->
                 <nav class="hidden lg:flex h-full items-center justify-center gap-6 xl:gap-8 font-bold text-[15px] text-gray-800 tracking-[0.05em] uppercase whitespace-nowrap">
-                    <a href="/ve-chung-toi" class="hover:text-brand-orange transition-colors py-8 relative group/link">
-                        Về chúng tôi
-                        <span class="absolute bottom-[28px] left-0 w-max h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
-                    </a>
+                    <!-- Mega Menu Item: Về TavaLLS -->
+                    <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
+                        <a href="/ve-chung-toi" class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
+                            Về chúng tôi
+                            <i class="ph-bold ph-caret-down text-[12px] mt-0.5 text-gray-400 group-hover:text-brand-orange transition-transform duration-300 group-hover:rotate-180"></i>
+                            <span class="absolute bottom-[28px] left-0 w-[calc(100%-16px)] h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left group-hover:scale-x-100"></span>
+                        </a>
+
+                        <!-- Mega Menu Dropdown -->
+                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1240px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                            <div class="p-8 xl:p-10 flex gap-12 bg-white relative">
+                                
+                                <!-- Left side: Menu Links -->
+                                <div class="w-2/3">
+                                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">Khám phá tổ chức</h3>
+                                    <ul class="grid grid-cols-3 gap-3">
+                                        <li>
+                                            <a href="/ve-chung-toi" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-buildings text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Về TavaLLS</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/tieu-chi-phat-trien" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-target text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Tiêu chí</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/tuyen-dung" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-users-three text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Tuyển dụng</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/chuyen-gia" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-user-circle-gear text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Chuyên gia</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/ve-nha-may" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-factory text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Nhà máy</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/minh-bach-nguyen-lieu" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-leaf text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Minh bạch <br> năng lực</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/blog" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-100 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                                <div class="w-14 h-14 mb-4 bg-gray-50 rounded-full flex items-center justify-center group-hover/item:bg-white group-hover/item:shadow-sm transition-all text-[#1d2857]">
+                                                    <i class="ph-fill ph-newspaper text-3xl transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-brand-orange"></i>
+                                                </div>
+                                                <span class="font-bold text-gray-700 group-hover/item:text-brand-orange">Tin tức</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Right side: Banner -->
+                                <div class="w-1/3 flex items-center justify-center pl-8 border-l border-gray-100">
+                                    <a href="/ve-chung-toi" class="group/banner cursor-pointer relative block overflow-hidden rounded-3xl shadow-md w-full h-full min-h-[320px]">
+                                        <!-- Ảnh Banner -->
+                                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" alt="Về TavaLLS Banner" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/banner:scale-110">
+                                        
+                                        <!-- Gradient Overlay -->
+                                        <div class="absolute inset-0 bg-gradient-to-t from-[#1d2857]/90 via-[#1d2857]/20 to-transparent opacity-80 transition-opacity duration-300 group-hover/banner:opacity-100"></div>
+                                        
+                                        <!-- Nội dung Text đè lên Banner -->
+                                        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-3 group-hover/banner:translate-y-0 transition-transform duration-300">
+                                            <h4 class="text-white text-2xl font-bold mb-2">Câu chuyện TavaLLS</h4>
+                                            <p class="text-brand-orange text-sm font-medium flex items-center gap-2 opacity-0 group-hover/banner:opacity-100 transition-opacity duration-300 delay-75">
+                                                Khám phá ngay <i class="ph-bold ph-arrow-right text-[12px] transition-transform group-hover/banner:translate-x-1"></i>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     
                     <!-- MEGA MENU SẢN PHẨM -->
                     <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
@@ -361,16 +454,98 @@
                         </div>
                     </div>
 
-                    <!-- DỊCH VỤ -->
-                    <div class="group h-full flex items-center cursor-pointer relative hover-trigger">
-                        <a href="/giai-phap" class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link">
-                            Giải pháp trọn gói <i class="ph-bold ph-caret-down text-sm mt-0.5"></i>
+                    <!-- Giải pháp trọn gói -->
+                    <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
+                        <a href="/giai-phap" class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
+                            Giải pháp trọn gói <i class="ph-bold ph-caret-down text-[12px] mt-0.5 text-gray-400 group-hover:text-brand-orange transition-transform duration-300 group-hover:rotate-180"></i>
                             <span class="absolute bottom-[28px] left-0 w-[calc(100%-16px)] h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left group-hover:scale-x-100"></span>
                         </a>
-                        <div class="mega-menu absolute top-full left-0 w-[280px] bg-white border border-gray-100 shadow-xl rounded-none py-4 z-50 overflow-hidden transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
-                            <a href="/giai-phap" class="block px-6 py-3 font-semibold text-gray-600 hover:text-brand-orange hover:bg-orange-50/50 hover:pl-8 transition-all border-l-4 border-transparent hover:border-brand-orange">Thi công Bar/Club</a>
-                            <a href="/giai-phap" class="block px-6 py-3 font-semibold text-gray-600 hover:text-brand-orange hover:bg-orange-50/50 hover:pl-8 transition-all border-l-4 border-transparent hover:border-brand-orange">Lắp đặt Hội trường lớn</a>
-                            <a href="/giai-phap" class="block px-6 py-3 font-semibold text-gray-600 hover:text-brand-orange hover:bg-orange-50/50 hover:pl-8 transition-all border-l-4 border-transparent hover:border-brand-orange">Cho thuê thiết bị sự kiện</a>
+
+                        <!-- Mega Menu Dropdown -->
+                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1240px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                            <div class="p-8 xl:p-10 flex flex-col w-full bg-white relative">
+                                
+                                <!-- Tiêu đề & Nút Xem tất cả -->
+                                <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                                    <h3 class="text-xs font-bold text-[#1d2857] uppercase tracking-[0.2em]">Các Lĩnh Vực Cốt Lõi</h3>
+                                    <a href="/giai-phap" class="flex items-center gap-1.5 text-brand-orange hover:text-[#1d2857] font-black text-sm transition-all hover:translate-x-1 uppercase tracking-widest">
+                                        <span>Xem tất cả</span>
+                                        <i class="ph-bold ph-arrow-right"></i>
+                                    </a>
+                                </div>
+
+                                <!-- Lưới 6 Cột Hình ảnh (aspect-square) -->
+                                <div class="grid grid-cols-6 gap-6 xl:gap-8">
+                                    
+                                    <!-- Item 1 -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/giao-duc-tuong-tac" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18d87a5a?q=80&w=600&auto=format&fit=crop" alt="Giáo Dục & Tương Tác" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/giao-duc-tuong-tac" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            Giáo Dục & Tương Tác
+                                        </a>
+                                    </div>
+
+                                    <!-- Item 2 -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/hoi-hop-doanh-nghiep" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" alt="Hội Họp Doanh Nghiệp" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/hoi-hop-doanh-nghiep" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            Hội Họp Doanh Nghiệp
+                                        </a>
+                                    </div>
+
+                                    <!-- Item 3 -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/su-kien-san-khau" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" alt="Sự Kiện & Sân Khấu" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/su-kien-san-khau" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            Sự Kiện & Sân Khấu
+                                        </a>
+                                    </div>
+
+                                    <!-- Item 4 -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/quang-cao-thuong-hieu" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=600&auto=format&fit=crop" alt="Quảng Cáo Thương Hiệu" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/quang-cao-thuong-hieu" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            Quảng Cáo Thương Hiệu
+                                        </a>
+                                    </div>
+
+                                    <!-- Item 5 -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/fb-giai-tri-dem" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" alt="F&B & Giải Trí Đêm" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/fb-giai-tri-dem" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            F&B & Giải Trí Đêm
+                                        </a>
+                                    </div>
+
+                                    <!-- Item 6 w Hot flag -->
+                                    <div class="group/combo">
+                                        <a href="/giai-phap/giai-tri-tai-gia" class="block rounded-2xl overflow-hidden bg-gray-50 mb-3 shadow-sm hover:shadow-md transition-shadow relative">
+                                            <span class="absolute top-2 left-2 bg-brand-orange text-white text-[10px] font-bold px-2.5 py-1 rounded-full z-10 uppercase tracking-widest shadow-sm">Hot</span>
+                                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop" alt="Giải Trí Tại Gia" class="w-full aspect-square object-cover group-hover/combo:scale-105 transition-transform duration-500">
+                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
+                                        </a>
+                                        <a href="/giai-phap/giai-tri-tai-gia" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors">
+                                            Giải Trí Tại Gia
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -502,7 +677,22 @@
                     </div>
                 </div>
 
-                <a href="/giai-phap" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dịch vụ & Giải pháp</a>
+                <!-- Giải Pháp Trọn Gói Mobile Menu -->
+                <div class="border-b border-gray-50">
+                    <button class="w-full flex justify-between items-center py-3 text-lg font-medium text-gray-800" onclick="toggleAccordion('mobileSolutions')">
+                        <span class="hover:text-brand-orange transition-colors">Giải pháp trọn gói</span>
+                        <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileSolutions"></i>
+                    </button>
+                    <ul id="mobileSolutions" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] space-y-3 text-gray-600 border-l-2 border-orange-100 pl-3">
+                        <li class="pt-2"><a href="/giai-phap/giao-duc-tuong-tac" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-graduation-cap text-brand-orange mr-1"></i> Giáo Dục & Tương Tác</a></li>
+                        <li><a href="/giai-phap/hoi-hop-doanh-nghiep" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-presentation-chart text-blue-500 mr-1"></i> Hội Họp & Doanh Nghiệp</a></li>
+                        <li><a href="/giai-phap/su-kien-san-khau" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-microphone-stage text-purple-500 mr-1"></i> Sự Kiện & Sân Khấu</a></li>
+                        <li><a href="/giai-phap/quang-cao-thuong-hieu" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-storefront text-pink-500 mr-1"></i> Quảng Cáo & Thương Hiệu</a></li>
+                        <li><a href="/giai-phap/fb-giai-tri-dem" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-martini text-red-500 mr-1"></i> F&B & Giải Trí Đêm</a></li>
+                        <li class="pb-2"><a href="/giai-phap/giai-tri-tai-gia" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-house-line text-teal-500 mr-1"></i> Giải Trí Tại Gia</a></li>
+                    </ul>
+                </div>
+                
                 <a href="/du-an" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dự án tiêu biểu</a>
                 <a href="/blog" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Tin tức & Bài viết</a>
                 
