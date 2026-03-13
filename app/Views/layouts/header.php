@@ -80,8 +80,7 @@
                     <!-- MEGA MENU SẢN PHẨM -->
                     <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
                         <?php 
-                            $prod_pages = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'templates/template-products.php']);
-                            $prod_url = !empty($prod_pages) ? get_permalink($prod_pages[0]->ID) : home_url('/san-pham');
+                            $prod_url = home_url('/tat-ca-san-pham');
 
                             // Cấu hình ngành hàng chính → sub-categories động từ database
                             $mega_cat_map = [
