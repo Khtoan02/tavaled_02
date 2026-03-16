@@ -4,8 +4,10 @@
  */
 
 get_header(); ?>
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.page-template-template-blogpage-php *, .page-template-template-blogpage-php *::before, .page-template-template-blogpage-php *::after{box-sizing:border-box;margin:0;padding:0}
+
 
 :root {
   --orange:     #f05a25;
@@ -20,7 +22,7 @@ get_header(); ?>
 }
 
 body {
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-body) !important;
   background: var(--bg);
   color: var(--navy);
   font-size: 15px;
@@ -44,7 +46,7 @@ p, .card__desc {
 /* Font chuẩn Website: League Spartan cho Tiêu đề và nội dung chính */
 /* Font chuẩn Website: League Spartan cho Tiêu đề lớn và Brand */
 .sec-head__title, .topbar__brand-t {
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-weight: 900 !important;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -53,7 +55,7 @@ p, .card__desc {
 /* Font nghệ thuật: Cormorant Garamond cho các yếu tố trang trí (Ghost text) & Trích dẫn */
 .sec-head__ghost, .qe__bg-letter, .qe__text, .qc__mark, 
 .qc__text, .qm__oq, .qm__text, .qs__mark, .qs__text, .qc__ghost-num {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
 }
 
 .sec-head__title { 
@@ -65,13 +67,13 @@ p, .card__desc {
 }
 
 .sec-head__title em { 
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   color: var(--orange); 
   font-style: normal; /* Đưa về font chuẩn, không dùng Italic Serif nữa */
   text-transform: uppercase;
 }
 .sec-head__ghost { 
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   color: var(--navy); 
   opacity: 0.04; 
 }
@@ -96,7 +98,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 .sec-head__ghost {
   position: absolute;
   left: -4px; bottom: 18px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-size: 8.5rem;
   font-weight: 700;
   font-style: italic;
@@ -226,7 +228,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 .meta-dot { width:3px; height:3px; border-radius:0; background:var(--light); flex-shrink:0; }
 
 .card__title {
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-weight: 700; /* Bold chuẩn cho Card */
   text-transform: uppercase;
   line-height: 1.35;
@@ -237,7 +239,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 .card:hover .card__title { color: var(--orange); }
 
 .card__desc {
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-body) !important;
   font-weight: 300; /* Thin/Light cho nội dung mô tả */
   font-size: 13px;
   color: #616161; 
@@ -398,7 +400,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 /* Ký tự nghệ thuật phía sau */
 .qe__bg-letter {
   position: absolute;
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 26rem; font-weight: 700; font-style: italic;
   line-height: 0.8; top: -40px; left: -20px;
   color: rgba(255,255,255,0.06);
@@ -408,13 +410,13 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 }
 
 .qe__text {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-style: italic; font-size: 1.2rem; line-height: 1.6;
   color: #ffffff; position: relative; z-index: 2;
 }
 .qe__author {
   margin-top: 14px; font-size: 11px; font-weight: 800;
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: rgba(255,255,255,0.8); position: relative; z-index: 2;
 }
@@ -454,7 +456,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
   box-shadow: 4px 0 20px rgba(240,90,37,0.4);
 }
 .qc__mark {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 12rem; font-weight: 700; font-style: italic;
   color: var(--orange); opacity: 0.25; line-height: 1;
   margin-right: 48px; margin-top: -32px;
@@ -463,7 +465,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 }
 .qc__body { flex: 1; position: relative; z-index: 2; }
 .qc__text {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-style: italic; font-size: 1.85rem;
   line-height: 1.5; color: #ffffff;
   letter-spacing: -0.01em;
@@ -473,21 +475,21 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 }
 .qc__dash { width: 48px; height: 2px; background: var(--orange); border-radius: 0; }
 .qc__author {
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 13px; font-weight: 800;
   letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange);
 }
 /* Ký tự nghệ thuật phía sau cho Cinematic */
 .qc__ghost-char {
   position: absolute; right: 40px; bottom: -80px;
-  font-family: 'Cormorant Garamond', serif; font-size: 32rem; font-weight: 700;
+  font-family: var(--font-heading); font-size: 32rem; font-weight: 700;
   color: #ffffff; opacity: 0.06; font-style: italic;
   user-select: none; pointer-events: none; z-index: 0;
   letter-spacing: -0.1em;
 }
 .qc__ghost-num {
   position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif; font-size: 9rem; font-weight: 700;
+  font-family: var(--font-heading); font-size: 9rem; font-weight: 700;
   color: rgba(255,255,255,.025); line-height: 1;
   user-select: none; pointer-events: none;
 }
@@ -518,14 +520,14 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 }
 
 .qm__oq {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 5rem; line-height: .7; font-style: italic;
   color: #ffffff; opacity: 0.4;
   display: block; margin-bottom: 20px;
 }
 
 .qm__text {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-style: italic; font-size: 1.35rem;
   line-height: 1.6; color: #ffffff;
   position: relative; z-index: 2;
@@ -534,7 +536,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 
 .qm__author {
   margin-top: 24px; font-size: 11px; font-weight: 800;
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange);
   display: flex; align-items: center; gap: 10px;
 }
@@ -547,21 +549,21 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 
 .qm__cell--main::after {
   content: 'T'; position: absolute; right: -20px; bottom: -50px;
-  font-family: 'Cormorant Garamond', serif; font-size: 26rem; 
+  font-family: var(--font-heading); font-size: 26rem; 
   color: #ffffff; opacity: 0.08;
   pointer-events: none; font-weight: 700; user-select: none; font-style: italic;
   z-index: 1;
 }
 .qm__cell--b::after {
   content: 'V'; position: absolute; left: -30px; top: -40px;
-  font-family: 'Cormorant Garamond', serif; font-size: 20rem;
+  font-family: var(--font-heading); font-size: 20rem;
   color: #ffffff; opacity: 0.07;
   pointer-events: none; font-weight: 700; user-select: none; font-style: italic;
   z-index: 1;
 }
 .qm__cell--c::after {
   content: 'L'; position: absolute; right: -20px; top: -30px;
-  font-family: 'Cormorant Garamond', serif; font-size: 18rem;
+  font-family: var(--font-heading); font-size: 18rem;
   color: #ffffff; opacity: 0.15;
   pointer-events: none; font-weight: 700; user-select: none; font-style: italic;
   z-index: 1;
@@ -602,20 +604,20 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
   to { background-position: 200% 0; }
 }
 .qs__mark {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 12rem; font-weight: 700; font-style: italic;
   color: var(--orange); opacity: 0.25; line-height: 1;
   flex-shrink:0; user-select:none; position:relative; z-index:1;
 }
 .qs__text {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-heading) !important;
   font-style: italic; font-size: 1.7rem;
   line-height: 1.6; color: #ffffff;
   letter-spacing: -0.01em;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 .qs__author { 
-  font-family: "League Spartan", sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 12px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); 
 }
 
@@ -852,29 +854,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 </div><!-- /dự án -->
 
 
-<!-- ══ QUOTE A — after Dự Án ══ -->
-<div class="anim d2">
-  <div class="quote-editorial">
-    <div class="qe__panel qe__panel--a">
-      <span class="qe__bg-letter">C</span>
-      <div class="qe__rule"></div>
-      <p class="qe__text">Mỗi công trình không phải là điểm cuối — đó là minh chứng sống cho sự tin tưởng của khách hàng trao gửi vào chúng tôi.</p>
-      <span class="qe__author">— TavaLLS</span>
-    </div>
-    <div class="qe__panel qe__panel--b">
-      <span class="qe__bg-letter">Q</span>
-      <div class="qe__rule"></div>
-      <p class="qe__text">Chất lượng không bao giờ là sự trùng hợp ngẫu nhiên — nó luôn là kết quả của nỗ lực thông minh và nhất quán.</p>
-      <span class="qe__author">— John Ruskin</span>
-    </div>
-    <div class="qe__panel qe__panel--c">
-      <span class="qe__bg-letter">A</span>
-      <div class="qe__rule"></div>
-      <p class="qe__text">Ánh sáng đẹp nhất không chiếu từ thiết bị — nó chiếu từ tâm huyết của người đứng sau mỗi dự án.</p>
-      <span class="qe__author">— Khuyết danh</span>
-    </div>
-  </div>
-</div>
+
 
 <div class="sec-div"></div>
 
@@ -948,21 +928,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 </div>
 
 
-<!-- ══ QUOTE B — Cinematic dark wide ══ -->
-<div class="anim d3">
-  <div class="quote-cinematic">
-    <span class="qc__ghost-char">V</span>
-    <span class="qc__ghost-num">03</span>
-    <div class="qc__mark">"</div>
-    <div class="qc__body">
-      <p class="qc__text">Kiến thức chia sẻ là ánh sáng nhân lên — mỗi kinh nghiệm được truyền đi không chỉ giúp một người, mà lan toả cho cả một ngành.</p>
-      <div class="qc__foot">
-        <div class="qc__dash"></div>
-        <span class="qc__author">TavaLLS · Triết lý chia sẻ</span>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div class="sec-div"></div>
 
@@ -1028,26 +994,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 </div>
 
 
-<!-- ══ QUOTE C — Warm mosaic ══ -->
-<div class="anim d4">
-  <div class="quote-mosaic">
-    <div class="qm__cell qm__cell--main">
-      <span class="qm__oq">"</span>
-      <p class="qm__text">Những đối tác tốt nhất không chỉ mang lại sản phẩm tốt — họ mang lại tầm nhìn và sự tin tưởng lâu dài vượt ra ngoài từng hợp đồng.</p>
-      <div class="qm__author">TavaLLS</div>
-    </div>
-    <div class="qm__cell qm__cell--b">
-      <span class="qm__oq">"</span>
-      <p class="qm__text">Mình không chỉ bán sản phẩm — mình xây dựng mối quan hệ bền vững theo thời gian.</p>
-      <div class="qm__author">Khuyết danh</div>
-    </div>
-    <div class="qm__cell qm__cell--c">
-      <span class="qm__oq">"</span>
-      <p class="qm__text">Thành công của doanh nghiệp được đo bằng chất lượng của những mối quan hệ mà nó gây dựng.</p>
-      <div class="qm__author">Henry Ford</div>
-    </div>
-  </div>
-</div>
+
 
 <div class="sec-div"></div>
 
@@ -1106,20 +1053,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 </div>
 
 
-<!-- ══ QUOTE D — closing solo dark ══ -->
-<div class="anim d5">
-  <div class="quote-solo">
-    <span class="qc__ghost-char" style="left:auto; right:20px; top:auto; bottom:-40px; opacity:0.04;">A</span>
-    <div class="qs__mark">"</div>
-    <div class="qs__body">
-      <p class="qs__text">Ánh sáng không chỉ chiếu sáng không gian — nó định hình cảm xúc, khắc sâu ký ức và kể câu chuyện của thương hiệu bạn.</p>
-      <div class="qs__attr">
-        <div class="qs__dash"></div>
-        <span class="qs__author">TavaLLS · Sứ mệnh</span>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 </div></main>

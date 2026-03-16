@@ -52,15 +52,15 @@ function tavaled_enqueue_scripts() {
         return $html;
     }, 10, 2);
 
-    // Google Font League Spartan — chỉ load 1 lần duy nhất tại đây
-    wp_enqueue_style('tavaled-fonts', 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap', [], null);
+    // Google Fonts Inter and Mona Sans
+    wp_enqueue_style('tavaled-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap', [], null);
 
-    // Tailwind compiled CSS (thay thế CDN 407KB)
-    wp_enqueue_style('tavaled-tailwind', TAVALED_URI . '/assets/css/tailwind-output.css', [], '1.0.0');
+    // Tailwind compiled CSS
+    wp_enqueue_style('tavaled-tailwind', TAVALED_URI . '/assets/css/tailwind-output.css', [], time());
 
-    wp_enqueue_style('tavaled-style', get_stylesheet_uri(), [], '1.0.0');
-    wp_enqueue_style('tavaled-main-css', TAVALED_URI . '/assets/css/main.css', [], '1.0.0');
-    wp_enqueue_script('tavaled-main-js', TAVALED_URI . '/assets/js/main.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_style('tavaled-style', get_stylesheet_uri(), [], time());
+    wp_enqueue_style('tavaled-main-css', TAVALED_URI . '/assets/css/main.css', [], time());
+    wp_enqueue_script('tavaled-main-js', TAVALED_URI . '/assets/js/main.js', ['jquery'], time(), true);
 }
 add_action('wp_enqueue_scripts', 'tavaled_enqueue_scripts');
 
@@ -99,6 +99,9 @@ if (is_admin()) {
 
     $demo_data_admin = new \App\Controllers\Admin\DemoDataController();
     $demo_data_admin->register();
+
+    $page_setup_admin = new \App\Controllers\Admin\PageSetupController();
+    $page_setup_admin->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')

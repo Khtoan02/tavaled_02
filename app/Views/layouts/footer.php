@@ -1,4 +1,4 @@
-<footer id="colophon" class="bg-tavalls-gradient border-t border-brand-orange/30 pt-16 pb-8 font-sans relative overflow-hidden text-slate-300">
+<footer id="colophon" class="bg-tavalls-gradient border-t border-brand-orange/30 pt-16 pb-8 font-sans relative overflow-hidden text-slate-300" style="background: linear-gradient(135deg, #1c2857 0%, #2a3a6b 50%, #1c2857 100%) !important; color: #cbd5e1 !important;">
         
         <!-- Hiệu ứng lưới tech chìm phía sau nền (Grid Mesh) -->
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#f05a25 1px, transparent 1px), linear-gradient(90deg, #f05a25 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
@@ -73,19 +73,17 @@
                     </div>
                     <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
                         <h4 class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
-                            <span>Ứng dụng màn hình</span>
+                            <span>Giải pháp trọn gói</span>
                             <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </h4>
                         <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                             <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED hội trường</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED phòng họp</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED sân khấu</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED trường học</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED tiệc, đám cưới</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED Studio</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED 100", 200", 300"</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn hình LED trong suốt</a></li>
+                                <li><a href="/giao-duc" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Giáo dục & Tương tác</a></li>
+                                <li><a href="/hoi-hop-doanh-nghiep" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Hội họp doanh nghiệp</a></li>
+                                <li><a href="/su-kien-san-khau" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Sự kiện & Sân khấu</a></li>
+                                <li><a href="/quang-cao-thuong-hieu" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Quảng cáo thương hiệu</a></li>
+                                <li><a href="/fnb-giai-tri" class="block hover:text-brand-orange hover:translate-x-1 transition-all">F&B & Giải trí đêm</a></li>
+                                <li><a href="/giai-tri-tai-nha" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Giải trí tại gia</a></li>
                             </ul>
                         </div>
                     </div>
@@ -180,19 +178,38 @@
                     </div>
                 </div>
 
-                <!-- Cột 5: Dự án -->
+                <!-- Cột 5: Dự án & Chính sách -->
                 <div>
+                    <!-- Về TavaLED -->
                     <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
                         <h4 class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
-                            <span>Dự án đã thực hiện</span>
+                            <span>Về TavaLED</span>
                             <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </h4>
                         <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                             <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dự án trong nhà</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dự án ngoài trời</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dự án trường học</a></li>
-                                <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dự án màn hình ghép</a></li>
+                                <li><a href="/ve-chung-toi" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Câu chuyện thương hiệu</a></li>
+                                <li><a href="/tieu-chi" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tiêu chí phát triển</a></li>
+                                <li><a href="/minh-bach-nang-luc" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Hồ sơ năng lực</a></li>
+                                <li><a href="/chuyen-gia" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chuyên gia TavaLED</a></li>
+                                <li><a href="/tuyen-dung" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cơ hội nghề nghiệp</a></li>
+                                <li><a href="/du-an" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Công trình dự án</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chính sách -->
+                    <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10 lg:mt-6">
+                        <h4 class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                            <span>Chính sách & Quy định</span>
+                            <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </h4>
+                        <div class="footer-content hidden lg:block pt-3 lg:pt-0">
+                            <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
+                                <li><a href="<?php echo home_url('/chinh-sach-bao-hanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách bảo hành</a></li>
+                                <li><a href="<?php echo home_url('/dieu-khoan-su-dung'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Điều khoản sử dụng</a></li>
+                                <li><a href="<?php echo home_url('/chinh-sach-bao-mat'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách bảo mật</a></li>
+                                <li><a href="<?php echo home_url('/chinh-sach-thanh-toan'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách thanh toán</a></li>
                             </ul>
                         </div>
                     </div>

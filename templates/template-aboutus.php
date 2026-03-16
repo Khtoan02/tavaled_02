@@ -10,13 +10,14 @@ get_header(); ?>
     
     <style>
         /* BASE & SCROLL */
-        body { font-family: 'Inter', sans-serif; background-color: #fffcfb; margin: 0; overflow-x: hidden; color: #1e293b; }
+        body { font-family: var(--font-body); background-color: #fffcfb; margin: 0; overflow-x: hidden; color: #1e293b; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0a0f1a; }
         ::-webkit-scrollbar-thumb { background: #f05a25; }
 
-        /* SẮC LẠNH - KHÔNG BO GÓC */
-        *, *::before, *::after { border-radius: 0 !important; }
+
+        /* SẮC LẠNH - KHÔNG BO GÓC - Scoped to avoid breaking header/footer */
+        .page-template-template-aboutus-php *, .page-template-template-aboutus-php *::before, .page-template-template-aboutus-php *::after { border-radius: 0 !important; }
 
         /* HIỆU ỨNG TEXT NGHỆ THUẬT (WATERMARK) */
         .text-stroke-light { color: transparent; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05); }
@@ -93,7 +94,7 @@ get_header(); ?>
         .network-node:hover .story-left { opacity: 1; visibility: visible; transform: translate(0, -50%); }
         .network-node:hover .story-right { opacity: 1; visibility: visible; transform: translate(0, -50%); }
         .story-cover { padding: 24px 20px 16px; position: relative; background: linear-gradient(135deg, #0a0f1a, #111827); border-bottom: 2px solid #f05a25; }
-        .story-cover-title { color: white; font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: bold; line-height: 1.3; letter-spacing: -0.02em; }
+        .story-cover-title { color: white; font-family: var(--font-heading); font-size: 1.25rem; font-weight: bold; line-height: 1.3; letter-spacing: -0.02em; }
         .story-content { padding: 16px 20px 20px; }
         .story-content p { color: #475569; font-size: 0.875rem; line-height: 1.6; border-left: 2px solid #f05a25; padding-left: 12px; font-style: italic; margin: 0; }
     </style>
@@ -550,12 +551,7 @@ get_header(); ?>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#0a0f1a] text-gray-600 py-10 text-center font-mono text-xs uppercase tracking-widest border-t border-white/5">
-        <div class="container mx-auto">
-            <p>&copy; 2026 TAVA VIETNAM TECHNOLOGY JSC. ALL RIGHTS RESERVED.</p>
-        </div>
-    </footer>
+<!-- Standard footer will be called at the bottom -->
 
     <!-- SCRIPT TỔNG HỢP -->
     <script>
@@ -818,6 +814,4 @@ get_header(); ?>
             }
         });
     </script>
-    <?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>

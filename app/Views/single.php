@@ -14,7 +14,7 @@
   --border:     #eeddd6;
   --border-lt:  #f5e8e2;
 
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   color: var(--ink);
   font-size: 15px;
   line-height: 1.6;
@@ -115,7 +115,7 @@
 }
 
 .post-hero__title {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700; font-size: clamp(1.9rem, 4vw, 3rem);
   line-height: 1.15; letter-spacing: -0.025em;
   color: #fff; max-width: 820px;
@@ -196,7 +196,7 @@
 
 /* Article Typography */
 .article h2 {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700; font-size: 1.7rem;
   line-height: 1.45; letter-spacing: -0.01em;
   color: var(--ink); margin: 64px 0 24px;
@@ -208,7 +208,7 @@
   width: 4px; background: var(--orange); border-radius: 4px;
 }
 .article h3 {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600; font-size: 1.35rem;
   color: var(--ink); margin: 48px 0 18px;
   line-height: 1.45;
@@ -216,7 +216,7 @@
 }
 .article p {
   font-size: 15.5px; color: var(--mid); line-height: 1.65;
-  margin-bottom: 0; font-weight: 400; font-family: 'League Spartan', sans-serif;
+  margin-bottom: 0; font-weight: 400; font-family: var(--font-heading);
 }
 .article img, .article figure {
   max-width: 100%; border-radius: 10px; height: auto; margin: 36px 0;
@@ -349,7 +349,7 @@
   object-fit: cover; border: 2.5px solid var(--orange-lt);
 }
 .author-box__name {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-bottom: 2px;
 }
 .author-box__role {
@@ -372,7 +372,7 @@
   position: relative; overflow: hidden;
 }
 .sidebar-quote::before {
-  content: '"'; font-family: 'League Spartan', sans-serif;
+  content: '"'; font-family: var(--font-heading);
   font-size: 9rem; font-weight: 700; font-style: italic;
   color: rgba(255,255,255,.04);
   position: absolute; top: -24px; left: 8px; line-height: 1; pointer-events: none;
@@ -381,7 +381,7 @@
   content: ''; position: absolute; left:0; top:0; bottom:0; width:3px; background: var(--orange);
 }
 .sq__text {
-  font-family: 'League Spartan', sans-serif; font-style: italic; font-size: 1rem;
+  font-family: var(--font-heading); font-style: italic; font-size: 1rem;
   line-height: 1.6; color: rgba(255,255,255,.88); position: relative; z-index:1;
 }
 .sq__author {
@@ -404,7 +404,7 @@
   background:rgba(255,255,255,.05); bottom:-24px; left:-20px;
 }
 .sidebar-cta__icon { font-size: 2rem; margin-bottom: 10px; position:relative; z-index:1; }
-.sidebar-cta__title { font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 8px; position: relative; z-index:1; }
+.sidebar-cta__title { font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 8px; position: relative; z-index:1; }
 .sidebar-cta__text { font-size: 12.5px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 18px; position: relative; z-index:1; }
 .sidebar-cta__btn { display: inline-block; background: #fff; color: var(--orange); font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 9px 22px; border-radius: 7px; position: relative; z-index:1; text-decoration: none; }
 
@@ -436,7 +436,7 @@
 }
 .toc__list a:hover { color: var(--orange); background: var(--orange-xlt); }
 .toc__num {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.1rem; font-weight: 700;
   color: var(--orange); opacity: .45;
   flex-shrink: 0; width: 18px; text-align: right;
@@ -468,7 +468,7 @@
 }
 .related-card:hover .related-card__img { filter: saturate(1); }
 .related-card__title {
-  font-family: 'League Spartan', sans-serif;
+  font-family: var(--font-heading);
   font-size: .95rem; font-weight: 700; line-height: 1.3;
   color: var(--ink); transition: color .2s;
 }
@@ -486,7 +486,7 @@
 .related-section__head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
 .related-section__eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); opacity: .8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .related-section__eyebrow::before { content:''; display:inline-block; width:22px; height:1.5px; background:var(--orange); }
-.related-section__title { font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 2rem; color: var(--ink); }
+.related-section__title { font-family: var(--font-heading); font-weight: 700; font-size: 2rem; color: var(--ink); }
 .related-section__more { font-size: 11.5px; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid var(--border-lt); padding-bottom: 1px; }
 
 .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -696,7 +696,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="card__body p-5 flex flex-col items-start h-full">
-                            <h3 class="card__title font-serif font-bold text-lg leading-tight text-gray-900 mb-3 hover:text-brand-orange transition-colors" style="font-family: 'League Spartan', sans-serif;"><?php the_title(); ?></h3>
+                            <h3 class="card__title font-serif font-bold text-lg leading-tight text-gray-900 mb-3 hover:text-brand-orange transition-colors" style="font-family: var(--font-heading);"><?php the_title(); ?></h3>
                             <div class="text-xs text-gray-500 flex items-center gap-2 mt-auto pt-4 border-t border-gray-100 w-full">
                                 <span><?php echo get_the_date('j/m/Y'); ?></span>
                                 <span class="w-1 h-1 rounded-full bg-gray-300"></span>

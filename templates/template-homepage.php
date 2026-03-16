@@ -5,54 +5,9 @@
 get_header(); ?>
 
 <style>
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- TỐI ƯU SEO -->
-    <title>TavaLLS | Màn hình LED · Âm thanh · Ánh sáng chuyên nghiệp</title>
-    <meta name="description" content="TavaLLS — Giải pháp toàn diện Màn hình LED, Âm thanh và Ánh sáng chuyên nghiệp. 500+ dự án, 10 năm kinh nghiệm, phủ sóng 64 tỉnh thành.">
-    <meta name="keywords" content="Màn hình LED, Âm thanh sân khấu, Ánh sáng sự kiện, TavaLLS, thi công màn hình LED, loa Line Array, đèn Moving Head">
-    <meta property="og:title" content="TavaLLS — LED · Âm thanh · Ánh sáng">
-    <meta property="og:description" content="500+ dự án. 10 năm. Một đối tác — trọn vẹn giải pháp hiển thị và âm thanh.">
-    <meta property="og:type" content="website">
-
-    <!-- Cài đặt Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 
-                            orange: '#f05a25', 
-                            orangedark: '#c8451a',
-                            navy: '#1c2857',
-                            navy2: '#1e293b',
-                            navy3: '#1c2857',
-                            light: '#f8fafc'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                        mono: ['Space Grotesk', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <style>
         /* BASE & RESET */
         *, *::before, *::after { border-radius: 0 !important; }
-        body { font-family: 'Inter', sans-serif; background: #1c2857; color: #ffffff; overflow-x: hidden; cursor: none; }
+        body { font-family: var(--font-body); background: #1c2857; color: #ffffff; overflow-x: hidden; cursor: none; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #1c2857; }
@@ -164,9 +119,9 @@ get_header(); ?>
         .card__body { padding: 18px 20px 20px; flex:1; display:flex; flex-direction:column; background: #fff; }
         .card__meta { display:flex; align-items:center; gap:6px; font-size:11px; color:#6b7280; margin-bottom:8px; flex-wrap:wrap; }
         .meta-dot { width:3px; height:3px; background:#9ca3af; flex-shrink:0; }
-        .card__title { font-family: "League Spartan", sans-serif !important; font-weight: 700; text-transform: uppercase; line-height: 1.35; color: #1d2857; margin-bottom: 9px; flex: 1; transition: color 0.2s; }
+        .card__title { font-family: var(--font-heading) !important; font-weight: 700; text-transform: uppercase; line-height: 1.35; color: #1d2857; margin-bottom: 9px; flex: 1; transition: color 0.2s; }
         .card:hover .card__title { color: #f05a25; }
-        .card__desc { font-family: "League Spartan", sans-serif !important; font-weight: 500; font-size: 13px; color: #616161; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; }
+        .card__desc { font-family: var(--font-heading) !important; font-weight: 500; font-size: 13px; color: #616161; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; }
         .card__foot { display:flex; align-items:center; justify-content:space-between; padding-top: 12px; border-top: 1px solid #f5e8e2; margin-top: auto; }
         .stats { display:flex; align-items:center; gap:12px; font-size:11px; color:#6b7280; }
         .stat { display:flex; align-items:center; gap:4px; }
@@ -219,7 +174,7 @@ get_header(); ?>
 
         .qs__attr { display: flex; align-items: center; gap: 16px; }
         .qs__dash { width: 48px; height: 2px; background: #f05a25; border-radius: 0; }
-        .qs__author { font-family: "League Spartan", sans-serif !important; font-size: 12px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; }
+        .qs__author { font-family: var(--font-heading) !important; font-size: 12px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; }
 
         .read-pill { position: absolute; bottom: 10px; right: 10px; background: rgba(255,248,246,0.88); backdrop-filter: blur(6px); color: #f05a25; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 0px; border: 1px solid rgba(240,90,37,.15); z-index: 2; }
 
@@ -249,20 +204,48 @@ get_header(); ?>
         .sec-head--light .sec-head__title, .sec-head--light .sec-head__title em { color: #ffffff !important; }
         .sec-head--light .sec-head__ghost { color: #ffffff !important; opacity:0.03 !important; }
         .sec-head--light .sec-head__more { color: #ffffff; border-color: rgba(255,255,255,0.2); }
-        .sec-head__ghost { position: absolute; left: -4px; bottom: 18px; font-family: 'Cormorant Garamond', serif; font-size: 8.5rem; font-weight: 700; font-style: italic; line-height: 1; color: #f05a25; opacity: 0.055; pointer-events: none; user-select: none; letter-spacing: -0.03em; white-space: nowrap; }
+        .sec-head__ghost { position: absolute; left: -4px; bottom: 18px; font-family: var(--font-heading); font-size: 8.5rem; font-weight: 700; font-style: italic; line-height: 1; color: #f05a25; opacity: 0.055; pointer-events: none; user-select: none; letter-spacing: -0.03em; white-space: nowrap; }
         .sec-head__main { position: relative; z-index: 1; }
         .sec-head__eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; opacity: 0.8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
         .sec-head__eyebrow::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: #f05a25; }
-        .sec-head__title { font-family: "League Spartan", sans-serif !important; font-weight: 900 !important; text-transform: uppercase; letter-spacing: -0.02em; font-size: 2.8rem; line-height: 1.1; color: #1d2857; }
-        .sec-head__title em { font-family: "League Spartan", sans-serif !important; color: #f05a25; font-style: normal; text-transform: uppercase; }
+        .sec-head__title { font-family: var(--font-heading) !important; font-weight: 900 !important; text-transform: uppercase; letter-spacing: -0.02em; font-size: 2.8rem; line-height: 1.1; color: #1d2857; }
+        .sec-head__title em { font-family: var(--font-heading) !important; color: #f05a25; font-style: normal; text-transform: uppercase; }
         .sec-head__more { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid rgba(255,255,255,0.2); padding-bottom: 6px; transition: color .2s, border-color .2s, gap .2s; white-space: nowrap; align-self: flex-end; }
         .sec-head__more::after { content: '→'; font-size: 13px; }
         .sec-head__more:hover { color: #f05a25; border-color: #f05a25; gap: 11px; }
         @media (max-width:640px) { .sec-head { margin-bottom: 32px; } .sec-head__title { font-size:1.75rem; } .sec-head__ghost { font-size: 70px; top: -15px; left: -10px; } }
 
+        /* ADVANCED STROKE AND GRADIENT HEADINGS (NEW DESIGN) */
+        .custom-heading-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 24px 100px 16px 24px;
+            margin-left: -24px;
+            margin-top: -24px;
+            background: linear-gradient(to right, rgba(240,90,37,0.2) 0%, rgba(240,90,37,0) 100%);
+            border-radius: 4px;
+            z-index: 1; /* Establishes stacking context */
+        }
+        .custom-heading-text {
+            color: #1d2857 !important; /* text-brand-navy */
+            position: relative;
+            display: block; /* Fixes inline overlap bug */
+            z-index: 2;
+        }
+        .custom-heading-text::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            color: #1d2857; /* Matches inner text color to hide inner stroke */
+            -webkit-text-stroke: 10px #ffffff;
+            pointer-events: none;
+        }
+
+
         </style>
-</head>
-<body class="relative bg-brand-navy3">
 
     <!-- CUSTOM CURSOR -->
     <div class="cursor" id="cursor">
@@ -285,19 +268,16 @@ get_header(); ?>
             
             <div class="hero-overlay"></div>
 
-            <div class="absolute top-1/3 left-0 w-full overflow-hidden pointer-events-none z-0 flex justify-center">
-                <h1 class="text-[12vw] leading-none font-black text-stroke-light whitespace-nowrap opacity-50 select-none">TAVALLS VISION</h1>
-            </div>
 
             <div class="relative z-10 px-6 lg:px-20 max-w-5xl mt-20 text-center reveal-up">
                 <p class="font-mono text-brand-orange font-bold tracking-[0.25em] uppercase text-xs md:text-sm mb-6 flex items-center justify-center gap-4">
                     <span class="w-8 h-[1px] bg-brand-orange"></span> Giải Pháp Hình Ảnh & Âm Thanh Toàn Diện <span class="w-8 h-[1px] bg-brand-orange"></span>
                 </p>
                 
-                <h2 class="font-serif text-5xl md:text-7xl lg:text-[6.5rem] leading-[1.05] text-white tracking-tight mb-8">
+                <h1 class="font-serif font-black text-5xl md:text-7xl lg:text-[6.5rem] leading-[1.05] text-white tracking-tight mb-8">
                     Đánh Thức Mọi <br>
                     <span class="italic font-light text-brand-orange">Giác Quan.</span>
-                </h2>
+                </h1>
                 
                 <p class="text-white/70 font-light text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
                     Hơn một thập kỷ tiên phong, TavaLLS tự hào là nhà cung cấp và thi công trọn gói hệ thống Màn hình LED, Âm thanh & Ánh sáng chuyên nghiệp cho hàng trăm đại dự án trên toàn quốc.
@@ -318,20 +298,20 @@ get_header(); ?>
         <!-- ================= SECTION 3: SẢN PHẨM ================= -->
         <section id="products" class="py-24 bg-[#f8fafc]">
             <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] mb-8 reveal-up text-center">
-                <h2 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-2">Catalogue Toàn Diện</h2>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-navy font-bold">Thiết Bị Cốt Lõi</h3>
+                <h2 class="font-mono font-bold text-brand-orange uppercase tracking-widest text-sm mb-2">Catalogue Toàn Diện</h2>
+                <h3 class="font-serif text-4xl md:text-5xl text-brand-navy font-black">Thiết Bị Cốt Lõi</h3>
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
             </div>
 
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
             <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="w-8 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Hiển Thị Đỉnh Cao</span>
+                    <div class="custom-heading-wrap">
+                        <div class="inline-flex items-center relative z-10 mb-3">
+                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiển Thị Đỉnh Cao</span>
                         </div>
-                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Màn Hình LED & Xử Lý</h3>
+                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Màn Hình LED & Xử Lý">Màn Hình LED & Xử Lý</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Xem tất cả kho LED</span>
@@ -366,12 +346,12 @@ get_header(); ?>
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="w-8 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Âm Thanh Sân Khấu</span>
+                    <div class="custom-heading-wrap">
+                        <div class="inline-flex items-center relative z-10 mb-3">
+                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Âm Thanh Sân Khấu</span>
                         </div>
-                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Hệ Thống Âm Thanh</h3>
+                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Hệ Thống Âm Thanh">Hệ Thống Âm Thanh</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị âm thanh</span>
@@ -406,12 +386,12 @@ get_header(); ?>
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="w-8 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-xs">Hiệu Ứng Nghệ Thuật</span>
+                    <div class="custom-heading-wrap">
+                        <div class="inline-flex items-center relative z-10 mb-3">
+                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
+                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiệu Ứng Nghệ Thuật</span>
                         </div>
-                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-brand-navy">Hệ Thống Ánh Sáng</h3>
+                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Hệ Thống Ánh Sáng">Hệ Thống Ánh Sáng</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị ánh sáng</span>
@@ -448,8 +428,8 @@ get_header(); ?>
         <!-- ================= SECTION 4: THƯ VIỆN DỰ ÁN (FULL WIDTH - ĐỒ SỘ NHẤT) ================= -->
         <section id="projects" class="pt-32 pb-0 bg-brand-navy3 overflow-hidden">
             <div class="container mx-auto px-6 lg:px-12 text-center mb-10 reveal-up">
-                <h2 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Visual Portfolio</h2>
-                <h3 class="font-serif text-4xl md:text-6xl text-white mb-6">Dấu Ấn Hàng Trăm<br>Dự Án Quy Mô</h3>
+                <h2 class="font-mono font-bold text-brand-orange uppercase tracking-widest text-sm mb-4">Visual Portfolio</h2>
+                <h3 class="font-serif font-black text-4xl md:text-6xl text-white mb-6">Dấu Ấn Hàng Trăm<br>Dự Án Quy Mô</h3>
                 <p class="text-white/60 max-w-2xl mx-auto">Không gì chứng minh năng lực tốt hơn những công trình thực tế. Dưới đây là một phần nhỏ trong số hơn 500+ dự án mà TavaLLS đã kiến tạo trên khắp Việt Nam.</p>
             </div>
 
@@ -877,7 +857,7 @@ get_header(); ?>
                         <div class="flex items-center gap-3 text-brand-orange font-bold text-[10px] tracking-[0.2em] uppercase mb-4">
                             <span class="w-8 h-0.5 bg-brand-orange"></span> Hỗ trợ 24/7
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl text-white mb-6 leading-tight">Giải Đáp<br>Mọi Thắc Mắc</h2>
+                        <h2 class="font-serif font-black text-4xl md:text-5xl text-white mb-6 leading-tight">Giải Đáp<br>Mọi Thắc Mắc</h2>
                         <p class="text-white/50 text-base leading-relaxed mb-8">TavaLLS luôn sẵn sàng đồng hành cùng bạn. Dưới đây là những câu hỏi thường gặp nhất trong quá trình tư vấn và triển khai các dự án công nghệ Nghe - Nhìn quy mô lớn.</p>
 
                         <!-- Tech Image Support -->
@@ -990,7 +970,7 @@ get_header(); ?>
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]"></div>
             
             <div class="container mx-auto px-4 relative z-10 text-center reveal-up">
-                <h2 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                <h2 class="font-serif font-black text-5xl md:text-7xl text-white mb-6 tracking-tight">
                     Bắt đầu dự án của bạn<br><em class="text-brand-orange italic font-light">— ngay hôm nay</em>
                 </h2>
                 <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Liên hệ với chuyên gia của TavaLLS để nhận bản vẽ giải pháp 3D và báo giá chi tiết hoàn toàn miễn phí.</p>
@@ -1093,4 +1073,3 @@ get_header(); ?>
     </script>
 
 <?php get_footer(); ?>
-</body>

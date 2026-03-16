@@ -31,9 +31,11 @@ get_header(); ?>
   -webkit-font-smoothing:antialiased;
 }
 
-.products-wrapper * {
+
+.page-template-template-products-php .products-wrapper * {
   box-sizing: border-box;
 }
+
 
 /* ══════════════════
    CATEGORY MEGA TABS
@@ -1112,5 +1114,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
 <?php get_footer(); ?>

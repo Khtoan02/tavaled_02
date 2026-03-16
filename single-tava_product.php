@@ -48,7 +48,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   --border:     #eeddd6;
   --border-lt:  #f5e8e2;
 
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   font-size: 14px;
   line-height: 1.65;
@@ -191,7 +191,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 }
 
 .prod-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-heading);
   font-weight: 700; font-size: 2.1rem; line-height: 1.12;
   letter-spacing: -0.025em; color: var(--ink); margin-bottom: 6px;
 }
@@ -269,7 +269,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .contact-strip__icon { width: 34px; height: 34px; border-radius: 50%; background: var(--orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .contact-strip__icon svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
 .contact-strip__label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 1px; }
-.contact-strip__number { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.contact-strip__number { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
 
 .prod-share { display: flex; align-items: center; gap: 8px; padding-top: 16px; border-top: 1px solid var(--border-lt); }
 .prod-share__label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
@@ -289,7 +289,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-.specs-section-title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.3rem; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.specs-section-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .specs-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .specs-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 32px; box-shadow: 0 2px 12px rgba(17,24,39,.04); }
 .specs-table tr { border-bottom: 1px solid var(--border-lt); }
@@ -301,7 +301,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .specs-table tr:first-child td:first-child { border-radius: 10px 0 0 0; }
 .specs-table tr:first-child td:last-child  { border-radius: 0 10px 0 0; }
 
-.desc-content h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.35rem; color: var(--ink); margin: 32px 0 12px; position: relative; padding-left: 16px; }
+.desc-content h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; color: var(--ink); margin: 32px 0 12px; position: relative; padding-left: 16px; }
 .desc-content h3::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--orange); border-radius: 3px; }
 .desc-content p { font-size: 14.5px; color: var(--mid); line-height: 1.8; margin-bottom: 18px; }
 .desc-content ul { list-style: none; margin-bottom: 18px; padding:0;}
@@ -318,7 +318,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .rel-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
 .rel-eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); opacity: .8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .rel-eyebrow::before { content:''; display:inline-block; width:22px; height:1.5px; background:var(--orange); }
-.rel-title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 2rem; letter-spacing: -0.02em; color: var(--ink); margin-bottom:0;}
+.rel-title { font-family: var(--font-heading); font-weight: 700; font-size: 2rem; letter-spacing: -0.02em; color: var(--ink); margin-bottom:0;}
 .rel-title em { font-style: italic; color: var(--orange); }
 .rel-more { font-size: 11.5px; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid var(--border-lt); padding-bottom: 1px; transition: color .2s, border-color .2s; }
 .rel-more:hover { color: var(--orange); border-color: var(--orange); }
@@ -331,7 +331,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .prod-card-sp:hover .prod-card-sp__thumb img { transform: scale(1.07); filter: saturate(1); }
 .prod-card-sp__cat { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,.78); backdrop-filter: blur(8px); color: var(--mid); font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; border: 1px solid rgba(255,255,255,.5); }
 .prod-card-sp__body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-.prod-card-sp__name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.05rem; line-height: 1.25; color: var(--ink); margin-bottom: 6px; transition: color .2s; letter-spacing: -0.01em; }
+.prod-card-sp__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; line-height: 1.25; color: var(--ink); margin-bottom: 6px; transition: color .2s; letter-spacing: -0.01em; }
 .prod-card-sp:hover .prod-card-sp__name { color: var(--orange); }
 .prod-card-sp__model { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
 .prod-card-sp__foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 11px; border-top: 1px solid var(--border-lt); }

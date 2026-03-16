@@ -18,8 +18,8 @@
 
     /* 2. FONT CHỮ (Typography) */
     /* Hãy import font chữ bằng @import ở trên cùng file này hoặc wp_head nếu bạn dùng font custom */
-    --font-heading: 'League Spartan', sans-serif; /* Font dàn cho các thẻ tiêu đề (H1, H2,...) */
-    --font-body: 'League Spartan', sans-serif;    /* Font dàn cho nội dung chữ thường */
+    --font-heading: 'Mona Sans', sans-serif; /* Font dàn cho các thẻ tiêu đề (H1, H2,...) */
+    --font-body: 'Inter', sans-serif;    /* Font dàn cho nội dung chữ thường */
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
     --container-width: 1600px;     /* Độ rộng siêu lớn cho Desktop hiện đại (hiển thị nhiều sản phẩm hơn) */
@@ -363,7 +363,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Background Gradient chuẩn TavaLLS */
 .bg-tavalls-gradient {
-    background: linear-gradient(135deg, rgb(28, 40, 87) 0%, rgb(42, 58, 107) 50%, rgb(28, 40, 87) 100%);
+    background: linear-gradient(135deg, rgb(28, 40, 87) 0%, rgb(42, 58, 107) 50%, rgb(28, 40, 87) 100%) !important;
+}
+
+/* Ép màu cho các tiêu đề trong Footer (tránh bị rules h1-h6 đè) */
+#colophon h3, #colophon h4 {
+    color: #ffffff !important;
+}
+#colophon .text-gray-400 {
+    color: #94a3b8 !important; /* slate-400 */
+}
+#colophon a {
+    color: #cbd5e1; /* slate-300 */
+}
+#colophon a:hover {
+    color: #f05a25 !important; /* brand-orange */
 }
 
 /* Hiệu ứng viền công nghệ (Tech Border) cho map và box */

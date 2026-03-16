@@ -29,7 +29,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['"League Spartan"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        serif: ['"Mona Sans"', 'sans-serif'],
+        heading: ['"Mona Sans"', 'sans-serif']
       }
     }
   },
