@@ -25,39 +25,21 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ... (remaining styles compressed for brevity or kept) ... */
 
 .hero__bg{position:absolute;inset:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.8)}
-.hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,12,20,.7) 0%,rgba(12,12,20,.2) 40%,rgba(12,12,20,.6) 75%,rgba(12,12,20,.98) 100%),linear-gradient(90deg,rgba(12,12,20,.8) 0%,rgba(12,12,20,.2) 55%,transparent 100%)}
+.hero__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(1)}
+.hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(12,12,20,.8) 0%,rgba(12,12,20,.4) 40%,transparent 100%)}
 .hero__stars{position:absolute;inset:0;z-index:1;background-image:radial-gradient(1.5px 1.5px at 20% 30%,rgba(255,255,255,.3),transparent),radial-gradient(1px 1px at 50% 15%,rgba(255,255,255,.2),transparent),radial-gradient(1.5px 1.5px at 80% 60%,rgba(255,255,255,.25),transparent),radial-gradient(1px 1px at 35% 75%,rgba(255,255,255,.2),transparent),radial-gradient(1.5px 1.5px at 65% 85%,rgba(255,255,255,.15),transparent);pointer-events:none}
 .hero__bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--o),var(--odk) 45%,rgba(240,90,37,.2))}
 
-.hero__body{position:relative;z-index:2;padding:0 56px;max-width:1320px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.hero__tag{display:inline-flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--o);padding:4px 12px;background:rgba(240,90,37,.1);border:1px solid rgba(240,90,37,.28);border-radius:4px;margin-bottom:22px;opacity:0;animation:su .5s .1s ease forwards}
-.hero__h1{font-family:var(--ff);font-weight:800;font-size:clamp(2.8rem,5.5vw,5.5rem);letter-spacing:-.07em;color:#fff;line-height:.9;margin-bottom:22px;opacity:0;animation:su .9s .25s cubic-bezier(.16,1,.3,1) forwards}
-.hero__h1 em{font-style:italic;font-weight:300;color:var(--o);display:block;font-size:.75em}
-.hero__sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;max-width:420px;margin-bottom:36px;opacity:0;animation:su .65s .45s ease forwards}
-.hero__acts{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:su .6s .62s ease forwards}
+.hero__body{position:relative;z-index:2;padding:0 56px;max-width:1320px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:30px}
+.hero__tag{display:inline-flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--o);padding:4px 12px;background:rgba(240,90,37,.1);border:1px solid rgba(240,90,37,.28);border-radius:4px;opacity:0;animation:su .5s .1s ease forwards}
+.hero__h1{font-family:var(--ff);font-weight:800;font-size:clamp(2.8rem,5.5vw,5.5rem);letter-spacing:-.07em;color:#fff;line-height:.9;opacity:0;animation:su .9s .25s cubic-bezier(.16,1,.3,1) forwards;margin:0}
+.hero__h1 em{font-style:italic;font-weight:300;color:var(--o);display:block;font-size:.75em;margin-top:8px}
+.hero__sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;max-width:600px;margin:0;opacity:0;animation:su .65s .45s ease forwards}
+.hero__acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;opacity:0;animation:su .6s .62s ease forwards}
 .btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--o);color:#fff;font-family:var(--ff);font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:8px;text-decoration:none;box-shadow:0 4px 24px rgba(240,90,37,.4);transition:background .18s,transform .15s}
 .btn-p:hover{background:var(--odk);transform:translateY(-2px)}
-.btn-g{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:transparent;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.75);font-family:var(--ff);font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;border-radius:8px;text-decoration:none;transition:border-color .2s,color .2s,background .2s}
-.btn-g:hover{border-color:rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.05)}
 /* Right — luxury room preview */
-.hero__preview{opacity:0;animation:su .8s .55s ease forwards}
-.preview-screen{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.06);box-shadow:0 0 80px rgba(240,90,37,.08),0 40px 80px rgba(0,0,0,.6)}
-.preview-screen__film{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a1a 0%,#1a0a05 50%,#0a0a1a 100%);display:flex;align-items:center;justify-content:center}
-.preview-screen__film::before{content:'▶';font-size:3rem;color:rgba(255,255,255,.08);line-height:1}
-.preview-screen__glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(240,90,37,.1) 0%,transparent 70%)}
-.preview-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.preview-bar__label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.06em}
-.preview-bar__dots{display:flex;gap:6px}
-.preview-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15)}
-.preview-dot--active{background:var(--o)}
-/* Spec callouts */
-.spec-callouts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.scallout{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px}
-.scallout__ico{font-size:16px;flex-shrink:0}
-.scallout__val{font-family:var(--ff);font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1}
-.scallout__val span{color:var(--o)}
-.scallout__l{font-size:9.5px;color:rgba(255,255,255,.38);margin-top:2px;line-height:1.4}
+
 
 /* ══ SHARED ══ */
 .section{padding:88px 0}
@@ -74,8 +56,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ ACT 2 — SPACE OPTIONS ══ */
 .space-split{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .space-half{position:relative;overflow:hidden;min-height:580px;cursor:default}
-.space-half img{width:100%;height:100%;object-fit:cover;filter:brightness(.32) saturate(.85);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.space-half:hover img{filter:brightness(.22) saturate(.95);transform:scale(1.04)}
+.space-half img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.space-half:hover img{transform:scale(1.04)}
 .space-half__fog{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(12,12,20,.96) 100%)}
 .space-half__left-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,var(--o) 30%,var(--odk) 70%,transparent);opacity:0;transition:opacity .3s}
 .space-half:hover .space-half__left-bar{opacity:1}
@@ -99,26 +81,6 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .story__feat-title{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px}
 .story__feat-desc{font-size:12.5px;color:rgba(255,255,255,.44);line-height:1.6}
 
-/* ══ PACKAGES ══ */
-.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:0}
-.pkg{background:var(--deep);border:1px solid rgba(255,255,255,.06);padding:36px 30px;position:relative;transition:border-color .22s;cursor:default}
-.pkg:hover{border-color:rgba(240,90,37,.3)}
-.pkg--featured{background:var(--navy2);border-color:var(--o);border-width:2px}
-.pkg__badge{display:inline-flex;font-size:8.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:var(--o);color:#fff;margin-bottom:16px}
-.pkg__tier{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
-.pkg__featured .pkg__tier{color:rgba(240,90,37,.7)}
-.pkg__name{font-family:var(--ff);font-weight:800;font-size:1.5rem;letter-spacing:-.05em;color:#fff;margin-bottom:8px}
-.pkg__price{font-family:var(--ff);font-size:2rem;font-weight:800;letter-spacing:-.07em;color:var(--o);line-height:1;margin-bottom:4px}
-.pkg__price-note{font-size:11.5px;color:rgba(255,255,255,.3);margin-bottom:22px}
-.pkg__divider{height:1px;background:rgba(255,255,255,.07);margin-bottom:20px}
-.pkg__list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.pkg__list li{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:9px;line-height:1.55}
-.pkg__list li::before{content:'✓';color:var(--o);font-weight:800;flex-shrink:0;font-size:12px}
-.pkg__cta{display:block;padding:12px;text-align:center;border-radius:8px;font-family:var(--ff);font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:background .18s,transform .15s}
-.pkg--featured .pkg__cta{background:var(--o);color:#fff;box-shadow:0 4px 20px rgba(240,90,37,.35)}
-.pkg--featured .pkg__cta:hover{background:var(--odk);transform:translateY(-2px)}
-.pkg:not(.pkg--featured) .pkg__cta{background:rgba(255,255,255,.07);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.12)}
-.pkg:not(.pkg--featured) .pkg__cta:hover{background:rgba(255,255,255,.12);color:#fff}
 
 /* ══ PROCESS ══ */
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:52px}
@@ -162,142 +124,53 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=90" alt="Home Theater cao cấp" loading="eager"></div>
+  <div class="hero__bg" aria-hidden="true"><img src="https://tavaled.vn/wp-content/uploads/2026/03/giai-tri-tai-nha-scaled.jpg" alt="Giải trí tại nhà cao cấp" loading="eager"></div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__stars" aria-hidden="true"></div>
   <div class="hero__bar" aria-hidden="true"></div>
   <div class="hero__body">
-    <div>
-      <div class="hero__tag">🏠 Giải trí Tại nhà</div>
-      <h1 class="hero__h1">Rạp phim 5 sao<br><em>ngay tại nhà bạn</em></h1>
-      <p class="hero__sub">Màn hình LED 4K siêu sắc nét, âm thanh Dolby Atmos, ánh sáng thông minh tự điều chỉnh theo cảnh phim — trải nghiệm rạp phim cao cấp không cần ra khỏi nhà.</p>
-      <div class="hero__acts">
-        <a href="#cta" class="btn-p">Tư vấn thiết kế</a>
-        <a href="#packages" class="btn-g">Xem các gói →</a>
-      </div>
-    </div>
-    <div class="hero__preview">
-      <div class="preview-screen">
-        <div class="preview-screen__film"></div>
-        <div class="preview-screen__glow"></div>
-      </div>
-      <div class="preview-bar">
-        <span class="preview-bar__label">Home Theater · TavaLED Setup</span>
-        <div class="preview-bar__dots"><div class="preview-dot preview-dot--active"></div><div class="preview-dot"></div><div class="preview-dot"></div></div>
-      </div>
-      <div class="spec-callouts">
-        <div class="scallout"><div class="scallout__ico">📺</div><div><div class="scallout__val">4K<span> HDR</span></div><div class="scallout__l">LED P1.5 Ultra HD</div></div></div>
-        <div class="scallout"><div class="scallout__ico">🔊</div><div><div class="scallout__val">7.1<span>.4</span></div><div class="scallout__l">Dolby Atmos</div></div></div>
-        <div class="scallout"><div class="scallout__ico">💡</div><div><div class="scallout__val">Auto<span>—</span></div><div class="scallout__l">Ambient Light Sync</div></div></div>
-        <div class="scallout"><div class="scallout__ico">📱</div><div><div class="scallout__val">1<span> app</span></div><div class="scallout__l">Điều khiển tất cả</div></div></div>
-      </div>
+    <div class="hero__tag">🏠 Giải trí Tại nhà</div>
+    <h1 class="hero__h1">Không gian giải trí<br><em>đỉnh cao tại nhà</em></h1>
+    <p class="hero__sub">Tận hưởng những khoảnh khắc tuyệt vời cùng gia đình và bạn bè trong một không gian sống động, đẳng cấp và mang đậm dấu ấn cá nhân.</p>
+    <div class="hero__acts">
+      <a href="#cta" class="btn-p">Liên hệ tư vấn</a>
     </div>
   </div>
 </section>
 
-<!-- SPACE TYPES -->
-<section style="background:var(--deep);padding-top:72px;padding-bottom:0">
+<!-- SHOWCASE -->
+<section style="background:var(--deep);padding-top:72px;padding-bottom:72px;" id="showcase">
   <div class="inner rv">
-    <div class="sec-head"><div><div class="ey">Hai giải pháp chính</div><h2 class="sh sh--w">Home Theater hay<br><em>Karaoke Gia đình?</em></h2></div><p class="sd sd--w">Hoặc tại sao không cả hai — một phòng đa năng cho cả gia đình.</p></div>
+    <div class="sec-head"><div><div class="ey">Dự án thực tế</div><h2 class="sh sh--w">Không gian giải trí<br><em>Đẳng cấp</em></h2></div><p class="sd sd--w">Chúng tôi không cố gắng bán cho bạn một danh sách thiết bị. Thực tế chứng minh qua tính thẩm mỹ và trải nghiệm tuyệt vời trong những không gian mà chúng tôi đã thiết kế. Nếu bạn thích một không gian như thế này, hãy liên hệ với chúng tôi!</p></div>
   </div>
   <div class="space-split rv d1">
     <div class="space-half">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85" alt="Home Theater" loading="lazy">
-      <div class="space-half__fog"></div>
+      <img src="https://tavaled.vn/wp-content/uploads/2026/03/giai-tri-tai-nha-4-scaled.jpg" alt="Phòng chiếu phim gia đình" loading="lazy">
+      <div class="space-half__fog" style="background:linear-gradient(180deg,transparent 60%,rgba(12,12,20,.9) 100%)"></div>
       <div class="space-half__left-bar"></div>
       <div class="space-half__body">
-        <div class="space-half__num">01</div>
-        <div class="space-half__ico">🎬</div>
-        <div class="space-half__title">Phòng chiếu phim gia đình</div>
-        <div class="space-half__desc">LED P1.5–P2 thay thế màn chiếu truyền thống. Hình ảnh sắc nét, tương phản cao, không bị mờ khi có ánh sáng. Âm thanh Dolby Atmos/DTS:X bao quanh.</div>
-        <div class="space-half__specs"><span class="shtag">LED P1.5 COB</span><span class="shtag">Dolby Atmos</span><span class="shtag">4K HDR</span><span class="shtag">Ambient Sync</span><span class="shtag">Crestron Control</span></div>
+        <div class="space-half__title" style="margin-bottom:0; font-size:1.4rem;">Phòng chiếu phim riêng tư</div>
       </div>
     </div>
     <div class="space-half">
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=85" alt="Karaoke gia đình" loading="lazy">
-      <div class="space-half__fog"></div>
+      <img src="https://tavaled.vn/wp-content/uploads/2026/03/giai-tri-tai-nha-3-scaled.jpg" alt="Karaoke gia đình cao cấp" loading="lazy">
+      <div class="space-half__fog" style="background:linear-gradient(180deg,transparent 60%,rgba(12,12,20,.9) 100%)"></div>
       <div class="space-half__left-bar"></div>
       <div class="space-half__body">
-        <div class="space-half__num">02</div>
-        <div class="space-half__ico">🎤</div>
-        <div class="space-half__title">Karaoke gia đình cao cấp</div>
-        <div class="space-half__desc">Màn hình LED P2 cho lyrics sắc nét, hệ thống âm thanh phòng nhỏ cân bằng tốt, micro không dây, đèn LED theo nhịp âm nhạc. Tích hợp streaming nhạc.</div>
-        <div class="space-half__specs"><span class="shtag">LED P2 Screen</span><span class="shtag">Wireless Mic</span><span class="shtag">Sound System</span><span class="shtag">Music LED</span><span class="shtag">App Control</span></div>
+        <div class="space-half__title" style="margin-bottom:0; font-size:1.4rem;">Karaoke gia đình cao cấp</div>
+      </div>
+    </div>
+    <div class="space-half" style="grid-column: 1 / -1; min-height: 480px; margin-top: 4px;">
+      <img src="https://tavaled.vn/wp-content/uploads/2026/03/giai-tri-tai-nha-2-scaled.jpg" alt="Không gian đa năng chung" loading="lazy">
+      <div class="space-half__fog" style="background:linear-gradient(180deg,transparent 60%,rgba(12,12,20,.9) 100%)"></div>
+      <div class="space-half__left-bar"></div>
+      <div class="space-half__body">
+        <div class="space-half__title" style="margin-bottom:0; font-size:1.4rem;">Không gian giải trí đa năng</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
-<section class="story">
-  <div class="inner">
-    <div class="story__layout">
-      <div class="story__features rv d2">
-        <div class="story__feat"><div class="story__feat-ico">📺</div><div><div class="story__feat-title">LED P1.5 COB — không pixel, không rung</div><div class="story__feat-desc">Công nghệ COB không có khoảng cách giữa điểm sáng. Xem gần 30cm vẫn không thấy hạt — hoàn hảo cho phòng nhỏ.</div></div></div>
-        <div class="story__feat"><div class="story__feat-ico">🔊</div><div><div class="story__feat-title">Âm thanh bao quanh Dolby Atmos</div><div class="story__feat-desc">Loa ceiling, loa đặt tường, subwoofer, loa Atmos overhead — tiếng mưa từ trên xuống, tiếng xe từ sau lưng, thực như ngoài đời.</div></div></div>
-        <div class="story__feat"><div class="story__feat-ico">💡</div><div><div class="story__feat-title">Bias lighting & Ambient sync</div><div class="story__feat-desc">Đèn sau màn hình tự đổi màu theo cảnh phim — giảm mỏi mắt và tạo hiệu ứng màn hình như "phình ra" cả phòng.</div></div></div>
-        <div class="story__feat"><div class="story__feat-ico">📱</div><div><div class="story__feat-title">Một app điều khiển tất cả</div><div class="story__feat-desc">Màn hình, âm thanh, ánh sáng, điều hòa — một chạm trên điện thoại. Cài scene "Movie", "Karaoke", "Party" sẵn.</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="section" style="background:var(--deep)" id="packages">
-  <div class="inner">
-    <div class="sec-head rv"><div><div class="ey">Gói giải pháp</div><h2 class="sh sh--w">Chọn gói <em>phù hợp</em></h2></div><p class="sd sd--w">Mỗi gói đã bao gồm khảo sát, thiết kế, lắp đặt và hướng dẫn sử dụng. Không phát sinh thêm.</p></div>
-    <div class="packages rv d1">
-      <div class="pkg">
-        <div class="pkg__tier">Gói cơ bản</div>
-        <div class="pkg__name">Essential Home</div>
-        <div class="pkg__price">Từ 85<span style="font-size:1rem;color:rgba(255,255,255,.5)"> triệu</span></div>
-        <div class="pkg__price-note">Phòng 20–30m² · Đã bao gồm lắp đặt</div>
-        <div class="pkg__divider"></div>
-        <ul class="pkg__list">
-          <li>Màn hình LED P2 kích thước 80"–100"</li>
-          <li>Hệ thống âm thanh 5.1 (2 loa front + center + 2 surround + sub)</li>
-          <li>Điều khiển trung tâm cơ bản qua app</li>
-          <li>Đèn ambient LED strip cơ bản</li>
-          <li>Bảo hành 24 tháng</li>
-        </ul>
-        <a href="mailto:info@tavaled.vn?subject=Tư vấn gói Essential Home" class="pkg__cta">Tư vấn gói này</a>
-      </div>
-      <div class="pkg pkg--featured">
-        <div class="pkg__badge">Phổ biến nhất</div>
-        <div class="pkg__tier">Gói cao cấp</div>
-        <div class="pkg__name">Premium Cinema</div>
-        <div class="pkg__price">Từ 180<span style="font-size:1rem;color:rgba(255,255,255,.5)"> triệu</span></div>
-        <div class="pkg__price-note">Phòng 30–50m² · Đã bao gồm lắp đặt</div>
-        <div class="pkg__divider"></div>
-        <ul class="pkg__list">
-          <li>Màn hình LED P1.5 COB 110"–140" 4K HDR</li>
-          <li>Dolby Atmos 7.1.4 (loa Atmos overhead)</li>
-          <li>Crestron/Control4 smart control</li>
-          <li>Bias lighting + Ambilight đồng bộ màn hình</li>
-          <li>Rèm cách âm, ghế xem phim recliner</li>
-          <li>Bảo hành 24 tháng + hỗ trợ ưu tiên</li>
-        </ul>
-        <a href="mailto:info@tavaled.vn?subject=Tư vấn gói Premium Cinema" class="pkg__cta">Tư vấn gói này</a>
-      </div>
-      <div class="pkg">
-        <div class="pkg__tier">Gói đặc biệt</div>
-        <div class="pkg__name">Signature Suite</div>
-        <div class="pkg__price">Theo yêu cầu</div>
-        <div class="pkg__price-note">Phòng 50m²+ · Thiết kế riêng</div>
-        <div class="pkg__divider"></div>
-        <ul class="pkg__list">
-          <li>LED P1.5 COB kích thước bất kỳ, thiết kế riêng</li>
-          <li>Dolby Atmos/Auro-3D full immersive</li>
-          <li>Tích hợp smarthome toàn bộ</li>
-          <li>Acoustic treatment chuyên nghiệp</li>
-          <li>Karaoke + Game room combo</li>
-          <li>Designer nội thất phối hợp thiết kế</li>
-        </ul>
-        <a href="mailto:info@tavaled.vn?subject=Tư vấn gói Signature Suite" class="pkg__cta">Liên hệ tư vấn</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PROCESS -->
 <section class="section" style="background:var(--navy2)">

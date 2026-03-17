@@ -548,8 +548,8 @@
                         Dự án tiêu biểu
                         <span class="absolute bottom-[28px] left-0 w-max h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                     </a>
-                    <a href="/blog" class="hover:text-brand-orange transition-colors py-8 relative group/link">
-                        Bài viết
+                    <a href="/lien-he" class="hover:text-brand-orange transition-colors py-8 relative group/link">
+                        Liên hệ
                         <span class="absolute bottom-[28px] left-0 w-max h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                     </a>
                 </nav>
@@ -689,7 +689,7 @@
                 </div>
                 
                 <a href="/du-an" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dự án tiêu biểu</a>
-                <a href="/blog" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Tin tức & Bài viết</a>
+                <a href="/lien-he" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Liên hệ</a>
                 
                 <!-- MOBILE MENU: TOPBAR EXTRAS -->
                 <div class="border-b border-gray-50">
