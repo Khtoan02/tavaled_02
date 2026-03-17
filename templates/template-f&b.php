@@ -133,9 +133,9 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ CASES ══ */
 .cases{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
 .case{position:relative;overflow:hidden;min-height:380px;background:var(--warm);text-decoration:none;display:block}
-.case img{width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(1.05);transition:filter .5s,transform .7s}
-.case:hover img{filter:brightness(.28) saturate(1.1);transform:scale(1.05)}
-.case__over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,15,10,.15) 0%,rgba(26,15,10,.93) 100%)}
+.case img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(1.05);transition:filter .5s,transform .7s}
+.case:hover img{filter:brightness(.7) saturate(1.1);transform:scale(1.05)}
+.case__over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,11,6,0) 30%,rgba(18,11,6,0.5) 60%,rgba(18,11,6,0.95) 100%)}
 .case__body{position:absolute;bottom:0;left:0;right:0;padding:26px 22px 20px}
 .case__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:7px;display:flex;align-items:center;gap:6px}
 .case__tag::before{content:'';display:block;width:14px;height:1.5px;background:var(--o)}
@@ -222,19 +222,45 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 <!-- GALLERY -->
 <div class="gallery">
   <div class="g-track">
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Học Viện Kỹ Thuật Mật Mã"><div class="g-item__label">Lắp đặt màn hình LED P2<br>Học Viện Kỹ Thuật Mật Mã</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Công Ty Cao Su 75"><div class="g-item__label">Lắp đặt LED P2<br>Công Ty Cao Su 75</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Mai 299"><div class="g-item__label">Lắp đặt LED P1.8<br>Công ty XD & TM Mai 299</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Côn Đảo"><div class="g-item__label">LED P1.5 trong nhà<br>Trung Tâm Côn Đảo</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Đà Nẵng"><div class="g-item__label">LED P3 ngoài trời<br>TTTM Đà Nẵng</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Cần Thơ"><div class="g-item__label">Màn hình LED Sân vận động<br>Sân vận động Cần Thơ</div></div>
-    <!-- Duplicate for infinite scroll loop -->
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Học Viện Kỹ Thuật Mật Mã"><div class="g-item__label">Lắp đặt màn hình LED P2<br>Học Viện Kỹ Thuật Mật Mã</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Công Ty Cao Su 75"><div class="g-item__label">Lắp đặt LED P2<br>Công Ty Cao Su 75</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Mai 299"><div class="g-item__label">Lắp đặt LED P1.8<br>Công ty XD & TM Mai 299</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Côn Đảo"><div class="g-item__label">LED P1.5 trong nhà<br>Trung Tâm Côn Đảo</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Đà Nẵng"><div class="g-item__label">LED P3 ngoài trời<br>TTTM Đà Nẵng</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Cần Thơ"><div class="g-item__label">Màn hình LED Sân vận động<br>Sân vận động Cần Thơ</div></div>
+    <?php
+    $project_ids_str = get_option('tavaled_home_projects');
+    $project_ids = !empty($project_ids_str) ? explode(',', $project_ids_str) : [];
+    
+    // Nếu chưa cấu hình, fallback một mảng rỗng để không in lỗi, hoặc fallback tĩnh
+    if (empty($project_ids)) {
+        $project_ids = [];
+    }
+    
+    // Render 2 lần để tạo hiệu ứng Infinite Scroll Loop
+    for ($i = 0; $i < 2; $i++) {
+        if (!empty($project_ids)) {
+            foreach ($project_ids as $id) {
+                // Lấy Cấu hình thông qua attachment id
+                $img_src = wp_get_attachment_image_url($id, 'large');
+                $title   = get_post_meta($id, '_tavaled_project_name', true) ?: get_the_title($id); 
+                $caption = get_post_meta($id, '_tavaled_project_desc', true) ?: wp_get_attachment_caption($id);
+                if (!$img_src) continue;
+                ?>
+                <div class="g-item">
+                  <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
+                  <div class="g-item__label">
+                    <?php echo esc_html($title); ?>
+                    <?php if ($caption): ?><br><?php echo esc_html($caption); ?><?php endif; ?>
+                  </div>
+                </div>
+                <?php
+            }
+        } else {
+            // Demo tĩnh nếu như admin vô tình xoá ảnh
+            ?>
+            <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Demo"><div class="g-item__label">Lắp đặt màn hình LED<br>Học Viện Kỹ Thuật</div></div>
+            <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Demo"><div class="g-item__label">LED P2<br>Công Ty Cao Su 75</div></div>
+            <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Demo"><div class="g-item__label">LED P1.8<br>Công ty Mai 299</div></div>
+            <?php
+        }
+        if ($i === 0) echo '<!-- Duplicate for infinite scroll loop -->';
+    }
+    ?>
   </div>
 </div>
 
@@ -243,13 +269,13 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   <div class="inner">
     <div class="sec-head rv"><div><div class="ey">Dự án tiêu biểu</div><h2 class="sh sh--w">Không gian đã <em>được kể lại</em></h2></div><a href="/du-an" style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px">Xem tất cả →</a></div>
     <div class="cases rv d1">
-      <a href="#" class="case case--main"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Dự án trọng điểm</div><div class="case__name">Pandora — Tổ hợp không gian hoành tráng hàng đầu</div><div class="case__specs"><span class="spec">Hệ thống ánh sáng </span><span class="spec">Âm thanh</span><span class="spec">Màn hình LED</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">F&B Giải trí</div><div class="case__name">Nhà Hàng Bia Tây Âu</div><div class="case__specs"><span class="spec">Âm thanh sôi động</span><span class="spec">Ánh sáng</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Amakong</div><div class="case__specs"><span class="spec">Chiếu sáng Decor</span><span class="spec">BGM Audio</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Dê 79</div><div class="case__specs"><span class="spec">Chiếu sáng không gian</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Hữu Hạnh</div><div class="case__specs"><span class="spec">Hệ thống âm thanh</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Ngói Đỏ</div><div class="case__specs"><span class="spec">Trực quan ánh sáng</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Phú Quý</div><div class="case__specs"><span class="spec">Setup thiết bị giải trí</span></div></div></a>
+      <a href="#" class="case case--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Pandora.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Dự án trọng điểm</div><div class="case__name">Pandora — Tổ hợp không gian hoành tráng hàng đầu</div><div class="case__specs"><span class="spec">Hệ thống ánh sáng </span><span class="spec">Âm thanh</span><span class="spec">Màn hình LED</span></div></div></a>
+      <a href="#" class="case"><img src="https://thegioiclub.com/Uploads/files/01-2025/bnew/garden2-15.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">F&B Giải trí</div><div class="case__name">Nhà Hàng Bia Tây Âu</div><div class="case__specs"><span class="spec">Âm thanh sôi động</span><span class="spec">Ánh sáng</span></div></div></a>
+      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-amakongNhan-su.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Amakong</div><div class="case__specs"><span class="spec">Chiếu sáng Decor</span><span class="spec">BGM Audio</span></div></div></a>
+      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-de-79.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Dê 79</div><div class="case__specs"><span class="spec">Chiếu sáng không gian</span></div></div></a>
+      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-huu-hanh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Hữu Hạnh</div><div class="case__specs"><span class="spec">Hệ thống âm thanh</span></div></div></a>
+      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Ngoi-Do-1.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Ngói Đỏ</div><div class="case__specs"><span class="spec">Trực quan ánh sáng</span></div></div></a>
+      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Phu-Quy-3.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Phú Quý</div><div class="case__specs"><span class="spec">Setup thiết bị giải trí</span></div></div></a>
     </div>
   </div>
 </section>
