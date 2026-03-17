@@ -23,32 +23,18 @@ body{font-family:var(--ff);background:var(--w);color:var(--ink);-webkit-font-smo
 body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-color:var(--o)}
 
 /* ── HERO ── */
-.hero{min-height:72vh;background:var(--navy3);position:relative;overflow:hidden;display:flex;align-items:flex-end}
-.hero__strip{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
-.hero__strip-cell{overflow:hidden}
-.hero__strip-cell img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(.22) saturate(.3) hue-rotate(185deg);animation:hz 14s ease-in-out infinite alternate}
-.hero__strip-cell:nth-child(2) img{animation-delay:-3s}
-.hero__strip-cell:nth-child(3) img{animation-delay:-6s}
-.hero__strip-cell:nth-child(4) img{animation-delay:-9s}
-.hero__strip-cell:nth-child(5) img{animation-delay:-12s}
-@keyframes hz{from{transform:scale(1.1)}to{transform:scale(1.02)}}
-.hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,24,53,.7) 0%,transparent 28%,rgba(15,24,53,.5) 55%,rgba(15,24,53,.97) 100%)}
+.hero{background:var(--navy3);position:relative;overflow:hidden;padding-top:140px}
+.hero__strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;width:100%}
+.hero__strip-cell{overflow:hidden;line-height:0}
+.hero__strip-cell img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;object-position:top}
 .hero__grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
-.hero__bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--o),var(--odk) 45%,rgba(240,90,37,.2))}
-.hero__body{position:relative;z-index:2;padding:0 56px 72px;max-width:1320px;margin:0 auto;width:100%}
+.hero__body{position:relative;z-index:2;padding:0 56px 72px;max-width:900px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
 .hero__tag{display:inline-flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--o);padding:4px 12px;background:rgba(240,90,37,.1);border:1px solid rgba(240,90,37,.28);border-radius:4px;margin-bottom:20px;opacity:0;animation:su .5s .1s ease forwards}
 .hero__h1{font-family:var(--ff);font-weight:800;font-size:clamp(2.8rem,5.5vw,5.5rem);letter-spacing:-.06em;color:#fff;line-height:.92;margin-bottom:18px;opacity:0;animation:su .8s .25s cubic-bezier(.16,1,.3,1) forwards}
 .hero__h1 em{font-style:italic;font-weight:300;color:var(--o)}
 .hero__desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.85;max-width:580px;opacity:0;animation:su .6s .42s ease forwards}
 
-/* ── STATS STRIP ── */
-.stats-strip{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr);border-bottom:3px solid var(--o)}
-.stat-item{padding:28px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.07);transition:background .2s}
-.stat-item:hover{background:rgba(240,90,37,.07)}
-.stat-item:last-child{border-right:none}
-.stat-item__val{font-family:var(--ff);font-size:2.4rem;font-weight:800;letter-spacing:-.06em;color:#fff;line-height:1}
-.stat-item__val span{color:var(--o)}
-.stat-item__label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:6px}
+
 
 /* ── SHARED ── */
 .section{padding:88px 0}
@@ -61,44 +47,33 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .sd{font-size:14.5px;color:var(--muted);line-height:1.8;max-width:500px}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:52px;flex-wrap:wrap}
 
-/* ── LEADERSHIP ── */
-.leaders{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.leader{position:relative;overflow:hidden;background:var(--navy3);cursor:default}
-.leader__img{width:100%;height:480px;object-fit:cover;object-position:top;filter:brightness(.55) saturate(.65) hue-rotate(5deg);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.leader:hover .leader__img{filter:brightness(.42) saturate(.8);transform:scale(1.04)}
-.leader__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(15,24,53,.94) 100%)}
-.leader__body{position:absolute;bottom:0;left:0;right:0;padding:28px 28px 24px}
-.leader__role{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:6px}
-.leader__name{font-family:var(--ff);font-weight:800;font-size:1.35rem;letter-spacing:-.04em;color:#fff;margin-bottom:6px}
-.leader__spec{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:14px}
-.leader__certs{display:flex;flex-wrap:wrap;gap:6px}
-.cert-pill{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:rgba(240,90,37,.18);border:1px solid rgba(240,90,37,.3);color:rgba(255,255,255,.75)}
-.leader__exp{position:absolute;top:20px;right:20px;text-align:right}
-.exp-val{font-family:var(--ff);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.06em;line-height:1}
-.exp-val span{color:var(--o)}
-.exp-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-
-/* ── TEAM GRID ── */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.team-card{background:var(--light);border:2px solid var(--bdr);border-radius:12px;overflow:hidden;transition:border-color .22s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .26s;cursor:default}
-.team-card:hover{border-color:rgba(28,40,87,.2);transform:translateY(-5px);box-shadow:0 18px 48px rgba(28,40,87,.09)}
-.team-card__photo{height:220px;overflow:hidden;position:relative}
-.team-card__photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(.8);transition:transform .6s cubic-bezier(.16,1,.3,1),filter .35s}
-.team-card:hover .team-card__photo img{transform:scale(1.06);filter:saturate(1)}
-.team-card__photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(28,40,87,.6) 100%)}
-.team-card__dept{position:absolute;bottom:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:3px;background:rgba(28,40,87,.75);color:rgba(255,255,255,.8);backdrop-filter:blur(6px)}
-.team-card__body{padding:16px 18px 18px}
-.team-card__name{font-family:var(--ff);font-weight:800;font-size:.98rem;letter-spacing:-.03em;color:var(--navy);margin-bottom:3px}
-.team-card__role{font-size:12px;color:var(--muted);margin-bottom:12px}
-.team-card__tags{display:flex;flex-wrap:wrap;gap:5px}
-.team-tag{font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--w);border:1px solid var(--bdr);color:var(--muted)}
+/* ── STORY TEAM ── */
+.story-team{display:flex;flex-direction:column;gap:120px;margin-top:64px}
+.story-item{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.story-item:nth-child(even){direction:rtl}
+.story-item:nth-child(even) > *{direction:ltr}
+.story-item__photo{position:relative}
+.story-item__photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:24px;box-shadow:0 32px 64px -16px rgba(0,0,0,0.5);filter:saturate(0.95);transition:filter .5s, transform .7s cubic-bezier(.16,1,.3,1)}
+.story-item:hover .story-item__photo img{filter:saturate(1.1);transform:scale(1.03)}
+.story-item__role{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.story-item__role::before{content:'';display:block;width:32px;height:1px;background:var(--o)}
+.story-item:nth-child(odd) .story-item__role::before{display:none}
+.story-item:nth-child(odd) .story-item__role::after{content:'';display:block;width:32px;height:1px;background:var(--o)}
+.story-item__name{font-family:var(--ff);font-weight:800;font-size:clamp(1.8rem, 6vw, 3.2rem);letter-spacing:-.04em;color:#fff;margin-bottom:24px;line-height:1.1}
+.story-item__desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.8;max-width:540px}
+@media(max-width:992px){
+  .story-team{gap:80px}
+  .story-item{grid-template-columns:1fr;gap:40px;text-align:center}
+  .story-item:nth-child(even){direction:ltr}
+  .story-item__role{justify-content:center}
+  .story-item__role::before, .story-item__role::after{display:none !important}
+  .story-item__desc{margin:0 auto}
+}
 
 /* ── EXPERTISE DOMAINS ── */
 .domains{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:0}
 .domain{background:var(--navy);padding:36px;position:relative;overflow:hidden;cursor:default}
 .domain--light{background:var(--light);border:1.5px solid var(--bdr)}
-.domain__bg-num{position:absolute;right:20px;top:10px;font-family:var(--ff);font-size:7rem;font-weight:800;color:rgba(255,255,255,.04);letter-spacing:-.1em;line-height:1;pointer-events:none}
-.domain--light .domain__bg-num{color:rgba(28,40,87,.05)}
 .domain__icon{font-size:28px;margin-bottom:16px}
 .domain__title{font-family:var(--ff);font-weight:800;font-size:1.2rem;letter-spacing:-.04em;color:#fff;margin-bottom:8px}
 .domain--light .domain__title{color:var(--navy)}
@@ -141,160 +116,99 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .rv.in{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
-@media(max-width:1100px){.leaders{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:repeat(2,1fr)}.certs-grid{grid-template-columns:repeat(2,1fr)}.domains{grid-template-columns:1fr}.expert-cta__inner{grid-template-columns:1fr;gap:40px}}
-@media(max-width:768px){.hero__body,.inner,.expert-cta__inner{padding-left:20px;padding-right:20px}.leaders{grid-template-columns:1fr}.stats-strip{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr 1fr}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}}
+@media(max-width:1100px){
+  .expert-cta__inner{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+  .hero__body,.inner,.expert-cta__inner{padding-left:20px;padding-right:20px}
+  .sec-head{flex-direction:column;gap:16px;margin-bottom:32px;align-items:flex-start}
+  .domains{grid-template-columns:1fr 1fr;gap:8px}
+  .domain{padding:20px 16px;border-radius:12px}
+  .domain__icon{font-size:24px;margin-bottom:12px}
+  .domain__title{font-size:1.05rem}
+  .domain__desc{font-size:12px;line-height:1.6;margin-bottom:12px}
+  .domain__expert-tag{font-size:9.5px;padding:3px 8px}
+}
 </style>
 <div id="cd"></div>
 <div id="cr"></div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__strip" aria-hidden="true">
-    <div class="hero__strip-cell"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt=""></div>
-    <div class="hero__strip-cell"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt=""></div>
-    <div class="hero__strip-cell"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt=""></div>
-    <div class="hero__strip-cell"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80" alt=""></div>
-    <div class="hero__strip-cell"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt=""></div>
-  </div>
-  <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
-  <div class="hero__bar" aria-hidden="true"></div>
   <div class="hero__body">
     <div class="hero__tag">Đội ngũ chuyên gia</div>
     <h1 class="hero__h1">Con người tạo nên<br><em>sự khác biệt</em></h1>
-    <p class="hero__desc">Mỗi dự án TavaLED đứng sau là một đội ngũ chuyên gia được đào tạo bài bản, có chứng nhận quốc tế và kinh nghiệm thực chiến từ hàng trăm công trình.</p>
+    <p class="hero__desc">Mỗi dự án TavaLED đứng sau là một đội ngũ chuyên gia được đào tạo bài bản, có chứng nhận quốc tế và kinh nghiệm thực chiến từ hàng trăm dự án thành công.</p>
+  </div>
+  <div class="hero__strip" aria-hidden="true">
+    <div class="hero__strip-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/1Nhan-su.jpg" alt="Tổng Giám Đốc" loading="lazy"></div>
+    <div class="hero__strip-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/4Nhan-su.jpg" alt="Phó TGĐ" loading="lazy"></div>
+    <div class="hero__strip-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/3Nhan-su.jpg" alt="Phó TGĐ Kinh doanh" loading="lazy"></div>
+    <div class="hero__strip-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/2Nhan-su.jpg" alt="Trưởng phòng Kỹ thuật" loading="lazy"></div>
+    <div class="hero__strip-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/5Nhan-su.jpg" alt="Trưởng phòng Marketing" loading="lazy"></div>
   </div>
 </section>
 
-<!-- STATS STRIP -->
-<div class="stats-strip rv">
-  <div class="stat-item"><div class="stat-item__val"><span class="cnt" data-to="45">0</span><span>+</span></div><div class="stat-item__label">Chuyên gia & Kỹ thuật viên</div></div>
-  <div class="stat-item"><div class="stat-item__val"><span class="cnt" data-to="12">0</span><span>+</span></div><div class="stat-item__label">Năm kinh nghiệm TB</div></div>
-  <div class="stat-item"><div class="stat-item__val"><span class="cnt" data-to="28">0</span><span>+</span></div><div class="stat-item__label">Chứng nhận quốc tế</div></div>
-  <div class="stat-item"><div class="stat-item__val"><span class="cnt" data-to="3">0</span><span></span></div><div class="stat-item__label">Văn phòng toàn quốc</div></div>
-</div>
 
-<!-- LEADERSHIP -->
-<section class="section" style="background:var(--navy3);padding-top:72px;padding-bottom:0">
+
+<!-- EXPERTS STORYTELLING -->
+<section class="section" style="background:var(--navy3);padding-top:72px;padding-bottom:120px">
   <div class="inner rv">
-    <div class="sec-head">
-      <div>
-        <div class="ey" style="color:rgba(240,90,37,.8)">Ban lãnh đạo kỹ thuật</div>
-        <h2 class="sh sh--w">Những người <em>dẫn đầu</em></h2>
-      </div>
+    <div class="sec-head" style="justify-content:center; text-align:center; flex-direction:column; align-items:center;">
+      <div class="ey" style="color:rgba(240,90,37,.8)">Ban Lãnh Đạo & Quản Lý</div>
+      <h2 class="sh sh--w">Đội ngũ <em>chuyên môn</em></h2>
+      <p class="sd sd--w" style="text-align:center; max-width:640px; margin-top:16px;">Sự kết hợp giữa tầm nhìn hoạch định chiến lược, năng lực kỹ thuật chuyên sâu và triết lý lấy khách hàng làm trọng tâm để mang đến giải pháp hiển thị đỉnh cao.</p>
     </div>
   </div>
-  <div class="leaders rv d1">
-    <div class="leader">
-      <img class="leader__img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85" alt="Giám đốc kỹ thuật">
-      <div class="leader__over"></div>
-      <div class="leader__exp"><div class="exp-val">15<span>+</span></div><div class="exp-label">Năm kinh nghiệm</div></div>
-      <div class="leader__body">
-        <div class="leader__role">Giám đốc Kỹ thuật</div>
-        <div class="leader__name">Nguyễn Minh Tuấn</div>
-        <div class="leader__spec">Chuyên gia LED & Display Technology. Cựu kỹ sư tại Samsung Display Việt Nam. Tốt nghiệp Đại học Bách Khoa Hà Nội.</div>
-        <div class="leader__certs">
-          <span class="cert-pill">CTS — InfoComm</span>
-          <span class="cert-pill">Novastar Certified</span>
-          <span class="cert-pill">Absen Expert</span>
-        </div>
-      </div>
-    </div>
-    <div class="leader">
-      <img class="leader__img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85" alt="Giám đốc âm thanh">
-      <div class="leader__over"></div>
-      <div class="leader__exp"><div class="exp-val">12<span>+</span></div><div class="exp-label">Năm kinh nghiệm</div></div>
-      <div class="leader__body">
-        <div class="leader__role">Trưởng bộ phận Âm thanh</div>
-        <div class="leader__name">Trần Thị Lan Anh</div>
-        <div class="leader__spec">Chuyên gia hệ thống Line Array và DSP. 200+ dự án sự kiện lớn tại Việt Nam. Chứng nhận từ JBL & Yamaha.</div>
-        <div class="leader__certs">
-          <span class="cert-pill">JBL Certified</span>
-          <span class="cert-pill">Yamaha Pro Audio</span>
-          <span class="cert-pill">BSS Audiencia</span>
-        </div>
-      </div>
-    </div>
-    <div class="leader">
-      <img class="leader__img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85" alt="Trưởng bộ phận ánh sáng">
-      <div class="leader__over"></div>
-      <div class="leader__exp"><div class="exp-val">10<span>+</span></div><div class="exp-label">Năm kinh nghiệm</div></div>
-      <div class="leader__body">
-        <div class="leader__role">Trưởng bộ phận Ánh sáng</div>
-        <div class="leader__name">Phạm Đức Hùng</div>
-        <div class="leader__spec">Lighting Designer chuyên nghiệp. Thiết kế ánh sáng cho 100+ sự kiện concert, lễ hội. Đào tạo tại ESTA (Mỹ).</div>
-        <div class="leader__certs">
-          <span class="cert-pill">ESTA Certified</span>
-          <span class="cert-pill">Robe Lighting</span>
-          <span class="cert-pill">MA Lighting</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM GRID -->
-<section class="section" style="background:var(--light)">
   <div class="inner">
-    <div class="sec-head rv">
-      <div>
-        <div class="ey">Đội ngũ kỹ thuật</div>
-        <h2 class="sh">42 chuyên gia <em>thực chiến</em></h2>
+    <div class="story-team">
+      
+      <div class="story-item rv d1">
+        <div class="story-item__content">
+          <div class="story-item__role">Tổng Giám Đốc</div>
+          <div class="story-item__name">CV. Hồ Văn Tuyền</div>
+          <div class="story-item__desc">Lãnh đạo và định hướng phát triển tổng thể, chuyên gia hàng đầu trong lĩnh vực phân phối thiết bị hiển thị hiện đại. Với hơn một thập kỷ tận tâm trong ngành, ông là người thổi hồn vào những chiến lược táo bạo nhất, biến TavaLED thành một trong những cái tên đáng tin cậy nhất thị trường.</div>
+        </div>
+        <div class="story-item__photo"><img src="https://tavaled.vn/wp-content/uploads/2026/03/1Nhan-su.jpg" alt="Tổng Giám Đốc" loading="lazy"></div>
       </div>
-      <p class="sd">Mỗi thành viên được đào tạo chuyên sâu, có chứng nhận từ nhà sản xuất và kinh nghiệm tối thiểu 3 năm tại TavaLED.</p>
-    </div>
-    <div class="team-grid rv d1">
-      <div class="team-card">
-        <div class="team-card__photo">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="">
-          <div class="team-card__photo-overlay"></div>
-          <div class="team-card__dept">LED Technical</div>
+
+      <div class="story-item rv d1">
+        <div class="story-item__content">
+          <div class="story-item__role">Phó TGĐ phụ trách Kỹ thuật</div>
+          <div class="story-item__name">Mr. Vũ Thanh Dương</div>
+          <div class="story-item__desc">Trái tim của hệ thống vận hành, người trực tiếp quản lý và dẫn dắt đội ngũ thi công. Ông đảm nhiệm các tiêu chuẩn khắt khe nhất về chất lượng hình ảnh, độ ổn định và bảo mật kết nối cho những hệ thống hiển thị quy mô lớn. Đối với ông, không có chi tiết nào là quá nhỏ gọn.</div>
         </div>
-        <div class="team-card__body">
-          <div class="team-card__name">Lê Văn Sơn</div>
-          <div class="team-card__role">Kỹ thuật viên LED Senior · 8 năm</div>
-          <div class="team-card__tags"><span class="team-tag">P1.5–P4 Indoor</span><span class="team-tag">COB LED</span></div>
-        </div>
+        <div class="story-item__photo"><img src="https://tavaled.vn/wp-content/uploads/2026/03/4Nhan-su.jpg" alt="Phó TGĐ Kỹ thuật" loading="lazy"></div>
       </div>
-      <div class="team-card">
-        <div class="team-card__photo">
-          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&q=80" alt="">
-          <div class="team-card__photo-overlay"></div>
-          <div class="team-card__dept">Audio Specialist</div>
+
+      <div class="story-item rv d1">
+        <div class="story-item__content">
+          <div class="story-item__role">Phó TGĐ phụ trách Kinh doanh</div>
+          <div class="story-item__name">Mr. Phạm Duy Thái</div>
+          <div class="story-item__desc">Người kiến tạo hệ sinh thái giải pháp linh hoạt. Với kinh nghiệm tham gia vào những cuộc đối thoại chiến lược cùng các tập đoàn lớn, ông là chìa khóa mang lại thành công trên mỗi thương vụ B2B, giúp đối tác đạt được lợi nhuận kỳ vọng thông qua công nghệ hiển thị vượt trội.</div>
         </div>
-        <div class="team-card__body">
-          <div class="team-card__name">Nguyễn Thu Hà</div>
-          <div class="team-card__role">Kỹ sư Âm thanh Senior · 7 năm</div>
-          <div class="team-card__tags"><span class="team-tag">Line Array</span><span class="team-tag">System Design</span></div>
-        </div>
+        <div class="story-item__photo"><img src="https://tavaled.vn/wp-content/uploads/2026/03/3Nhan-su.jpg" alt="Phó TGĐ Kinh doanh" loading="lazy"></div>
       </div>
-      <div class="team-card">
-        <div class="team-card__photo">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="">
-          <div class="team-card__photo-overlay"></div>
-          <div class="team-card__dept">Lighting Design</div>
+
+      <div class="story-item rv d1">
+        <div class="story-item__content">
+          <div class="story-item__role">Trưởng phòng Kỹ thuật</div>
+          <div class="story-item__name">Mr. Trần Công Hùng</div>
+          <div class="story-item__desc">Bảo chứng cho sự đúng hẹn và hoàn mỹ. Trưởng phòng kỹ thuật – người đứng sau hàng loạt các dự án lớn, luôn theo sát tiến độ, tối ưu hóa quy trình thi công và đảm bảo triển khai giải pháp màn hình LED với độ chính xác và độ an toàn kỹ thuật cao nhất trên từng điểm chạm.</div>
         </div>
-        <div class="team-card__body">
-          <div class="team-card__name">Hoàng Quốc Việt</div>
-          <div class="team-card__role">Lighting Designer · 6 năm</div>
-          <div class="team-card__tags"><span class="team-tag">Moving Head</span><span class="team-tag">DMX Control</span></div>
-        </div>
+        <div class="story-item__photo"><img src="https://tavaled.vn/wp-content/uploads/2026/03/2Nhan-su.jpg" alt="Trưởng phòng Kỹ thuật" loading="lazy"></div>
       </div>
-      <div class="team-card">
-        <div class="team-card__photo">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="">
-          <div class="team-card__photo-overlay"></div>
-          <div class="team-card__dept">Project Management</div>
+
+      <div class="story-item rv d1">
+        <div class="story-item__content">
+          <div class="story-item__role">Trưởng phòng Marketing</div>
+          <div class="story-item__name">Ms. Đỗ Thị Bích Vân</div>
+          <div class="story-item__desc">Người viết nên câu chuyện thương hiệu. Bằng cách định vị đúng giá trị kinh doanh và lan tỏa hình ảnh giải pháp hiển thị tiên tiến, bà giúp đưa những câu chuyện thành công của TavaLED đến gần hơn với khách hàng doanh nghiệp trên toàn quốc.</div>
         </div>
-        <div class="team-card__body">
-          <div class="team-card__name">Vũ Thị Minh</div>
-          <div class="team-card__role">Project Manager · 5 năm</div>
-          <div class="team-card__tags"><span class="team-tag">PMP Certified</span><span class="team-tag">AV Integration</span></div>
-        </div>
+        <div class="story-item__photo"><img src="https://tavaled.vn/wp-content/uploads/2026/03/5Nhan-su.jpg" alt="Trưởng phòng Marketing" loading="lazy"></div>
       </div>
-    </div>
-    <div style="text-align:center;margin-top:28px">
-      <p style="font-size:13px;color:var(--muted)">+ 38 kỹ thuật viên khác tại Hà Nội, TP.HCM và Đà Nẵng</p>
+
     </div>
   </div>
 </section>
@@ -305,14 +219,13 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     <div class="sec-head" style="padding-top:88px">
       <div>
         <div class="ey">Lĩnh vực chuyên môn</div>
-        <h2 class="sh">4 năng lực <em>cốt lõi</em></h2>
+        <h2 class="sh">Năng lực <em>cốt lõi</em></h2>
       </div>
     </div>
   </div>
   <div style="max-width:1320px;margin:0 auto;padding:0 56px">
     <div class="domains rv d1">
       <div class="domain">
-        <div class="domain__bg-num">01</div>
         <div class="domain__icon">📺</div>
         <div class="domain__title">LED & Display Technology</div>
         <div class="domain__desc">Chuyên sâu về pixel pitch, COB, SMD, Mini-LED. Thiết kế hệ thống điều khiển, hiệu chỉnh màu sắc và tối ưu nội dung hiển thị.</div>
@@ -325,7 +238,6 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         </div>
       </div>
       <div class="domain domain--light">
-        <div class="domain__bg-num">02</div>
         <div class="domain__icon">🔊</div>
         <div class="domain__title">Pro Audio Engineering</div>
         <div class="domain__desc">Thiết kế âm học, lựa chọn và triển khai hệ thống Line Array, phân vùng âm thanh, tích hợp DSP và kiểm soát độ trễ.</div>
@@ -338,7 +250,6 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         </div>
       </div>
       <div class="domain domain--light">
-        <div class="domain__bg-num">03</div>
         <div class="domain__icon">💡</div>
         <div class="domain__title">Stage & Architectural Lighting</div>
         <div class="domain__desc">Thiết kế ánh sáng sân khấu, kiến trúc, cảnh quan. Lập trình show lighting phức tạp, vận hành live event.</div>
@@ -351,7 +262,6 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         </div>
       </div>
       <div class="domain">
-        <div class="domain__bg-num">04</div>
         <div class="domain__icon">⚙️</div>
         <div class="domain__title">AV Systems Integration</div>
         <div class="domain__desc">Tích hợp toàn bộ hệ thống AV, quản lý nội dung, kết nối IoT và điều khiển trung tâm cho hội trường, tòa nhà thông minh.</div>
@@ -367,27 +277,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section class="section" style="background:var(--light)">
-  <div class="inner">
-    <div class="sec-head rv">
-      <div>
-        <div class="ey">Chứng nhận quốc tế</div>
-        <h2 class="sh">28+ chứng chỉ <em>chuyên nghiệp</em></h2>
-      </div>
-    </div>
-    <div class="certs-grid rv d1">
-      <div class="cert-card"><div class="cert-card__logo">🏆</div><div class="cert-card__name">CTS</div><div class="cert-card__org">InfoComm International</div><div class="cert-card__holders">3 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">📡</div><div class="cert-card__name">Novastar Certified</div><div class="cert-card__org">Novastar Tech</div><div class="cert-card__holders">8 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">🔊</div><div class="cert-card__name">JBL Professional</div><div class="cert-card__org">Harman / Samsung</div><div class="cert-card__holders">6 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">🎛️</div><div class="cert-card__name">Yamaha Pro Audio</div><div class="cert-card__org">Yamaha Corporation</div><div class="cert-card__holders">4 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">💡</div><div class="cert-card__name">Robe Lighting</div><div class="cert-card__org">Robe Lighting s.r.o.</div><div class="cert-card__holders">3 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">🎚️</div><div class="cert-card__name">MA Lighting</div><div class="cert-card__org">MA Lighting Technology</div><div class="cert-card__holders">3 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">📋</div><div class="cert-card__name">PMP</div><div class="cert-card__org">Project Management Institute</div><div class="cert-card__holders">2 nhân viên</div></div>
-      <div class="cert-card"><div class="cert-card__logo">⚡</div><div class="cert-card__name">Absen Expert</div><div class="cert-card__org">Absen Optoelectronic</div><div class="cert-card__holders">5 nhân viên</div></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CONTACT CTA -->
 <div class="expert-cta">
@@ -424,9 +314,6 @@ window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true
 (function t(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;cd.style.cssText=`left:${mx}px;top:${my}px`;cr.style.cssText=`left:${rx}px;top:${ry}px`;requestAnimationFrame(t)})();
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-function countUp(el,to){let n=0;const s=to/100;const t=setInterval(()=>{n=Math.min(n+s,to);el.textContent=Math.floor(n);if(n>=to)clearInterval(t)},16)}
-const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.cnt').forEach(el=>countUp(el,+el.dataset.to));co.unobserve(x.target)}})},{threshold:.4});
-document.querySelectorAll('.stats-strip').forEach(el=>co.observe(el));
 </script>
 
 

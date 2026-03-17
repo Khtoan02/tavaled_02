@@ -134,8 +134,13 @@ get_header(); ?>
         .card-md .card__title { font-size:.95rem; }
         .card-md .card__desc { -webkit-line-clamp:2; }
         @media (max-width:1024px) { .grid-3 { grid-template-columns:1fr 1fr; } }
-        @media (max-width:640px) { .grid-3 { grid-template-columns:1fr; gap: 20px; } .card__desc { display:block !important; font-size:13px; margin-top:10px; line-height:1.5; opacity:0.75; } }
-
+        @media (max-width:640px) { 
+          .grid-3 { grid-template-columns:repeat(2, 1fr); gap: 12px; } 
+          .card__desc { display:none !important; } 
+          .card__body { padding: 12px 14px 14px !important; }
+          .card__info { padding: 12px 14px !important; }
+          .card__title { font-size: .85rem !important; margin-bottom: 6px; }
+        }
 
         /* Thêm các Grid Layout và Quotes từ Blog */
         .project-hero { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: auto; gap: 16px; margin-bottom: 16px; }
@@ -188,11 +193,12 @@ get_header(); ?>
         }
 
         @media (max-width:640px) {
-          .project-hero { grid-template-columns:1fr; gap: 20px; }
+          .project-hero { grid-template-columns:1fr; gap: 16px; }
           .project-hero .card-feat { grid-column:1; }
-          .project-row, .project-row3 { grid-template-columns:1fr; gap: 20px; }
-          .featured-grid { grid-template-columns:1fr; gap: 20px; }
+          .project-row, .project-row3 { grid-template-columns:repeat(2, 1fr); gap: 12px; }
+          .featured-grid { grid-template-columns:1fr; gap: 16px; }
           .card-big { grid-column:1; }
+          .project-row .card .card__thumb, .project-row3 .card .card__thumb { height: 110px; }
         }
 
         /* HEADER SEC OVERRIDE HEADER BLOGPAGE TO KEEP DARK TONE */
@@ -318,7 +324,7 @@ get_header(); ?>
                         <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
                     <?php
                     $query_led = new WP_Query([
                         'post_type' => 'tava_product',
@@ -358,7 +364,7 @@ get_header(); ?>
                         <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
                     <?php
                     $query_audio = new WP_Query([
                         'post_type' => 'tava_product',
@@ -398,7 +404,7 @@ get_header(); ?>
                         <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-up">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
                     <?php
                     $query_light = new WP_Query([
                         'post_type' => 'tava_product',

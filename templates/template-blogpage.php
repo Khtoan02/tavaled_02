@@ -671,25 +671,30 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 @media (max-width:640px) {
   .topbar__nav { display:none; }
   .wrap { padding:0 16px; }
-  .project-hero { grid-template-columns:1fr; gap: 20px; }
+  .project-hero { grid-template-columns:1fr; gap: 16px; }
   .project-hero .card-feat { grid-column:1; }
-  .project-row, .project-row3 { grid-template-columns:1fr; gap: 20px; }
-  .featured-grid { grid-template-columns:1fr; gap: 20px; }
+  .project-row, .project-row3 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .featured-grid { grid-template-columns:1fr; gap: 16px; }
   .card-big { grid-column:1; }
-  .grid-3, .grid-2 { grid-template-columns:1fr; gap: 20px; }
-  .sec-head { margin-bottom: 32px; }
-  .sec-head__title { font-size:1.75rem; }
-  .sec-head__ghost { font-size: 70px; top: -15px; left: -10px; }
+  .grid-3, .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .sec-head { margin-bottom: 24px; padding: 40px 0 16px; }
+  .sec-head__title { font-size:1.5rem; }
+  .sec-head__ghost { font-size: 50px; top: -10px; left: -5px; }
   
-  .quote-cinematic { padding:36px 24px; gap: 24px; }
-  .qc__text { font-size:1.05rem; line-height:1.6; }
-  .quote-solo { flex-direction:column; padding:40px 24px; gap:20px; text-align:center; }
-  .qs__text { font-size:1.15rem; line-height:1.6; }
+  .quote-cinematic { padding:36px 16px; gap: 16px; }
+  .qc__text { font-size:.95rem; line-height:1.5; }
+  .quote-solo { flex-direction:column; padding:32px 16px; gap:16px; text-align:center; }
+  .qs__text { font-size:1.05rem; line-height:1.5; }
   
   /* Cải thiện thẻ Mobile, giãn dòng dễ đọc */
-  .card__desc { display:block !important; font-size:13px; margin-top:10px; line-height:1.5; opacity:0.75; }
-  .card__info { padding: 18px 20px !important; }
-  .qc__ghost-char { font-size:150px; opacity:0.04; right: 10px; bottom: -20px; }
+  .card__desc { display:none !important; }
+  .card__info { padding: 12px 14px !important; }
+  .card__body { padding: 12px 14px 14px; }
+  .card__title { font-size: .85rem !important; margin-bottom: 6px; }
+  .qc__ghost-char { font-size:100px; opacity:0.04; right: 5px; bottom: -10px; }
+  
+  /* Fix height for small mobile cards */
+  .project-row .card .card__thumb, .project-row3 .card .card__thumb, .grid-3 .card .card__thumb { height: 110px; }
 }
 </style>
 

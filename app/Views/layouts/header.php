@@ -623,12 +623,12 @@
                     <i class="ph ph-x text-xl"></i>
                 </button>
             </div>
-            <div class="flex-1 overflow-y-auto mobile-menu-scroll p-5 space-y-2">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Trang chủ</a>
-                <a href="/ve-chung-toi" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Về <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', 'TavaLLS')); ?></a>
+            <div class="flex-1 overflow-y-auto mobile-menu-scroll p-4 space-y-1.5 flex flex-col gap-1">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Trang chủ</a>
+                <a href="/ve-chung-toi" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Về <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', 'TavaLLS')); ?></a>
                 
                 <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-3 text-lg font-medium text-gray-800" onclick="toggleAccordion('mobileProducts')">
+                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileProducts')">
                         <span class="text-brand-orange">Hệ sinh thái thiết bị</span>
                         <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileProducts"></i>
                     </button>
@@ -674,7 +674,7 @@
 
                 <!-- Giải Pháp Trọn Gói Mobile Menu -->
                 <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-3 text-lg font-medium text-gray-800" onclick="toggleAccordion('mobileSolutions')">
+                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileSolutions')">
                         <span class="hover:text-brand-orange transition-colors">Giải pháp trọn gói</span>
                         <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileSolutions"></i>
                     </button>
@@ -688,12 +688,12 @@
                     </ul>
                 </div>
                 
-                <a href="/du-an" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dự án tiêu biểu</a>
-                <a href="/lien-he" class="block py-3 text-lg font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Liên hệ</a>
+                <a href="/du-an" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dự án tiêu biểu</a>
+                <a href="/lien-he" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Liên hệ</a>
                 
                 <!-- MOBILE MENU: TOPBAR EXTRAS -->
                 <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-3 text-lg font-medium text-gray-800" onclick="toggleAccordion('mobileExtras')">
+                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileExtras')">
                         <span class="text-brand-orange">Tiện ích trực tuyến</span>
                         <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileExtras"></i>
                     </button>

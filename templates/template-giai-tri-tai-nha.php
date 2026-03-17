@@ -116,7 +116,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 
 @media(max-width:1100px){.hero__body,.story__layout{grid-template-columns:1fr;gap:48px}.space-split{grid-template-columns:1fr}.packages{grid-template-columns:1fr}.process-steps{grid-template-columns:repeat(2,1fr)}.process-steps::before{display:none}}
-@media(max-width:768px){.hero__body,.inner,.story__layout,.cta__inner{padding-left:20px;padding-right:20px}.space-split{grid-template-columns:1fr}.spec-callouts{grid-template-columns:1fr 1fr}.process-steps{grid-template-columns:1fr 1fr}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}.trust-row{gap:16px}}
+@media(max-width:768px){.hero__body,.inner,.story__layout,.cta__inner{padding-left:16px;padding-right:16px}.space-split{grid-template-columns:1fr;gap:4px}.space-half{min-height:300px!important}.space-half__body{padding:20px 20px 16px}.space-half__title{font-size:1.15rem!important}.hero{min-height:500px}.spec-callouts{grid-template-columns:1fr 1fr}.process-steps{grid-template-columns:1fr 1fr;gap:20px}.sec-head{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:28px}.sh{font-size:1.8rem}.section{padding:56px 0}.trust-row{gap:12px}}
 </style>
 </head>
 <body>

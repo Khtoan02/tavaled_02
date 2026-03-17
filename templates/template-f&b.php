@@ -125,10 +125,10 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .g-track{display:flex;gap:3px;animation:gscroll 32s linear infinite;width:max-content}
 .gallery:hover .g-track{animation-play-state:paused}
 @keyframes gscroll{to{transform:translateX(-50%)}}
-.g-item{flex-shrink:0;width:280px;height:180px;overflow:hidden;position:relative}
-.g-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.1);transition:filter .4s}
-.g-item:hover img{filter:brightness(.8) saturate(1.3)}
-.g-item__label{position:absolute;bottom:0;left:0;right:0;padding:20px 12px 10px;background:linear-gradient(transparent,rgba(26,15,10,.75));font-size:11px;font-weight:600;color:rgba(255,255,255,.7)}
+.g-item{display:block;flex-shrink:0;width:280px;height:180px;overflow:hidden;position:relative}
+.g-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.1);transition:filter .4s,transform .4s}
+.g-item:hover img{filter:brightness(.8) saturate(1.3);transform:scale(1.05)}
+.g-item__label{position:absolute;bottom:0;left:0;right:0;padding:20px 12px 10px;background:linear-gradient(transparent,rgba(26,15,10,.75));font-size:12px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.3}
 
 /* ══ CASES ══ */
 .cases{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
@@ -201,54 +201,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   </div>
 </section>
 
-<!-- SPACE TYPES -->
-<section id="spaces" style="background:var(--warm);padding:72px 0 0">
-  <div class="inner rv">
-    <div class="sec-head"><div><div class="ey">Loại hình không gian</div><h2 class="sh sh--w">Mỗi không gian —<br><em>một cảm xúc</em></h2></div><p class="sd sd--w">Nhà hàng, bar, karaoke hay club — mỗi loại hình cần một ngôn ngữ ánh sáng và âm thanh riêng.</p></div>
-  </div>
-  <div class="spaces rv d1">
-    <div class="sp sp--rest sp--tall">
-      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=85" alt="Nhà hàng" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🍽️</div><div class="sp__tag">Fine Dining & Nhà hàng</div><div class="sp__title">Ánh sáng ấm, âm thanh nền, không gian tôn vinh món ăn</div><div class="sp__desc">Ceiling Speaker · Par LED Warm · Dimmer System · BGM</div></div>
-    </div>
-    <div class="sp sp--bar">
-      <img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=85" alt="Bar & Lounge" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🍸</div><div class="sp__tag">Bar & Lounge</div><div class="sp__title">LED RGB tạo mood, âm thanh sống động không át nói chuyện</div></div>
-    </div>
-    <div class="sp sp--kara">
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=85" alt="Karaoke" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🎤</div><div class="sp__tag">Karaoke Thương mại</div><div class="sp__title">LED sân khấu, âm thanh phòng nhỏ, hệ thống karaoke chuyên nghiệp</div></div>
-    </div>
-    <div class="sp sp--bar">
-      <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=85" alt="Club & DJ" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🎧</div><div class="sp__tag">Club & Live Music</div><div class="sp__title">Moving Head, Laser, Line Array công suất lớn, LED wall DJ</div></div>
-    </div>
-    <div class="sp sp--rest sp--tall">
-      <img src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?w=600&q=85" alt="Cafe" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">☕</div><div class="sp__tag">Café & Check-in Space</div><div class="sp__title">Ánh sáng chụp ảnh đẹp, LED trang trí, wall art digital</div><div class="sp__desc">LED Strip · Spotlight · Digital Art Wall</div></div>
-    </div>
-    <div class="sp sp--club">
-      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=85" alt="Event Venue" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🎊</div><div class="sp__tag">Event Venue & Wedding</div><div class="sp__title">Hệ thống đa năng cho tiệc tư nhân và sự kiện</div></div>
-    </div>
-    <div class="sp sp--rest">
-      <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=85" alt="Hotel Bar" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🏨</div><div class="sp__tag">Hotel F&B</div><div class="sp__title">Skybar, pool bar, lobby lounge</div></div>
-    </div>
-    <div class="sp sp--kara">
-      <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&q=85" alt="Beer Club" loading="lazy">
-      <div class="sp__over"></div><div class="sp__glow"></div>
-      <div class="sp__body"><div class="sp__ico">🍺</div><div class="sp__tag">Beer & Sports Bar</div><div class="sp__title">Multi-screen LED, âm thanh thể thao</div></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- EXPERIENCE STORY -->
 <section class="exp-story">
@@ -265,57 +218,23 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   </div>
 </section>
 
-<!-- PRODUCTS -->
-<section class="prod-section">
-  <div class="inner">
-    <div class="sec-head rv"><div><div class="ey">Sản phẩm gợi ý</div><h2 class="sh sh--d">Giải pháp <em>cho từng không gian</em></h2></div></div>
-    <div class="prod-tabs rv d1">
-      <button class="ptab active" onclick="switchTab(this,'pt-light')">💡 Ánh sáng</button>
-      <button class="ptab" onclick="switchTab(this,'pt-audio')">🔊 Âm thanh</button>
-      <button class="ptab" onclick="switchTab(this,'pt-led')">📺 Màn hình</button>
-    </div>
-    <div class="ptab-panel active" id="pt-light">
-      <div class="prod-grid rv d1">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Moving Head</div><div class="pcard__name">Robe Pointe 280W Hybrid</div><div class="pcard__spec">Spot + Wash + Beam</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Par LED</div><div class="pcard__name">ADJ 5P HEX LED Par RGBAW+UV</div><div class="pcard__spec">6-in-1 Color</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">LED Strip</div><div class="pcard__name">Philips Hue Professional Strip</div><div class="pcard__spec">RGBW Addressable</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Dimmer Control</div><div class="pcard__name">ETC SmartPack Dimmer Rack</div><div class="pcard__spec">DMX512</div></div></a>
-      </div>
-    </div>
-    <div class="ptab-panel" id="pt-audio">
-      <div class="prod-grid">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Ceiling Speaker</div><div class="pcard__name">JBL Control 28W 8" Ceiling</div><div class="pcard__spec">70V/100V</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Zone Amplifier</div><div class="pcard__name">Crown CDi 2|300 DriveCore</div><div class="pcard__spec">2×300W</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Mixer BGM</div><div class="pcard__name">Yamaha MG10XU BGM Mixer</div><div class="pcard__spec">10-channel</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Wireless Mic</div><div class="pcard__name">Shure BLX24/SM58 Wireless</div><div class="pcard__spec">H10 Band</div></div></a>
-      </div>
-    </div>
-    <div class="ptab-panel" id="pt-led">
-      <div class="prod-grid">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Bar LED Wall</div><div class="pcard__name">LED P2 Indoor DJ Bar Wall</div><div class="pcard__spec">P2.0mm</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Digital Art</div><div class="pcard__name">LED P2.5 Digital Art Panel</div><div class="pcard__spec">Custom shape</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Karaoke Screen</div><div class="pcard__name">LED P2 Karaoke Room 80"</div><div class="pcard__spec">P2.0mm</div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Transparent LED</div><div class="pcard__name">LED Transparent Glass Panel</div><div class="pcard__spec">60% Transparency</div></div></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- GALLERY -->
-<div class="gallery" aria-hidden="true">
+<div class="gallery">
   <div class="g-track">
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=70" alt=""><div class="g-item__label">Fine Dining · Hà Nội</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=400&q=70" alt=""><div class="g-item__label">Bar Lounge · TP.HCM</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=70" alt=""><div class="g-item__label">Karaoke VIP · Đà Nẵng</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&q=70" alt=""><div class="g-item__label">Club · Hà Nội</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?w=400&q=70" alt=""><div class="g-item__label">Café · Hội An</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&q=70" alt=""><div class="g-item__label">Skybar · TP.HCM</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&q=70" alt=""><div class="g-item__label">Fine Dining · Hà Nội</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=400&q=70" alt=""><div class="g-item__label">Bar Lounge · TP.HCM</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=70" alt=""><div class="g-item__label">Karaoke VIP · Đà Nẵng</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&q=70" alt=""><div class="g-item__label">Club · Hà Nội</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?w=400&q=70" alt=""><div class="g-item__label">Café · Hội An</div></div>
-    <div class="g-item"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&q=70" alt=""><div class="g-item__label">Skybar · TP.HCM</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Học Viện Kỹ Thuật Mật Mã"><div class="g-item__label">Lắp đặt màn hình LED P2<br>Học Viện Kỹ Thuật Mật Mã</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Công Ty Cao Su 75"><div class="g-item__label">Lắp đặt LED P2<br>Công Ty Cao Su 75</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Mai 299"><div class="g-item__label">Lắp đặt LED P1.8<br>Công ty XD & TM Mai 299</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Côn Đảo"><div class="g-item__label">LED P1.5 trong nhà<br>Trung Tâm Côn Đảo</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Đà Nẵng"><div class="g-item__label">LED P3 ngoài trời<br>TTTM Đà Nẵng</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Cần Thơ"><div class="g-item__label">Màn hình LED Sân vận động<br>Sân vận động Cần Thơ</div></div>
+    <!-- Duplicate for infinite scroll loop -->
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Học Viện Kỹ Thuật Mật Mã"><div class="g-item__label">Lắp đặt màn hình LED P2<br>Học Viện Kỹ Thuật Mật Mã</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Công Ty Cao Su 75"><div class="g-item__label">Lắp đặt LED P2<br>Công Ty Cao Su 75</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Mai 299"><div class="g-item__label">Lắp đặt LED P1.8<br>Công ty XD & TM Mai 299</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Côn Đảo"><div class="g-item__label">LED P1.5 trong nhà<br>Trung Tâm Côn Đảo</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Đà Nẵng"><div class="g-item__label">LED P3 ngoài trời<br>TTTM Đà Nẵng</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Cần Thơ"><div class="g-item__label">Màn hình LED Sân vận động<br>Sân vận động Cần Thơ</div></div>
   </div>
 </div>
 
@@ -324,9 +243,13 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   <div class="inner">
     <div class="sec-head rv"><div><div class="ey">Dự án tiêu biểu</div><h2 class="sh sh--w">Không gian đã <em>được kể lại</em></h2></div><a href="/du-an" style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px">Xem tất cả →</a></div>
     <div class="cases rv d1">
-      <a href="#" class="case case--main"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Hà Nội · 2024</div><div class="case__name">Chuỗi nhà hàng The Mộc — 8 chi nhánh hệ thống ánh sáng đồng nhất</div><div class="case__specs"><span class="spec">Par LED RGB</span><span class="spec">Ceiling Speaker</span><span class="spec">DMX Dimmer</span><span class="spec">8 chi nhánh</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">TP.HCM · 2024</div><div class="case__name">Skybar Level 23 Rooftop — ánh sáng và âm thanh</div><div class="case__specs"><span class="spec">Moving Head</span><span class="spec">JBL Line</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Đà Nẵng · 2024</div><div class="case__name">Club Envy — Hệ thống ánh sáng và LED DJ wall</div><div class="case__specs"><span class="spec">LED P2.5</span><span class="spec">Laser</span></div></div></a>
+      <a href="#" class="case case--main"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Dự án trọng điểm</div><div class="case__name">Pandora — Tổ hợp không gian hoành tráng hàng đầu</div><div class="case__specs"><span class="spec">Hệ thống ánh sáng </span><span class="spec">Âm thanh</span><span class="spec">Màn hình LED</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">F&B Giải trí</div><div class="case__name">Nhà Hàng Bia Tây Âu</div><div class="case__specs"><span class="spec">Âm thanh sôi động</span><span class="spec">Ánh sáng</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Amakong</div><div class="case__specs"><span class="spec">Chiếu sáng Decor</span><span class="spec">BGM Audio</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Dê 79</div><div class="case__specs"><span class="spec">Chiếu sáng không gian</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Hữu Hạnh</div><div class="case__specs"><span class="spec">Hệ thống âm thanh</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà hàng Ngói Đỏ</div><div class="case__specs"><span class="spec">Trực quan ánh sáng</span></div></div></a>
+      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Nhà hàng</div><div class="case__name">Nhà Hàng Phú Quý</div><div class="case__specs"><span class="spec">Setup thiết bị giải trí</span></div></div></a>
     </div>
   </div>
 </section>

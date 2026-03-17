@@ -32,7 +32,7 @@ elseif ($badge_slug === 'hot') $badge_label = 'Hot';
 elseif ($badge_slug === 'sale') $badge_label = 'Sale';
 elseif (!empty($badge_slug)) $badge_label = $terms_badge[0]->name;
 ?>
-<div class="product-card group/pcard bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+<div class="product-card group/pcard bg-white rounded-none overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col min-w-0">
     <!-- Image Section -->
     <a href="<?php echo esc_url($permalink); ?>" class="relative block pt-[75%] overflow-hidden bg-gray-50/50">
         <img src="<?php echo esc_url($thumbnail_url); ?>" 
@@ -40,47 +40,37 @@ elseif (!empty($badge_slug)) $badge_label = $terms_badge[0]->name;
              class="absolute inset-0 w-full h-full object-contain p-6 transition-transform duration-700 group-hover/pcard:scale-110"
              onerror="this.onerror=null;this.src='<?php echo esc_url($fallback_img); ?>';">
         
-        <?php if ($badge_label): ?>
-        <div class="absolute top-4 right-4 translate-x-1 -translate-y-1">
-            <span class="bg-brand-orange text-white text-[10px] font-black px-2.5 py-1 rounded-none shadow-lg shadow-orange-500/30 uppercase tracking-widest"><?php echo esc_html($badge_label); ?></span>
-        </div>
-        <?php endif; ?>
 
-        <?php if ($brand_name): ?>
-        <div class="absolute top-4 left-4">
-            <span class="bg-[#1d2857] text-white text-[10px] font-black px-2.5 py-1 rounded-none shadow-lg uppercase tracking-widest"><?php echo esc_html($brand_name); ?></span>
-        </div>
-        <?php endif; ?>
     </a>
 
     <!-- Body Section -->
-    <div class="p-5 flex flex-col flex-1">
-        <h3 class="text-[17px] font-bold text-[#1d2857] mb-2 line-clamp-2 leading-tight min-h-[42px] hover:text-brand-orange transition-colors">
+    <div class="p-3 sm:p-5 flex flex-col flex-1">
+        <h3 class="text-[13px] sm:text-[17px] font-bold text-[#1d2857] mb-1.5 sm:mb-2 line-clamp-2 leading-tight min-h-[32px] sm:min-h-[42px] hover:text-brand-orange transition-colors">
             <a href="<?php echo esc_url($permalink); ?>"><?php echo esc_html($title); ?></a>
         </h3>
-        <div class="text-[11px] font-bold text-gray-400 mb-4 tracking-widest uppercase"><?php echo esc_html($model ? $model . ' - ' : '') . esc_html($subcat_name); ?></div>
+        <div class="text-[9px] sm:text-[11px] font-bold text-gray-400 mb-2 sm:mb-4 tracking-widest uppercase"><?php echo esc_html($model ? $model . ' - ' : '') . esc_html($subcat_name); ?></div>
         
         <!-- Tech Specs Placeholder -->
-        <div class="flex items-center gap-3 mb-4">
-            <div class="flex items-center gap-1 text-[12px] text-gray-400 font-medium">
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-3 mb-3 sm:mb-4">
+            <div class="flex items-center gap-1 text-[10px] sm:text-[12px] text-gray-400 font-medium whitespace-nowrap">
                 <i class="ph ph-cpu"></i>
                 <span>Smart Chip</span>
             </div>
-            <div class="w-1 h-1 bg-gray-200 rounded-none"></div>
-            <div class="flex items-center gap-1 text-[12px] text-gray-400 font-medium">
+            <div class="w-1 h-1 bg-gray-200 rounded-none hidden sm:block"></div>
+            <div class="flex items-center gap-1 text-[10px] sm:text-[12px] text-gray-400 font-medium whitespace-nowrap">
                 <i class="ph ph-shield-check"></i>
-                <span>Bảo hành 24T</span>
+                <span>24T</span>
             </div>
         </div>
 
         <!-- Actions -->
-        <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between gap-3">
-            <a href="<?php echo esc_url($permalink); ?>" class="flex-1 flex items-center justify-center gap-2 bg-[#1d2857] hover:bg-brand-orange text-white py-2.5 rounded-none text-[13px] font-bold transition-all shadow-md active:scale-95 group/btn">
-                <span>Nhận báo giá</span>
+        <div class="mt-auto pt-3 sm:pt-4 border-t border-gray-50 flex items-center justify-between gap-1.5 sm:gap-3">
+            <a href="<?php echo esc_url($permalink); ?>" class="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 bg-[#1d2857] hover:bg-brand-orange text-white py-1.5 sm:py-2.5 px-1 sm:px-2 rounded-none text-[10px] sm:text-[13px] font-bold transition-all shadow-md active:scale-95 group/btn min-w-0">
+                <span class="truncate">Nhận báo giá</span>
                 <i class="ph-bold ph-paper-plane-tilt transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"></i>
             </a>
-            <a href="<?php echo esc_url($permalink); ?>" class="w-10 h-10 flex items-center justify-center bg-gray-100 text-[#1d2857] rounded-none hover:bg-[#1d2857] hover:text-white transition-all">
-                <i class="ph-bold ph-eye text-lg"></i>
+            <a href="<?php echo esc_url($permalink); ?>" class="w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-100 text-[#1d2857] rounded-none hover:bg-[#1d2857] hover:text-white transition-all flex-shrink-0">
+                <i class="ph-bold ph-eye text-[14px] sm:text-lg"></i>
             </a>
         </div>
     </div>

@@ -227,7 +227,7 @@ get_header(); ?>
 /* ══════════════════
    MAIN CONTENT
 ══════════════════ */
-.main-content{}
+.main-content{min-width:0;}
 
 /* Page header */
 .page-header{margin-bottom:32px;display:flex;justify-content:space-between;align-items:flex-end}
@@ -544,11 +544,18 @@ get_header(); ?>
   .prod-grid{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:640px){
-  .prod-grid{grid-template-columns:repeat(2,1fr);}
-  .page-body{padding:12px 14px 60px;}
-}
-@media(max-width:400px){
-  .prod-grid{grid-template-columns:1fr;}
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .page-body{padding:12px 10px 60px;}
+  .pcard__body{padding:8px 10px 10px;}
+  .pcard__name{font-size:.85rem;margin-bottom:4px;line-height:1.2;}
+  .pcard__model{font-size:9.5px;margin-bottom:6px;}
+  .pcard__foot{padding-top:6px;}
+  .pcard__cta{font-size:9.5px;}
+  .pcard__tag{font-size:8.5px;padding:2px 5px;}
+  .page-header{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:20px;}
+  .cat-switch-btn{padding:6px 10px;font-size:12px;}
+  .page-header__cat-switch{flex-wrap:wrap; gap:8px;}
+  .products-wrapper { max-width: 100vw; overflow-x: hidden; }
 }
 </style>
 
@@ -840,17 +847,67 @@ function renderAll(catKey) {
 }
 
 function renderProducts(products) {
+  window.currentFilteredData = products;
+  renderPage(1, false);
+}
+
+function renderPage(page, scroll = true) {
+  currentPage = page;
+  const products = window.currentFilteredData || DATA[currentCat].products;
+  const itemsPerPage = window.innerWidth <= 768 ? 8 : 16;
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+  
+  if (page < 1) page = 1;
+  if (page > totalPages && totalPages > 0) page = totalPages;
+  
+  const start = (page - 1) * itemsPerPage;
+  const spliced = products.slice(start, start + itemsPerPage);
+  
   const grid = document.getElementById('prod-grid');
   grid.className = `prod-grid${currentView === 'list' ? ' view-list' : ''}`;
-
-  grid.innerHTML = products.map((p, i) => {
-    // Chèn thuộc tính animation-delay vào thẻ div gốc của component
+  
+  let html = spliced.map((p, i) => {
     return p.html.replace('<div class="product-card', `<div style="animation-delay:${(i%8)*0.04+0.04}s" class="product-card`);
-  }).join('') + `
-    <div class="load-more">
-      <button class="load-more-btn">Xem thêm sản phẩm ↓</button>
-    </div>
-  `;
+  }).join('');
+  
+  if (totalPages > 1) {
+    let pagHtml = `<div class="load-more" style="grid-column: 1 / -1; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding-top: 24px; margin-bottom: 24px;">`;
+    
+    if (page > 1) {
+      pagHtml += `<button onclick="renderPage(${page - 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-none shadow-sm"><i class="ph-bold ph-caret-left"></i></button>`;
+    }
+    
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
+            if (i === page) {
+                pagHtml += `<button class="w-9 h-9 flex items-center justify-center bg-brand-orange text-white font-bold rounded-none shadow-sm">${i}</button>`;
+            } else {
+                pagHtml += `<button onclick="renderPage(${i}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-brand-orange hover:border-brand-orange transition-colors font-semibold rounded-none shadow-sm">${i}</button>`;
+            }
+        } else if (i === page - 2 || i === page + 2) {
+            pagHtml += `<span class="text-gray-400 w-9 h-9 flex items-center justify-center">...</span>`;
+        }
+    }
+    
+    if (page < totalPages) {
+      pagHtml += `<button onclick="renderPage(${page + 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-none shadow-sm"><i class="ph-bold ph-caret-right"></i></button>`;
+    }
+    pagHtml += `</div>`;
+    html += pagHtml;
+  }
+  
+  grid.innerHTML = html || '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: #6b7280; font-weight: 500;">Không tìm thấy sản phẩm phù hợp.</div>';
+  
+  if (scroll) {
+      const headerTitle = document.getElementById('header-title');
+      if (headerTitle) {
+          const rect = headerTitle.getBoundingClientRect();
+          window.scrollTo({
+              top: window.pageYOffset + rect.top - 120,
+              behavior: 'smooth'
+          });
+      }
+  }
 }
 
 function toggleSection(id) {
