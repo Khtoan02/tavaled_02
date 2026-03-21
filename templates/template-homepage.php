@@ -221,34 +221,7 @@ get_header(); ?>
         .sec-head__more:hover { color: #f05a25; border-color: #f05a25; gap: 11px; }
         @media (max-width:640px) { .sec-head { margin-bottom: 32px; } .sec-head__title { font-size:1.75rem; } .sec-head__ghost { font-size: 70px; top: -15px; left: -10px; } }
 
-        /* ADVANCED STROKE AND GRADIENT HEADINGS (NEW DESIGN) */
-        .custom-heading-wrap {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-            padding: 24px 100px 16px 24px;
-            margin-left: -24px;
-            margin-top: -24px;
-            background: linear-gradient(to right, rgba(240,90,37,0.2) 0%, rgba(240,90,37,0) 100%);
-            border-radius: 4px;
-            z-index: 1; /* Establishes stacking context */
-        }
-        .custom-heading-text {
-            color: #1d2857 !important; /* text-brand-navy */
-            position: relative;
-            display: block; /* Fixes inline overlap bug */
-            z-index: 2;
-        }
-        .custom-heading-text::before {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            color: #1d2857; /* Matches inner text color to hide inner stroke */
-            -webkit-text-stroke: 10px #ffffff;
-            pointer-events: none;
-        }
+
 
 
         </style>
@@ -312,12 +285,12 @@ get_header(); ?>
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
             <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="custom-heading-wrap">
+                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
                         <div class="inline-flex items-center relative z-10 mb-3">
                             <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
                             <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiển Thị Đỉnh Cao</span>
                         </div>
-                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Màn Hình LED & Xử Lý">Màn Hình LED & Xử Lý</h3>
+                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Màn Hình LED & Xử Lý</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Xem tất cả kho LED</span>
@@ -352,12 +325,12 @@ get_header(); ?>
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="custom-heading-wrap">
+                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
                         <div class="inline-flex items-center relative z-10 mb-3">
                             <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
                             <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Âm Thanh Sân Khấu</span>
                         </div>
-                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Hệ Thống Âm Thanh">Hệ Thống Âm Thanh</h3>
+                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Hệ Thống Âm Thanh</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị âm thanh</span>
@@ -392,12 +365,12 @@ get_header(); ?>
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="custom-heading-wrap">
+                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
                         <div class="inline-flex items-center relative z-10 mb-3">
                             <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
                             <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiệu Ứng Nghệ Thuật</span>
                         </div>
-                        <h3 class="font-serif text-5xl md:text-6xl font-black custom-heading-text tracking-tight" data-text="Hệ Thống Ánh Sáng">Hệ Thống Ánh Sáng</h3>
+                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Hệ Thống Ánh Sáng</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
                         <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị ánh sáng</span>
