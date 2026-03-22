@@ -33,21 +33,7 @@ body {
   color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
 }
-
-/* ─── CURSOR ─── */
-#cur-dot, #cur-ring {
-  position: fixed; border-radius: 50%;
-  pointer-events: none; z-index: 9999; transform: translate(-50%,-50%);
-}
-#cur-dot  { width:8px; height:8px; background:var(--o); transition:transform .1s; }
-#cur-ring {
-  width:38px; height:38px; border:1.5px solid rgba(240,90,37,.45);
-  transition:width .35s,height .35s,border-color .3s;
-}
-body:has(a:hover) #cur-ring,
-body:has(button:hover) #cur-ring { width:52px; height:52px; border-color:var(--o); }
 
 /* ─── NAV ─── */
 .nav {
@@ -982,8 +968,7 @@ body:has(button:hover) #cur-ring { width:52px; height:52px; border-color:var(--o
 </head>
 <body>
 
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
+
 
 <!-- ─── NAV ─── -->
 <header class="nav" id="nav">
@@ -1531,17 +1516,6 @@ body:has(button:hover) #cur-ring { width:52px; height:52px; border-color:var(--o
 </footer>
 
 <script>
-/* ─── Custom cursor ─── */
-const dot = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function loop(){
-  rx+=(mx-rx)*.14; ry+=(my-ry)*.14;
-  dot.style.left=mx+'px'; dot.style.top=my+'px';
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
 
 /* ─── Nav solid on scroll ─── */
 const nav=document.getElementById('nav');

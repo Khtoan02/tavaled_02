@@ -7,20 +7,13 @@ get_header(); ?>
 <style>
         /* BASE & RESET */
         *, *::before, *::after { border-radius: 0 !important; }
-        body { font-family: var(--font-body); background: #1c2857; color: #ffffff; overflow-x: hidden; cursor: none; }
+        body { font-family: var(--font-body); background: #1c2857; color: #ffffff; overflow-x: hidden; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #1c2857; }
         ::-webkit-scrollbar-thumb { background: #f05a25; }
 
-        /* CUSTOM CURSOR */
-        @media (pointer: fine) {
-            .cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
-            .cursor__dot { width: 6px; height: 6px; border-radius: 50% !important; background: #f05a25; position: absolute; transform: translate(-50%, -50%); transition: transform 0.1s; }
-            .cursor__ring { width: 36px; height: 36px; border-radius: 50% !important; border: 1.5px solid rgba(240,90,37,0.5); position: absolute; transform: translate(-50%, -50%); transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s, height 0.3s, border-color 0.3s; }
-            body:has(a:hover) .cursor__ring, body:has(button:hover) .cursor__ring, body:has(.interactive:hover) .cursor__ring { width: 60px; height: 60px; border-color: #f05a25; background: rgba(240,90,37,0.05); }
-        }
-        @media (pointer: coarse) { .cursor { display: none; } body { cursor: auto; } }
+
 
         /* SCROLL REVEAL ANIMATIONS */
         .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -226,11 +219,7 @@ get_header(); ?>
 
         </style>
 
-    <!-- CUSTOM CURSOR -->
-    <div class="cursor" id="cursor">
-        <div class="cursor__ring" id="cursorRing"></div>
-        <div class="cursor__dot" id="cursorDot"></div>
-    </div>
+
 
 
     <main>
@@ -991,21 +980,7 @@ get_header(); ?>
                 });
             }
 
-            // Custom Cursor Logic
-            if(window.matchMedia("(pointer: fine)").matches) {
-                const cursorDot = document.getElementById('cursorDot');
-                const cursorRing = document.getElementById('cursorRing');
-                let mx = 0, my = 0, rx = 0, ry = 0;
-                window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-                const animCursor = () => {
-                    rx += (mx - rx) * 0.14;
-                    ry += (my - ry) * 0.14;
-                    cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px';
-                    cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';
-                    requestAnimationFrame(animCursor);
-                };
-                animCursor();
-            }
+
 
             // Header Sticky được xử lý tập trung tại main.js
 

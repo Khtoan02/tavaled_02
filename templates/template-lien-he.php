@@ -32,23 +32,8 @@ body {
   color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
+  -webkit-font-smoothing: antialiased;
 }
-
-/* ── CURSOR ── */
-#cur-dot, #cur-ring {
-  position: fixed; border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-#cur-dot  { width: 7px; height: 7px; background: var(--o); }
-#cur-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(240,90,37,.4);
-  transition: width .3s, height .3s, border-color .3s;
-}
-body:has(a:hover) #cur-ring,
-body:has(button:hover) #cur-ring { width: 50px; height: 50px; border-color: var(--o); }
 
 /* ══════════════════════════════
    HERO
@@ -625,8 +610,6 @@ a.info-row__val:hover { color: var(--o); }
   .hours-grid { grid-template-columns: repeat(2,1fr); }
 }
 </style>
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
 
 <!-- ══ HERO ══ -->
 <section class="hero" aria-label="Liên hệ TavaLED">
@@ -868,16 +851,6 @@ a.info-row__val:hover { color: var(--o); }
 </div>
 
 <script>
-/* Cursor */
-const cd=document.getElementById('cur-dot'),cr=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
-(function tick(){
-  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
-  cd.style.left=mx+'px'; cd.style.top=my+'px';
-  cr.style.left=rx+'px'; cr.style.top=ry+'px';
-  requestAnimationFrame(tick);
-})();
 
 /* Scroll reveal */
 const obs=new IntersectionObserver(entries=>{
