@@ -654,9 +654,9 @@ a.info-row__val:hover { color: var(--o); }
     <div class="qbar__ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 2h3a2 2 0 012 1.72 12 12 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l.96-.96a2 2 0 012.11-.45 12 12 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
     <div class="qbar__txt"><div class="qbar__type">Hotline 24/7</div><div class="qbar__val">1900 1234</div><div class="qbar__note">Miễn phí cước gọi</div></div>
   </a>
-  <a href="mailto:info@tavaled.vn" class="qbar__item">
+  <a href="mailto:tuyen.tavaco@gmail.com" class="qbar__item">
     <div class="qbar__ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-    <div class="qbar__txt"><div class="qbar__type">Email tư vấn</div><div class="qbar__val">info@tavaled.vn</div><div class="qbar__note">Phản hồi trong 2 giờ</div></div>
+    <div class="qbar__txt"><div class="qbar__type">Email tư vấn</div><div class="qbar__val">tuyen.tavaco@gmail.com</div><div class="qbar__note">Phản hồi trong 2 giờ</div></div>
   </a>
   <a href="https://zalo.me/tavalled" target="_blank" rel="noopener" class="qbar__item">
     <div class="qbar__ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
@@ -779,7 +779,7 @@ a.info-row__val:hover { color: var(--o); }
     </div>
     <div class="channels__grid">
       <a href="tel:19001234"             class="ch-card rv d1"><div class="ch-ico ico-a">📞</div><div class="ch-type">Hotline 24/7</div><div class="ch-name">Gọi trực tiếp</div><div class="ch-val">1900 1234</div><div class="ch-note">Hỗ trợ 24/7, miễn phí cước. Tư vấn nhanh hoặc sự cố kỹ thuật khẩn cấp.</div></a>
-      <a href="mailto:info@tavaled.vn"   class="ch-card rv d2"><div class="ch-ico ico-b">✉️</div><div class="ch-type">Email</div><div class="ch-name">Gửi email tư vấn</div><div class="ch-val">info@tavaled.vn</div><div class="ch-note">Tư vấn dự án, yêu cầu báo giá, hồ sơ kỹ thuật. Phản hồi trong 2 giờ làm việc.</div></a>
+      <a href="mailto:tuyen.tavaco@gmail.com"   class="ch-card rv d2"><div class="ch-ico ico-b">✉️</div><div class="ch-type">Email</div><div class="ch-name">Gửi email tư vấn</div><div class="ch-val">tuyen.tavaco@gmail.com</div><div class="ch-note">Tư vấn dự án, yêu cầu báo giá, hồ sơ kỹ thuật. Phản hồi trong 2 giờ làm việc.</div></a>
       <a href="https://zalo.me/tavalled" target="_blank" rel="noopener" class="ch-card rv d3"><div class="ch-ico ico-c">💬</div><div class="ch-type">Zalo OA</div><div class="ch-name">Chat qua Zalo</div><div class="ch-val">TavaLED Official</div><div class="ch-note">Nhắn tin, gửi ảnh hiện trường, video. Theo dõi tiến độ dự án trực tiếp.</div></a>
       <a href="mailto:support@tavaled.vn" class="ch-card rv d1"><div class="ch-ico ico-d">🛠️</div><div class="ch-type">Hỗ trợ kỹ thuật</div><div class="ch-name">Bảo hành &amp; Sự cố</div><div class="ch-val">support@tavaled.vn</div><div class="ch-note">Dành cho khách hàng hiện hữu. Báo lỗi thiết bị, yêu cầu bảo trì định kỳ.</div></a>
       <a href="mailto:projects@tavaled.vn" class="ch-card rv d2"><div class="ch-ico ico-e">📋</div><div class="ch-type">Dự án &amp; Đấu thầu</div><div class="ch-name">Hợp tác dự án</div><div class="ch-val">projects@tavaled.vn</div><div class="ch-note">Nhà thầu, tư vấn thiết kế, ban quản lý dự án muốn hợp tác hoặc đấu thầu.</div></a>
@@ -842,9 +842,9 @@ a.info-row__val:hover { color: var(--o); }
     </div>
     <div class="cta-btns">
       <a href="tel:19001234" class="btn-white">📞 1900 1234</a>
-      <a href="mailto:info@tavaled.vn" class="btn-ghost">
+      <a href="mailto:tuyen.tavaco@gmail.com" class="btn-ghost">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@tavaled.vn
+        tuyen.tavaco@gmail.com
       </a>
     </div>
   </div>

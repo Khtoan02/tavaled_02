@@ -339,17 +339,17 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
       <p class="verify-cta__sub">Chúng tôi khuyến khích bạn xác minh độc lập. Không có gì chúng tôi công bố mà chúng tôi không thể chứng minh bằng tài liệu gốc.</p>
     </div>
     <div class="verify-options rv d1">
-      <a href="mailto:info@tavaled.vn?subject=Yêu cầu tài liệu năng lực" class="verify-opt">
+      <a href="mailto:tuyen.tavaco@gmail.com?subject=Yêu cầu tài liệu năng lực" class="verify-opt">
         <div class="verify-opt__ico">📋</div>
         <div><div class="verify-opt__title">Nhận hồ sơ năng lực đầy đủ</div><div class="verify-opt__sub">Profile, chứng nhận, danh sách dự án tham chiếu</div></div>
         <svg class="verify-opt__arr" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="mailto:info@tavaled.vn?subject=Yêu cầu thăm kho và văn phòng" class="verify-opt">
+      <a href="mailto:tuyen.tavaco@gmail.com?subject=Yêu cầu thăm kho và văn phòng" class="verify-opt">
         <div class="verify-opt__ico">🏭</div>
         <div><div class="verify-opt__title">Thăm kho & văn phòng</div><div class="verify-opt__sub">Kiểm tra thực địa kho hàng và đội ngũ của chúng tôi</div></div>
         <svg class="verify-opt__arr" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="mailto:info@tavaled.vn?subject=Yêu cầu liên hệ khách hàng tham chiếu" class="verify-opt">
+      <a href="mailto:tuyen.tavaco@gmail.com?subject=Yêu cầu liên hệ khách hàng tham chiếu" class="verify-opt">
         <div class="verify-opt__ico">📞</div>
         <div><div class="verify-opt__title">Liên hệ khách hàng tham chiếu</div><div class="verify-opt__sub">Nói chuyện trực tiếp với khách hàng đã dùng dịch vụ</div></div>
         <svg class="verify-opt__arr" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>

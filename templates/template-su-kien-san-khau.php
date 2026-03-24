@@ -342,7 +342,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     <p class="cta__sub">Tư vấn kỹ thuật miễn phí, báo giá trong 24 giờ. Đội TavaLED đã phục vụ 200+ sự kiện lớn nhỏ mỗi năm.</p>
     <div class="cta-btns">
       <a href="tel:19001234" class="btn-cta-w">📞 1900 1234</a>
-      <a href="mailto:info@tavaled.vn?subject=Tư vấn sự kiện sân khấu" class="btn-cta-g"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Gửi yêu cầu tư vấn</a>
+      <a href="mailto:tuyen.tavaco@gmail.com?subject=Tư vấn sự kiện sân khấu" class="btn-cta-g"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Gửi yêu cầu tư vấn</a>
     </div>
   </div>
 </div>

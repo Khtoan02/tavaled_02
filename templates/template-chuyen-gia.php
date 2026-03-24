@@ -293,9 +293,9 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         <div><div class="consult-opt__title">Gọi điện tư vấn ngay</div><div class="consult-opt__sub">1900 1234 · Phản hồi trong 30 phút</div></div>
         <svg class="consult-opt__arr" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="mailto:info@tavaled.vn?subject=Yêu cầu tư vấn dự án" class="consult-opt">
+      <a href="mailto:tuyen.tavaco@gmail.com?subject=Yêu cầu tư vấn dự án" class="consult-opt">
         <div class="consult-opt__ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div><div class="consult-opt__title">Gửi yêu cầu tư vấn</div><div class="consult-opt__sub">info@tavaled.vn · Phản hồi trong 2 giờ</div></div>
+        <div><div class="consult-opt__title">Gửi yêu cầu tư vấn</div><div class="consult-opt__sub">tuyen.tavaco@gmail.com · Phản hồi trong 2 giờ</div></div>
         <svg class="consult-opt__arr" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
       <a href="https://www.tavaled.vn/lien-he" class="consult-opt">

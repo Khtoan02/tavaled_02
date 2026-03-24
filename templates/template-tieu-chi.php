@@ -409,7 +409,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
       <p class="cta__sub">Chúng tôi công khai toàn bộ checklist kiểm định — không có gì phải giấu.</p>
     </div>
     <div class="cta-btns">
-      <a href="mailto:info@tavaled.vn" class="btn-w">Yêu cầu bộ tiêu chí đầy đủ</a>
+      <a href="mailto:tuyen.tavaco@gmail.com" class="btn-w">Yêu cầu bộ tiêu chí đầy đủ</a>
       <a href="/minh-bach-nang-luc" class="btn-g">
         Xem Minh bạch Năng lực
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>

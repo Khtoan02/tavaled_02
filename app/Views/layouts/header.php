@@ -45,26 +45,22 @@ if (isset($locations['mega_about'])) {
         <div class="w-full max-w-[1240px] xl:max-w-[1600px] mx-auto px-4 lg:px-[5%] flex flex-wrap justify-center md:justify-between items-center gap-y-2">
             <div class="flex items-center gap-4 md:gap-6">
                 <?php 
-                $phone = \App\Helpers\ThemeHelper::getOption('tavaled_phone') ?: '0909 123 456';
-                $email = \App\Helpers\ThemeHelper::getOption('tavaled_email') ?: 'info@tavalls.com';
+                $phone = \App\Helpers\ThemeHelper::getOption('tavaled_phone') ?: '0936 543 389';
+                $email = \App\Helpers\ThemeHelper::getOption('tavaled_email') ?: 'tuyen.tavaco@gmail.com';
                 ?>
                 <span class="flex items-center gap-1.5 font-medium hover:text-white transition-colors cursor-pointer"><i class="ph-fill ph-phone-call text-brand-orange text-lg"></i> Hotline: <?php echo esc_html($phone); ?></span>
                 <span class="flex items-center gap-1.5 font-medium hover:text-white transition-colors cursor-pointer"><i class="ph-fill ph-envelope-simple text-brand-orange text-lg"></i> <?php echo esc_html($email); ?></span>
             </div>
             <div class="flex items-center gap-5">
                 <button onclick="toggleSearch()" class="font-medium hover:text-white transition-colors flex items-center gap-1.5"><i class="ph-bold ph-magnifying-glass text-lg"></i> Tìm kiếm</button>
-                <a href="#" class="font-medium hover:text-white transition-colors flex items-center gap-1.5 relative mr-2">
-                    <i class="ph-bold ph-receipt text-lg"></i> Báo giá
-                    <span class="absolute -top-1.5 -right-3.5 bg-brand-orange text-white text-[9px] font-black w-4 h-4 rounded-none flex items-center justify-center">3</span>
-                </a>
-                <div class="w-px h-4 bg-gray-600 mx-1"></div>
-                <a href="#" class="font-medium hover:text-white transition-colors">Tra cứu bảo hành</a>
-                <a href="#" class="font-medium hover:text-white transition-colors">Chính sách</a>
-                <div class="flex items-center gap-3 border-l border-gray-600 pl-5 ml-1">
-                    <button class="font-bold text-brand-orange tracking-widest hover:text-brand-orange transition-colors">VN</button>
-                    <button class="font-medium hover:text-white tracking-widest transition-colors">EN</button>
-                    <button class="font-medium hover:text-white tracking-widest transition-colors">FR</button>
-                </div>
+                <div class="w-px h-4 bg-gray-600 mx-1 hidden lg:block"></div>
+                <a href="<?php echo home_url('/chinh-sach-bao-hanh'); ?>" class="font-medium hover:text-white transition-colors">CS Bảo hành</a>
+                <div class="w-1 h-1 rounded-full bg-gray-600 hidden lg:block"></div>
+                <a href="<?php echo home_url('/dieu-khoan-su-dung'); ?>" class="font-medium hover:text-white transition-colors">Điều khoản</a>
+                <div class="w-1 h-1 rounded-full bg-gray-600 hidden lg:block"></div>
+                <a href="<?php echo home_url('/chinh-sach-thanh-toan'); ?>" class="font-medium hover:text-white transition-colors">CS Thanh toán</a>
+                <div class="w-1 h-1 rounded-full bg-gray-600 hidden lg:block"></div>
+                <a href="<?php echo home_url('/chinh-sach-bao-mat'); ?>" class="font-medium hover:text-white transition-colors">Bảo mật</a>
             </div>
         </div>
     </div>
@@ -629,8 +625,8 @@ if (isset($locations['mega_about'])) {
                     
                     <!-- HOTLINE BLOCK -->
                     <?php
-                        $hotline_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '086 847 4488');
-                        $hotline_kd   = \App\Helpers\ThemeHelper::getOption('phone_kd',   '034 232 4488');
+                        $hotline_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '0936 543 389');
+                        $hotline_kd   = \App\Helpers\ThemeHelper::getOption('phone_kd',   '0936 543 389');
                         $hotline_cskh_tel = preg_replace('/[^0-9+]/', '', $hotline_cskh);
                         $hotline_kd_tel   = preg_replace('/[^0-9+]/', '', $hotline_kd);
                     ?>
@@ -707,8 +703,8 @@ if (isset($locations['mega_about'])) {
 
             <!-- HOTLINE STRIP -->
             <?php
-                $hotline_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '086 847 4488');
-                $hotline_kd   = \App\Helpers\ThemeHelper::getOption('phone_kd',   '034 232 4488');
+                $hotline_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '0936 543 389');
+                $hotline_kd   = \App\Helpers\ThemeHelper::getOption('phone_kd',   '0936 543 389');
                 $hotline_cskh_tel = preg_replace('/[^0-9+]/', '', $hotline_cskh);
                 $hotline_kd_tel   = preg_replace('/[^0-9+]/', '', $hotline_kd);
             ?>

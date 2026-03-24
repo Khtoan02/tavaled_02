@@ -286,7 +286,7 @@ get_header(); ?>
                             </div>
                         </div>
 
-                        <a href="tel:0934298181" class="btn-outline interactive w-full">Trò chuyện trực tiếp cùng chuyên gia</a>
+                        <a href="tel:0936 543 389" class="btn-outline interactive w-full">Trò chuyện trực tiếp cùng chuyên gia</a>
                     </div>
 
                     <!-- Right Column: Premium Accordion -->
@@ -394,8 +394,8 @@ get_header(); ?>
                 <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Liên hệ với chuyên gia của TavaLLS để nhận bản vẽ giải pháp 3D và báo giá chi tiết hoàn toàn miễn phí.</p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="tel:0934298181" class="btn-primary interactive">
-                        Gọi Hotline 0934 298 181
+                    <a href="tel:0936 543 389" class="btn-primary interactive">
+                        Gọi Hotline 0936 543 389
                     </a>
                     <a href="mailto:tuyen.tavaco@gmail.com" class="btn-outline interactive">
                         Liên hệ tư vấn

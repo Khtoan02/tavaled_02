@@ -163,7 +163,7 @@ html{scroll-behavior:smooth}
       <div style="background:var(--light);border:1px solid var(--bdr);border-radius:10px;padding:24px">
         <p style="margin-bottom:8px"><strong>CÔNG TY CỔ PHẦN CÔNG NGHỆ TAVA VIỆT NAM</strong></p>
         <p style="font-size:14px;color:var(--mid);margin-bottom:4px">📍 Trụ sở: Lô BT36-06 KĐT Tràng Duệ, An Dương, Hải Phòng</p>
-        <p style="font-size:14px;color:var(--mid);margin-bottom:4px">📞 Điện thoại: 0934 298 181</p>
+        <p style="font-size:14px;color:var(--mid);margin-bottom:4px">📞 Điện thoại: 0936 543 389</p>
         <p style="font-size:14px;color:var(--mid)">✉ Email: tuyen.tavaco@gmail.com</p>
       </div>
     </div>
@@ -177,7 +177,7 @@ html{scroll-behavior:smooth}
         <li>Yêu cầu tạm dừng hoặc hạn chế xử lý dữ liệu.</li>
         <li>Yêu cầu xóa dữ liệu (trừ trường hợp pháp luật quy định phải lưu trữ).</li>
       </ul>
-      <p class="sec-text">Để thực hiện các quyền này, vui lòng gửi email về <strong>tuyen.tavaco@gmail.com</strong> hoặc gọi hotline <strong>0934 298 181</strong>. Chúng tôi sẽ phản hồi và xử lý trong vòng 72 giờ làm việc.</p>
+      <p class="sec-text">Để thực hiện các quyền này, vui lòng gửi email về <strong>tuyen.tavaco@gmail.com</strong> hoặc gọi hotline <strong>0936 543 389</strong>. Chúng tôi sẽ phản hồi và xử lý trong vòng 72 giờ làm việc.</p>
     </div>
 
     <div class="section-block" id="s7">
