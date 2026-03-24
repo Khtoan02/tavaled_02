@@ -4,435 +4,7 @@
  */
 get_header(); ?>
 
-<style>
-        /* BASE & RESET */
-        *, *::before, *::after { border-radius: 0 !important; }
-        body { font-family: var(--font-body); background: #1c2857; color: #ffffff; overflow-x: hidden; }
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #1c2857; }
-        ::-webkit-scrollbar-thumb { background: #f05a25; }
 
-
-
-        /* SCROLL REVEAL ANIMATIONS */
-        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-up.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.15s; }
-        .delay-2 { transition-delay: 0.3s; }
-
-        /* HERO VIDEO OVERLAY */
-        .hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c2857; pointer-events: none; }
-        .hero-video-wrap iframe { 
-            position: absolute; top: 50%; left: 50%; 
-            width: 100vw; height: 56.25vw; /* Tỷ lệ 16:9 */
-            min-height: 100vh; min-width: 177.77vh; 
-            transform: translate(-50%, -50%); 
-            pointer-events: none; filter: brightness(0.5) saturate(1.2); border: none;
-        }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(28,40,87,0.3) 0%, rgba(28,40,87,0.8) 60%, #1c2857 100%); }
-        .text-stroke-light { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); }
-
-        /* SOLUTIONS LIST */
-        .sol-list-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 3rem 0; transition: all 0.4s; }
-        .sol-list-item:hover { background: rgba(255,255,255,0.02); padding-left: 2rem; padding-right: 2rem; border-color: #f05a25; }
-        
-        /* MASSIVE GALLERY GRID */
-        .gallery-wrap {
-            position: relative;
-            overflow: hidden;
-            max-height: 120vh; /* Giới hạn độ cao khoảng 1.2 màn hình */
-            transition: max-height 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gallery-wrap.expanded {
-            max-height: 10000px; /* Số lớn để mở rộng toàn bộ lưới ảnh */
-        }
-        .gallery-grid {
-            column-count: 2;
-            column-gap: 2px;
-            margin-bottom: 0px;
-        }
-        @media (min-width: 768px) { .gallery-grid { column-count: 3; } }
-        @media (min-width: 1024px) { .gallery-grid { column-count: 4; } }
-        @media (min-width: 1280px) { .gallery-grid { column-count: 5; } }
-
-        .g-item {
-            break-inside: avoid;
-            margin-bottom: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-        .g-item img { width: 100%; height: auto; object-fit: cover; display: block; transition: transform 0.8s ease; }
-        .g-item:hover img { transform: scale(1.03); }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(to bottom, transparent, #1c2857 80%, #1c2857 100%);
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 40px;
-            z-index: 10;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-        .gallery-wrap.expanded .gallery-overlay {
-            opacity: 0;
-        }
-        .gallery-overlay-btn {
-            pointer-events: auto; /* Để nút bấm được ngay cả khi overlay bị tắt click */
-        }
-
-        /* MƯỢT MÀ FAQ ACCORDION (NEW) */
-        .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease-in-out; }
-        .faq-answer.open { grid-template-rows: 1fr; }
-        .faq-answer-inner { overflow: hidden; }
-
-        /* BUTTONS */
-        .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; background: #f05a25; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 20px rgba(240,90,37,0.3); }
-        .btn-primary:hover { background: #c8451a; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,90,37,0.5); }
-        .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 32px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.3s; }
-        .btn-outline:hover { border-color: #f05a25; color: #ffffff; background: rgba(240,90,37,0.1); }
-
-        /* ══════════════════════════════════
-           CARD BASE & SEC HEAD (FROM BLOG PAGE)
-           ══════════════════════════════════ */
-        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;500;700;900&family=Cormorant+Garamond:ital,wght@1,700&display=swap');
-        
-        .card { background: #fff; border-radius: 0px; overflow: hidden; border: 1px solid #f1f1f1; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(29, 40, 87, 0.15); border-color: #f05a25; }
-        .card__thumb { position:relative; overflow:hidden; flex-shrink:0; }
-        .card__thumb img { width:100%; height:100%; object-fit:cover; display:block; transition: transform .7s cubic-bezier(.16,1,.3,1), filter .4s; filter: saturate(.82) brightness(.98); }
-        .card:hover .card__thumb img { transform:scale(1.07); filter:saturate(1) brightness(1.01); }
-        .cat { position: absolute; top: 11px; left: 11px; background: rgba(255,255,255,0.78); backdrop-filter: blur(10px); color: #1d2857; font-size: 9px; letter-spacing: 0.14em; font-weight: 600; text-transform: uppercase; padding: 3px 9px; border-radius: 0px; border: 1px solid rgba(255,255,255,0.55); z-index: 2; }
-        .card__body { padding: 18px 20px 20px; flex:1; display:flex; flex-direction:column; background: #fff; }
-        .card__meta { display:flex; align-items:center; gap:6px; font-size:11px; color:#6b7280; margin-bottom:8px; flex-wrap:wrap; }
-        .meta-dot { width:3px; height:3px; background:#9ca3af; flex-shrink:0; }
-        .card__title { font-family: var(--font-heading) !important; font-weight: 700; text-transform: uppercase; line-height: 1.35; color: #1d2857; margin-bottom: 9px; flex: 1; transition: color 0.2s; }
-        .card:hover .card__title { color: #f05a25; }
-        .card__desc { font-family: var(--font-heading) !important; font-weight: 500; font-size: 13px; color: #616161; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; }
-        .card__foot { display:flex; align-items:center; justify-content:space-between; padding-top: 12px; border-top: 1px solid #f5e8e2; margin-top: auto; }
-        .stats { display:flex; align-items:center; gap:12px; font-size:11px; color:#6b7280; }
-        .stat { display:flex; align-items:center; gap:4px; }
-        .stat svg { width:12px; height:12px; stroke:#9ca3af; fill:none; stroke-width:1.8; }
-        .read-more { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:800; color: #1d2857; text-decoration:none; letter-spacing:0.07em; text-transform:uppercase; transition: all .2s; }
-        .read-more::after { content:'→'; font-size:12px; }
-        .read-more:hover { gap: 9px; color: #f05a25; }
-        .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-        .card-md .card__thumb { height:178px; }
-        .card-md .card__title { font-size:.95rem; }
-        .card-md .card__desc { -webkit-line-clamp:2; }
-        @media (max-width:1024px) { .grid-3 { grid-template-columns:1fr 1fr; } }
-        @media (max-width:640px) { 
-          .grid-3 { grid-template-columns:repeat(2, 1fr); gap: 12px; } 
-          .card__desc { display:none !important; } 
-          .card__body { padding: 12px 14px 14px !important; }
-          .card__info { padding: 12px 14px !important; }
-          .card__title { font-size: .85rem !important; margin-bottom: 6px; }
-        }
-
-        /* Thêm các Grid Layout và Quotes từ Blog */
-        .project-hero { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: auto; gap: 16px; margin-bottom: 16px; }
-        .project-hero .card-feat .card__thumb { height: 380px; }
-        .project-hero .card-feat .card__title { font-size: 1.3rem; }
-        .project-hero .card-feat .card__desc { -webkit-line-clamp: 4; }
-        .project-hero__right { display: flex; flex-direction: column; gap: 16px; }
-        .project-hero__right .card .card__thumb { height: 178px; }
-        .project-hero__right .card .card__title { font-size: .9rem; }
-        .project-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
-        .project-row .card .card__thumb { height: 150px; }
-        .project-row .card .card__title { font-size: .86rem; -webkit-line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
-        .project-row .card .card__desc { display:none; }
-        .project-row .card .card__foot { border-top:none; padding-top:6px; }
-        .project-row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .project-row3 .card .card__thumb { height: 165px; }
-        .project-row3 .card .card__title { font-size: .88rem; }
-        .project-row3 .card .card__desc { display:none; }
-        .project-row3 .card .card__foot { border-top:none; padding-top:6px; }
-        .loc-tag { position: absolute; bottom: 10px; left: 10px; background: rgba(17,24,39,0.72); backdrop-filter: blur(6px); color: rgba(255,255,255,.9); font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 9px; border-radius: 0px; z-index: 2; }
-
-        .featured-grid { display: grid; grid-template-columns: 1.65fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; }
-        .card-big { grid-column:1; grid-row:1/3; }
-        .card-big .card__thumb { height: 300px; }
-        .card-big .card__title { font-size: 1.35rem; }
-        .card-big .card__desc { -webkit-line-clamp: 4; }
-        .card-sm .card__thumb { height: 140px; }
-        .card-sm .card__title { font-size:.9rem; -webkit-line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden; }
-        .card-sm .card__desc { display:none; }
-        .card-sm .card__foot { border-top:none; padding-top:6px; }
-
-        .sk-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:16px; }
-        .sk-grid .card-big .card__thumb { height: 268px; }
-        .sk-right { display:flex; flex-direction:column; gap:10px; }
-
-
-        .qs__attr { display: flex; align-items: center; gap: 16px; }
-        .qs__dash { width: 48px; height: 2px; background: #f05a25; border-radius: 0; }
-        .qs__author { font-family: var(--font-heading) !important; font-size: 12px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; }
-
-        .read-pill { position: absolute; bottom: 10px; right: 10px; background: rgba(255,248,246,0.88); backdrop-filter: blur(6px); color: #f05a25; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 0px; border: 1px solid rgba(240,90,37,.15); z-index: 2; }
-
-        @media (max-width:1024px) {
-          .project-hero { grid-template-columns:1fr 1fr; }
-          .project-hero .card-feat { grid-column:1/3; }
-          .project-row { grid-template-columns:1fr 1fr; }
-          .featured-grid { grid-template-columns:1fr 1fr; }
-          .card-big { grid-column:1/3; grid-row:auto; }
-          .sk-grid { grid-template-columns:1fr; }
-        }
-
-        @media (max-width:640px) {
-          .project-hero { grid-template-columns:1fr; gap: 16px; }
-          .project-hero .card-feat { grid-column:1; }
-          .project-row, .project-row3 { grid-template-columns:repeat(2, 1fr); gap: 12px; }
-          .featured-grid { grid-template-columns:1fr; gap: 16px; }
-          .card-big { grid-column:1; }
-          .project-row .card .card__thumb, .project-row3 .card .card__thumb { height: 110px; }
-        }
-
-        /* HEADER SEC OVERRIDE HEADER BLOGPAGE TO KEEP DARK TONE */
-        .sec-head--light .sec-head__title, .sec-head--light .sec-head__title em { color: #ffffff !important; }
-        .sec-head--light .sec-head__ghost { color: #ffffff !important; opacity:0.03 !important; }
-        .sec-head--light .sec-head__more { color: #ffffff; border-color: rgba(255,255,255,0.2); }
-        /* HEADER SEC */
-        .sec-head { display: flex; align-items: flex-end; justify-content: space-between; padding: 56px 0 26px; position: relative; }
-        .sec-head--light .sec-head__title, .sec-head--light .sec-head__title em { color: #ffffff !important; }
-        .sec-head--light .sec-head__ghost { color: #ffffff !important; opacity:0.03 !important; }
-        .sec-head--light .sec-head__more { color: #ffffff; border-color: rgba(255,255,255,0.2); }
-        .sec-head__ghost { position: absolute; left: -4px; bottom: 18px; font-family: var(--font-heading); font-size: 8.5rem; font-weight: 700; font-style: italic; line-height: 1; color: #f05a25; opacity: 0.055; pointer-events: none; user-select: none; letter-spacing: -0.03em; white-space: nowrap; }
-        .sec-head__main { position: relative; z-index: 1; }
-        .sec-head__eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #f05a25; opacity: 0.8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-        .sec-head__eyebrow::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: #f05a25; }
-        .sec-head__title { font-family: var(--font-heading) !important; font-weight: 900 !important; text-transform: uppercase; letter-spacing: -0.02em; font-size: 2.8rem; line-height: 1.1; color: #1d2857; }
-        .sec-head__title em { font-family: var(--font-heading) !important; color: #f05a25; font-style: normal; text-transform: uppercase; }
-        .sec-head__more { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid rgba(255,255,255,0.2); padding-bottom: 6px; transition: color .2s, border-color .2s, gap .2s; white-space: nowrap; align-self: flex-end; }
-        .sec-head__more::after { content: '→'; font-size: 13px; }
-        .sec-head__more:hover { color: #f05a25; border-color: #f05a25; gap: 11px; }
-        @media (max-width:640px) { .sec-head { margin-bottom: 32px; } .sec-head__title { font-size:1.75rem; } .sec-head__ghost { font-size: 70px; top: -15px; left: -10px; } }
-
-        /* ═══════════════════════════════
-           PRODUCT MOBILE SLIDER
-           ═══════════════════════════════ */
-        .prod-slider-wrap {
-            position: relative;
-        }
-        .prod-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        @media (max-width: 639px) {
-            /* Tràn ra rìa – padding container đang là 24px */
-            .prod-slider-wrap {
-                margin: 0 -16px;
-            }
-            .prod-grid {
-                display: flex;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                gap: 10px;
-                padding: 4px 16px 16px;
-                scroll-padding-left: 16px;
-            }
-            .prod-grid::-webkit-scrollbar { display: none; }
-            /* Mỗi card = 47% viewport – 2 card/màn, peek nhỏ ở phải */
-            .prod-grid > * {
-                flex: 0 0 calc(48vw - 5px);
-                min-width: 0;
-                scroll-snap-align: start;
-            }
-            /* Dots */
-            .prod-dots {
-                display: flex;
-                justify-content: center;
-                gap: 6px;
-                margin-top: 16px;
-            }
-            .prod-dot {
-                width: 7px; height: 7px;
-                border-radius: 50%;
-                background: #d1d5db;
-                transition: background 0.3s, width 0.3s;
-                cursor: pointer;
-                border: none;
-                padding: 0;
-            }
-            .prod-dot.active {
-                background: #f05a25;
-                width: 22px;
-                border-radius: 4px;
-            }
-        }
-        @media (min-width: 640px) and (max-width: 1023px) {
-            .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .prod-dots { display: none; }
-        }
-        @media (min-width: 1024px) {
-            .prod-dots { display: none; }
-        }
-
-        /* ═══════════════════════════════
-           MOBILE TYPOGRAPHY OVERRIDE
-           Cân chỉnh lại cỡ chữ toàn trang cho mobile
-           ═══════════════════════════════ */
-        /* ═══════════════════════════════════════
-           UNIFIED SECTION TYPOGRAPHY
-           ═══════════════════════════════════════ */
-        
-        /* 1. Main Section Header (Phần hook giới thiệu đầu mỗi section) */
-        .main-sec-head {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .main-sec-head__eyebrow {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            color: #f05a25;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            font-size: 13px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        .main-sec-head__eyebrow::before, .main-sec-head__eyebrow::after {
-            content: '';
-            width: 30px;
-            height: 1.5px;
-            background: #f05a25;
-            opacity: 0.6;
-        }
-        .main-sec-head__title {
-            font-family: var(--font-serif);
-            font-weight: 900;
-            color: #1d2857;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            font-size: clamp(2.5rem, 5vw, 5.5rem); /* Đồng bộ tỉ lệ với Hero H1 */
-            margin-bottom: 20px;
-        }
-        .main-sec-head--light .main-sec-head__title { color: #ffffff; }
-        .main-sec-head__desc {
-            font-family: var(--font-body);
-            font-weight: 300;
-            color: #64748b;
-            line-height: 1.6;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: clamp(0.95rem, 1.2vw, 1.15rem); /* Đồng bộ với Hero P */
-        }
-        .main-sec-head--light .main-sec-head__desc { color: rgba(255,255,255,0.7); }
-
-        /* Mobile adjustments for Main Sec Head */
-        @media (max-width: 639px) {
-            .main-sec-head { margin-bottom: 40px; }
-            .main-sec-head__eyebrow { font-size: 11px; letter-spacing: 0.15em; }
-            .main-sec-head__eyebrow::before, .main-sec-head__eyebrow::after { width: 20px; }
-            .main-sec-head__title { font-size: 2.2rem !important; }
-            .main-sec-head__desc { font-size: 0.9rem !important; line-height: 1.5; }
-        }
-
-        /* 2. Subcat Header (Tiêu đề danh mục sản phẩm/bài viết) */
-        .subcat-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 16px;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #e5e7eb;
-            position: relative;
-        }
-        .subcat-header--light { border-color: rgba(255,255,255,0.1); }
-        .subcat-header::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            bottom: 6px;
-            width: 3.5px;
-            background: linear-gradient(to bottom, #f05a25, #1d2857);
-        }
-        .subcat-header--light::before { background: linear-gradient(to bottom, #f05a25, #ffffff); }
-        .subcat-header__left { padding-left: 20px; flex: 1; min-width: 0; }
-        .subcat-header__eyebrow {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #f05a25;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .subcat-header__eyebrow::before {
-            content: '';
-            width: 25px;
-            height: 1.5px;
-            background: #f05a25;
-        }
-        .subcat-header__title {
-            font-family: var(--font-serif) !important;
-            font-weight: 950 !important;
-            color: #1d2857;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            font-size: clamp(1.6rem, 2.5vw, 2.8rem);
-            margin: 0;
-            text-transform: capitalize;
-        }
-        .subcat-header--light .subcat-header__title { color: #ffffff; }
-        .subcat-header--light .subcat-header__title em { color: #f05a25; font-style: normal; }
-        
-        .subcat-header__link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-            text-decoration: none;
-            color: #1d2857;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            padding-bottom: 4px;
-        }
-        .subcat-header--light .subcat-header__link { color: rgba(255,255,255,0.8); }
-        .subcat-header__link:hover { color: #f05a25; }
-        .subcat-header__link-text { border-bottom: 2px solid transparent; transition: all 0.3s; padding-bottom: 2px; }
-        .subcat-header__link:hover .subcat-header__link-text { border-color: #f05a25; }
-        .subcat-header__link-icon {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; font-size: 16px; color: #1d2857;
-        }
-        .subcat-header--light .subcat-header__link-icon { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #fff; }
-        .subcat-header__link:hover .subcat-header__link-icon { background: #f05a25; border-color: #f05a25; color: #fff; transform: translateX(5px); }
-
-        @media (max-width: 639px) {
-            .subcat-header { padding-bottom: 12px; margin-bottom: 20px; }
-            .subcat-header__title { font-size: 1.6rem; }
-            .subcat-header__eyebrow { font-size: 10px; margin-bottom: 5px; }
-            .subcat-header__link-text { display: none; }
-            .subcat-header__link-icon { width: 34px; height: 34px; font-size: 14px; }
-        }
-
-        </style>
 
 
 
@@ -481,23 +53,23 @@ get_header(); ?>
         <!-- ================= SECTION 3: SẢN PHẨM ================= -->
         <section id="products" class="py-24 bg-[#f8fafc]">
             <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-                <div class="main-sec-head reveal-up">
-                    <div class="main-sec-head__eyebrow">Catalogue Toàn Diện</div>
-                    <h3 class="main-sec-head__title">Thiết Bị Cốt Lõi</h3>
-                    <p class="main-sec-head__desc">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
+                <div class="main-tava-heading reveal-up">
+                    <div class="main-tava-heading__eyebrow">Catalogue Toàn Diện</div>
+                    <h3 class="main-tava-heading__title">Thiết Bị Cốt Lõi</h3>
+                    <p class="main-tava-heading__desc">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
                 </div>
 
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
             <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
                 <!-- Sub-section header: LED -->
-                <div class="subcat-header">
-                    <div class="subcat-header__left">
-                        <div class="subcat-header__eyebrow">Hiển Thị Đỉnh Cao</div>
-                        <h3 class="subcat-header__title">Màn Hình LED &amp; Xử Lý</h3>
+                <div class="tava-heading">
+                    <div class="tava-heading__left">
+                        <div class="tava-heading__eyebrow">Hiển Thị Đỉnh Cao</div>
+                        <h3 class="tava-heading__title">Màn Hình LED &amp; Xử Lý</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
-                        <span class="subcat-header__link-text">Xem toàn bộ kho LED</span>
-                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                        <span class="tava-heading__link-text">Xem toàn bộ kho LED</span>
+                        <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
                 <div class="prod-slider-wrap">
@@ -531,14 +103,14 @@ get_header(); ?>
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Âm Thanh -->
-                <div class="subcat-header">
-                    <div class="subcat-header__left">
-                        <div class="subcat-header__eyebrow">Âm Thanh Sân Khấu</div>
-                        <h3 class="subcat-header__title">Hệ Thống Âm Thanh</h3>
+                <div class="tava-heading">
+                    <div class="tava-heading__left">
+                        <div class="tava-heading__eyebrow">Âm Thanh Sân Khấu</div>
+                        <h3 class="tava-heading__title">Hệ Thống Âm Thanh</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
-                        <span class="subcat-header__link-text">Kho thiết bị âm thanh</span>
-                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                        <span class="tava-heading__link-text">Kho thiết bị âm thanh</span>
+                        <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
                 <div class="prod-slider-wrap">
@@ -572,14 +144,14 @@ get_header(); ?>
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Ánh Sáng -->
-                <div class="subcat-header">
-                    <div class="subcat-header__left">
-                        <div class="subcat-header__eyebrow">Hiệu Ứng Nghệ Thuật</div>
-                        <h3 class="subcat-header__title">Hệ Thống Ánh Sáng</h3>
+                <div class="tava-heading">
+                    <div class="tava-heading__left">
+                        <div class="tava-heading__eyebrow">Hiệu Ứng Nghệ Thuật</div>
+                        <h3 class="tava-heading__title">Hệ Thống Ánh Sáng</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
-                        <span class="subcat-header__link-text">Kho thiết bị ánh sáng</span>
-                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                        <span class="tava-heading__link-text">Kho thiết bị ánh sáng</span>
+                        <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
                 <div class="prod-slider-wrap">
@@ -609,57 +181,7 @@ get_header(); ?>
                     <div class="prod-dots" id="dots-light"></div>
                 </div>
 
-        <script>
-        // Product Slider Dots — chỉ active trên mobile
-        (function() {
-            function initSliderDots(gridId, dotsId, itemsPerView) {
-                var grid = document.getElementById(gridId);
-                var dotsWrap = document.getElementById(dotsId);
-                if (!grid || !dotsWrap) return;
-
-                var items = grid.children;
-                var total = items.length;
-                if (total === 0) return;
-
-                // Tạo dots dựa trên số nhóm (2 items / view)
-                var groups = Math.ceil(total / itemsPerView);
-                dotsWrap.innerHTML = '';
-                for (var i = 0; i < groups; i++) {
-                    var dot = document.createElement('button');
-                    dot.className = 'prod-dot' + (i === 0 ? ' active' : '');
-                    dot.setAttribute('aria-label', 'Trang ' + (i + 1));
-                    (function(idx) {
-                        dot.addEventListener('click', function() {
-                            var itemW = items[0] ? items[0].offsetWidth : 0;
-                            var gap = 12;
-                            grid.scrollTo({ left: idx * (itemW + gap) * itemsPerView, behavior: 'smooth' });
-                        });
-                    })(i);
-                    dotsWrap.appendChild(dot);
-                }
-
-                // Cập nhật dot active khi scroll
-                grid.addEventListener('scroll', function() {
-                    var itemW = items[0] ? items[0].offsetWidth + 12 : 1;
-                    var activeIdx = Math.round(grid.scrollLeft / (itemW * itemsPerView));
-                    var dots = dotsWrap.querySelectorAll('.prod-dot');
-                    dots.forEach(function(d, i) {
-                        d.classList.toggle('active', i === activeIdx);
-                    });
-                }, { passive: true });
-            }
-
-            // Chỉ khởi tạo trên mobile (<640px)
-            function maybeInit() {
-                if (window.innerWidth < 640) {
-                    initSliderDots('grid-led',   'dots-led',   2);
-                    initSliderDots('grid-audio', 'dots-audio', 2);
-                    initSliderDots('grid-light', 'dots-light', 2);
-                }
-            }
-            document.addEventListener('DOMContentLoaded', maybeInit);
-        })();
-        </script>
+        
             </div>
             
         </section>
@@ -667,10 +189,10 @@ get_header(); ?>
         <!-- ================= SECTION 4: THƯ VIỆN DỰ ÁN (FULL WIDTH - ĐỒ SỘ NHẤT) ================= -->
         <section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
             <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
-                <div class="main-sec-head main-sec-head--light">
-                    <div class="main-sec-head__eyebrow">Visual Portfolio</div>
-                    <h3 class="main-sec-head__title">Dấu Ấn <em>TavaLLS</em></h3>
-                    <p class="main-sec-head__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi định nghĩa lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
+                <div class="main-tava-heading main-tava-heading--light">
+                    <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
+                    <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLLS</em></h3>
+                    <p class="main-tava-heading__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi định nghĩa lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
                 </div>
             </div>
 
@@ -694,7 +216,7 @@ get_header(); ?>
                             if (!$img_src) continue;
                     ?>
                     <div class="g-item">
-                        <img src="<?php echo esc_url($img_src); ?>" alt="">
+                        <img src="<?php echo esc_url($img_src); ?>" alt="" loading="lazy">
                     </div>
                     <?php 
                         }
@@ -735,352 +257,7 @@ get_header(); ?>
             
             <div class="container mx-auto px-6 lg:px-16 max-w-[1400px]">
 
-                <!-- ════════════════════════════════════════
-                     01 — DỰ ÁN TIN TỨC
-                ════════════════════════════════════════ -->
-                <div class="reveal-up">
-                  <div class="sec-head sec-head--light">
-                    <span class="sec-head__ghost">Dự Án</span>
-                    <div class="sec-head__main">
-                      <div class="sec-head__eyebrow">Công trình tiêu biểu</div>
-                      <h2 class="sec-head__title">Bài Viết <em>Dự Án</em></h2>
-                    </div>
-                    <a href="#" class="sec-head__more">Xem tất cả dự án</a>
-                  </div>
-
-                  <!-- Hero row: 1 large + 2 stacked -->
-                  <div class="project-hero">
-                    <div class="card card-feat">
-                      <div class="card__thumb" style="height:380px">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="">
-                        <span class="cat">Trong nhà · P2</span>
-                        <span class="loc-tag">📍 Hà Nội</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 5, 2025</span><span class="meta-dot"></span><span>Học viện</span><span class="meta-dot"></span><span>Màn hình P2 · 6m²</span></div>
-                        <h3 class="card__title" style="font-size:1.3rem">Lắp đặt màn hình LED P2 tại Học Viện Kỹ Thuật Mật Mã</h3>
-                        <p class="card__desc">Hệ thống màn hình LED P2 độ phân giải cao được thi công trong hội trường chính của Học Viện Kỹ Thuật Mật Mã, đáp ứng yêu cầu hiển thị sắc nét cho các hội nghị và sự kiện chuyên ngành.</p>
-                        <div class="card__foot">
-                          <div class="stats">
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2.4k</span>
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>148</span>
-                          </div>
-                          <a href="#" class="read-more">Xem dự án</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="project-hero__right">
-                      <div class="card">
-                        <div class="card__thumb" style="height:178px">
-                          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="">
-                          <span class="cat">Trong nhà · P2</span>
-                          <span class="loc-tag">📍 TP.HCM</span>
-                        </div>
-                        <div class="card__body">
-                          <div class="card__meta"><span>Tháng 4, 2025</span><span class="meta-dot"></span><span>Doanh nghiệp</span></div>
-                          <h3 class="card__title" style="font-size:.92rem">Lắp đặt LED P2 tại Công Ty TNHH MTV Cao Su 75</h3>
-                          <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.3k</span></div><a href="#" class="read-more">Xem</a></div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card__thumb" style="height:178px">
-                          <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="">
-                          <span class="cat">Ngoài trời · P1.8</span>
-                          <span class="loc-tag">📍 Hà Nội</span>
-                        </div>
-                        <div class="card__body">
-                          <div class="card__meta"><span>Tháng 3, 2025</span><span class="meta-dot"></span><span>Xây dựng</span></div>
-                          <h3 class="card__title" style="font-size:.92rem">Lắp đặt LED P1.8 tại Công ty Cổ Phần XD & TM Mai 299</h3>
-                          <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>904</span></div><a href="#" class="read-more">Xem</a></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Row 2: 4 cards -->
-                  <div class="project-row">
-                    <div class="card">
-                      <div class="card__thumb" style="height:150px">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt="">
-                        <span class="cat">P1.5 · Trong nhà</span>
-                        <span class="loc-tag">📍 Côn Đảo</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 2, 2025</span></div>
-                        <h3 class="card__title">Lắp đặt LED P1.5 trong nhà tại Côn Đảo</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>721</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card__thumb" style="height:150px">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&q=80" alt="">
-                        <span class="cat">P3 · Ngoài trời</span>
-                        <span class="loc-tag">📍 Đà Nẵng</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 1, 2025</span></div>
-                        <h3 class="card__title">Màn hình LED P3 ngoài trời tại trung tâm thương mại Đà Nẵng</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>886</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card__thumb" style="height:150px">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=500&q=80" alt="">
-                        <span class="cat">P4 · Sân vận động</span>
-                        <span class="loc-tag">📍 Cần Thơ</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 12, 2024</span></div>
-                        <h3 class="card__title">Thi công màn hình LED sân vận động Cần Thơ diện tích 40m²</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.1k</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card__thumb" style="height:150px">
-                        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80" alt="">
-                        <span class="cat">P5 · Billboard</span>
-                        <span class="loc-tag">📍 Hải Phòng</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 11, 2024</span></div>
-                        <h3 class="card__title">Billboard LED P5 ngoài trời tại Hải Phòng cho thương hiệu quốc tế</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>932</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Row 3: 3 cards -->
-                  <div class="project-row3">
-                    <div class="card">
-                      <div class="card__thumb" style="height:165px">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" alt="">
-                        <span class="cat">P2.5 · Hội trường</span>
-                        <span class="loc-tag">📍 Hà Nội</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 10, 2024</span></div>
-                        <h3 class="card__title">LED P2.5 phòng họp Bộ Tài Chính — diện tích 12m²</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>685</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card__thumb" style="height:165px">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80" alt="">
-                        <span class="cat">P6 · Quảng cáo</span>
-                        <span class="loc-tag">📍 TP.HCM</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 9, 2024</span></div>
-                        <h3 class="card__title">Cụm màn hình LED quảng cáo P6 tại Vincom Đồng Khởi</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>812</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card__thumb" style="height:165px">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=80" alt="">
-                        <span class="cat">P4 · Thi đấu</span>
-                        <span class="loc-tag">📍 Huế</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>Tháng 8, 2024</span></div>
-                        <h3 class="card__title">Màn hình scoreboard LED sân vận động Tự Do — TP Huế</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>743</span></div><a href="#" class="read-more">Xem</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                
-                <!-- ════════════════════════════════════════
-                     02 — CHIA SẺ KINH NGHIỆM
-                ════════════════════════════════════════ -->
-                <div class="reveal-up">
-                  <div class="sec-head sec-head--light border-t border-white/10 pt-16 mt-8">
-                    <span class="sec-head__ghost">Kinh Nghiệm</span>
-                    <div class="sec-head__main">
-                      <div class="sec-head__eyebrow">Góc nhìn chuyên môn</div>
-                      <h2 class="sec-head__title">Chia Sẻ <em>Kinh Nghiệm</em></h2>
-                    </div>
-                    <a href="#" class="sec-head__more">Xem tất cả</a>
-                  </div>
-
-                  <div class="featured-grid">
-                    <div class="card card-big">
-                      <div class="card__thumb">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="">
-                        <span class="cat">Nổi Bật</span>
-                        <span class="read-pill">8 phút đọc</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>12 tháng 6, 2025</span><span class="meta-dot"></span><span>Kỹ thuật</span></div>
-                        <h3 class="card__title">So sánh màn hình LED và LCD: Cuộc chiến công nghệ hiển thị đỉnh cao trong kỷ nguyên số</h3>
-                        <p class="card__desc">Khi các toà nhà thương mại, sân vận động và trung tâm thương mại đều đang chuyển sang màn hình LED, câu hỏi lớn vẫn còn đó: LED hay LCD? Bài phân tích toàn diện từ độ sáng, tuổi thọ đến chi phí vận hành thực tế.</p>
-                        <div class="card__foot">
-                          <div class="stats">
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>3.4k</span>
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>84</span>
-                          </div>
-                          <a href="#" class="read-more">Đọc ngay</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card card-sm">
-                      <div class="card__thumb"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&q=80" alt=""><span class="cat">Kỹ thuật</span></div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>8 tháng 6</span><span class="meta-dot"></span><span>6 phút</span></div>
-                        <h3 class="card__title">Màn hình LED COB là gì? Giải mã công nghệ mới nhất hiện nay</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.2k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                    <div class="card card-sm">
-                      <div class="card__thumb"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80" alt=""><span class="cat">Tư vấn</span></div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>5 tháng 6</span><span class="meta-dot"></span><span>5 phút</span></div>
-                        <h3 class="card__title">Độ tương phản màn hình LED: Bí quyết tạo hình ảnh sống động</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>987</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                    <div class="card card-sm">
-                      <div class="card__thumb"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=500&q=80" alt=""><span class="cat">Báo giá</span></div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>28 tháng 5</span><span class="meta-dot"></span><span>7 phút</span></div>
-                        <h3 class="card__title">Báo giá màn hình LED quảng cáo 250 inch – Tất cả loại 2025</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2.1k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                    <div class="card card-sm">
-                      <div class="card__thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt=""><span class="cat">Kinh nghiệm</span></div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>20 tháng 5</span><span class="meta-dot"></span><span>9 phút</span></div>
-                        <h3 class="card__title">Tần số quét màn hình LED: Cách chọn đúng cho từng ứng dụng</h3>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.4k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
-                <!-- ════════════════════════════════════════
-                     03 — SỰ KIỆN NỔI BẬT
-                ════════════════════════════════════════ -->
-                <div class="reveal-up">
-                  <div class="sec-head sec-head--light border-t border-white/10 pt-16 mt-8">
-                    <span class="sec-head__ghost">Sự Kiện</span>
-                    <div class="sec-head__main">
-                      <div class="sec-head__eyebrow">Hoạt động & Đối tác</div>
-                      <h2 class="sec-head__title">Sự Kiện <em>Nổi Bật</em></h2>
-                    </div>
-                    <a href="#" class="sec-head__more">Xem tất cả</a>
-                  </div>
-
-                  <div class="sk-grid">
-                    <div class="card card-big">
-                      <div class="card__thumb">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80" alt="">
-                        <span class="cat">Hợp tác chiến lược</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>15 tháng 4, 2025</span><span class="meta-dot"></span><span>Sự kiện doanh nghiệp</span></div>
-                        <h3 class="card__title">TavaLLS và Colorlight tăng cường hợp tác — Nâng cao chất lượng màn hình LED tại Việt Nam</h3>
-                        <p class="card__desc">Lễ ký kết hợp tác chiến lược giữa TavaLLS và tập đoàn Colorlight mở ra kỷ nguyên mới cho ngành hiển thị LED tại Việt Nam, với cam kết cung cấp giải pháp đẳng cấp quốc tế.</p>
-                        <div class="card__foot">
-                          <div class="stats">
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>3.1k</span>
-                            <span class="stat"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>67</span>
-                          </div>
-                          <a href="#" class="read-more">Chi tiết</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="sk-right">
-                      <div class="card card-md">
-                        <div class="card__thumb" style="height:155px">
-                          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80" alt="">
-                          <span class="cat">Thăm quan</span>
-                        </div>
-                        <div class="card__body">
-                          <div class="card__meta"><span>8 tháng 3, 2025</span><span class="meta-dot"></span><span>Đối tác quốc tế</span></div>
-                          <h3 class="card__title">QiangliLED đến thăm TavaLLS: Nâng tầm quan hệ đối tác chiến lược dài hạn</h3>
-                          <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.4k</span></div><a href="#" class="read-more">Xem</a></div>
-                        </div>
-                      </div>
-                      <div class="card card-md">
-                        <div class="card__thumb" style="height:155px">
-                          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="">
-                          <span class="cat">Team Building</span>
-                        </div>
-                        <div class="card__body">
-                          <div class="card__meta"><span>12 tháng 2, 2025</span><span class="meta-dot"></span><span>Nội bộ</span></div>
-                          <h3 class="card__title">Team Building Hà Giang 2024 — Kỷ Niệm 5 Năm Thành Lập TavaLLS</h3>
-                          <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2.2k</span></div><a href="#" class="read-more">Xem</a></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
-                <!-- ════════════════════════════════════════
-                     04 — TIN TỨC
-                ════════════════════════════════════════ -->
-                <div class="reveal-up">
-                  <div class="sec-head sec-head--light border-t border-white/10 pt-16 mt-8">
-                    <span class="sec-head__ghost">Tin Tức</span>
-                    <div class="sec-head__main">
-                      <div class="sec-head__eyebrow">Cập nhật mới nhất</div>
-                      <h2 class="sec-head__title">Tin <em>Tức</em> & Cập <em>Nhật</em></h2>
-                    </div>
-                    <a href="#" class="sec-head__more">Xem tất cả</a>
-                  </div>
-
-                  <div class="grid-3">
-                    <div class="card card-md">
-                      <div class="card__thumb">
-                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="">
-                        <span class="cat">Thị trường</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>3 tháng 6</span><span class="meta-dot"></span><span>Xu hướng 2025</span></div>
-                        <h3 class="card__title">Thi công màn hình LED 120 inch ngoài trời: Xu hướng bùng nổ năm 2025</h3>
-                        <p class="card__desc">Ngành quảng cáo ngoài trời đang chứng kiến làn sóng chuyển đổi mạnh mẽ sang màn hình LED cỡ lớn trên toàn quốc.</p>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2.3k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                    <div class="card card-md">
-                      <div class="card__thumb">
-                        <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=600&q=80" alt="">
-                        <span class="cat">Công nghệ</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>28 tháng 5</span><span class="meta-dot"></span><span>Kỹ thuật</span></div>
-                        <h3 class="card__title">Tuổi thọ màn hình LED: Bí mật kéo dài vòng đời thiết bị của bạn</h3>
-                        <p class="card__desc">Với bảo trì đúng cách, màn hình LED có thể hoạt động ổn định lên tới 100.000 giờ liên tục.</p>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.7k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                    <div class="card card-md">
-                      <div class="card__thumb">
-                        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="">
-                        <span class="cat">Ngành LED</span>
-                      </div>
-                      <div class="card__body">
-                        <div class="card__meta"><span>20 tháng 5</span><span class="meta-dot"></span><span>Phân tích</span></div>
-                        <h3 class="card__title">Thị trường LED Việt Nam 2025: Tăng trưởng 35% so với năm trước</h3>
-                        <p class="card__desc">Báo cáo mới nhất cho thấy nhu cầu màn hình LED tại Việt Nam đang bùng nổ trong lĩnh vực giáo dục và thương mại.</p>
-                        <div class="card__foot"><div class="stats"><span class="stat"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1.9k</span></div><a href="#" class="read-more">Đọc</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
+                <?php get_template_part('template-parts/blog-sections'); ?>
 
             </div>
         </section>
@@ -1230,73 +407,6 @@ get_header(); ?>
     </main>
 
 
-    <!-- SCRIPT -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Toggle Gallery Expand
-            const btnShowMore = document.getElementById('btnShowMoreGallery');
-            const galleryWrap = document.getElementById('homeGalleryWrap');
-            if(btnShowMore && galleryWrap) {
-                // Kiểm tra nếu nội dung thấp hơn max-height thì ẩn luôn nút show more
-                // setTimeout để load ảnh xong sẽ đo chiều cao chuẩn hơn
-                setTimeout(() => {
-                    const gridHeight = document.getElementById('homeGalleryGrid').scrollHeight;
-                    const wrapHeight = galleryWrap.clientHeight;
-                    // Nếu nội dung ít, không vượt qua độ cao tối đa (hoặc vừa tràn một xíu)
-                    if (gridHeight <= wrapHeight + 50) {
-                        galleryWrap.classList.add('expanded');
-                    }
-                }, 1000);
-
-                btnShowMore.addEventListener('click', () => {
-                    galleryWrap.classList.add('expanded');
-                });
-            }
-
-
-
-            // Header Sticky được xử lý tập trung tại main.js
-
-            // Scroll Reveal Animation
-            const revealElements = document.querySelectorAll('.reveal-up');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); } });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // FAQ Accordion (Smooth Grid Transition)
-            const faqBtns = document.querySelectorAll('.faq-btn');
-            faqBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const answer = btn.nextElementSibling;
-                    const icon = btn.querySelector('.faq-icon i');
-                    const iconContainer = btn.querySelector('.faq-icon');
-                    const num = btn.querySelector('.font-mono');
-                    const text = btn.querySelector('.font-medium');
-                    const isOpen = answer.classList.contains('open');
-                    
-                    // Đóng tất cả các tab khác
-                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-                    document.querySelectorAll('.faq-icon i').forEach(i => { i.classList.remove('ph-minus'); i.classList.add('ph-plus'); });
-                    document.querySelectorAll('.faq-icon').forEach(ic => { ic.classList.remove('border-brand-orange', 'bg-brand-orange/10'); ic.classList.add('border-white/20'); });
-                    document.querySelectorAll('.faq-btn .font-mono').forEach(n => n.classList.remove('text-brand-orange'));
-                    document.querySelectorAll('.faq-btn .font-medium').forEach(t => t.classList.remove('text-brand-orange'));
-
-                    // Mở tab hiện tại nếu nó đang đóng
-                    if(!isOpen) {
-                        answer.classList.add('open');
-                        icon.classList.remove('ph-plus');
-                        icon.classList.add('ph-minus');
-                        iconContainer.classList.remove('border-white/20');
-                        iconContainer.classList.add('border-brand-orange', 'bg-brand-orange/10');
-                        num.classList.add('text-brand-orange');
-                        text.classList.add('text-brand-orange');
-                    }
-                });
-            });
-            // Tự động mở tab FAQ đầu tiên
-            if(faqBtns.length > 0) faqBtns[0].click();
-        });
-    </script>
+    
 
 <?php get_footer(); ?>

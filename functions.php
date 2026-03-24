@@ -63,6 +63,11 @@ function tavaled_enqueue_scripts() {
     wp_enqueue_style('tavaled-style', get_stylesheet_uri(), [], time());
     wp_enqueue_style('tavaled-main-css', TAVALED_URI . '/assets/css/main.css', [], time());
     wp_enqueue_script('tavaled-main-js', TAVALED_URI . '/assets/js/main.js', ['jquery'], time(), true);
+
+    if (is_front_page() || is_page_template('templates/template-homepage.php')) {
+        wp_enqueue_style('tavaled-homepage-css', TAVALED_URI . '/assets/css/homepage.css', [], time());
+        wp_enqueue_script('tavaled-homepage-js', TAVALED_URI . '/assets/js/homepage.js', ['jquery'], time(), true);
+    }
 }
 add_action('wp_enqueue_scripts', 'tavaled_enqueue_scripts');
 

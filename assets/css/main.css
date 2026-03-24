@@ -609,3 +609,178 @@ h1, h2, h3, h4, h5, h6 {
     background: #fff8f6;
     text-decoration: none;
 }
+/* =========================================================================
+   HEADING COMPONENT (.tava-heading)
+   Unified component replacing .sec-head and .subcat-header
+   ========================================================================= */
+.tava-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+    position: relative;
+    gap: 16px;
+}
+.tava-heading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3.5px;
+    background: linear-gradient(to bottom, #f05a25, #1d2857);
+}
+.tava-heading--light {
+    border-color: rgba(255,255,255,0.1);
+}
+.tava-heading--light::before {
+    background: linear-gradient(to bottom, #f05a25, #ffffff);
+}
+.tava-heading__left {
+    padding-left: 20px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+}
+.tava-heading__eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #f05a25;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tava-heading__eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 1.5px;
+    background: #f05a25;
+}
+.tava-heading__title {
+    font-family: var(--font-heading), sans-serif !important;
+    font-weight: 900 !important;
+    color: #1d2857;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.6rem, 2.5vw, 2.8rem);
+    margin: 0;
+    text-transform: uppercase; /* Ensure consistency */
+}
+.tava-heading--light .tava-heading__title {
+    color: #ffffff;
+}
+.tava-heading__title em {
+    color: #f05a25;
+    font-style: normal;
+    font-family: var(--font-heading) !important;
+    text-transform: uppercase;
+}
+.tava-heading__ghost {
+    position: absolute;
+    left: -4px;
+    bottom: 18px;
+    font-family: var(--font-heading);
+    font-size: 8.5rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    color: #f05a25;
+    opacity: 0.055;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+}
+.tava-heading--light .tava-heading__ghost {
+    color: #ffffff;
+    opacity: 0.03;
+}
+/* Link Style with Circle Icon */
+.tava-heading__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #1d2857;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    padding-bottom: 4px;
+    z-index: 1;
+}
+.tava-heading--light .tava-heading__link {
+    color: rgba(255,255,255,0.8);
+}
+.tava-heading__link:hover {
+    color: #f05a25;
+}
+.tava-heading__link-text {
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    padding-bottom: 2px;
+}
+.tava-heading__link:hover .tava-heading__link-text {
+    border-color: #f05a25;
+}
+.tava-heading__link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 16px;
+    color: #1d2857;
+}
+.tava-heading--light .tava-heading__link-icon {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: #fff;
+}
+.tava-heading__link:hover .tava-heading__link-icon {
+    background: #f05a25;
+    border-color: #f05a25;
+    color: #fff;
+    transform: translateX(5px);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 639px) {
+    .tava-heading {
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+    }
+    .tava-heading__title {
+        font-size: 1.6rem;
+    }
+    .tava-heading__eyebrow {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+    .tava-heading__link-text {
+        display: none;
+    }
+    .tava-heading__link-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+    .tava-heading__ghost {
+        font-size: 70px;
+        top: -15px;
+        left: -10px;
+    }
+}
