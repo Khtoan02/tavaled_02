@@ -214,8 +214,223 @@ get_header(); ?>
         .sec-head__more:hover { color: #f05a25; border-color: #f05a25; gap: 11px; }
         @media (max-width:640px) { .sec-head { margin-bottom: 32px; } .sec-head__title { font-size:1.75rem; } .sec-head__ghost { font-size: 70px; top: -15px; left: -10px; } }
 
+        /* ═══════════════════════════════
+           PRODUCT MOBILE SLIDER
+           ═══════════════════════════════ */
+        .prod-slider-wrap {
+            position: relative;
+        }
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 639px) {
+            /* Tràn ra rìa – padding container đang là 24px */
+            .prod-slider-wrap {
+                margin: 0 -16px;
+            }
+            .prod-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 10px;
+                padding: 4px 16px 16px;
+                scroll-padding-left: 16px;
+            }
+            .prod-grid::-webkit-scrollbar { display: none; }
+            /* Mỗi card = 47% viewport – 2 card/màn, peek nhỏ ở phải */
+            .prod-grid > * {
+                flex: 0 0 calc(48vw - 5px);
+                min-width: 0;
+                scroll-snap-align: start;
+            }
+            /* Dots */
+            .prod-dots {
+                display: flex;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 16px;
+            }
+            .prod-dot {
+                width: 7px; height: 7px;
+                border-radius: 50%;
+                background: #d1d5db;
+                transition: background 0.3s, width 0.3s;
+                cursor: pointer;
+                border: none;
+                padding: 0;
+            }
+            .prod-dot.active {
+                background: #f05a25;
+                width: 22px;
+                border-radius: 4px;
+            }
+        }
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .prod-dots { display: none; }
+        }
+        @media (min-width: 1024px) {
+            .prod-dots { display: none; }
+        }
 
+        /* ═══════════════════════════════
+           MOBILE TYPOGRAPHY OVERRIDE
+           Cân chỉnh lại cỡ chữ toàn trang cho mobile
+           ═══════════════════════════════ */
+        /* ═══════════════════════════════════════
+           UNIFIED SECTION TYPOGRAPHY
+           ═══════════════════════════════════════ */
+        
+        /* 1. Main Section Header (Phần hook giới thiệu đầu mỗi section) */
+        .main-sec-head {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .main-sec-head__eyebrow {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: #f05a25;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .main-sec-head__eyebrow::before, .main-sec-head__eyebrow::after {
+            content: '';
+            width: 30px;
+            height: 1.5px;
+            background: #f05a25;
+            opacity: 0.6;
+        }
+        .main-sec-head__title {
+            font-family: var(--font-serif);
+            font-weight: 900;
+            color: #1d2857;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            font-size: clamp(2.5rem, 5vw, 5.5rem); /* Đồng bộ tỉ lệ với Hero H1 */
+            margin-bottom: 20px;
+        }
+        .main-sec-head--light .main-sec-head__title { color: #ffffff; }
+        .main-sec-head__desc {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: clamp(0.95rem, 1.2vw, 1.15rem); /* Đồng bộ với Hero P */
+        }
+        .main-sec-head--light .main-sec-head__desc { color: rgba(255,255,255,0.7); }
 
+        /* Mobile adjustments for Main Sec Head */
+        @media (max-width: 639px) {
+            .main-sec-head { margin-bottom: 40px; }
+            .main-sec-head__eyebrow { font-size: 11px; letter-spacing: 0.15em; }
+            .main-sec-head__eyebrow::before, .main-sec-head__eyebrow::after { width: 20px; }
+            .main-sec-head__title { font-size: 2.2rem !important; }
+            .main-sec-head__desc { font-size: 0.9rem !important; line-height: 1.5; }
+        }
+
+        /* 2. Subcat Header (Tiêu đề danh mục sản phẩm/bài viết) */
+        .subcat-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+        }
+        .subcat-header--light { border-color: rgba(255,255,255,0.1); }
+        .subcat-header::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 3.5px;
+            background: linear-gradient(to bottom, #f05a25, #1d2857);
+        }
+        .subcat-header--light::before { background: linear-gradient(to bottom, #f05a25, #ffffff); }
+        .subcat-header__left { padding-left: 20px; flex: 1; min-width: 0; }
+        .subcat-header__eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #f05a25;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subcat-header__eyebrow::before {
+            content: '';
+            width: 25px;
+            height: 1.5px;
+            background: #f05a25;
+        }
+        .subcat-header__title {
+            font-family: var(--font-serif) !important;
+            font-weight: 950 !important;
+            color: #1d2857;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            font-size: clamp(1.6rem, 2.5vw, 2.8rem);
+            margin: 0;
+            text-transform: capitalize;
+        }
+        .subcat-header--light .subcat-header__title { color: #ffffff; }
+        .subcat-header--light .subcat-header__title em { color: #f05a25; font-style: normal; }
+        
+        .subcat-header__link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            text-decoration: none;
+            color: #1d2857;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            padding-bottom: 4px;
+        }
+        .subcat-header--light .subcat-header__link { color: rgba(255,255,255,0.8); }
+        .subcat-header__link:hover { color: #f05a25; }
+        .subcat-header__link-text { border-bottom: 2px solid transparent; transition: all 0.3s; padding-bottom: 2px; }
+        .subcat-header__link:hover .subcat-header__link-text { border-color: #f05a25; }
+        .subcat-header__link-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; font-size: 16px; color: #1d2857;
+        }
+        .subcat-header--light .subcat-header__link-icon { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: #fff; }
+        .subcat-header__link:hover .subcat-header__link-icon { background: #f05a25; border-color: #f05a25; color: #fff; transform: translateX(5px); }
+
+        @media (max-width: 639px) {
+            .subcat-header { padding-bottom: 12px; margin-bottom: 20px; }
+            .subcat-header__title { font-size: 1.6rem; }
+            .subcat-header__eyebrow { font-size: 10px; margin-bottom: 5px; }
+            .subcat-header__link-text { display: none; }
+            .subcat-header__link-icon { width: 34px; height: 34px; font-size: 14px; }
+        }
 
         </style>
 
@@ -223,34 +438,34 @@ get_header(); ?>
 
 
     <main>
-        
+
         <!-- ================= SECTION 1: HERO VIDEO BACKGROUND ================= -->
         <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-navy3">
-            
+
             <div class="hero-video-wrap">
-                <img src="https://ledkimlong.com/wp-content/uploads/2023/10/384277662_6540973292664442_2689789734785120511_n.jpg" 
-                     alt="TavaLLS Vision Background" 
-                     class="absolute w-full h-full object-cover" 
+                <img src="https://ledkimlong.com/wp-content/uploads/2023/10/384277662_6540973292664442_2689789734785120511_n.jpg"
+                     alt="TavaLLS Vision Background"
+                     class="absolute w-full h-full object-cover"
                      style="filter: brightness(0.5) saturate(1.2);">
             </div>
-            
+
             <div class="hero-overlay"></div>
 
 
             <div class="relative z-10 px-6 lg:px-20 max-w-5xl mt-20 text-center reveal-up">
-                <p class="font-mono text-brand-orange font-bold tracking-[0.25em] uppercase text-xs md:text-sm mb-6 flex items-center justify-center gap-4">
-                    <span class="w-8 h-[1px] bg-brand-orange"></span> Giải Pháp Hình Ảnh & Âm Thanh Toàn Diện <span class="w-8 h-[1px] bg-brand-orange"></span>
+                <p class="font-mono text-brand-orange font-bold tracking-[0.25em] uppercase text-xs mb-5 flex items-center justify-center gap-4">
+                    <span class="w-8 h-[1px] bg-brand-orange"></span> Giải Pháp Hình Ảnh &amp; Âm Thanh Toàn Diện <span class="w-8 h-[1px] bg-brand-orange"></span>
                 </p>
-                
-                <h1 class="font-serif font-black text-5xl md:text-7xl lg:text-[6.5rem] leading-[1.05] text-white tracking-tight mb-8">
+
+                <h1 id="hero-title" class="font-serif font-black text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[1.05] text-white tracking-tight mb-6">
                     Đánh Thức Mọi <br>
                     <span class="italic font-light text-brand-orange">Giác Quan.</span>
                 </h1>
-                
-                <p class="text-white/70 font-light text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-                    Hơn một thập kỷ tiên phong, TavaLLS tự hào là nhà cung cấp và thi công trọn gói hệ thống Màn hình LED, Âm thanh & Ánh sáng chuyên nghiệp cho hàng trăm đại dự án trên toàn quốc.
+
+                <p id="hero-sub" class="text-white/70 font-light text-sm md:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+                    Hơn một thập kỷ tiên phong, TavaLLS tự hào là nhà cung cấp và thi công trọn gói hệ thống Màn hình LED, Âm thanh &amp; Ánh sáng chuyên nghiệp cho hàng trăm đại dự án trên toàn quốc.
                 </p>
-                
+
                 <div class="flex flex-wrap items-center justify-center gap-6">
                     <a href="#product-led" class="btn-primary interactive">
                         Khám phá giải pháp <i class="ph-bold ph-arrow-down-right text-lg"></i>
@@ -265,28 +480,28 @@ get_header(); ?>
 
         <!-- ================= SECTION 3: SẢN PHẨM ================= -->
         <section id="products" class="py-24 bg-[#f8fafc]">
-            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] mb-8 reveal-up text-center">
-                <h2 class="font-mono font-bold text-brand-orange uppercase tracking-widest text-sm mb-2">Catalogue Toàn Diện</h2>
-                <h3 class="font-serif text-4xl md:text-5xl text-brand-navy font-black">Thiết Bị Cốt Lõi</h3>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
-            </div>
+            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+                <div class="main-sec-head reveal-up">
+                    <div class="main-sec-head__eyebrow">Catalogue Toàn Diện</div>
+                    <h3 class="main-sec-head__title">Thiết Bị Cốt Lõi</h3>
+                    <p class="main-sec-head__desc">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
+                </div>
 
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
             <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
-                        <div class="inline-flex items-center relative z-10 mb-3">
-                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiển Thị Đỉnh Cao</span>
-                        </div>
-                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Màn Hình LED & Xử Lý</h3>
+                <!-- Sub-section header: LED -->
+                <div class="subcat-header">
+                    <div class="subcat-header__left">
+                        <div class="subcat-header__eyebrow">Hiển Thị Đỉnh Cao</div>
+                        <h3 class="subcat-header__title">Màn Hình LED &amp; Xử Lý</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
-                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Xem tất cả kho LED</span>
-                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
+                        <span class="subcat-header__link-text">Xem toàn bộ kho LED</span>
+                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
+                <div class="prod-slider-wrap">
+                    <div class="prod-grid reveal-up" id="grid-led">
                     <?php
                     $query_led = new WP_Query([
                         'post_type' => 'tava_product',
@@ -308,25 +523,26 @@ get_header(); ?>
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';
                     endif;
                     ?>
+                    </div>
+                    <div class="prod-dots" id="dots-led"></div>
                 </div>
             </div>
 
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
-                        <div class="inline-flex items-center relative z-10 mb-3">
-                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Âm Thanh Sân Khấu</span>
-                        </div>
-                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Hệ Thống Âm Thanh</h3>
+                <!-- Sub-section header: Âm Thanh -->
+                <div class="subcat-header">
+                    <div class="subcat-header__left">
+                        <div class="subcat-header__eyebrow">Âm Thanh Sân Khấu</div>
+                        <h3 class="subcat-header__title">Hệ Thống Âm Thanh</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
-                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị âm thanh</span>
-                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
+                        <span class="subcat-header__link-text">Kho thiết bị âm thanh</span>
+                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
+                <div class="prod-slider-wrap">
+                    <div class="prod-grid reveal-up" id="grid-audio">
                     <?php
                     $query_audio = new WP_Query([
                         'post_type' => 'tava_product',
@@ -348,25 +564,26 @@ get_header(); ?>
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';
                     endif;
                     ?>
+                    </div>
+                    <div class="prod-dots" id="dots-audio"></div>
                 </div>
             </div>
 
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 pb-6 border-b border-gray-200">
-                    <div class="mb-4 lg:mb-0 ml-4 lg:ml-8 lg:ml-12">
-                        <div class="inline-flex items-center relative z-10 mb-3">
-                            <span class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-16 h-[2px] bg-brand-orange"></span>
-                            <span class="text-brand-orange font-bold uppercase tracking-widest text-sm z-10">Hiệu Ứng Nghệ Thuật</span>
-                        </div>
-                        <h3 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-navy font-black tracking-tight">Hệ Thống Ánh Sáng</h3>
+                <!-- Sub-section header: Ánh Sáng -->
+                <div class="subcat-header">
+                    <div class="subcat-header__left">
+                        <div class="subcat-header__eyebrow">Hiệu Ứng Nghệ Thuật</div>
+                        <h3 class="subcat-header__title">Hệ Thống Ánh Sáng</h3>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="inline-flex items-center gap-2 group text-brand-navy text-sm font-bold uppercase tracking-widest transition-colors mb-2">
-                        <span class="border-b-2 border-transparent group-hover:border-brand-orange transition-colors pb-1">Kho thiết bị ánh sáng</span>
-                        <span class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange group-hover:text-white transition-all"><i class="ph-bold ph-arrow-right"></i></span>
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="subcat-header__link">
+                        <span class="subcat-header__link-text">Kho thiết bị ánh sáng</span>
+                        <span class="subcat-header__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 reveal-up">
+                <div class="prod-slider-wrap">
+                    <div class="prod-grid reveal-up" id="grid-light">
                     <?php
                     $query_light = new WP_Query([
                         'post_type' => 'tava_product',
@@ -388,17 +605,73 @@ get_header(); ?>
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';
                     endif;
                     ?>
+                    </div>
+                    <div class="prod-dots" id="dots-light"></div>
                 </div>
+
+        <script>
+        // Product Slider Dots — chỉ active trên mobile
+        (function() {
+            function initSliderDots(gridId, dotsId, itemsPerView) {
+                var grid = document.getElementById(gridId);
+                var dotsWrap = document.getElementById(dotsId);
+                if (!grid || !dotsWrap) return;
+
+                var items = grid.children;
+                var total = items.length;
+                if (total === 0) return;
+
+                // Tạo dots dựa trên số nhóm (2 items / view)
+                var groups = Math.ceil(total / itemsPerView);
+                dotsWrap.innerHTML = '';
+                for (var i = 0; i < groups; i++) {
+                    var dot = document.createElement('button');
+                    dot.className = 'prod-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Trang ' + (i + 1));
+                    (function(idx) {
+                        dot.addEventListener('click', function() {
+                            var itemW = items[0] ? items[0].offsetWidth : 0;
+                            var gap = 12;
+                            grid.scrollTo({ left: idx * (itemW + gap) * itemsPerView, behavior: 'smooth' });
+                        });
+                    })(i);
+                    dotsWrap.appendChild(dot);
+                }
+
+                // Cập nhật dot active khi scroll
+                grid.addEventListener('scroll', function() {
+                    var itemW = items[0] ? items[0].offsetWidth + 12 : 1;
+                    var activeIdx = Math.round(grid.scrollLeft / (itemW * itemsPerView));
+                    var dots = dotsWrap.querySelectorAll('.prod-dot');
+                    dots.forEach(function(d, i) {
+                        d.classList.toggle('active', i === activeIdx);
+                    });
+                }, { passive: true });
+            }
+
+            // Chỉ khởi tạo trên mobile (<640px)
+            function maybeInit() {
+                if (window.innerWidth < 640) {
+                    initSliderDots('grid-led',   'dots-led',   2);
+                    initSliderDots('grid-audio', 'dots-audio', 2);
+                    initSliderDots('grid-light', 'dots-light', 2);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', maybeInit);
+        })();
+        </script>
             </div>
             
         </section>
 
         <!-- ================= SECTION 4: THƯ VIỆN DỰ ÁN (FULL WIDTH - ĐỒ SỘ NHẤT) ================= -->
-        <section id="projects" class="pt-32 pb-0 bg-brand-navy3 overflow-hidden">
-            <div class="container mx-auto px-6 lg:px-12 text-center mb-10 reveal-up">
-                <h2 class="font-mono font-bold text-brand-orange uppercase tracking-widest text-sm mb-4">Visual Portfolio</h2>
-                <h3 class="font-serif font-black text-4xl md:text-6xl text-white mb-6">Dấu Ấn Hàng Trăm<br>Dự Án Quy Mô</h3>
-                <p class="text-white/60 max-w-2xl mx-auto">Không gì chứng minh năng lực tốt hơn những công trình thực tế. Dưới đây là một phần nhỏ trong số hơn 500+ dự án mà TavaLLS đã kiến tạo trên khắp Việt Nam.</p>
+        <section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
+            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+                <div class="main-sec-head main-sec-head--light">
+                    <div class="main-sec-head__eyebrow">Visual Portfolio</div>
+                    <h3 class="main-sec-head__title">Dấu Ấn <em>TavaLLS</em></h3>
+                    <p class="main-sec-head__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi định nghĩa lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
+                </div>
             </div>
 
             <div class="w-full relative gallery-wrap bg-[#1c2857]" id="homeGalleryWrap">

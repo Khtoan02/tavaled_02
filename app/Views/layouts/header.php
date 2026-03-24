@@ -8,7 +8,28 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class('text-brand-dark font-sans text-[15px] leading-relaxed'); ?>>
-<?php wp_body_open(); ?>
+<?php wp_body_open(); 
+
+// Lấy danh sách menu items cho Giải Pháp Trọn Gói và Về Chúng Tôi
+$locations = get_nav_menu_locations();
+
+$sol_items = [];
+$about_items = [];
+
+if (isset($locations['mega_solutions'])) {
+    $sol_menu = wp_get_nav_menu_object($locations['mega_solutions']);
+    if ($sol_menu) {
+        $sol_items = wp_get_nav_menu_items($sol_menu->term_id);
+    }
+}
+
+if (isset($locations['mega_about'])) {
+    $about_menu = wp_get_nav_menu_object($locations['mega_about']);
+    if ($about_menu) {
+        $about_items = wp_get_nav_menu_items($about_menu->term_id);
+    }
+}
+?>
 
 <!-- ĐÓNG ĐINH LAYOUT: Wrapper đảm bảo 100% không bị tràn viền (Horizontal Scroll) trên MỌI điện thoại -->
 <div class="site-wrapper w-full relative min-h-screen flex flex-col" style="overflow-x: clip; /* clip thay cho hidden để giữ thuộc tính position sticky cho sidebar */">
@@ -88,6 +109,29 @@
                                 <div class="w-2/3">
                                     <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">Khám phá tổ chức</h3>
                                     <ul class="grid grid-cols-3 gap-4">
+                                        <?php if (!empty($about_items)): 
+                                            foreach($about_items as $item): 
+                                                if($item->menu_item_parent != 0) continue;
+                                                $icon_class = get_post_meta($item->ID, '_menu_item_icon_class', true) ?: 'ph-fill ph-aperture';
+                                                $subtitle = get_post_meta($item->ID, '_menu_item_subtitle', true);
+                                                // If the icon is an SVG instead of phosphors class, we could check for <svg
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($item->url); ?>" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center h-full">
+                                                <div class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
+                                                    <?php if(strpos($icon_class, '<svg') !== false): ?>
+                                                        <?php echo $icon_class; ?>
+                                                    <?php else: ?>
+                                                        <i class="<?php echo esc_attr($icon_class); ?> text-2xl"></i>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <span class="font-semibold text-gray-700 group-hover/item:text-orange-600"><?php echo esc_html($item->title); ?></span>
+                                                <?php if($subtitle): ?><span class="text-[11px] text-gray-400 mt-1"><?php echo esc_html($subtitle); ?></span><?php endif; ?>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; 
+                                        else: ?>
+                                        <!-- Fallback nếu chưa cấu hình menu admin -->
                                         <li>
                                             <a href="/ve-chung-toi" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                 <div class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -136,6 +180,7 @@
                                                 <span class="font-semibold text-gray-700 group-hover/item:text-orange-600">Tin tức</span>
                                             </a>
                                         </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
 
@@ -211,7 +256,7 @@
                         </a>
                         
                         <!-- Mega Menu Dropdown -->
-                        <div class="mega-menu absolute top-[95px] left-0 right-0 mx-auto w-full max-w-[1240px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-none overflow-hidden cursor-default z-50">
+                        <div class="mega-menu absolute top-[95px] left-0 right-0 mx-auto w-full max-w-[1240px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
                             <div class="flex h-full">
                                 
                                 <!-- Danh mục -->
@@ -469,76 +514,101 @@
                                     </a>
                                 </div>
 
-                                <!-- Lưới 3 Cột x 2 Hàng (2x3 Layout) -->
-                                <div class="grid grid-cols-3 gap-x-8 gap-y-8">
-                                    
-                                    <!-- Item 1 -->
-                                    <div class="group/combo">
-                                        <a href="/giao-duc" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18d87a5a?q=80&w=600&auto=format&fit=crop" alt="Giáo Dục & Tương Tác" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/giao-duc" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors uppercase text-[13px] tracking-wide">
-                                            Giáo Dục & Tương Tác
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 2 -->
-                                    <div class="group/combo">
-                                        <a href="/hoi-hop-doanh-nghiep" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" alt="Hội Họp Doanh Nghiệp" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/hoi-hop-doanh-nghiep" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors uppercase text-[13px] tracking-wide">
-                                            Hội Họp Doanh Nghiệp
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 3 -->
-                                    <div class="group/combo">
-                                        <a href="/su-kien-san-khau" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" alt="Sự Kiện & Sân Khấu" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/su-kien-san-khau" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors uppercase text-[13px] tracking-wide">
-                                            Sự Kiện & Sân Khấu
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 4 -->
-                                    <div class="group/combo">
-                                        <a href="/quang-cao-thuong-hieu" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=600&auto=format&fit=crop" alt="Quảng Cáo Thương Hiệu" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/quang-cao-thuong-hieu" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors uppercase text-[13px] tracking-wide">
-                                            Quảng Cáo Thương Hiệu
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 5 -->
-                                    <div class="group/combo">
-                                        <a href="/fnb-giai-tri" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" alt="F&B & Giải Trí Đêm" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/fnb-giai-tri" class="block text-center font-bold text-[#1d2857] hover:text-brand-orange transition-colors uppercase text-[13px] tracking-wide">
-                                            F&B & Giải Trí Đêm
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 6 w Hot flag -->
-                                    <div class="group/combo">
-                                        <a href="/giai-tri-tai-nha" class="block rounded-xl overflow-hidden bg-gray-50 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                                            <span class="absolute top-2 left-2 bg-brand-orange text-white text-[10px] font-bold px-2.5 py-1 rounded-sm z-10 uppercase tracking-widest shadow-sm">Hot</span>
-                                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop" alt="Giải Trí Tại Gia" class="w-full aspect-video object-cover group-hover/combo:scale-105 transition-transform duration-500">
-                                            <div class="absolute inset-0 bg-[#1d2857]/0 group-hover/combo:bg-[#1d2857]/10 transition-colors duration-300"></div>
-                                        </a>
-                                        <a href="/giai-tri-tai-nha" class="block text-center font-bold text-brand-orange hover:text-orange-600 transition-colors uppercase text-[13px] tracking-wide">
-                                            Giải Trí Tại Gia
-                                        </a>
-                                    </div>
-
+                                <!-- Lưới 3 Cột x 2 Hàng – Premium Dark Overlay Cards -->
+                                <div class="sol-grid">
+                                    <?php if(!empty($sol_items)):
+                                        foreach($sol_items as $item):
+                                            if($item->menu_item_parent != 0) continue;
+                                            $image = get_post_meta($item->ID, '_menu_item_image_url', true);
+                                            if (empty($image)) $image = 'https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop';
+                                            $is_hot = get_post_meta($item->ID, '_menu_item_is_hot', true);
+                                    ?>
+                                    <a href="<?php echo esc_url($item->url); ?>" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <?php if($is_hot): ?>
+                                                <span class="sol-card__hot">HOT</span>
+                                            <?php endif; ?>
+                                            <img src="<?php echo esc_url($image); ?>"
+                                                 onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';"
+                                                 alt="<?php echo esc_attr($item->title); ?>"
+                                                 class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title"><?php echo esc_html($item->title); ?></h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <?php endforeach;
+                                    else: ?>
+                                    <!-- Fallback 1 -->
+                                    <a href="/giao-duc" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Giáo Dục & Tương Tác" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title">Giáo Dục & Tương Tác</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Fallback 2 -->
+                                    <a href="/hoi-hop-doanh-nghiep" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Hội Họp" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title">Hội Họp Doanh Nghiệp</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Fallback 3 -->
+                                    <a href="/su-kien-san-khau" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Sự Kiện" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title">Sự Kiện & Sân Khấu</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Fallback 4 -->
+                                    <a href="/quang-cao-thuong-hieu" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Quảng Cáo" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title">Quảng Cáo Thương Hiệu</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Fallback 5 -->
+                                    <a href="/fnb-giai-tri" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="F&B" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title">F&B & Giải Trí Đêm</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- Fallback 6 – HOT -->
+                                    <a href="/giai-tri-tai-nha" class="sol-card">
+                                        <div class="sol-card__img-wrap">
+                                            <span class="sol-card__hot">HOT</span>
+                                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Giải Trí Tại Gia" class="sol-card__img">
+                                            <div class="sol-card__overlay"></div>
+                                            <div class="sol-card__body">
+                                                <h4 class="sol-card__title" style="color:#f05a25;">Giải Trí Tại Gia</h4>
+                                                <div class="sol-card__line"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -615,107 +685,182 @@
     </div><!-- /.sticky wrapper -->
 
     <!-- MOBILE DRAWER -->
-    <div id="mobileMenu" class="fixed inset-0 z-50 bg-[#0f1530]/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-        <div class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col" id="mobileMenuPanel">
-            <div class="flex justify-between items-center p-5 border-b border-gray-100">
-                <span class="text-xl font-bold tracking-tight text-gray-900"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
-                <button id="closeMobileMenuBtn" class="text-gray-500 hover:text-brand-orange p-2.5 rounded-none bg-gray-50 min-w-[44px] min-h-[44px] flex items-center justify-center">
+    <div id="mobileMenu" style="position:fixed;inset:0;z-index:9999;background:rgba(15,21,48,0.75);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.4s ease;">
+        <div id="mobileMenuPanel" style="position:absolute;top:0;right:0;width:88%;max-width:360px;height:100%;background:#ffffff;box-shadow:-8px 0 40px rgba(0,0,0,0.2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);">
+
+            <!-- DRAWER HEADER -->
+            <div class="flex justify-between items-center px-5 py-4 shrink-0" style="background:linear-gradient(135deg,#1d2857 0%,#2a3a6b 100%);">
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2.5">
+                    <?php
+                        $logo_url = \App\Helpers\ThemeHelper::getOption('logo_url', '');
+                        if ($logo_url):
+                    ?>
+                    <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="h-8 w-auto object-contain brightness-0 invert">
+                    <?php else: ?>
+                    <span class="text-white font-black text-lg tracking-tight"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
+                    <?php endif; ?>
+                </a>
+                <button id="closeMobileMenuBtn" class="w-9 h-9 flex items-center justify-center rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Đóng menu">
                     <i class="ph ph-x text-xl"></i>
                 </button>
             </div>
-            <div class="flex-1 overflow-y-auto mobile-menu-scroll p-4 space-y-1.5 flex flex-col gap-1">
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Trang chủ</a>
-                <a href="/ve-chung-toi" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Về <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', 'TavaLLS')); ?></a>
-                
-                <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileProducts')">
-                        <span class="text-brand-orange">Hệ sinh thái thiết bị</span>
-                        <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileProducts"></i>
-                    </button>
-                    <div id="mobileProducts" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pl-4 pb-0 space-y-4">
-                        <div>
-                            <div class="font-bold text-gray-800 mb-2 flex items-center justify-between group" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'">
-                                <span class="flex items-center gap-2 hover:text-brand-orange transition-colors cursor-pointer"><i class="ph ph-monitor-play text-brand-orange"></i> Màn hình LED</span>
-                                <i class="ph ph-caret-down text-xs cursor-pointer p-2" onclick="event.stopPropagation(); toggleAccordion('subLed');" id="icon-subLed"></i>
+
+            <!-- HOTLINE STRIP -->
+            <?php
+                $hotline_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '086 847 4488');
+                $hotline_kd   = \App\Helpers\ThemeHelper::getOption('phone_kd',   '034 232 4488');
+                $hotline_cskh_tel = preg_replace('/[^0-9+]/', '', $hotline_cskh);
+                $hotline_kd_tel   = preg_replace('/[^0-9+]/', '', $hotline_kd);
+            ?>
+            <div class="flex items-stretch shrink-0 border-b border-gray-100" style="background:#fff8f6;">
+                <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex-1 flex items-center gap-2.5 px-4 py-3 hover:bg-orange-50 transition-colors border-r border-gray-100">
+                    <div class="w-8 h-8 rounded-none flex items-center justify-center shrink-0" style="background:#f05a25;">
+                        <i class="ph-bold ph-phone text-white text-[14px]"></i>
+                    </div>
+                    <div>
+                        <div class="text-[11px] text-gray-400 font-medium leading-none mb-0.5">CSKH</div>
+                        <div class="font-bold text-gray-900 text-[13px] leading-none"><?php echo esc_html($hotline_cskh); ?></div>
+                    </div>
+                </a>
+                <a href="tel:<?php echo esc_attr($hotline_kd_tel); ?>" class="flex-1 flex items-center gap-2.5 px-4 py-3 hover:bg-orange-50 transition-colors">
+                    <div class="w-8 h-8 rounded-none flex items-center justify-center shrink-0" style="background:#f05a25;">
+                        <i class="ph-bold ph-phone text-white text-[14px]"></i>
+                    </div>
+                    <div>
+                        <div class="text-[11px] text-gray-400 font-medium leading-none mb-0.5">Kinh doanh</div>
+                        <div class="font-bold text-gray-900 text-[13px] leading-none"><?php echo esc_html($hotline_kd); ?></div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- SCROLLABLE NAV -->
+            <div class="flex-1 overflow-y-auto" style="-webkit-overflow-scrolling:touch;">
+                <nav class="py-2">
+
+                    <!-- Trang chủ -->
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="mobile-nav-link">
+                        <i class="ph ph-house text-[#f05a25] text-[16px]"></i> Trang chủ
+                    </a>
+
+                    <!-- Về chúng tôi -->
+                    <a href="/ve-chung-toi" class="mobile-nav-link">
+                        <i class="ph ph-buildings text-[#f05a25] text-[16px]"></i>
+                        Về <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', 'TavaLLS')); ?>
+                    </a>
+
+                    <!-- Accordion: Sản phẩm -->
+                    <div class="mobile-nav-accordion">
+                        <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileProducts')">
+                            <span class="flex items-center gap-3">
+                                <i class="ph ph-monitor-play text-[#f05a25] text-[16px]"></i>
+                                <span style="color:#f05a25;font-weight:700;">Hệ sinh thái thiết bị</span>
+                            </span>
+                            <i class="ph ph-caret-down text-gray-400 text-sm transition-transform duration-300" id="icon-mobileProducts"></i>
+                        </button>
+                        <div id="mobileProducts" class="mobile-accordion-body" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.35s ease,margin-top 0.3s ease,padding-bottom 0.3s ease;">
+                            <!-- LED -->
+                            <div class="mobile-subnav-group">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'">
+                                    <span><i class="ph ph-monitor-play text-[#f05a25] text-[13px]"></i> Màn hình LED</span>
+                                    <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subLed')" id="icon-subLed"></i>
+                                </div>
+                                <ul id="subLed" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong nhà')); ?>">Trong nhà (Indoor)</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED ngoài trời')); ?>">Ngoài trời (Outdoor)</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED sân khấu (Rental)')); ?>">Màn hình sân khấu (Rental)</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong suốt')); ?>">Trong suốt</a></li>
+                                </ul>
                             </div>
-                            <ul id="subLed" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] space-y-2 text-gray-600 border-l-2 border-orange-100 pl-3">
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong nhà')); ?>" class="block hover:text-brand-orange transition-colors">Trong nhà (Indoor)</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED ngoài trời')); ?>" class="block hover:text-brand-orange transition-colors">Ngoài trời (Outdoor)</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED sân khấu (Rental)')); ?>" class="block hover:text-brand-orange transition-colors">Màn hình sân khấu (Rental)</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong suốt')); ?>" class="block hover:text-brand-orange transition-colors">Trong suốt</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="font-bold text-gray-800 mb-2 flex items-center justify-between group" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'">
-                                <span class="flex items-center gap-2 hover:text-brand-orange transition-colors cursor-pointer"><i class="ph ph-speaker-hifi text-brand-orange"></i> Âm thanh</span>
-                                <i class="ph ph-caret-down text-xs cursor-pointer p-2" onclick="event.stopPropagation(); toggleAccordion('subAudio');" id="icon-subAudio"></i>
+                            <!-- Âm thanh -->
+                            <div class="mobile-subnav-group">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'">
+                                    <span><i class="ph ph-speaker-hifi text-[#f05a25] text-[13px]"></i> Âm thanh</span>
+                                    <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subAudio')" id="icon-subAudio"></i>
+                                </div>
+                                <ul id="subAudio" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa')); ?>">Các loại Loa</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa siêu trầm (Sub)')); ?>">Loa Subwoofer</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Mixer')); ?>">Mixer Digital</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Micro')); ?>">Microphones</a></li>
+                                </ul>
                             </div>
-                            <ul id="subAudio" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] space-y-2 text-gray-600 border-l-2 border-orange-100 pl-3">
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa')); ?>" class="block hover:text-brand-orange transition-colors">Các loại Loa</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa siêu trầm (Sub)')); ?>" class="block hover:text-brand-orange transition-colors">Loa Subwoofer</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Mixer')); ?>" class="block hover:text-brand-orange transition-colors">Mixer Digital</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Micro')); ?>" class="block hover:text-brand-orange transition-colors">Microphones</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="font-bold text-gray-800 mb-2 flex items-center justify-between group" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'">
-                                <span class="flex items-center gap-2 hover:text-brand-orange transition-colors cursor-pointer"><i class="ph ph-lightbulb text-brand-orange"></i> Ánh sáng</span>
-                                <i class="ph ph-caret-down text-xs cursor-pointer p-2" onclick="event.stopPropagation(); toggleAccordion('subLight');" id="icon-subLight"></i>
+                            <!-- Ánh sáng -->
+                            <div class="mobile-subnav-group">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'">
+                                    <span><i class="ph ph-lightbulb text-[#f05a25] text-[13px]"></i> Ánh sáng</span>
+                                    <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subLight')" id="icon-subLight"></i>
+                                </div>
+                                <ul id="subLight" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Moving Head')); ?>">Đèn Moving Head</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Laser')); ?>">Đèn Laser Sân Khấu</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Par LED')); ?>">Đèn Par LED</a></li>
+                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('DMX')); ?>">Bàn điều khiển Ánh sáng</a></li>
+                                </ul>
                             </div>
-                            <ul id="subLight" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] space-y-2 text-gray-600 border-l-2 border-orange-100 pl-3">
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Moving Head')); ?>" class="block hover:text-brand-orange transition-colors">Đèn Moving Head</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Laser')); ?>" class="block hover:text-brand-orange transition-colors">Đèn Laser Sân Khấu</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Par LED')); ?>" class="block hover:text-brand-orange transition-colors">Đèn Par LED</a></li>
-                                <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('DMX')); ?>" class="block hover:text-brand-orange transition-colors">Bàn điều khiển Ánh sáng</a></li>
-                            </ul>
                         </div>
                     </div>
-                </div>
 
-                <!-- Giải Pháp Trọn Gói Mobile Menu -->
-                <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileSolutions')">
-                        <span class="hover:text-brand-orange transition-colors">Giải pháp trọn gói</span>
-                        <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileSolutions"></i>
-                    </button>
-                    <ul id="mobileSolutions" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] space-y-3 text-gray-600 border-l-2 border-orange-100 pl-3">
-                        <li class="pt-2"><a href="/giao-duc" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-graduation-cap text-brand-orange mr-1"></i> Giáo Dục & Tương Tác</a></li>
-                        <li><a href="/hoi-hop-doanh-nghiep" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-presentation-chart text-blue-500 mr-1"></i> Hội Họp & Doanh Nghiệp</a></li>
-                        <li><a href="/su-kien-san-khau" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-microphone-stage text-purple-500 mr-1"></i> Sự Kiện & Sân Khấu</a></li>
-                        <li><a href="/quang-cao-thuong-hieu" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-storefront text-pink-500 mr-1"></i> Quảng Cáo & Thương Hiệu</a></li>
-                        <li><a href="/fnb-giai-tri" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-martini text-red-500 mr-1"></i> F&B & Giải Trí Đêm</a></li>
-                        <li class="pb-2"><a href="/giai-tri-tai-nha" class="block w-full text-[15px] hover:text-brand-orange transition-colors"><i class="ph-fill ph-house-line text-teal-500 mr-1"></i> Giải Trí Tại Gia</a></li>
-                    </ul>
-                </div>
-                
-                <a href="/du-an" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Dự án tiêu biểu</a>
-                <a href="/lien-he" class="block py-2 text-[16px] font-medium text-gray-800 border-b border-gray-50 hover:text-brand-orange transition-colors">Liên hệ</a>
-                
-                <!-- MOBILE MENU: TOPBAR EXTRAS -->
-                <div class="border-b border-gray-50">
-                    <button class="w-full flex justify-between items-center py-2 text-[16px] font-medium text-gray-800" onclick="toggleAccordion('mobileExtras')">
-                        <span class="text-brand-orange">Tiện ích trực tuyến</span>
-                        <i class="ph ph-caret-down text-sm transition-transform duration-200" id="icon-mobileExtras"></i>
-                    </button>
-                    <div id="mobileExtras" class="max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pl-4 pb-0 space-y-3">
-                        <ul class="space-y-3 text-gray-600 border-l-2 border-orange-100 pl-3">
-                            <li class="flex items-center gap-2"><i class="ph ph-magnifying-glass text-brand-orange"></i> <a href="#" onclick="toggleSearch(); closeMobileMenu();" class="block flex-1">Tìm kiếm thiết bị</a></li>
-                            <li class="flex items-center gap-2"><i class="ph ph-receipt text-brand-orange"></i> <a href="#" class="block flex-1">Gửi yêu cầu Báo giá</a></li>
-                            <li class="flex items-center gap-2"><i class="ph ph-wrench text-brand-orange"></i> <a href="#" class="block flex-1">Tra cứu bảo hành</a></li>
-                            <li class="flex items-center gap-2"><i class="ph ph-file-text text-brand-orange"></i> <a href="#" class="block flex-1">Chính sách & Hỗ trợ</a></li>
-                            <li class="flex items-center gap-2 pt-2 border-t border-gray-100">
-                                <span class="text-sm font-semibold mr-2">Ngôn ngữ:</span>
-                                <button class="font-bold text-brand-orange">VN</button>
-                                <span class="text-gray-300">|</span>
-                                <button class="hover:text-brand-orange transition-colors">EN</button>
+                    <!-- Accordion: Giải pháp -->
+                    <div class="mobile-nav-accordion">
+                        <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileSolutions')">
+                            <span class="flex items-center gap-3">
+                                <i class="ph ph-rows text-[#f05a25] text-[16px]"></i>
+                                <span>Giải pháp trọn gói</span>
+                            </span>
+                            <i class="ph ph-caret-down text-gray-400 text-sm" id="icon-mobileSolutions"></i>
+                        </button>
+                        <ul id="mobileSolutions" class="mobile-accordion-body" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.35s ease,margin-top 0.3s ease,padding-bottom 0.3s ease;list-style:none;padding-left:0;padding-right:0;">
+                            <?php if(!empty($sol_items)):
+                                foreach($sol_items as $i => $item):
+                                    if($item->menu_item_parent != 0) continue;
+                                    $icon_class = get_post_meta($item->ID, '_menu_item_icon_class', true) ?: 'ph-fill ph-presentation-chart';
+                            ?>
+                            <li>
+                                <a href="<?php echo esc_url($item->url); ?>" class="mobile-subnav-link">
+                                    <i class="<?php echo esc_attr($icon_class); ?> text-[#f05a25] text-[14px]"></i>
+                                    <?php echo esc_html($item->title); ?>
+                                </a>
                             </li>
+                            <?php endforeach; else: ?>
+                            <li><a href="/giao-duc" class="mobile-subnav-link"><i class="ph-fill ph-graduation-cap text-[#f05a25] text-[14px]"></i> Giáo Dục & Tương Tác</a></li>
+                            <li><a href="/hoi-hop-doanh-nghiep" class="mobile-subnav-link"><i class="ph-fill ph-presentation-chart text-[#f05a25] text-[14px]"></i> Hội Họp Doanh Nghiệp</a></li>
+                            <li><a href="/su-kien-san-khau" class="mobile-subnav-link"><i class="ph-fill ph-microphone-stage text-[#f05a25] text-[14px]"></i> Sự Kiện & Sân Khấu</a></li>
+                            <li><a href="/quang-cao-thuong-hieu" class="mobile-subnav-link"><i class="ph-fill ph-storefront text-[#f05a25] text-[14px]"></i> Quảng Cáo Thương Hiệu</a></li>
+                            <li><a href="/fnb-giai-tri" class="mobile-subnav-link"><i class="ph-fill ph-martini text-[#f05a25] text-[14px]"></i> F&B & Giải Trí Đêm</a></li>
+                            <li><a href="/giai-tri-tai-nha" class="mobile-subnav-link"><i class="ph-fill ph-house-line text-[#f05a25] text-[14px]"></i> Giải Trí Tại Gia</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
-                </div>
+
+                    <!-- Standalone links -->
+                    <a href="/du-an" class="mobile-nav-link">
+                        <i class="ph ph-briefcase text-[#f05a25] text-[16px]"></i> Dự án tiêu biểu
+                    </a>
+                    <a href="/lien-he" class="mobile-nav-link">
+                        <i class="ph ph-envelope text-[#f05a25] text-[16px]"></i> Liên hệ
+                    </a>
+
+                    <!-- Divider -->
+                    <div class="mx-4 my-2 border-t border-dashed border-gray-200"></div>
+
+                    <!-- Tiện ích -->
+                    <a href="#" onclick="toggleSearch(); window.closeMobileMenu(); return false;" class="mobile-nav-link text-gray-500">
+                        <i class="ph ph-magnifying-glass text-[#f05a25] text-[16px]"></i> Tìm kiếm thiết bị
+                    </a>
+                    <a href="#" class="mobile-nav-link text-gray-500">
+                        <i class="ph ph-receipt text-[#f05a25] text-[16px]"></i> Gửi yêu cầu Báo giá
+                    </a>
+
+                </nav>
             </div>
-            <div class="p-5 border-t border-gray-100 bg-gray-50">
-                <button class="w-full btn-brand py-3 rounded-none font-bold hover:bg-orange-600 transition-colors text-white" style="background-color: var(--primary-color);">Liên hệ chuyên gia</button>
+
+            <!-- DRAWER FOOTER CTA -->
+            <div class="px-4 py-4 shrink-0 border-t border-gray-100">
+                <a href="/lien-he" class="block w-full text-center text-white font-bold py-3 transition-colors" style="background-color:#f05a25;border-radius:6px;" onmouseover="this.style.background='#d94e1f'" onmouseout="this.style.background='#f05a25'">
+                    <i class="ph-bold ph-chat-teardrop-dots mr-1.5"></i> Liên hệ chuyên gia ngay
+                </a>
             </div>
+
         </div>
     </div>
 

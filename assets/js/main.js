@@ -20,23 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const closeMobileMenuBtn = document.getElementById('closeMobileMenuBtn');
 
-    // BUG FIX: Khai báo là window.closeMobileMenu để có thể gọi từ inline onclick
     window.closeMobileMenu = function() {
         if (!mobileMenu || !mobileMenuPanel) return;
-        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-        mobileMenuPanel.classList.add('translate-x-full');
-        document.body.style.overflow = 'auto';
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.pointerEvents = 'none';
+        mobileMenuPanel.style.transform = 'translateX(100%)';
+        document.body.style.overflow = '';
     }
 
-    function openMobileMenu() {
+    window.openMobileMenu = function() {
         if (!mobileMenu || !mobileMenuPanel) return;
-        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-        mobileMenuPanel.classList.remove('translate-x-full');
+        mobileMenu.style.opacity = '1';
+        mobileMenu.style.pointerEvents = 'auto';
+        mobileMenuPanel.style.transform = 'translateX(0)';
         document.body.style.overflow = 'hidden';
     }
 
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuBtn.addEventListener('click', window.openMobileMenu);
     }
     if (closeMobileMenuBtn) {
         closeMobileMenuBtn.addEventListener('click', window.closeMobileMenu);
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Xử lý Toggle Tìm Kiếm Toàn Cục
+    // 3. Xử lý Toggle Tìm Kiếm Toàn Cầu
     window.toggleSearch = function() {
         const searchPopup = document.getElementById('searchPopup');
         if (searchPopup) {
@@ -73,20 +74,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Xử lý Accordion (Menu sổ xuống) trên Mobile Toàn Cục
+    // 4. Accordion - dùng inline style, không phụ thuộc Tailwind JIT
+    // Kỹ thuật: luôn đo scrollHeight thật, set maxHeight cứng TRƯỚC khi collapse
     window.toggleAccordion = function(id) {
-        const content = document.getElementById(id);
-        const icon = document.getElementById(`icon-${id}`);
-        if (content && icon) {
-            if (content.classList.contains('max-h-0')) {
-                content.classList.remove('max-h-0', 'opacity-0');
-                content.classList.add('max-h-[500px]', 'opacity-100', 'mt-2');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.remove('max-h-[500px]', 'opacity-100', 'mt-2');
-                content.classList.add('max-h-0', 'opacity-0');
-                icon.style.transform = 'rotate(0deg)';
-            }
+        const el   = document.getElementById(id);
+        const icon = document.getElementById('icon-' + id);
+        if (!el) return;
+
+        const isOpen = el.getAttribute('data-open') === '1';
+
+        if (isOpen) {
+            // --- ĐÓNG ---
+            // Bước 1: nếu maxHeight đang là 'none', đặt về scrollHeight thực tế trước
+            el.style.maxHeight = el.scrollHeight + 'px';
+            el.style.overflow = 'hidden';
+            // Bước 2: một frame sau mới collapse về 0 để browser thấy điểm bắt đầu
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    el.style.maxHeight = '0';
+                    el.style.opacity = '0';
+                });
+            });
+            el.setAttribute('data-open', '0');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+            // --- MỞ ---
+            el.style.overflow = 'hidden';
+            el.style.opacity = '1';
+            el.style.maxHeight = el.scrollHeight + 'px';
+            el.setAttribute('data-open', '1');
+            if (icon) icon.style.transform = 'rotate(180deg)';
+            // Sau khi transition xong: cho phép nội dung lớn hơn (sub-accordion)
+            el.addEventListener('transitionend', function onEnd(ev) {
+                if (ev.propertyName !== 'max-height') return;
+                if (el.getAttribute('data-open') === '1') {
+                    el.style.maxHeight = 'none';
+                    el.style.overflow = 'visible';
+                }
+                el.removeEventListener('transitionend', onEnd);
+            });
         }
     }
 

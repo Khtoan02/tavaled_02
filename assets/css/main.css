@@ -62,24 +62,12 @@ h1, h2, h3, h4, h5, h6 {
 /* =========================================================================
    HEADER TAILWIND STYLES (New Premium Header)
    ========================================================================= */
+/* Mega Menu Animation (Được quản lý hoàn toàn bằng Tailwind CSS trong header.php) */
 /* Hiệu ứng Header khi cuộn */
 .header-sticky {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-/* Mega Menu Animation */
-.group:hover .mega-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-.mega-menu {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
     transition: all 0.3s ease;
 }
 
@@ -358,8 +346,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Footer */
-/* Bẻ góc vuông cho toàn bộ giao diện chuẩn Tech */
-*, *::before, *::after { border-radius: 0 !important; }
+/* Global border radius override removed to allow Tailwind UI to work correctly */
 
 /* Background Gradient chuẩn TavaLLS */
 .bg-tavalls-gradient {
@@ -389,3 +376,236 @@ h1, h2, h3, h4, h5, h6 {
 .tech-border::before { top: 0; left: 0; border-right: none; border-bottom: none; }
 .tech-border::after { bottom: 0; right: 0; border-left: none; border-top: none; }
 .tech-border:hover::before, .tech-border:hover::after { width: 100%; height: 100%; opacity: 0.1; }
+
+/* =====================================================
+   MEGA MENU — GIẢI PHÁP TRỌN GÓI — Premium Card Grid
+   ===================================================== */
+.sol-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 4px 0; /* breathing room so box-shadows aren't clipped */
+}
+
+/* --- Card base --- */
+.sol-card {
+    display: block;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(29,40,87,0.08);
+    transition: transform 0.38s cubic-bezier(.22,.68,0,1.2),
+                box-shadow 0.38s ease;
+    background: #111827;
+}
+
+.sol-card:hover {
+    transform: translateY(-6px) scale(1.013);
+    box-shadow: 0 18px 48px rgba(29,40,87,0.18), 0 0 0 2px rgba(240,90,37,0.3);
+    text-decoration: none;
+}
+
+/* --- Image wrapper (fixed aspect ratio) --- */
+.sol-card__img-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 62.5%; /* ~16:10 */
+    overflow: hidden;
+}
+
+.sol-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(.25,.46,.45,.94), filter 0.4s ease;
+    filter: brightness(0.78) saturate(1.1);
+}
+
+.sol-card:hover .sol-card__img {
+    transform: scale(1.08);
+    filter: brightness(0.6) saturate(1.2);
+}
+
+/* --- Gradient overlay (always visible, deepens on hover) --- */
+.sol-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(17,24,39,0.92) 0%,
+        rgba(17,24,39,0.38) 55%,
+        rgba(17,24,39,0.0) 100%
+    );
+    transition: background 0.4s ease;
+    z-index: 2;
+}
+
+.sol-card:hover .sol-card__overlay {
+    background: linear-gradient(
+        to top,
+        rgba(17,24,39,0.96) 0%,
+        rgba(17,24,39,0.62) 65%,
+        rgba(17,24,39,0.12) 100%
+    );
+}
+
+/* --- Floating text block (bottom of image) --- */
+.sol-card__body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 16px 16px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.sol-card__title {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    line-height: 1.35;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    margin: 0;
+    transition: color 0.25s;
+}
+
+.sol-card:hover .sol-card__title {
+    color: #f05a25;
+}
+
+/* --- Accent line (reveals on hover) --- */
+.sol-card__line {
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: #f05a25;
+    transition: width 0.35s cubic-bezier(.22,.68,0,1.2);
+}
+
+.sol-card:hover .sol-card__line {
+    width: 32px;
+}
+
+/* --- HOT badge --- */
+.sol-card__hot {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 4;
+    background: #f05a25;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(240,90,37,0.5);
+}
+
+/* =====================================================
+   MOBILE DRAWER — Navigation Styles
+   ===================================================== */
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom: 1px solid #f9fafb;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+}
+.mobile-nav-link:hover {
+    color: #f05a25;
+    background-color: #fff8f6;
+    text-decoration: none;
+}
+
+.mobile-nav-accordion {
+    border-bottom: 1px solid #f9fafb;
+}
+.mobile-nav-accordion-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s;
+}
+.mobile-nav-accordion-btn:hover { color: #f05a25; }
+
+.mobile-accordion-body {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.mobile-subnav-group {
+    border-bottom: 1px solid #f9fafb;
+    padding: 6px 0;
+}
+.mobile-subnav-group:last-child { border-bottom: none; }
+
+.mobile-subnav-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    cursor: pointer;
+}
+.mobile-subnav-title:hover { color: #f05a25; }
+
+.mobile-subnav-list {
+    list-style: none;
+    padding: 0 0 0 12px;
+    margin: 0;
+    border-left: 2px solid #fed7aa;
+}
+.mobile-subnav-list li a {
+    display: block;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.mobile-subnav-list li a:hover { color: #f05a25; }
+
+.mobile-subnav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    font-size: 14px;
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+}
+.mobile-subnav-link:hover {
+    color: #f05a25;
+    background: #fff8f6;
+    text-decoration: none;
+}

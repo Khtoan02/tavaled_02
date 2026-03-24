@@ -35,7 +35,9 @@ function tavaled_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     register_nav_menus([
-        'primary' => __('Primary Menu', 'tavaled02'),
+        'primary'        => __('Primary Menu', 'tavaled02'),
+        'mega_about'     => __('Mega: Về chúng tôi', 'tavaled02'),
+        'mega_solutions' => __('Mega: Giải pháp trọn gói', 'tavaled02'),
     ]);
 }
 add_action('after_setup_theme', 'tavaled_theme_setup');
@@ -102,6 +104,9 @@ if (is_admin()) {
 
     $page_setup_admin = new \App\Controllers\Admin\PageSetupController();
     $page_setup_admin->register();
+
+    $menu_settings_admin = new \App\Controllers\Admin\MenuSettingsController();
+    $menu_settings_admin->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')
