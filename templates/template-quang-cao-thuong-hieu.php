@@ -306,7 +306,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 <div class="cta" id="cta">
   <div class="cta__inner">
     <div><h2 class="cta__h">Thương hiệu của bạn<br><em>xứng đáng được nhìn thấy</em></h2><p class="cta__sub">Tư vấn vị trí, kích thước, giải pháp phù hợp ngân sách. Báo giá trong 24 giờ.</p></div>
-    <div class="cta-btns"><a href="tel:19001234" class="btn-w">📞 1900 1234</a><a href="mailto:tuyen.tavaco@gmail.com?subject=Tư vấn màn hình quảng cáo" class="btn-wg">Gửi yêu cầu tư vấn</a></div>
+    <div class="cta-btns"><a href="tel:0936 543 389" class="btn-w">📞 0936 543 389</a><a href="mailto:tuyen.tavaco@gmail.com?subject=Tư vấn màn hình quảng cáo" class="btn-wg">Gửi yêu cầu tư vấn</a></div>
   </div>
 </div>
 

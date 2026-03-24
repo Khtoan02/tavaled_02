@@ -192,7 +192,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     <h2 class="cta__h">Thiết kế phòng<br><em>giải trí trong mơ</em></h2>
     <p class="cta__sub">Khảo sát và thiết kế concept 3D miễn phí. Chúng tôi đến tận nơi, không ràng buộc.</p>
     <div class="cta-btns">
-      <a href="tel:19001234" class="btn-cta-p">📞 1900 1234</a>
+      <a href="tel:0936 543 389" class="btn-cta-p">📞 0936 543 389</a>
       <a href="mailto:tuyen.tavaco@gmail.com?subject=Tư vấn Home Theater - Karaoke gia đình" class="btn-cta-g">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Gửi yêu cầu tư vấn

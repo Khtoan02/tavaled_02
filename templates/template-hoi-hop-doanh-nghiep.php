@@ -320,7 +320,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   <div class="cta__inner">
     <div><h2 class="cta__h">Khảo sát miễn phí —<br><em>báo giá trong 24 giờ</em></h2><p class="cta__sub">Đội kỹ thuật TavaLED đến tận văn phòng khảo sát và tư vấn giải pháp phù hợp ngân sách.</p></div>
     <div class="cta-btns">
-      <a href="tel:19001234" class="btn-w"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 2h3a2 2 0 012 1.72 12 12 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l.96-.96a2 2 0 012.11-.45 12 12 0 002.81.7A2 2 0 0122 16.92z"/></svg>1900 1234</a>
+      <a href="tel:0936 543 389" class="btn-w"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 2h3a2 2 0 012 1.72 12 12 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l.96-.96a2 2 0 012.11-.45 12 12 0 002.81.7A2 2 0 0122 16.92z"/></svg>0936 543 389</a>
       <a href="mailto:tuyen.tavaco@gmail.com?subject=Tư vấn phòng họp doanh nghiệp" class="btn-wg">Gửi yêu cầu tư vấn</a>
     </div>
   </div>

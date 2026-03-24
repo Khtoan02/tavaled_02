@@ -229,7 +229,7 @@ html{scroll-behavior:smooth}
       <div class="claim-steps">
         <div class="claim-step">
           <div class="claim-step__ico">1</div>
-          <div class="claim-step__body"><div class="claim-step__title">Báo cáo sự cố</div><div class="claim-step__desc">Gọi hotline 1900 1234 (phím 2) hoặc email support@tavaled.vn. Mô tả sự cố, gửi ảnh/video minh chứng.</div><div class="claim-step__time">Trong vòng 1 giờ</div></div>
+          <div class="claim-step__body"><div class="claim-step__title">Báo cáo sự cố</div><div class="claim-step__desc">Gọi hotline 0936 543 389 (phím 2) hoặc email support@tavaled.vn. Mô tả sự cố, gửi ảnh/video minh chứng.</div><div class="claim-step__time">Trong vòng 1 giờ</div></div>
         </div>
         <div class="claim-step">
           <div class="claim-step__ico">2</div>
@@ -333,7 +333,7 @@ html{scroll-behavior:smooth}
       <h2 class="sec-title">Hotline & Liên hệ Kỹ thuật</h2>
       <p class="sec-text">Đội ngũ kỹ thuật TavaLED hoạt động <strong>24/7</strong>. Khi cần hỗ trợ, vui lòng cung cấp: <em>số hợp đồng, tên thiết bị, mô tả sự cố và ảnh/video</em> để được xử lý nhanh nhất.</p>
       <div class="contact-box">
-        <div class="contact-item"><div class="contact-item__ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 2h3a2 2 0 012 1.72 12 12 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l.96-.96a2 2 0 012.11-.45 12 12 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item__lbl">Hotline kỹ thuật 24/7</div><div class="contact-item__val"><a href="tel:19001234">1900 1234</a> — Phím 2</div></div></div>
+        <div class="contact-item"><div class="contact-item__ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.59 2h3a2 2 0 012 1.72 12 12 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.1 6.1l.96-.96a2 2 0 012.11-.45 12 12 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item__lbl">Hotline kỹ thuật 24/7</div><div class="contact-item__val"><a href="tel:0936 543 389">0936 543 389</a> — Phím 2</div></div></div>
         <div class="contact-item"><div class="contact-item__ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item__lbl">Email hỗ trợ</div><div class="contact-item__val"><a href="mailto:support@tavaled.vn">support@tavaled.vn</a></div></div></div>
         <div class="contact-item"><div class="contact-item__ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><div class="contact-item__lbl">Zalo kỹ thuật</div><div class="contact-item__val">TavaLED Support OA</div></div></div>
         <div class="contact-item"><div class="contact-item__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-item__lbl">Giờ hỗ trợ</div><div class="contact-item__val">Hotline: 24/7<br>Kỹ thuật viên: 24h/ngày</div></div></div>
