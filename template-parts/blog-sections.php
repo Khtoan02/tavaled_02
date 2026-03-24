@@ -52,7 +52,7 @@ if ($q_duan->have_posts()) :
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('F Y'); ?></span></div>
-                <h3 class="card__title text-2xl md:text-3xl leading-tight font-black mb-3 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
+                <h3 class="card__title text-4xl lg:text-5xl xl:text-[54px] leading-[1.05] font-black mb-6 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
                 <div class="card__desc"><?php echo wp_trim_words(get_the_excerpt(), 40, '...'); ?></div>
                 <div class="card__foot relative z-20">
                     <span class="read-more cursor-pointer">Xem dự án</span>
@@ -155,7 +155,7 @@ if ($q_kinhnghiem->have_posts()) :
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date(); ?></span></div>
-                <h3 class="card__title text-2xl md:text-3xl leading-tight font-black mb-3 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
+                <h3 class="card__title text-4xl lg:text-5xl xl:text-[54px] leading-[1.05] font-black mb-6 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
                 <div class="card__desc"><?php echo wp_trim_words(get_the_excerpt(), 45, '...'); ?></div>
                 <div class="card__foot relative z-20">
                     <span class="read-more cursor-pointer">Đọc ngay</span>
@@ -220,7 +220,7 @@ if ($q_dichvu->have_posts()) :
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date(); ?></span></div>
-                <h3 class="card__title text-2xl md:text-3xl leading-tight font-black mb-3 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
+                <h3 class="card__title text-4xl lg:text-5xl xl:text-[54px] leading-[1.05] font-black mb-6 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
                 <div class="card__desc"><?php echo wp_trim_words(get_the_excerpt(), 45, '...'); ?></div>
                 <div class="card__foot relative z-20">
                     <span class="read-more cursor-pointer">Chi tiết</span>
@@ -287,7 +287,7 @@ if ($q_tintuc->have_posts()) :
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('j F'); ?></span></div>
-                <h3 class="card__title text-2xl md:text-3xl leading-tight font-black mb-3 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
+                <h3 class="card__title text-4xl lg:text-5xl xl:text-[54px] leading-[1.05] font-black mb-6 group-hover:text-brand-orange transition-colors"><?php the_title(); ?></h3>
                 <div class="card__desc"><?php echo wp_trim_words(get_the_excerpt(), 45, '...'); ?></div>
                 <div class="card__foot relative z-20"><span class="read-more cursor-pointer">Đọc chi tiết</span></div>
             </div>
