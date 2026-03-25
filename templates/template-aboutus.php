@@ -110,7 +110,7 @@ get_header(); ?>
             </div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-brand-orange/10 filter blur-[100px] rounded-full pointer-events-none"></div>
 
-            <div class="container mx-auto px-4 lg:px-16 max-w-7xl relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 reveal-up">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-[2px] bg-brand-orange"></div>
@@ -144,7 +144,7 @@ get_header(); ?>
                 <h2 class="text-[15vw] font-black text-stroke-dark uppercase whitespace-nowrap">MATRIX</h2>
             </div>
 
-            <div class="container mx-auto px-4 lg:px-16 max-w-7xl relative z-10">
+            <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10">
                 
                 <!-- Bối cảnh -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32 border-b border-white/10 pb-24">
@@ -228,7 +228,7 @@ get_header(); ?>
         <section class="py-32 relative bg-white overflow-hidden">
             <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-light rounded-full filter blur-[100px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
             
-            <div class="container mx-auto px-4 lg:px-16 max-w-7xl relative z-10">
+            <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10">
                 
                 <div class="reveal-up mb-32 max-w-5xl">
                     <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-6">Chương IV: Định Vị Tương Lai</h3>
@@ -299,7 +299,7 @@ get_header(); ?>
             <div class="spine-line" style="background: linear-gradient(to bottom, rgba(240,90,37,0.8), rgba(255,255,255,0.1));"></div>
             <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(#f05a25 1px, transparent 1px), linear-gradient(90deg, #f05a25 1px, transparent 1px); background-size: 30px 30px;"></div>
 
-            <div class="container mx-auto px-4 lg:px-16 max-w-7xl relative z-10">
+            <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10">
                 <div class="text-center mb-20 reveal-up">
                     <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương VI: Tiềm Lực Lõi</h3>
                     <h4 class="font-serif text-4xl md:text-5xl text-white mb-6">Quy Mô Khổng Lồ <br><span class="italic text-gray-500">Sẵn Sàng Bứt Phá</span></h4>
@@ -458,7 +458,7 @@ get_header(); ?>
         <section class="network-section py-32 bg-white border-t border-gray-100 relative">
             <div class="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-brand-light to-white pointer-events-none"></div>
             
-            <div class="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10 flex flex-col items-center text-center mb-16 reveal-up">
+            <div class="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10 flex flex-col items-center text-center mb-16 reveal-up">
                 <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương VIII: Niềm Tin Rộng Khắp</h3>
                 <h4 class="font-serif text-4xl md:text-6xl text-gray-900 mb-6">Hệ Sinh Thái 500+ Đối Tác</h4>
                 <p class="text-gray-600 max-w-2xl text-base leading-relaxed">
@@ -468,7 +468,7 @@ get_header(); ?>
 
             <!-- Khung Map Hoàn Toàn Trải Rộng (Freedom) -->
             <div class="w-full relative reveal-up reveal-delay-1 pb-20">
-                <div id="networkCanvas" class="w-full h-[800px] md:h-[900px] relative pointer-events-auto mx-auto max-w-[1400px]">
+                <div id="networkCanvas" class="w-full h-[800px] md:h-[900px] relative pointer-events-auto mx-auto max-w-[1600px]">
                     <!-- SVG Lưới nối tâm -->
                     <svg id="networkLines" class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
                         <defs>
@@ -511,7 +511,7 @@ get_header(); ?>
         <section class="py-32 bg-[#05080f] text-white relative overflow-hidden">
             <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-brand-orange/10 filter blur-[120px] pointer-events-none"></div>
             
-            <div class="container mx-auto px-4 lg:px-12 max-w-7xl relative z-10 reveal-up">
+            <div class="container mx-auto px-4 lg:px-12 max-w-[1600px] relative z-10 reveal-up">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
                     
                     <div class="lg:col-span-5">

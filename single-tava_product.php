@@ -14,6 +14,14 @@ $img_fallback = 'https://placehold.co/900x900/fff8f6/f05a25?text=Updating...';
 $product_img = get_post_meta($post_id, '_product_img', true);
 $thumbnail_url = has_post_thumbnail($post_id) ? get_the_post_thumbnail_url($post_id, 'full') : (!empty($product_img) ? $product_img : $img_fallback);
 
+// Dynamic Meta for bulk import
+$gallery_raw = get_post_meta($post_id, '_product_gallery', true);
+$gallery_imgs = !empty($gallery_raw) ? array_map('trim', explode('|', $gallery_raw)) : [];
+$overview = get_post_meta($post_id, '_product_overview', true);
+$specs = get_post_meta($post_id, '_product_specs', true);
+$install_info = get_post_meta($post_id, '_product_install_info', true);
+$faq = get_post_meta($post_id, '_product_faq', true);
+
 // Phân loại
 $terms_cat = wp_get_post_terms($post_id, 'product_cat');
 $cat_name = !empty($terms_cat) ? $terms_cat[0]->name : 'Danh mục chung';
@@ -79,7 +87,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   background: var(--bg);
 }
 .sp-breadcrumb {
-  max-width: 1280px; margin: 0 auto;
+  max-width: 1600px; margin: 0 auto;
   padding: 16px 32px 32px;
   display: flex; align-items: center; gap: 8px;
   font-size: 12px; color: var(--muted);
@@ -93,7 +101,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
    PRODUCT LAYOUT
 ══════════════════════════════════ */
 .product-wrap {
-  max-width: 1280px; margin: 0 auto;
+  max-width: 1600px; margin: 0 auto;
   padding: 0 32px 80px;
   display: grid;
   grid-template-columns: 1fr 480px;
@@ -112,7 +120,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 }
 .gallery-item:last-child { margin-bottom: 0; }
 .gallery-item img {
-  width: 100%; height: 480px; object-fit: cover; object-position: center;
+  width: 100%; height: auto; object-fit: contain; object-position: center; max-height: 800px;
   display: block; filter: saturate(.86);
   transition: filter .4s, transform .55s cubic-bezier(.16,1,.3,1);
 }
@@ -149,7 +157,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   }
   .gallery-item { display: none; border-radius: 0; border: none; margin-bottom: 0; }
   .gallery-item.carousel-active { display: block; }
-  .gallery-item img { height: 300px; }
+  .gallery-item img { height: auto; max-height: 400px; }
   .carousel-btn, .carousel-dots { display: flex; }
 }
 
@@ -281,7 +289,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 /* ══════════════════════════════════
    DETAIL TABS
 ══════════════════════════════════ */
-.prod-detail { max-width: 1280px; margin: 0 auto; padding: 0 32px 80px; }
+.prod-detail { max-width: 1600px; margin: 0 auto; padding: 0 32px 80px; }
 .tabs-nav { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 40px; }
 .tab-btn { padding: 13px 24px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; margin-bottom: -2px; letter-spacing: 0.03em; transition: color .2s, border-color .2s; }
 .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
@@ -314,7 +322,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 /* ══════════════════════════════════
    RELATED PRODUCTS
 ══════════════════════════════════ */
-.related-products { max-width: 1280px; margin: 0 auto; padding: 0 32px 80px; }
+.related-products { max-width: 1600px; margin: 0 auto; padding: 0 32px 80px; }
 .rel-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
 .rel-eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); opacity: .8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .rel-eyebrow::before { content:''; display:inline-block; width:22px; height:1.5px; background:var(--orange); }
@@ -326,8 +334,8 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .prod-card-sp { background: var(--white); border-radius: 10px; overflow: hidden; border: 1px solid var(--border-lt); transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, border-color .25s; cursor: pointer; text-decoration: none; display: flex; flex-direction: column; }
 .prod-card-sp:hover { transform: translateY(-5px); box-shadow: 0 20px 56px -12px rgba(240,90,37,.13), 0 4px 18px rgba(17,24,39,.06); border-color: rgba(240,90,37,.2); }
-.prod-card-sp__thumb { position: relative; overflow: hidden; flex-shrink: 0; height: 200px; background: var(--bg); }
-.prod-card-sp__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: saturate(.8); transition: transform .65s cubic-bezier(.16,1,.3,1), filter .4s; }
+.prod-card-sp__thumb { position: relative; overflow: hidden; flex-shrink: 0; aspect-ratio: 1/1; background: var(--bg); }
+.prod-card-sp__thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; filter: saturate(.8); transition: transform .65s cubic-bezier(.16,1,.3,1), filter .4s; }
 .prod-card-sp:hover .prod-card-sp__thumb img { transform: scale(1.07); filter: saturate(1); }
 .prod-card-sp__cat { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,.78); backdrop-filter: blur(8px); color: var(--mid); font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; border: 1px solid rgba(255,255,255,.5); }
 .prod-card-sp__body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
@@ -387,22 +395,21 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         <!-- Main Product Image -->
         <div class="gallery-item carousel-active">
             <span class="gallery-item__badge">Chính hãng</span>
-            <span class="gallery-item__num">1 / 3</span>
+            <span class="gallery-item__num">1 / <?php echo count($gallery_imgs) + 1; ?></span>
             <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($title); ?>">
-            <div class="gallery-item__caption"><?php echo esc_html($title); ?> — <?php echo esc_html($spec_name); ?></div>
+            <div class="gallery-item__caption"><?php echo esc_html($title); ?></div>
         </div>
 
+        <?php 
+        $img_count = 2;
+        foreach ($gallery_imgs as $g_img) { 
+            if (empty($g_img)) continue;
+        ?>
         <div class="gallery-item">
-            <span class="gallery-item__num">2 / 3</span>
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85" alt="Lắp đặt thực tế">
-            <div class="gallery-item__caption">Hình ảnh lắp đặt thực tế tại dự án của TavaLLS</div>
+            <span class="gallery-item__num"><?php echo $img_count; ?> / <?php echo count($gallery_imgs) + 1; ?></span>
+            <img src="<?php echo esc_url($g_img); ?>" alt="Gallery Image <?php echo $img_count; ?>">
         </div>
-
-        <div class="gallery-item">
-            <span class="gallery-item__num">3 / 3</span>
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=85" alt="Chi tiết kỹ thuật">
-            <div class="gallery-item__caption">Hệ thống tủ điều khiển, kết nối liền mạch chất lượng cao</div>
-        </div>
+        <?php $img_count++; } ?>
 
         <!-- Prev / Next buttons -->
         <button class="carousel-btn carousel-btn--prev" id="prevBtn" aria-label="Ảnh trước">
@@ -417,8 +424,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         <!-- Dots -->
         <div class="carousel-dots" id="carouselDots">
         <button class="carousel-dot active"></button>
-        <button class="carousel-dot"></button>
-        <button class="carousel-dot"></button>
+        <?php foreach ($gallery_imgs as $g_img) { if (!empty($g_img)) { echo '<button class="carousel-dot"></button>'; } } ?>
         </div>
 
     </div>
@@ -435,51 +441,43 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         Thương hiệu: <span><?php echo esc_html($brand_name); ?></span>
         </div>
 
-        <!-- Rating -->
-        <div class="prod-rating">
-        <div class="stars">
-            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        </div>
-        <span class="prod-rating__count">5.0 / 5</span>
-        <span class="prod-rating__reviews">Xem đánh giá chung</span>
-        </div>
+
 
         <!-- Quick specs pills -->
         <div class="prod-specs-pills">
         <div class="spec-pill">
-            <span class="spec-pill__label">Phiên bản</span>
-            <span class="spec-pill__val"><?php echo esc_html($spec_name); ?></span>
+            <span class="spec-pill__label">Thương hiệu</span>
+            <span class="spec-pill__val"><?php echo esc_html($brand_name); ?></span>
         </div>
+        <?php if (!empty($model)): ?>
         <div class="spec-pill">
-            <span class="spec-pill__label">Thẻ</span>
-            <span class="spec-pill__val">Chính hãng</span>
+            <span class="spec-pill__label">Mã Model</span>
+            <span class="spec-pill__val"><?php echo esc_html($model); ?></span>
         </div>
-        <div class="spec-pill">
-            <span class="spec-pill__label">Bảo hành</span>
-            <span class="spec-pill__val">24 Tháng</span>
-        </div>
+        <?php endif; ?>
         </div>
 
         <div class="prod-div"></div>
 
         <!-- Description Snippet -->
         <p class="prod-desc">
-        <strong><?php echo esc_html($title); ?></strong> là sự lựa chọn tối ưu cho hệ thống chuyên nghiệp của bạn. Cung cấp bởi <strong>TavaLLS</strong> – Tổng thầu giải pháp hiển thị & âm thanh toàn quốc. Cam kết chất lượng cao cấp cùng hỗ trợ kỹ thuật trọn đời.
+        <?php echo esc_html(wp_trim_words($overview, 40, '...')); ?>
         </p>
+
+        <!-- Highlight -->
+        <div class="install-highlight" style="background: rgba(14, 165, 233, 0.05); border: 2px dashed rgba(14, 165, 233, 0.4); color: #0284c7; padding: 14px 20px; border-radius: 9px; text-align: center; font-weight: 700; font-size: 15px; margin-bottom: 22px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #0ea5e9;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            SẴN SÀNG THI CÔNG LẮP ĐẶT TOÀN QUỐC
+        </div>
 
         <!-- CTA Buttons -->
         <div class="prod-cta">
-        <a href="#quote-form" class="btn-primary-sp">
-            <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Thêm vào yêu cầu báo giá
-        </a>
-        <a href="tel:1900xxxx" class="btn-secondary-sp">
+        <?php 
+            $phone_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh') ?: '';
+        ?>
+        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone_cskh)); ?>" class="btn-primary-sp">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Liên hệ nhận báo giá
+            Liên hệ nhận báo giá ngay
         </a>
         </div>
 
@@ -490,29 +488,29 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         </div>
         <div>
             <div class="contact-strip__label">Tư vấn miễn phí 24/7</div>
-            <div class="contact-strip__number">09xx.xxx.xxx</div>
+            <div class="contact-strip__number"><?php echo esc_html($phone_cskh); ?></div>
         </div>
         </div>
 
         <!-- Commitment box -->
         <div class="commitment-box">
         <div class="commitment-box__head">
-            <span class="commitment-box__head-icon">🛡️</span>
-            <span class="commitment-box__head-title">Cam kết của TavaLLS</span>
+            <span class="commitment-box__head-title" style="margin-left:8px; font-size:12px;">Cam kết của TavaLLS</span>
         </div>
         <ul class="commitment-list">
             <li>
-            <div class="commit-icon">✅</div>
             <div>
-                <div class="commit-title">Hàng chính hãng 100%</div>
-                <div class="commit-desc">Sản phẩm có tem chống hàng giả, đầy đủ chứng chỉ hợp quy và bảo hành chính hãng.</div>
+                <div class="commit-title">• Hàng chính hãng 100%</div>
             </div>
             </li>
             <li>
-            <div class="commit-icon">🌍</div>
             <div>
-                <div class="commit-title">Nguồn gốc xuất xứ rõ ràng</div>
-                <div class="commit-desc">Sản phẩm có CO/CQ đầy đủ, minh bạch 100%.</div>
+                <div class="commit-title">• Nguồn gốc xuất xứ rõ ràng</div>
+            </div>
+            </li>
+            <li>
+            <div>
+                <div class="commit-title">• Giá cạnh tranh nhất thị trường</div>
             </div>
             </li>
         </ul>
@@ -537,64 +535,134 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
     <!-- ══ DETAIL TABS ══ -->
     <div class="prod-detail anim d3">
 
-    <div class="tabs-nav">
-        <button class="tab-btn active" onclick="switchTab(this,'tab-desc')">Mô tả chuyên sâu</button>
-        <button class="tab-btn" onclick="switchTab(this,'tab-specs')">Thông số kỹ thuật</button>
-        <button class="tab-btn" onclick="switchTab(this,'tab-install')">Thông tin dự án / Lắp đặt</button>
-    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 50px;">
+        <!-- Left: Main Tabs -->
+        <div style="flex: 1; min-width: 0;">
+            <div class="tabs-nav" style="flex-wrap: wrap;">
+                <button class="tab-btn active" onclick="switchTab(this,'tab-desc')">Mô tả chuyên sâu</button>
+                <?php if(!empty($specs)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-specs')">Thông số kỹ thuật</button><?php } ?>
+                <?php if(!empty($install_info)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-install')">Thông tin dự án / Lắp đặt</button><?php } ?>
+            </div>
 
-    <!-- Tab: Mô tả -->
-    <div class="tab-panel active" id="tab-desc">
-        <div class="desc-content">
-        <h3>Tổng quan sản phẩm <?php echo esc_html($title); ?></h3>
-        <p>Đây là giải pháp chuyên nghiệp, nổi bật nhờ thiết kế hiện đại và sự ổn định cao khi hoạt động liên tục. Sản phẩm mang lại hiệu suất xuất sắc, phù hợp cho nhiều mô hình vận hành từ quy mô nhỏ đến hệ thống lớn.</p>
-        
-        <h3>Tính năng đặc quyền</h3>
-        <ul>
-            <li>Khả năng hoạt động tối ưu kể cả trong điều kiện môi trường khắc nghiệt.</li>
-            <li>Hỗ trợ tương thích mở rộng với các thiết bị ngoại vi trong cấu trúc hệ thống AV/LED.</li>
-            <li>Trang bị vật liệu siêu bền, bảo đảm tuổi thọ sản phẩm được kéo dài.</li>
-            <li>Năng lượng tiêu hao được tối ưu hoá, giảm chi phí vận hành đến 30%.</li>
-        </ul>
-        
-        <?php 
-        // Hiển thị the_content thật nếu có nội dung
-        $content = apply_filters('the_content', get_the_content());
-        if(!empty($content)) {
-            echo '<div class="mt-8 pt-8 border-t border-gray-200">'.$content.'</div>';
-        }
-        ?>
+            <!-- Tab: Mô tả -->
+            <div class="tab-panel active" id="tab-desc">
+                <div class="desc-content">
+                <?php 
+                $content = apply_filters('the_content', get_the_content());
+                if(!empty($content)) {
+                    echo $content;
+                } else {
+                    echo '<p>Đang cập nhật nội dung chuyên sâu...</p>';
+                }
+                ?>
+                </div>
+            </div>
+
+            <!-- Tab: Thông số -->
+            <?php if(!empty($specs)) { ?>
+            <div class="tab-panel" id="tab-specs">
+                <div class="desc-content">
+                    <?php echo wp_kses_post($specs); ?>
+                </div>
+            </div>
+            <?php } ?>
+
+            <!-- Tab: Lắp đặt -->
+            <?php if(!empty($install_info)) { ?>
+            <div class="tab-panel" id="tab-install">
+                <div class="desc-content">
+                    <?php echo wp_kses_post($install_info); ?>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+
+        <!-- Right: Sidebar News Widget -->
+        <div style="width: 100%; max-width: 340px; flex-shrink: 0;">
+            <!-- DỰ ÁN NỔI BẬT -->
+            <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Dự án nổi bật</h3>
+            <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px;">
+                <?php
+                $duan_query = new WP_Query([
+                    'post_type' => 'post',
+                    'category_name' => 'du-an',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                ]);
+                if ($duan_query->have_posts()) {
+                    while ($duan_query->have_posts()) {
+                        $duan_query->the_post();
+                        $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
+                        ?>
+                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                            <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                            </div>
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
+                                <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                            </div>
+                        </a>
+                        <?php
+                    }
+                    wp_reset_postdata();
+                } else {
+                    echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật dự án...</p>';
+                }
+                ?>
+            </div>
+
+            <!-- TIN TỨC MỚI NHẤT -->
+            <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Tin tức mới nhất</h3>
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+                <?php
+                $tintuc_query = new WP_Query([
+                    'post_type' => 'post',
+                    'category_name' => 'tin-tuc',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                ]);
+                if ($tintuc_query->have_posts()) {
+                    while ($tintuc_query->have_posts()) {
+                        $tintuc_query->the_post();
+                        $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=News';
+                        ?>
+                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                            <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                            </div>
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
+                                <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                            </div>
+                        </a>
+                        <?php
+                    }
+                    wp_reset_postdata();
+                } else {
+                    echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật tin tức...</p>';
+                }
+                ?>
+            </div>
         </div>
     </div>
 
-    <!-- Tab: Thông số -->
-    <div class="tab-panel" id="tab-specs">
-        <div class="specs-section-title">Chi tiết kỹ thuật</div>
-        <table class="specs-table">
-        <tr><td>Phân loại chuyên môn</td><td><?php echo esc_html($subcat_name); ?></td></tr>
-        <tr><td>Mã Model</td><td><?php echo esc_html($model); ?></td></tr>
-        <tr><td>Thương hiệu (Brand)</td><td><?php echo esc_html($brand_name); ?></td></tr>
-        <tr><td>Chuẩn chất lượng</td><td>Bản tiêu chuẩn doanh nghiệp</td></tr>
-        <tr><td>Bảo hành định kỳ</td><td>24 tháng phần cứng & phần mềm</td></tr>
-        </table>
     </div>
 
-    <!-- Tab: Lắp đặt -->
-    <div class="tab-panel" id="tab-install">
-        <div class="desc-content">
-        <h3>Tiêu chuẩn thi công</h3>
-        <p>TavaLLS cam kết đem lại chất lượng công trình 100% tuân thủ mọi chuẩn mực quy định. Việc khảo sát bề mặt, chuẩn bị hạ tầng chịu lực và đường diện sẽ được giám sát chặt chẽ bởi kỹ sư cấp cao.</p>
-        <h3>Hỗ trợ kỹ thuật 24/7</h3>
-        <ul>
-            <li>Kỹ thuật viên có mặt xử lý trong vòng 4H tại nội thành.</li>
-            <li>Hỗ trợ tư vấn, căn chỉnh remote liên tục 24/7 bất kể ngày Lễ.</li>
-        </ul>
+    <!-- ══ FAQ SECTION ══ -->
+    <?php if(!empty($faq)) { ?>
+    <div class="prod-faq prod-detail anim d4">
+        <div style="margin-bottom: 24px;">
+            <h2 style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: var(--ink); margin: 0; letter-spacing: -0.01em;">Câu Hỏi Thường Gặp (FAQ)</h2>
+            <div style="width: 50px; height: 3px; background: var(--orange); margin-top: 10px; border-radius: 3px;"></div>
+        </div>
+        <div class="desc-content" style="background: var(--white); border: 1px solid var(--border-lt); padding: 32px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.025);">
+            <?php echo wp_kses_post($faq); ?>
         </div>
     </div>
-
-
-
-    </div>
+    <?php } ?>
 
     <!-- ══ RELATED PRODUCTS ══ -->
     <div class="related-products anim d4">

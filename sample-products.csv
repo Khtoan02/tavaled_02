@@ -1,0 +1,46 @@
+nganh_hang,danh_muc_con,ten_san_pham,anh_dai_dien,thu_vien_anh,ma_model,thuong_hieu,mo_ta_ngan,mo_ta_chuyen_sau,thong_so_ky_thuat,thong_tin_lap_dat,faq
+"Màn hình LED","Màn hình LED ngoài trời|Màn hình sự kiện","Màn Hình LED P3.0 Outdoor Pro","https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80","https://images.unsplash.com/photo-1517404215738-15263e9f9178?w=900&q=80|https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80|https://images.unsplash.com/photo-1533174000243-c7825b6a71ce?w=900&q=80","TVC-P30-OUT","TavaLLS","Màn hình LED P3.0 Outdoor phiên bản Pro cao cấp mang lại hình ảnh sắc nét, độ sáng vượt trội >6000 nits, chuẩn kháng nước IP65 bảo vệ tuyệt đối khi hoạt động ngoài trời.","<h2>Định nghĩa lại tiêu chuẩn hiển thị ngoài trời</h2>
+<p>Màn hình LED P3.0 biến không gian sự kiện ngoài trời của bạn thành một bữa tiệc thị giác sống động. Thiết kế module khép kín đạt tiêu chuẩn chuẩn công nghiệp IP65 giúp ngăn chặn hoàn toàn bụi bẩn và tia nước từ mọi hướng.</p>
+<h3>1. Công nghệ làm mát thông minh</h3>
+<p>Sản phẩm tích hợp bộ tản nhiệt nhôm đúc nguyên khối, tự động điều chỉnh luồng khí lưu thông bên trong cabinet. Điều này giúp giảm 30% lượng điện năng tiêu thụ và không phát ra tiếng ồn của quạt làm mát truyền thống.</p>
+<h3>2. Tần số cực cao - Hình ảnh mượt mà</h3>
+<p>Với tần số quét (refresh rate) lên tới 3840Hz, màn hình LED P3.0 hoàn toàn loại bỏ hiện tượng nhấp nháy khi lọt vào ống kính camera chuyên dụng. Phù hợp cho việc phát sóng trực tiếp (livestream) tại các sự kiện quy mô lớn.</p>
+<h3>3. Độ sáng tự động thích ứng</h3>
+<p>Cảm biến ánh sáng đa vùng cho phép hiển thị cực rõ nét dưới ánh nắng trực tiếp ban trưa (> 6000 cd/m2) và tự động làm dịu mắt vào ban đêm, mang lại trải nghiệm tối ưu nhất bảo vệ cho người xem.</p>","<table class='specs-table'>
+  <tr><td>Khoảng cách điểm ảnh (Pixel Pitch)</td><td>3.0 mm</td></tr>
+  <tr><td>Cấu hình Pixel</td><td>SMD 1921 (1R1G1B)</td></tr>
+  <tr><td>Độ phân giải Module</td><td>104 x 104 pixels</td></tr>
+  <tr><td>Kích thước Module</td><td>320mm x 320mm</td></tr>
+  <tr><td>Kích thước Cabinet tiêu chuẩn</td><td>960mm x 960mm</td></tr>
+  <tr><td>Độ sáng (Brightness)</td><td>> 6000 nits (Tùy chỉnh tự động)</td></tr>
+  <tr><td>Tần số quét (Refresh Rate)</td><td>≥ 3840 Hz</td></tr>
+  <tr><td>Góc nhìn tối ưu (Ngang/Dọc)</td><td>160° / 140°</td></tr>
+  <tr><td>Tuổi thọ bóng LED</td><td>100,000 giờ</td></tr>
+  <tr><td>Công suất (Trung bình / Cực đại)</td><td>250W / 800W / m2</td></tr>
+  <tr><td>Chỉ số kháng bụi & nước</td><td>Mặt trước IP65 / Mặt sau IP54</td></tr>
+  <tr><td>Khoảng cách nhìn lý tưởng</td><td>Từ 3 mét đến 100 mét</td></tr>
+</table>","<h3>Quy Trình Thi Công & Lắp Đặt Tiêu Chuẩn Quốc Tế</h3>
+<p>Việc thi công màn hình LED ngoài trời đòi hỏi sự chính xác và tuân thủ tuyệt đối các quy chuẩn an toàn tải trọng. Đội ngũ chuyên gia từ TavaLLS cam kết thực hiện tuần tự qua các bước giám sát:</p>
+<h4>Bước 1: Khảo sát địa hình và thiết kế chịu lực</h4>
+<p>Đội ngũ kỹ sư sẽ đến trực tiếp công trình, sử dụng thiết bị chuyên biệt để phân tích nền móng, đánh giá sức cản gió tĩnh và lên bản vẽ khung thép gia cường chữ I (hoặc hộp kẽm nhúng nóng) để đảm bảo độ bền kết cấu trên 20 năm.</p>
+<h4>Bước 2: Lắp đặt hạ tầng và tủ điện thông minh</h4>
+<p>Hệ thống khung thép hàn đa lớp, phủ sơn Epoxy chống ăn mòn 3 lớp. Đường cáp tín hiệu quang và điện 3 pha được thiết kế giấu kín, đi trong hệ thống ống HDPE chống cháy nổ nhằm bảo vệ an toàn 100%.</p>
+<h4>Bước 3: Gắn Cabinet & Căn chỉnh màn hình</h4>
+<p>Các cabinet hợp kim nhôm đúc (Die-cast Aluminum) có độ chính xác cơ khí cực cao sẽ được cố định vào khung chữ V. Kỹ sư dùng máy cân bằng Laser góc chết để module khít hoàn toàn (seamless), cho ra hình ảnh phẳng tuyệt đối.</p>
+<h4>Bước 4: Thiết lập máy chủ & Bàn giao</h4>
+<p>Tiến hành thiết lập đồng bộ tín hiệu bằng Card Novastar cao cấp, cân bằng dải màu (Color Calibration) giúp cả màn hình sáng đều tại mọi góc độ. Cuối cùng, hướng dẫn kỹ thuật viên của bạn cách vận hành chi tiết nhất.</p>","<div class='mb-6'>
+  <h4>1. Màn hình P3.0 ngoài trời có thực sự chống nước mưa hoàn toàn không?</h4>
+  <p>Có, sản phẩm thiết kế theo tiêu chuẩn IP65. Các bảng mạch được phủ lớp keo Conformal Coating chống oxy hóa, kết hợp với gioăng silicon cao cấp tại mọi khớp ráp cabinet. Nó chịu được mưa bão nhiệt đới và không tích tụ hơi nước bên trong.</p>
+</div>
+<div class='mb-6'>
+  <h4>2. Nên đứng cách màn hình này bao xa là đẹp nhất?</h4>
+  <p>Khoảng cách xem tối ưu (tầm nhìn sắc nét nhất) là 3 mét trở ra. Ở khoảng cách này, mắt người hoàn toàn không còn nhìn thấy các hạt rỗ, tạo ra hình ảnh mịn màng y hệt một chiếc Tivi khổng lồ.</p>
+</div>
+<div class='mb-6'>
+  <h4>3. Mất bao lâu để hoàn thiện một màn hình rộng 20 mét vuông?</h4>
+  <p>Nếu điều kiện mặt bằng thuận lợi, xưởng gia công phần khung sắt sẽ mất tầm 2 ngày. Giai đoạn dựng màn hình tại công trường thường chỉ diễn ra thần tốc từ 24 đến 48 tiếng để không làm phát sinh chi phí dừng hoạt động kinh doanh (Downtime) của bạn.</p>
+</div>
+<div class='mb-6'>
+  <h4>4. TavaLLS có bảo hành cháy nổ thiết bị hay lỗi bóng LED không?</h4>
+  <p>TavaLLS cam kết đổi mới module nếu tỉ lệ điểm chết (dead pixel) quá 0.01% trong năm đầu tiên. Đồng thời, toàn bộ phần cứng cốt lõi đều áp dụng chính sách bảo hành 24 tháng. Bạn cũng nhận được gói Online Support trọn đời với các lỗi do cấu hình phần mềm.</p>
+</div>"

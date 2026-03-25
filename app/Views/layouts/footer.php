@@ -3,7 +3,7 @@
         <!-- Hiệu ứng lưới tech chìm phía sau nền (Grid Mesh) -->
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#f05a25 1px, transparent 1px), linear-gradient(90deg, #f05a25 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
 
-        <div class="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+        <div class="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10">
             
             <!-- 1. BRAND HEADER -->
             <div class="border-b border-slate-700 pb-8 mb-10 flex flex-col md:flex-row md:items-end gap-4 justify-between">

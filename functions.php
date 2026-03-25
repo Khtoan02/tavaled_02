@@ -112,6 +112,12 @@ if (is_admin()) {
 
     $menu_settings_admin = new \App\Controllers\Admin\MenuSettingsController();
     $menu_settings_admin->register();
+
+    $menu_mega_img_admin = new \App\Controllers\Admin\MegaMenuManagerController();
+    $menu_mega_img_admin->register();
+
+    $product_import_admin = new \App\Controllers\Admin\ProductImportController();
+    $product_import_admin->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')
@@ -134,9 +140,9 @@ add_action('wp_head', 'tavaled_add_favicon');
  * Add Floating Contacts to Footer
  */
 function tavaled_floating_contacts() {
-    $phone_kd = \App\Helpers\ThemeHelper::getOption('phone_kd');
-    $phone_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh');
-    $zalo = \App\Helpers\ThemeHelper::getOption('zalo');
+    $phone_kd = \App\Helpers\ThemeHelper::getOption('phone_kd', '0936 543 389');
+    $phone_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '0936 543 389');
+    $zalo = \App\Helpers\ThemeHelper::getOption('zalo', '0936543389');
 
     if (!$phone_kd && !$phone_cskh && !$zalo) return;
     ?>
@@ -169,22 +175,3 @@ function tavaled_floating_contacts() {
 }
 add_action('wp_footer', 'tavaled_floating_contacts', 100);
 
-/**
- * Add Pancake Chat Plugin
- */
-function tavaled_pancake_chat() {
-    ?>
-    <!-- Pancake Chat Plugin -->
-    <script src="https://chat-plugin.pancake.vn/main/auto?page_id=web_TavaLLS"></script>
-    <style>
-        /* Ghi đè CSS để ép plugin chat hiển thị bên trái của màn hình nếu có thể */
-        #pnc-chat-plugin-root,
-        .pnc-chat-plugin-container,
-        iframe[src*="chat-plugin.pancake.vn"] {
-            left: 20px !important;
-            right: auto !important;
-        }
-    </style>
-    <?php
-}
-add_action('wp_footer', 'tavaled_pancake_chat', 110);

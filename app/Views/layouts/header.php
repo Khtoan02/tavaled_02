@@ -10,25 +10,10 @@
 <body <?php body_class('text-brand-dark font-sans text-[15px] leading-relaxed'); ?>>
 <?php wp_body_open(); 
 
-// Lấy danh sách menu items cho Giải Pháp Trọn Gói và Về Chúng Tôi
-$locations = get_nav_menu_locations();
-
-$sol_items = [];
-$about_items = [];
-
-if (isset($locations['mega_solutions'])) {
-    $sol_menu = wp_get_nav_menu_object($locations['mega_solutions']);
-    if ($sol_menu) {
-        $sol_items = wp_get_nav_menu_items($sol_menu->term_id);
-    }
-}
-
-if (isset($locations['mega_about'])) {
-    $about_menu = wp_get_nav_menu_object($locations['mega_about']);
-    if ($about_menu) {
-        $about_items = wp_get_nav_menu_items($about_menu->term_id);
-    }
-}
+// Lấy danh sách Giải Pháp và Về Chúng Tôi từ Option động Fix cứng
+$mega_custom_data = get_option('tavaled_hardcoded_mega_menu');
+$sol_items = $mega_custom_data['solutions'] ?? [];
+$about_items = $mega_custom_data['about'] ?? [];
 ?>
 
 <!-- ĐÓNG ĐINH LAYOUT: Wrapper đảm bảo 100% không bị tràn viền (Horizontal Scroll) trên MỌI điện thoại -->
@@ -42,7 +27,7 @@ if (isset($locations['mega_about'])) {
 
     <!-- TOP BAR -->
     <div class="bg-[#1d2857] text-gray-200 text-sm py-2 hidden lg:block">
-        <div class="w-full max-w-[1240px] xl:max-w-[1600px] mx-auto px-4 lg:px-[5%] flex flex-wrap justify-center md:justify-between items-center gap-y-2">
+        <div class="w-full max-w-[1600px] mx-auto px-4 lg:px-8 flex flex-wrap justify-center md:justify-between items-center gap-y-2">
             <div class="flex items-center gap-4 md:gap-6">
                 <?php 
                 $phone = \App\Helpers\ThemeHelper::getOption('tavaled_phone') ?: '0936 543 389';
@@ -67,12 +52,12 @@ if (isset($locations['mega_about'])) {
 
     <!-- MAIN HEADER -->
     <header id="mainHeader" class="w-full bg-white border-b border-gray-100 shadow-sm">
-        <div class="w-full max-w-[1600px] mx-auto px-4 lg:px-[5%] relative">
+        <div class="w-full max-w-[1600px] mx-auto px-4 lg:px-8 relative">
             <div class="flex justify-between items-center h-24 gap-4 xl:gap-8">
                 
                 <!-- LOGO -->
-                <div class="flex items-center shrink-0">
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2 group">
+                <div class="flex-1 flex items-center justify-start">
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center gap-2 group shrink-0">
                         <?php 
                             $logo = \App\Helpers\ThemeHelper::getOption('logo');
                             if ($logo): 
@@ -98,38 +83,15 @@ if (isset($locations['mega_about'])) {
                         </a>
 
                         <!-- Mega Menu Dropdown -->
-                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1240px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1600px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
                             <div class="p-8 xl:p-10 flex gap-12 bg-white relative">
                                 
                                 <!-- Left side: Menu Links -->
                                 <div class="w-2/3">
                                     <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">Khám phá tổ chức</h3>
                                     <ul class="grid grid-cols-3 gap-4">
-                                        <?php if (!empty($about_items)): 
-                                            foreach($about_items as $item): 
-                                                if($item->menu_item_parent != 0) continue;
-                                                $icon_class = get_post_meta($item->ID, '_menu_item_icon_class', true) ?: 'ph-fill ph-aperture';
-                                                $subtitle = get_post_meta($item->ID, '_menu_item_subtitle', true);
-                                                // If the icon is an SVG instead of phosphors class, we could check for <svg
-                                        ?>
                                         <li>
-                                            <a href="<?php echo esc_url($item->url); ?>" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center h-full">
-                                                <div class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
-                                                    <?php if(strpos($icon_class, '<svg') !== false): ?>
-                                                        <?php echo $icon_class; ?>
-                                                    <?php else: ?>
-                                                        <i class="<?php echo esc_attr($icon_class); ?> text-2xl"></i>
-                                                    <?php endif; ?>
-                                                </div>
-                                                <span class="font-semibold text-gray-700 group-hover/item:text-orange-600"><?php echo esc_html($item->title); ?></span>
-                                                <?php if($subtitle): ?><span class="text-[11px] text-gray-400 mt-1"><?php echo esc_html($subtitle); ?></span><?php endif; ?>
-                                            </a>
-                                        </li>
-                                        <?php endforeach; 
-                                        else: ?>
-                                        <!-- Fallback nếu chưa cấu hình menu admin -->
-                                        <li>
-                                            <a href="/ve-chung-toi" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
+                                            <a href="/ve-chung-toi" class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center h-full">
                                                 <div class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
                                                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                 </div>
@@ -176,7 +138,6 @@ if (isset($locations['mega_about'])) {
                                                 <span class="font-semibold text-gray-700 group-hover/item:text-orange-600">Tin tức</span>
                                             </a>
                                         </li>
-                                        <?php endif; ?>
                                     </ul>
                                 </div>
 
@@ -252,7 +213,7 @@ if (isset($locations['mega_about'])) {
                         </a>
                         
                         <!-- Mega Menu Dropdown -->
-                        <div class="mega-menu absolute top-[95px] left-0 right-0 mx-auto w-full max-w-[1240px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                        <div class="mega-menu absolute top-[95px] left-0 right-0 mx-auto w-full max-w-[1600px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
                             <div class="flex h-full">
                                 
                                 <!-- Danh mục -->
@@ -495,7 +456,7 @@ if (isset($locations['mega_about'])) {
                         </a>
 
                         <!-- Mega Menu Dropdown -->
-                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1240px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
+                        <div class="mega-menu absolute left-0 right-0 mx-auto w-full max-w-[1600px] top-[95px] bg-white border border-gray-100 shadow-[0_30px_60px_-15px_rgba(29,40,87,0.25)] rounded-b-3xl overflow-hidden cursor-default z-50 transform opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300">
                             <div class="p-8 xl:p-10 flex flex-col w-full bg-white relative">
                                 
                                 <!-- Tiêu đề & Nút Xem tất cả -->
@@ -514,97 +475,29 @@ if (isset($locations['mega_about'])) {
                                 <div class="sol-grid">
                                     <?php if(!empty($sol_items)):
                                         foreach($sol_items as $item):
-                                            if($item->menu_item_parent != 0) continue;
-                                            $image = get_post_meta($item->ID, '_menu_item_image_url', true);
-                                            if (empty($image)) $image = 'https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop';
-                                            $is_hot = get_post_meta($item->ID, '_menu_item_is_hot', true);
+                                            $image = $item['image'] ?? 'https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop';
+                                            $slug = $item['slug'] ?? '#';
+                                            $title = $item['title'] ?? '';
+                                            $is_hot = isset($item['is_hot']) && $item['is_hot'] == '1';
                                     ?>
-                                    <a href="<?php echo esc_url($item->url); ?>" class="sol-card">
+                                    <a href="<?php echo esc_url($slug); ?>" class="sol-card">
                                         <div class="sol-card__img-wrap">
                                             <?php if($is_hot): ?>
                                                 <span class="sol-card__hot">HOT</span>
                                             <?php endif; ?>
                                             <img src="<?php echo esc_url($image); ?>"
                                                  onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';"
-                                                 alt="<?php echo esc_attr($item->title); ?>"
+                                                 alt="<?php echo esc_attr($title); ?>"
                                                  class="sol-card__img">
                                             <div class="sol-card__overlay"></div>
                                             <div class="sol-card__body">
-                                                <h4 class="sol-card__title"><?php echo esc_html($item->title); ?></h4>
+                                                <h4 class="sol-card__title"><?php echo esc_html($title); ?></h4>
                                                 <div class="sol-card__line"></div>
                                             </div>
                                         </div>
                                     </a>
                                     <?php endforeach;
-                                    else: ?>
-                                    <!-- Fallback 1 -->
-                                    <a href="/giao-duc" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Giáo Dục & Tương Tác" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title">Giáo Dục & Tương Tác</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Fallback 2 -->
-                                    <a href="/hoi-hop-doanh-nghiep" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Hội Họp" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title">Hội Họp Doanh Nghiệp</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Fallback 3 -->
-                                    <a href="/su-kien-san-khau" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Sự Kiện" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title">Sự Kiện & Sân Khấu</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Fallback 4 -->
-                                    <a href="/quang-cao-thuong-hieu" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Quảng Cáo" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title">Quảng Cáo Thương Hiệu</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Fallback 5 -->
-                                    <a href="/fnb-giai-tri" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="F&B" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title">F&B & Giải Trí Đêm</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Fallback 6 – HOT -->
-                                    <a href="/giai-tri-tai-nha" class="sol-card">
-                                        <div class="sol-card__img-wrap">
-                                            <span class="sol-card__hot">HOT</span>
-                                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';" alt="Giải Trí Tại Gia" class="sol-card__img">
-                                            <div class="sol-card__overlay"></div>
-                                            <div class="sol-card__body">
-                                                <h4 class="sol-card__title" style="color:#f05a25;">Giải Trí Tại Gia</h4>
-                                                <div class="sol-card__line"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <?php endif; ?>
+                                    endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -621,7 +514,7 @@ if (isset($locations['mega_about'])) {
                 </nav>
 
                 <!-- RIGHT ICONS -->
-                <div class="flex items-center gap-2 md:gap-4 shrink-0 justify-end">
+                <div class="flex-1 flex items-center gap-2 md:gap-4 justify-end">
                     
                     <!-- HOTLINE BLOCK -->
                     <?php

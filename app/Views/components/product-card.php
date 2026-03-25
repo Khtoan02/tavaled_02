@@ -71,7 +71,7 @@ if (empty($meta_text)) $meta_text = $cat_name ?: 'Sản phẩm';
         position: relative;
         overflow: hidden;
         background: #f5f7ff;
-        aspect-ratio: 4/3;
+        aspect-ratio: 1/1;
         flex-shrink: 0;
     ">
         <img src="<?php echo esc_url($thumbnail_url); ?>"

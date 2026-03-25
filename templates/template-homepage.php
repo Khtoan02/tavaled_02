@@ -52,7 +52,7 @@ get_header(); ?>
 
         <!-- ================= SECTION 3: SẢN PHẨM ================= -->
         <section id="products" class="py-24 bg-[#f8fafc]">
-            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+            <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
                 <div class="main-tava-heading reveal-up">
                     <div class="main-tava-heading__eyebrow">Catalogue Toàn Diện</div>
                     <h3 class="main-tava-heading__title">Thiết Bị Cốt Lõi</h3>
@@ -60,7 +60,7 @@ get_header(); ?>
                 </div>
 
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
-            <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1400px] pt-8 pb-24 scroll-mt-24">
+            <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1600px] pt-8 pb-24 scroll-mt-24">
                 <!-- Sub-section header: LED -->
                 <div class="tava-heading">
                     <div class="tava-heading__left">
@@ -101,7 +101,7 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÂM THANH -->
-            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+            <div id="product-audio" class="container mx-auto px-6 lg:px-12 max-w-[1600px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Âm Thanh -->
                 <div class="tava-heading">
                     <div class="tava-heading__left">
@@ -142,7 +142,7 @@ get_header(); ?>
             </div>
 
             <!-- SECTION: ÁNH SÁNG -->
-            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1400px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+            <div id="product-light" class="container mx-auto px-6 lg:px-12 max-w-[1600px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Ánh Sáng -->
                 <div class="tava-heading">
                     <div class="tava-heading__left">
@@ -188,7 +188,7 @@ get_header(); ?>
 
         <!-- ================= SECTION 4: THƯ VIỆN DỰ ÁN (FULL WIDTH - ĐỒ SỘ NHẤT) ================= -->
         <section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
-            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+            <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
                 <div class="main-tava-heading main-tava-heading--light">
                     <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
                     <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLLS</em></h3>
@@ -255,7 +255,7 @@ get_header(); ?>
         <!-- ================= SECTION 5: BLOG (EDITORIAL STYLE) ================= -->
         <section id="editorial" class="py-32 bg-[#1c2857] border-t border-white/5">
             
-            <div class="container mx-auto px-6 lg:px-16 max-w-[1400px]">
+            <div class="container mx-auto px-6 lg:px-16 max-w-[1600px]">
 
                 <?php get_template_part('template-parts/blog-sections'); ?>
 
@@ -267,7 +267,7 @@ get_header(); ?>
             <!-- Glow background -->
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 filter blur-[120px] rounded-full pointer-events-none"></div>
             
-            <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] relative z-10">
+            <div class="container mx-auto px-6 lg:px-12 max-w-[1600px] relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                     
                     <!-- Left Column: Sticky Intro -->
