@@ -39,7 +39,7 @@ class ProductSetupController {
             'hierarchical'       => false,
             'menu_position'      => 5,
             'menu_icon'          => 'dashicons-cart',
-            'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+            'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'],
         ];
 
         register_post_type('tava_product', $args);

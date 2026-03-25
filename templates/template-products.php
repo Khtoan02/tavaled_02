@@ -557,6 +557,20 @@ get_header(); ?>
   .page-header__cat-switch{flex-wrap:wrap; gap:8px;}
   .products-wrapper { max-width: 100vw; overflow-x: hidden; }
 }
+/* ══════════════════
+   SEO CONTENT TYPOGRAPHY
+══════════════════ */
+.desc-content h2 { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: var(--ink); margin: 36px 0 16px; position: relative; padding-left: 18px; letter-spacing: -0.01em; }
+.desc-content h2::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; background: var(--orange); border-radius: 4px; }
+.desc-content h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; color: var(--ink); margin: 28px 0 12px; position: relative; padding-left: 14px; }
+.desc-content h3::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--orange); border-radius: 3px; opacity: 0.8; }
+.desc-content h4 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 24px 0 10px; }
+.desc-content h5 { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); margin: 20px 0 8px; }
+.desc-content p { font-size: 14.5px; color: var(--mid); line-height: 1.8; margin-bottom: 18px; }
+.desc-content ul { list-style: none; margin-bottom: 18px; padding:0;}
+.desc-content ul li { padding: 8px 0 8px 24px; position: relative; font-size: 14px; color: var(--mid); line-height: 1.65; border-bottom: 1px solid var(--border-lt); }
+.desc-content ul li:last-child { border-bottom: none; }
+.desc-content ul li::before { content: ''; position: absolute; left: 0; top: 16px; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); opacity: .65; }
 </style>
 
 <div class="products-wrapper">
@@ -667,12 +681,164 @@ get_header(); ?>
   </div>
 </div>
 
+<!-- ================= DYNAMIC SEO SECTION ================= -->
+<section id="category-seo" class="py-20 bg-white border-t border-gray-100">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
+        <div style="display: flex; flex-wrap: wrap; gap: 50px;">
+            <!-- Left: SEO Article -->
+            <div style="flex: 1; min-width: 0;">
+                <h2 id="seo-title" style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--ink); margin: 0 0 24px; line-height: 1.2; letter-spacing: -0.02em;"></h2>
+                
+                <div class="prod-desc-wrapper" style="position: relative;">
+                    <div id="seo-content-wrapper" style="max-height: 480px; overflow: hidden; position: relative; transition: max-height 0.4s ease;">
+                        <div id="seo-content" class="desc-content text-gray-600 pr-4 lg:pr-10"></div>
+                        <div class="prod-desc-gradient" style="position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); pointer-events: none; transition: opacity 0.3s ease;"></div>
+                    </div>
+                    
+                    <button class="prod-desc-btn" onclick="toggleSeoDesc(this)" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin: 24px 0 0; background: var(--white); border: 1px solid var(--border-lt); border-radius: 6px; color: var(--ink); font-weight: 600; font-size: 13px; cursor: pointer; letter-spacing: 0.02em; padding: 10px 24px; transition: all 0.2s; box-shadow: 0 2px 8px rgba(17,24,39,0.02);" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)';" onmouseout="this.style.borderColor='var(--border-lt)';this.style.color='var(--ink)';">Đọc toàn bộ nội dung <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+                </div>
+            </div>
+
+            <!-- Right: Widget Sidebar -->
+            <div style="width: 100%; max-width: 340px; flex-shrink: 0; padding-left: 30px; border-left: 1px solid var(--border-lt);">
+                <!-- DỰ ÁN NỔI BẬT -->
+                <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Dự án nổi bật</h3>
+                <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px;">
+                    <?php
+                    $duan_query = new WP_Query([
+                        'post_type' => 'post',
+                        'category_name' => 'du-an',
+                        'posts_per_page' => 4,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ]);
+                    if ($duan_query->have_posts()) {
+                        while ($duan_query->have_posts()) {
+                            $duan_query->the_post();
+                            $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
+                            ?>
+                            <a href="<?php echo get_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                                <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                                    <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
+                                    <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                </div>
+                            </a>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                    }
+                    ?>
+                </div>
+
+                <!-- TIN TỨC & KIẾN THỨC -->
+                <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Tin tức & Kiến thức</h3>
+                <div style="display: flex; flex-direction: column; gap: 18px;">
+                    <?php
+                    $du_an_cat_id = get_cat_ID('du-an');
+                    $tin_query = new WP_Query([
+                        'post_type' => 'post',
+                        'category__not_in' => $du_an_cat_id ? [$du_an_cat_id] : [],
+                        'posts_per_page' => 4,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ]);
+                    if ($tin_query->have_posts()) {
+                        while ($tin_query->have_posts()) {
+                            $tin_query->the_post();
+                            $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Press';
+                            ?>
+                            <a href="<?php echo get_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                                <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                                    <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
+                                    <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                </div>
+                            </a>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SECTION: THƯ VIỆN DỰ ÁN ================= -->
+<section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
+        <div class="main-tava-heading main-tava-heading--light">
+            <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
+            <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLLS</em></h3>
+            <p class="main-tava-heading__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi định nghĩa lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
+        </div>
+    </div>
+
+    <div class="w-full relative gallery-wrap bg-[#1c2857]" id="homeGalleryWrap">
+        <div class="gallery-grid reveal-up delay-1" id="homeGalleryGrid">
+            <?php
+            $project_ids_str = get_option('tavaled_home_projects');
+            $project_ids = !empty($project_ids_str) ? explode(',', $project_ids_str) : [];
+            
+            if (!empty($project_ids)) {
+                foreach ($project_ids as $id) {
+                    $img_src = wp_get_attachment_image_url($id, 'full');
+                    if (!$img_src) continue;
+            ?>
+            <div class="g-item">
+                <img src="<?php echo esc_url($img_src); ?>" alt="" loading="lazy">
+            </div>
+            <?php 
+                }
+            } else {
+            ?>
+                <div class="g-item"><img src="https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?w=1000&q=80" alt="EDM"></div>
+                <div class="g-item"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Club"></div>
+                <div class="g-item"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&q=80" alt="Laser"></div>
+                <div class="g-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&q=80" alt="Concert"></div>
+                <div class="g-item"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Stage"></div>
+            <?php } ?>
+        </div>
+        <div class="gallery-overlay" id="homeGalleryOverlay">
+            <button class="btn-outline gallery-overlay-btn interactive" id="btnShowMoreGallery">
+                Chiêm ngưỡng trọn vẹn các dự án <i class="ph-bold ph-caret-down"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SECTION: CTA ================= -->
+<section class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Background" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.2] saturate-50">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]"></div>
+    
+    <div class="container mx-auto px-4 relative z-10 text-center reveal-up">
+        <h2 class="font-serif font-black text-5xl md:text-7xl text-white mb-6 tracking-tight">
+            Bắt đầu dự án của bạn<br><em class="text-brand-orange italic font-light">— ngay hôm nay</em>
+        </h2>
+        <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Liên hệ với chuyên gia của TavaLLS để nhận bản vẽ giải pháp 3D và báo giá chi tiết hoàn toàn miễn phí.</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:0936 543 389" class="btn-primary interactive">Gọi Hotline 0936 543 389</a>
+            <a href="mailto:tuyen.tavaco@gmail.com" class="btn-outline interactive">Liên hệ tư vấn</a>
+        </div>
+    </div>
+</section>
+
 <script>
 <?php
 $cat_definitions = [
   'led' => [
     'db_name' => 'Màn hình LED',
     'title' => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
+    'seo_title' => 'Giải pháp Màn hình LED Chuyên nghiệp',
+    'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
     'pills' => ['Tất cả','LED trong nhà','LED ngoài trời','Sân khấu','Trong suốt'],
     'specTitle' => 'Pixel Pitch',
     'specs' => [
@@ -685,6 +851,8 @@ $cat_definitions = [
   'am-thanh' => [
     'db_name' => 'Âm thanh',
     'title' => 'Âm <em>Thanh</em>', 'eyebrow' => 'Audio Equipment',
+    'seo_title' => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
+    'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
     'pills' => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
     'specTitle' => 'Công suất',
     'specs' => [
@@ -694,6 +862,8 @@ $cat_definitions = [
   'anh-sang' => [
     'db_name' => 'Ánh sáng',
     'title' => 'Ánh <em>Sáng</em>', 'eyebrow' => 'Lighting Equipment',
+    'seo_title' => 'Hệ thống Ánh sáng Nghệ thuật',
+    'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
     'pills' => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],
     'specTitle' => 'Công suất đèn',
     'specs' => [
@@ -714,6 +884,7 @@ foreach ($cat_definitions as $cat_slug => $def) {
     $args = [
         'post_type' => 'tava_product',
         'posts_per_page' => -1,
+        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
         'tax_query' => [
             [
                 'taxonomy' => 'product_cat',
@@ -796,6 +967,10 @@ function renderAll(catKey) {
   document.getElementById('header-eyebrow').textContent = d.eyebrow;
   document.getElementById('header-title').innerHTML = d.title;
   document.getElementById('header-count').textContent = `Hiển thị ${d.count} sản phẩm`;
+  
+  // Inject SEO Content
+  document.getElementById('seo-title').innerHTML = d.seo_title || '';
+  document.getElementById('seo-content').innerHTML = d.seo_content || '';
 
   const bg = document.getElementById('brand-grid');
   bg.innerHTML = d.brands.map(b =>
@@ -1140,6 +1315,22 @@ function closeDrawer() {
   document.getElementById('filterDrawer').classList.remove('open');
   document.getElementById('drawerOverlay').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function toggleSeoDesc(btn) {
+    const content = document.getElementById('seo-content-wrapper');
+    const gradient = content.querySelector('.prod-desc-gradient');
+    const isExpanded = content.style.maxHeight === '8000px';
+    
+    if (isExpanded) {
+        content.style.maxHeight = '480px';
+        if(gradient) gradient.style.opacity = '1';
+        btn.innerHTML = 'Đọc toàn bộ nội dung <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
+    } else {
+        content.style.maxHeight = '8000px';
+        if(gradient) gradient.style.opacity = '0';
+        btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

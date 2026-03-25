@@ -78,6 +78,7 @@ get_header(); ?>
                     $query_led = new WP_Query([
                         'post_type' => 'tava_product',
                         'posts_per_page' => 4,
+                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
                         'tax_query' => [
                             [
                                 'taxonomy' => 'product_cat',
@@ -119,6 +120,7 @@ get_header(); ?>
                     $query_audio = new WP_Query([
                         'post_type' => 'tava_product',
                         'posts_per_page' => 4,
+                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
                         'tax_query' => [
                             [
                                 'taxonomy' => 'product_cat',
@@ -160,6 +162,7 @@ get_header(); ?>
                     $query_light = new WP_Query([
                         'post_type' => 'tava_product',
                         'posts_per_page' => 4,
+                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
                         'tax_query' => [
                             [
                                 'taxonomy' => 'product_cat',

@@ -64,7 +64,7 @@ function tavaled_enqueue_scripts() {
     wp_enqueue_style('tavaled-main-css', TAVALED_URI . '/assets/css/main.css', [], time());
     wp_enqueue_script('tavaled-main-js', TAVALED_URI . '/assets/js/main.js', ['jquery'], time(), true);
 
-    if (is_front_page() || is_page_template('templates/template-homepage.php')) {
+    if (is_front_page() || is_page_template('templates/template-homepage.php') || is_page_template('templates/template-products.php')) {
         wp_enqueue_style('tavaled-homepage-css', TAVALED_URI . '/assets/css/homepage.css', [], time());
         wp_enqueue_script('tavaled-homepage-js', TAVALED_URI . '/assets/js/homepage.js', ['jquery'], time(), true);
     }
@@ -174,4 +174,19 @@ function tavaled_floating_contacts() {
     <?php
 }
 add_action('wp_footer', 'tavaled_floating_contacts', 100);
+
+/**
+ * Custom Order for tava_product to push menu_order=0 to the end
+ */
+function tavaled_custom_product_order($orderby, $query) {
+    if ($query->get('post_type') === 'tava_product' && !is_admin()) {
+        $orderbacks = $query->get('orderby');
+        if (is_array($orderbacks) && isset($orderbacks['menu_order'])) {
+            global $wpdb;
+            return "{$wpdb->posts}.menu_order = 0, {$wpdb->posts}.menu_order ASC, {$wpdb->posts}.post_date DESC";
+        }
+    }
+    return $orderby;
+}
+add_filter('posts_orderby', 'tavaled_custom_product_order', 10, 2);
 
