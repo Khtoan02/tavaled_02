@@ -17,9 +17,9 @@ $thumbnail_url = has_post_thumbnail($post_id) ? get_the_post_thumbnail_url($post
 // Dynamic Meta for bulk import
 $gallery_raw = get_post_meta($post_id, '_product_gallery', true);
 $gallery_imgs = !empty($gallery_raw) ? array_map('trim', explode('|', $gallery_raw)) : [];
-$overview = get_post_meta($post_id, '_product_overview', true);
-$specs = get_post_meta($post_id, '_product_specs', true);
-$install_info = get_post_meta($post_id, '_product_install_info', true);
+$overview = get_post_meta($post_id, '_product_overview', true) ?: get_post_meta($post_id, 'tong_quan', true);
+$specs = get_post_meta($post_id, '_product_specs', true) ?: get_post_meta($post_id, 'thong_so_ky_thuat', true);
+$install_info = get_post_meta($post_id, '_product_install_info', true) ?: get_post_meta($post_id, 'thong_tin_lap_dat', true);
 $faq = get_post_meta($post_id, '_product_faq', true);
 
 // Phân loại
@@ -299,18 +299,55 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 
 .specs-section-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .specs-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.specs-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 32px; box-shadow: 0 2px 12px rgba(17,24,39,.04); }
-.specs-table tr { border-bottom: 1px solid var(--border-lt); }
-.specs-table tr:last-child { border-bottom: none; }
-.specs-table tr:hover { background: var(--orange-xlt); }
-.specs-table td { padding: 12px 18px; font-size: 13.5px; }
-.specs-table td:first-child { width: 40%; color: var(--mid); font-weight: 500; background: var(--bg); border-right: 1px solid var(--border-lt); }
-.specs-table td:last-child { color: var(--ink); font-weight: 600; }
-.specs-table tr:first-child td:first-child { border-radius: 10px 0 0 0; }
-.specs-table tr:first-child td:last-child  { border-radius: 0 10px 0 0; }
 
-.desc-content h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; color: var(--ink); margin: 32px 0 12px; position: relative; padding-left: 16px; }
-.desc-content h3::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--orange); border-radius: 3px; }
+/* Bảng thông số kỹ thuật (Cấu trúc tối giản, chuyên nghiệp) */
+.desc-content table { 
+  width: 100% !important; 
+  border-collapse: collapse; 
+  border: 1px solid #e5e7eb; 
+  margin: 16px 0 24px; 
+  background: var(--white);
+}
+.desc-content table th, .desc-content table td {
+  padding: 10px 14px; 
+  font-size: 13.5px; 
+  color: var(--ink); 
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.desc-content table th {
+  background: #f9fafb;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: #4b5563;
+}
+/* Cột 1 bảng (tên thông số) - In đậm và nền xám nhạt */
+.desc-content table tbody td:first-child { 
+  width: 30%; 
+  font-weight: 600; 
+  background: #fcfcfd;
+  color: #374151;
+}
+.desc-content table tbody td:nth-child(2) {
+  color: #4b5563;
+  font-weight: 500;
+}
+.desc-content table tbody tr:hover td { 
+  background: #f9fafb; 
+}
+
+.desc-content h2 { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: var(--ink); margin: 36px 0 16px; position: relative; padding-left: 18px; letter-spacing: -0.01em; }
+.desc-content h2::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; background: var(--orange); border-radius: 4px; }
+
+.desc-content h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; color: var(--ink); margin: 28px 0 12px; position: relative; padding-left: 14px; }
+.desc-content h3::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--orange); border-radius: 3px; opacity: 0.8; }
+
+.desc-content h4 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 24px 0 10px; }
+.desc-content h5 { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); margin: 20px 0 8px; }
 .desc-content p { font-size: 14.5px; color: var(--mid); line-height: 1.8; margin-bottom: 18px; }
 .desc-content ul { list-style: none; margin-bottom: 18px; padding:0;}
 .desc-content ul li { padding: 8px 0 8px 24px; position: relative; font-size: 14px; color: var(--mid); line-height: 1.65; border-bottom: 1px solid var(--border-lt); }
@@ -460,9 +497,58 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         <div class="prod-div"></div>
 
         <!-- Description Snippet -->
-        <p class="prod-desc">
-        <?php echo esc_html(wp_trim_words($overview, 40, '...')); ?>
-        </p>
+        <?php
+        $overview_clean = wp_strip_all_tags($overview);
+        $word_count = count(explode(' ', trim($overview_clean)));
+        $needs_expand = $word_count > 150; // Cho phép kịch bản dài khoảng 150-200 từ
+        ?>
+        <div class="prod-desc-wrapper" style="position: relative; margin-bottom: 24px;">
+            <div class="prod-desc-content" style="
+                font-size: 13.5px;
+                color: var(--mid);
+                line-height: 1.75;
+                <?php if($needs_expand): ?>
+                max-height: 320px; 
+                overflow: hidden;
+                position: relative;
+                transition: max-height 0.4s ease;
+                <?php endif; ?>
+            ">
+                <div class="prod-desc-inner">
+                    <?php echo wp_kses_post($overview); ?>
+                </div>
+                
+                <?php if($needs_expand): ?>
+                <div class="prod-desc-gradient" style="
+                    position: absolute;
+                    bottom: 0; left: 0; right: 0;
+                    height: 100px;
+                    background: linear-gradient(to bottom, rgba(255,248,246,0), rgba(255,248,246,1));
+                    pointer-events: none;
+                    transition: opacity 0.3s ease;
+                "></div>
+                <?php endif; ?>
+            </div>
+            
+            <?php if($needs_expand): ?>
+            <button class="prod-desc-btn" onclick="toggleDesc(this)" style="
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin: 12px 0 0 0;
+                background: none;
+                border: none;
+                color: var(--orange);
+                font-weight: 700;
+                font-size: 12.5px;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                padding: 0;
+                transition: opacity 0.2s;
+            ">Xem thêm <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+            <?php endif; ?>
+        </div>
 
         <!-- Highlight -->
         <div class="install-highlight" style="background: rgba(14, 165, 233, 0.05); border: 2px dashed rgba(14, 165, 233, 0.4); color: #0284c7; padding: 14px 20px; border-radius: 9px; text-align: center; font-weight: 700; font-size: 15px; margin-bottom: 22px; display: flex; align-items: center; justify-content: center; gap: 8px;">
@@ -546,23 +632,118 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 
             <!-- Tab: Mô tả -->
             <div class="tab-panel active" id="tab-desc">
-                <div class="desc-content">
                 <?php 
                 $content = apply_filters('the_content', get_the_content());
-                if(!empty($content)) {
-                    echo $content;
-                } else {
-                    echo '<p>Đang cập nhật nội dung chuyên sâu...</p>';
-                }
+                if(!empty($content)):
+                    $desc_clean = wp_strip_all_tags($content);
+                    $desc_words = count(explode(' ', trim($desc_clean)));
+                    $desc_needs_expand = $desc_words > 150; 
                 ?>
+                <div class="prod-desc-wrapper" style="position: relative; margin-bottom: 24px;">
+                    <div class="prod-desc-content" style="
+                        <?php if($desc_needs_expand): ?>
+                        max-height: 500px; 
+                        overflow: hidden;
+                        position: relative;
+                        transition: max-height 0.4s ease;
+                        <?php endif; ?>
+                    ">
+                        <div class="prod-desc-inner desc-content">
+                            <?php echo $content; ?>
+                        </div>
+                        
+                        <?php if($desc_needs_expand): ?>
+                        <div class="prod-desc-gradient" style="
+                            position: absolute;
+                            bottom: 0; left: 0; right: 0;
+                            height: 120px;
+                            background: linear-gradient(to bottom, rgba(255,248,246,0), rgba(255,248,246,1));
+                            pointer-events: none;
+                            transition: opacity 0.3s ease;
+                        "></div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <?php if($desc_needs_expand): ?>
+                    <button class="prod-desc-btn" onclick="toggleMainDesc(this)" style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        margin: 16px auto 0;
+                        background: var(--white);
+                        border: 1px solid var(--border-lt);
+                        border-radius: 6px;
+                        color: var(--ink);
+                        font-weight: 600;
+                        font-size: 13px;
+                        cursor: pointer;
+                        letter-spacing: 0.02em;
+                        padding: 10px 24px;
+                        transition: all 0.2s;
+                        box-shadow: 0 2px 8px rgba(17,24,39,0.02);
+                    " onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)';" onmouseout="this.style.borderColor='var(--border-lt)';this.style.color='var(--ink)';">Đọc toàn bộ nội dung <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <?php endif; ?>
                 </div>
+                <?php else: ?>
+                    <div class="desc-content"><p>Đang cập nhật nội dung chuyên sâu...</p></div>
+                <?php endif; ?>
             </div>
 
             <!-- Tab: Thông số -->
             <?php if(!empty($specs)) { ?>
             <div class="tab-panel" id="tab-specs">
-                <div class="desc-content">
-                    <?php echo wp_kses_post($specs); ?>
+                <?php
+                $sp_clean = wp_strip_all_tags($specs);
+                $sp_words = count(explode(' ', trim($sp_clean)));
+                // Table content generally takes more vertical space per word, limit set to 60 "words" for safety.
+                $sp_needs_expand = $sp_words > 60; 
+                ?>
+                <div class="prod-desc-wrapper" style="position: relative; margin-bottom: 24px;">
+                    <div class="prod-desc-content" style="
+                        <?php if($sp_needs_expand): ?>
+                        max-height: 400px; 
+                        overflow: hidden;
+                        position: relative;
+                        transition: max-height 0.4s ease;
+                        <?php endif; ?>
+                    ">
+                        <div class="prod-desc-inner desc-content">
+                            <?php echo wp_kses_post($specs); ?>
+                        </div>
+                        
+                        <?php if($sp_needs_expand): ?>
+                        <div class="prod-desc-gradient" style="
+                            position: absolute;
+                            bottom: 0; left: 0; right: 0;
+                            height: 100px;
+                            background: linear-gradient(to bottom, rgba(255,248,246,0), rgba(255,248,246,1));
+                            pointer-events: none;
+                            transition: opacity 0.3s ease;
+                        "></div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <?php if($sp_needs_expand): ?>
+                    <button class="prod-desc-btn" onclick="toggleSpDesc(this)" style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        margin: 16px auto 0;
+                        background: var(--white);
+                        border: 1px solid var(--border-lt);
+                        border-radius: 6px;
+                        color: var(--ink);
+                        font-weight: 600;
+                        font-size: 13px;
+                        cursor: pointer;
+                        letter-spacing: 0.02em;
+                        padding: 10px 24px;
+                        transition: all 0.2s;
+                        box-shadow: 0 2px 8px rgba(17,24,39,0.02);
+                    " onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)';" onmouseout="this.style.borderColor='var(--border-lt)';this.style.color='var(--ink)';">Xem toàn bộ thông số kỹ thuật <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php } ?>
@@ -570,8 +751,56 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
             <!-- Tab: Lắp đặt -->
             <?php if(!empty($install_info)) { ?>
             <div class="tab-panel" id="tab-install">
-                <div class="desc-content">
-                    <?php echo wp_kses_post($install_info); ?>
+                <?php
+                $inst_clean = wp_strip_all_tags($install_info);
+                $inst_words = count(explode(' ', trim($inst_clean)));
+                $inst_needs_expand = $inst_words > 120; 
+                ?>
+                <div class="prod-desc-wrapper" style="position: relative; margin-bottom: 24px;">
+                    <div class="prod-desc-content" style="
+                        <?php if($inst_needs_expand): ?>
+                        max-height: 400px; 
+                        overflow: hidden;
+                        position: relative;
+                        transition: max-height 0.4s ease;
+                        <?php endif; ?>
+                    ">
+                        <div class="prod-desc-inner desc-content">
+                            <?php echo wp_kses_post($install_info); ?>
+                        </div>
+                        
+                        <?php if($inst_needs_expand): ?>
+                        <div class="prod-desc-gradient" style="
+                            position: absolute;
+                            bottom: 0; left: 0; right: 0;
+                            height: 100px;
+                            background: linear-gradient(to bottom, rgba(255,248,246,0), rgba(255,248,246,1));
+                            pointer-events: none;
+                            transition: opacity 0.3s ease;
+                        "></div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <?php if($inst_needs_expand): ?>
+                    <button class="prod-desc-btn" onclick="toggleInstDesc(this)" style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        margin: 16px auto 0;
+                        background: var(--white);
+                        border: 1px solid var(--border-lt);
+                        border-radius: 6px;
+                        color: var(--ink);
+                        font-weight: 600;
+                        font-size: 13px;
+                        cursor: pointer;
+                        letter-spacing: 0.02em;
+                        padding: 10px 24px;
+                        transition: all 0.2s;
+                        box-shadow: 0 2px 8px rgba(17,24,39,0.02);
+                    " onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)';" onmouseout="this.style.borderColor='var(--border-lt)';this.style.color='var(--ink)';">Xem chi tiết phần lắp đặt <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php } ?>
@@ -794,6 +1023,78 @@ function switchTab(btn, panelId) {
   if(btn) btn.classList.add('active');
   const panel = document.getElementById(panelId);
   if(panel) panel.classList.add('active');
+}
+
+/* ── Description Read More Toggle ── */
+function toggleDesc(btn) {
+    const content = btn.previousElementSibling;
+    const gradient = content.querySelector('.prod-desc-gradient');
+    const isExpanded = content.style.maxHeight === '2500px';
+    
+    if (isExpanded) {
+        // Collapse
+        content.style.maxHeight = '320px';
+        if(gradient) gradient.style.opacity = '1';
+        btn.innerHTML = 'Xem thêm <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
+    } else {
+        // Expand
+        content.style.maxHeight = '2500px';
+        if(gradient) gradient.style.opacity = '0';
+        btn.innerHTML = 'Thu gọn <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>';
+    }
+}
+
+/* ── Specs Read More Toggle ── */
+function toggleSpDesc(btn) {
+    const content = btn.previousElementSibling;
+    const gradient = content.querySelector('.prod-desc-gradient');
+    const isExpanded = content.style.maxHeight === '4000px';
+    
+    if (isExpanded) {
+        // Collapse
+        content.style.maxHeight = '400px';
+        if(gradient) gradient.style.opacity = '1';
+        btn.innerHTML = 'Xem toàn bộ thông số kỹ thuật <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
+    } else {
+        // Expand
+        content.style.maxHeight = '4000px';
+        if(gradient) gradient.style.opacity = '0';
+        btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+    }
+}
+
+/* ── Main Desc Read More Toggle ── */
+function toggleMainDesc(btn) {
+    const content = btn.previousElementSibling;
+    const gradient = content.querySelector('.prod-desc-gradient');
+    const isExpanded = content.style.maxHeight === '8000px';
+    
+    if (isExpanded) {
+        content.style.maxHeight = '500px';
+        if(gradient) gradient.style.opacity = '1';
+        btn.innerHTML = 'Đọc toàn bộ nội dung <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
+    } else {
+        content.style.maxHeight = '8000px';
+        if(gradient) gradient.style.opacity = '0';
+        btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+    }
+}
+
+/* ── Install Read More Toggle ── */
+function toggleInstDesc(btn) {
+    const content = btn.previousElementSibling;
+    const gradient = content.querySelector('.prod-desc-gradient');
+    const isExpanded = content.style.maxHeight === '5000px';
+    
+    if (isExpanded) {
+        content.style.maxHeight = '400px';
+        if(gradient) gradient.style.opacity = '1';
+        btn.innerHTML = 'Xem chi tiết phần lắp đặt <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
+    } else {
+        content.style.maxHeight = '5000px';
+        if(gradient) gradient.style.opacity = '0';
+        btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+    }
 }
 </script>
 
