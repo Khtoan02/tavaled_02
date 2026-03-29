@@ -25,7 +25,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ HERO — STORYTELLING ══ */
 .hero{min-height:100vh;background:var(--navy3);position:relative;overflow:hidden;display:flex;align-items:flex-end}
 .hero__bg{position:absolute;inset:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.55) hue-rotate(185deg)}
+.hero__bg img{width:100%;height:100%;object-fit:cover;}
 .hero__fog{position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(15,24,53,.65) 0%,transparent 30%,rgba(15,24,53,.4) 55%,rgba(15,24,53,.97) 100%),
              linear-gradient(90deg,rgba(15,24,53,.5) 0%,transparent 60%)}
@@ -95,7 +95,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ ACT 3 — SOLUTION REVEAL ══ */
 .reveal-section{position:relative;overflow:hidden;min-height:600px;display:flex;align-items:center}
 .reveal-section__bg{position:absolute;inset:0}
-.reveal-section__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.6) hue-rotate(185deg)}
+.reveal-section__bg img{width:100%;height:100%;object-fit:cover;}
 .reveal-section__fog{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,24,53,.95) 0%,rgba(15,24,53,.6) 55%,rgba(15,24,53,.3) 100%)}
 .reveal-section__grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px}
 .reveal-section__inner{position:relative;z-index:2;padding:88px 56px;max-width:1320px;margin:0 auto;width:100%;display:flex;justify-content:center}
@@ -111,8 +111,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ ACT 4 — SPACE TYPES (image heavy) ══ */
 .spaces-wall{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:240px;gap:4px}
 .sp{position:relative;overflow:hidden;cursor:default}
-.sp img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.7) hue-rotate(5deg);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.sp:hover img{filter:brightness(.4) saturate(.9);transform:scale(1.06)}
+.sp img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
+.sp:hover img{transform:scale(1.06)}
 .sp__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(15,24,53,.9) 100%)}
 .sp__body{position:absolute;bottom:0;left:0;right:0;padding:22px 20px 18px}
 .sp__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:5px}
@@ -130,8 +130,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .pcard{background:var(--light);border:1.5px solid var(--bdr);border-radius:11px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:border-color .2s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .26s}
 .pcard:hover{border-color:rgba(28,40,87,.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,40,87,.09)}
 .pcard__img{height:150px;overflow:hidden}
-.pcard__img img{width:100%;height:100%;object-fit:cover;filter:saturate(.82);transition:transform .5s,filter .3s}
-.pcard:hover .pcard__img img{transform:scale(1.06);filter:saturate(1)}
+.pcard__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .3s}
+.pcard:hover .pcard__img img{transform:scale(1.06);}
 .pcard__body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
 .pcard__cat{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--o);opacity:.75;margin-bottom:4px}
 .pcard__name{font-family:var(--ff);font-weight:800;font-size:.92rem;letter-spacing:-.03em;color:var(--navy);line-height:1.25;transition:color .2s}
@@ -145,8 +145,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ ACT 6 — CASES ══ */
 .cases{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
 .case{position:relative;overflow:hidden;min-height:400px;background:var(--navy3);text-decoration:none;display:block}
-.case img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.6) hue-rotate(185deg);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.case:hover img{filter:brightness(.32) saturate(.8);transform:scale(1.05)}
+.case img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
+.case:hover img{transform:scale(1.05)}
 .case__over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,40,87,.2) 0%,rgba(15,24,53,.92) 100%)}
 .case__body{position:absolute;bottom:0;left:0;right:0;padding:26px 22px 20px}
 .case__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:7px;display:flex;align-items:center;gap:6px}
@@ -183,7 +183,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 
 <!-- ══ ACT 1 — HERO ══ -->
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=90" alt="Phòng họp doanh nghiệp hiện đại" loading="eager"></div>
+ <div class="hero__bg" aria-hidden="true"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0005_TavaLED_Hinh_Anh.jpg" alt="Phòng họp doanh nghiệp hiện đại" loading="eager"></div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__bar" aria-hidden="true"></div>
@@ -242,7 +242,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 
 <!-- ══ ACT 3 — KHOẢNH KHẮC CHUYỂN ══ -->
 <section class="reveal-section">
-  <div class="reveal-section__bg"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=85" alt="" loading="lazy"></div>
+ <div class="reveal-section__bg"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0006_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div>
   <div class="reveal-section__fog"></div>
   <div class="reveal-section__grid"></div>
   <div class="reveal-section__inner">
@@ -258,12 +258,12 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 <section class="section" style="background:var(--navy3);padding-bottom:0" id="spaces">
   <div class="inner rv"><div class="sec-head"><div><div class="ey" style="color:rgba(240,90,37,.8)">Các không gian</div><h2 class="sh sh--w">4 loại không gian —<br><em>1 tiêu chuẩn</em></h2></div></div></div>
   <div class="spaces-wall rv d1">
-    <div class="sp c4 r2"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85" alt="Boardroom" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Boardroom</div><div class="sp__title">Phòng họp Ban lãnh đạo</div><div class="sp__desc">LED P2 · Bảng tương tác · Hội nghị từ xa 4K · Hệ thống điều khiển trung tâm</div></div></div>
-    <div class="sp c4"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=85" alt="Phòng họp lớn" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Meeting Room</div><div class="sp__title">Phòng họp 20–80 người</div><div class="sp__desc">LED P2.5 · Dual screen · Wireless presentation</div></div></div>
-    <div class="sp c4"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=85" alt="Phòng họp nhỏ" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Huddle Room</div><div class="sp__title">Phòng làm việc nhóm nhỏ</div><div class="sp__desc">LED P2 · Plug&Play · Zoom / Teams ready</div></div></div>
-    <div class="sp c6"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=85" alt="Hội trường doanh nghiệp" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Auditorium</div><div class="sp__title">Hội trường doanh nghiệp 200–2.000 chỗ</div><div class="sp__desc">LED P2.5–P3 · Line Array · Moving Head · Stage Management</div></div></div>
-    <div class="sp c3"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=85" alt="Reception" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Reception & Lobby</div><div class="sp__title">Sảnh tiếp khách & Digital Signage</div></div></div>
-    <div class="sp c3"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=600&q=85" alt="Training" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Training Room</div><div class="sp__title">Phòng đào tạo & Workshop</div></div></div>
+ <div class="sp c4 r2"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0007_TavaLED_Hinh_Anh.jpg" alt="Boardroom" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Boardroom</div><div class="sp__title">Phòng họp Ban lãnh đạo</div><div class="sp__desc">LED P2 · Bảng tương tác · Hội nghị từ xa 4K · Hệ thống điều khiển trung tâm</div></div></div>
+ <div class="sp c4"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0008_TavaLED_Hinh_Anh.jpg" alt="Phòng họp lớn" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Meeting Room</div><div class="sp__title">Phòng họp 20–80 người</div><div class="sp__desc">LED P2.5 · Dual screen · Wireless presentation</div></div></div>
+ <div class="sp c4"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0009_TavaLED_Hinh_Anh.jpg" alt="Phòng họp nhỏ" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Huddle Room</div><div class="sp__title">Phòng làm việc nhóm nhỏ</div><div class="sp__desc">LED P2 · Plug&Play · Zoom / Teams ready</div></div></div>
+ <div class="sp c6"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg" alt="Hội trường doanh nghiệp" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Auditorium</div><div class="sp__title">Hội trường doanh nghiệp 200–2.000 chỗ</div><div class="sp__desc">LED P2.5–P3 · Line Array · Moving Head · Stage Management</div></div></div>
+ <div class="sp c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg" alt="Reception" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Reception & Lobby</div><div class="sp__title">Sảnh tiếp khách & Digital Signage</div></div></div>
+ <div class="sp c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg" alt="Training" loading="lazy"><div class="sp__over"></div><div class="sp__body"><div class="sp__tag">Training Room</div><div class="sp__title">Phòng đào tạo & Workshop</div></div></div>
   </div>
 </section>
 
@@ -278,26 +278,26 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     </div>
     <div class="ptab-panel active" id="pt-screen">
       <div class="prod-grid rv d1">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Boardroom</div><div class="pcard__name">LED P2 Indoor 80"–200"</div><div class="pcard__foot"><span class="pcard__spec">P2.0mm</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Meeting Room</div><div class="pcard__name">LED P2.5 Meeting Series</div><div class="pcard__foot"><span class="pcard__spec">P2.5mm</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Hội trường</div><div class="pcard__name">LED P3 Auditorium Wall</div><div class="pcard__foot"><span class="pcard__spec">P3.0mm</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Signage</div><div class="pcard__name">LED P2.5 Digital Signage 55"</div><div class="pcard__foot"><span class="pcard__spec">Signage</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Boardroom</div><div class="pcard__name">LED P2 Indoor 80"–200"</div><div class="pcard__foot"><span class="pcard__spec">P2.0mm</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Meeting Room</div><div class="pcard__name">LED P2.5 Meeting Series</div><div class="pcard__foot"><span class="pcard__spec">P2.5mm</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Hội trường</div><div class="pcard__name">LED P3 Auditorium Wall</div><div class="pcard__foot"><span class="pcard__spec">P3.0mm</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0016_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Signage</div><div class="pcard__name">LED P2.5 Digital Signage 55"</div><div class="pcard__foot"><span class="pcard__spec">Signage</span><span class="pcard__cta">Xem</span></div></div></a>
       </div>
     </div>
     <div class="ptab-panel" id="pt-audio">
       <div class="prod-grid">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Ceiling Speaker</div><div class="pcard__name">JBL Control 25AV Ceiling</div><div class="pcard__foot"><span class="pcard__spec">8Ω</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Conference Mic</div><div class="pcard__name">Shure MXA910 Ceiling Array</div><div class="pcard__foot"><span class="pcard__spec">Beamforming</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">DSP Processor</div><div class="pcard__name">BSS Soundweb London</div><div class="pcard__foot"><span class="pcard__spec">64x64</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Amplifier</div><div class="pcard__name">QSC CX-Q Series Power Amp</div><div class="pcard__foot"><span class="pcard__spec">4CH</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0017_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Ceiling Speaker</div><div class="pcard__name">JBL Control 25AV Ceiling</div><div class="pcard__foot"><span class="pcard__spec">8Ω</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0018_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Conference Mic</div><div class="pcard__name">Shure MXA910 Ceiling Array</div><div class="pcard__foot"><span class="pcard__spec">Beamforming</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0019_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">DSP Processor</div><div class="pcard__name">BSS Soundweb London</div><div class="pcard__foot"><span class="pcard__spec">64x64</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0020_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Amplifier</div><div class="pcard__name">QSC CX-Q Series Power Amp</div><div class="pcard__foot"><span class="pcard__spec">4CH</span><span class="pcard__cta">Xem</span></div></div></a>
       </div>
     </div>
     <div class="ptab-panel" id="pt-control">
       <div class="prod-grid">
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Room Control</div><div class="pcard__name">Crestron DM-NVX Series</div><div class="pcard__foot"><span class="pcard__spec">4K60</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Touch Panel</div><div class="pcard__name">Crestron TSW-1070 Touch</div><div class="pcard__foot"><span class="pcard__spec">10.1" HD</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Wireless Presentation</div><div class="pcard__name">Extron ShareLink 752</div><div class="pcard__foot"><span class="pcard__spec">Wireless</span><span class="pcard__cta">Xem</span></div></div></a>
-        <a href="#" class="pcard"><div class="pcard__img"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=400&q=80" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Video Conferencing</div><div class="pcard__name">Poly Studio X70 Teams/Zoom</div><div class="pcard__foot"><span class="pcard__spec">4K UHD</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0021_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Room Control</div><div class="pcard__name">Crestron DM-NVX Series</div><div class="pcard__foot"><span class="pcard__spec">4K60</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0022_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Touch Panel</div><div class="pcard__name">Crestron TSW-1070 Touch</div><div class="pcard__foot"><span class="pcard__spec">10.1" HD</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0023_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Wireless Presentation</div><div class="pcard__name">Extron ShareLink 752</div><div class="pcard__foot"><span class="pcard__spec">Wireless</span><span class="pcard__cta">Xem</span></div></div></a>
+ <a href="#" class="pcard"><div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="pcard__body"><div class="pcard__cat">Video Conferencing</div><div class="pcard__name">Poly Studio X70 Teams/Zoom</div><div class="pcard__foot"><span class="pcard__spec">4K UHD</span><span class="pcard__cta">Xem</span></div></div></a>
       </div>
     </div>
   </div>
@@ -308,9 +308,9 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   <div class="inner">
     <div class="sec-head rv"><div><div class="ey">Dự án thực tế</div><h2 class="sh">Văn phòng đã <em>tin tưởng chúng tôi</em></h2></div><a href="/du-an" style="display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--bdr);padding-bottom:3px">Xem tất cả →</a></div>
     <div class="cases rv d1">
-      <a href="#" class="case case--main"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Hà Nội · 2024</div><div class="case__name">Tòa nhà Văn phòng FLC — Boardroom + 24 phòng họp</div><div class="case__specs"><span class="spec">LED P2 Indoor</span><span class="spec">Crestron Control</span><span class="spec">Shure MXA910</span><span class="spec">3 ngày lắp đặt</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">TP.HCM · 2024</div><div class="case__name">Ngân hàng Techcombank — Hội trường 500 chỗ</div><div class="case__specs"><span class="spec">P2.5mm</span><span class="spec">JBL Line Array</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Đà Nẵng · 2023</div><div class="case__name">Khu CNC Danang IT Park — 12 phòng họp</div><div class="case__specs"><span class="spec">P2.0mm</span><span class="spec">Extron</span></div></div></a>
+ <a href="#" class="case case--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Hà Nội · 2024</div><div class="case__name">Tòa nhà Văn phòng FLC — Boardroom + 24 phòng họp</div><div class="case__specs"><span class="spec">LED P2 Indoor</span><span class="spec">Crestron Control</span><span class="spec">Shure MXA910</span><span class="spec">3 ngày lắp đặt</span></div></div></a>
+ <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">TP.HCM · 2024</div><div class="case__name">Ngân hàng Techcombank — Hội trường 500 chỗ</div><div class="case__specs"><span class="spec">P2.5mm</span><span class="spec">JBL Line Array</span></div></div></a>
+ <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Đà Nẵng · 2023</div><div class="case__name">Khu CNC Danang IT Park — 12 phòng họp</div><div class="case__specs"><span class="spec">P2.0mm</span><span class="spec">Extron</span></div></div></a>
     </div>
   </div>
 </section>

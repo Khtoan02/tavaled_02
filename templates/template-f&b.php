@@ -27,7 +27,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ HERO — WARM CINEMATIC ══ */
 .hero{height:100vh;min-height:700px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:var(--warm2)}
 .hero__bg{position:absolute;inset:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.1)}
+.hero__bg img{width:100%;height:100%;object-fit:cover;}
 .hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(26,15,10,.5) 0%,transparent 28%,rgba(26,15,10,.3) 55%,rgba(26,15,10,.96) 100%),linear-gradient(90deg,rgba(26,15,10,.4) 0%,transparent 65%)}
 .hero__glow{position:absolute;bottom:0;left:0;right:0;height:60%;z-index:1;background:radial-gradient(ellipse 80% 60% at 30% 100%,rgba(240,90,37,.12) 0%,transparent 70%)}
 .hero__bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--o),var(--odk) 45%,rgba(240,90,37,.2))}
@@ -68,8 +68,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ SPACE TYPES — FULL BLEED ══ */
 .spaces{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:320px;gap:3px}
 .sp{position:relative;overflow:hidden;cursor:default}
-.sp img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.05);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.sp:hover img{filter:brightness(.3) saturate(1.1);transform:scale(1.06)}
+.sp img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
+.sp:hover img{transform:scale(1.06)}
 .sp__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(26,15,10,.95) 100%)}
 .sp__glow{position:absolute;inset:0;opacity:0;transition:opacity .4s}
 .sp:hover .sp__glow{opacity:1}
@@ -112,8 +112,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .pcard{background:var(--light);border:1.5px solid var(--bdr);border-radius:11px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:border-color .2s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .26s}
 .pcard:hover{border-color:rgba(28,40,87,.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,40,87,.09)}
 .pcard__img{height:150px;overflow:hidden}
-.pcard__img img{width:100%;height:100%;object-fit:cover;filter:saturate(.82);transition:transform .5s,filter .3s}
-.pcard:hover .pcard__img img{transform:scale(1.06);filter:saturate(1)}
+.pcard__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .3s}
+.pcard:hover .pcard__img img{transform:scale(1.06);}
 .pcard__body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column}
 .pcard__cat{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--o);opacity:.75;margin-bottom:4px}
 .pcard__name{font-family:var(--ff);font-weight:800;font-size:.92rem;letter-spacing:-.03em;color:var(--navy);line-height:1.25;transition:color .2s}
@@ -126,15 +126,15 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .gallery:hover .g-track{animation-play-state:paused}
 @keyframes gscroll{to{transform:translateX(-50%)}}
 .g-item{display:block;flex-shrink:0;width:280px;height:180px;overflow:hidden;position:relative}
-.g-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.1);transition:filter .4s,transform .4s}
-.g-item:hover img{filter:brightness(.8) saturate(1.3);transform:scale(1.05)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:filter .4s,transform .4s}
+.g-item:hover img{transform:scale(1.05)}
 .g-item__label{position:absolute;bottom:0;left:0;right:0;padding:20px 12px 10px;background:linear-gradient(transparent,rgba(26,15,10,.75));font-size:12px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.3}
 
 /* ══ CASES ══ */
 .cases{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
 .case{position:relative;overflow:hidden;min-height:380px;background:var(--warm);text-decoration:none;display:block}
-.case img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(1.05);transition:filter .5s,transform .7s}
-.case:hover img{filter:brightness(.7) saturate(1.1);transform:scale(1.05)}
+.case img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s}
+.case:hover img{transform:scale(1.05)}
 .case__over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,11,6,0) 30%,rgba(18,11,6,0.5) 60%,rgba(18,11,6,0.95) 100%)}
 .case__body{position:absolute;bottom:0;left:0;right:0;padding:26px 22px 20px}
 .case__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:7px;display:flex;align-items:center;gap:6px}
@@ -173,7 +173,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600&q=90" alt="Không gian F&B giải trí" loading="eager"></div>
+ <div class="hero__bg" aria-hidden="true"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0001_TavaLED_Hinh_Anh.jpg" alt="Không gian F&B giải trí" loading="eager"></div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__bar" aria-hidden="true"></div>
@@ -253,9 +253,9 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         } else {
             // Demo tĩnh nếu như admin vô tình xoá ảnh
             ?>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Demo"><div class="g-item__label">Lắp đặt màn hình LED<br>Học Viện Kỹ Thuật</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Demo"><div class="g-item__label">LED P2<br>Công Ty Cao Su 75</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="Demo"><div class="g-item__label">LED P1.8<br>Công ty Mai 299</div></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0002_TavaLED_Hinh_Anh.jpg" alt="Demo"><div class="g-item__label">Lắp đặt màn hình LED<br>Học Viện Kỹ Thuật</div></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0003_TavaLED_Hinh_Anh.jpg" alt="Demo"><div class="g-item__label">LED P2<br>Công Ty Cao Su 75</div></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0004_TavaLED_Hinh_Anh.jpg" alt="Demo"><div class="g-item__label">LED P1.8<br>Công ty Mai 299</div></div>
             <?php
         }
         if ($i === 0) echo '<!-- Duplicate for infinite scroll loop -->';

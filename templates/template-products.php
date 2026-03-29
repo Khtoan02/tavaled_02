@@ -296,7 +296,7 @@ get_header(); ?>
   cursor:pointer;
   transition:background .2s;
 }
-.active-filter:hover{background:var(--orange-lt);}
+.active-}
 .active-filter__x{font-size:13px;line-height:1;opacity:.7;}
 .clear-all{
   display:inline-flex;align-items:center;gap:4px;
@@ -380,10 +380,10 @@ get_header(); ?>
 }
 .pcard__thumb img{
   width:100%;height:100%;object-fit:cover;object-position:center;
-  display:block;filter:saturate(.82);
+  display:block;
   transition:transform .6s cubic-bezier(.16,1,.3,1),filter .35s;
 }
-.pcard:hover .pcard__thumb img{transform:scale(1.07);filter:saturate(1);}
+.pcard:hover .pcard__thumb img{transform:scale(1.07);}
 
 .pcard__badge{
   position:absolute;top:9px;left:9px;
@@ -798,11 +798,11 @@ get_header(); ?>
                 }
             } else {
             ?>
-                <div class="g-item"><img src="https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?w=1000&q=80" alt="EDM"></div>
-                <div class="g-item"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Club"></div>
-                <div class="g-item"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&q=80" alt="Laser"></div>
-                <div class="g-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&q=80" alt="Concert"></div>
-                <div class="g-item"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Stage"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg" alt="EDM"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg" alt="Club"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg" alt="Laser"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg" alt="Concert"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0028_TavaLED_Hinh_Anh.jpg" alt="Stage"></div>
             <?php } ?>
         </div>
         <div class="gallery-overlay" id="homeGalleryOverlay">
@@ -815,7 +815,7 @@ get_header(); ?>
 
 <!-- ================= SECTION: CTA ================= -->
 <section class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
-    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Background" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.2] saturate-50">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0029_TavaLED_Hinh_Anh.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]"></div>
     
     <div class="container mx-auto px-4 relative z-10 text-center reveal-up">
@@ -909,7 +909,7 @@ foreach ($cat_definitions as $cat_slug => $def) {
             $tag = get_post_meta($post_id, '_product_tag', true);
             $img = get_post_meta($post_id, '_product_img', true);
             if (!$img) $img = get_the_post_thumbnail_url($post_id, 'medium');
-            if (!$img) $img = 'https://images.unsplash.com/photo-1542317148-8b4bdccb33ea?w=400&q=80'; // fallback
+ if (!$img) $img = 'https://tavaled.vn/wp-content/uploads/2026/03/0030_TavaLED_Hinh_Anh.jpg'; // fallback
 
             $terms_sub = wp_get_post_terms($post_id, 'product_subcat');
             $subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : '';
@@ -1049,15 +1049,15 @@ function renderPage(page, scroll = true) {
     let pagHtml = `<div class="load-more" style="grid-column: 1 / -1; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; padding-top: 24px; margin-bottom: 24px;">`;
     
     if (page > 1) {
-      pagHtml += `<button onclick="renderPage(${page - 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-none shadow-sm"><i class="ph-bold ph-caret-left"></i></button>`;
+      pagHtml += `<button onclick="renderPage(${page - 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-xl shadow-sm"><i class="ph-bold ph-caret-left"></i></button>`;
     }
     
     for (let i = 1; i <= totalPages; i++) {
         if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
             if (i === page) {
-                pagHtml += `<button class="w-9 h-9 flex items-center justify-center bg-brand-orange text-white font-bold rounded-none shadow-sm">${i}</button>`;
+                pagHtml += `<button class="w-9 h-9 flex items-center justify-center bg-brand-orange text-white font-bold rounded-xl shadow-sm">${i}</button>`;
             } else {
-                pagHtml += `<button onclick="renderPage(${i}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-brand-orange hover:border-brand-orange transition-colors font-semibold rounded-none shadow-sm">${i}</button>`;
+                pagHtml += `<button onclick="renderPage(${i}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-700 hover:text-brand-orange hover:border-brand-orange transition-colors font-semibold rounded-xl shadow-sm">${i}</button>`;
             }
         } else if (i === page - 2 || i === page + 2) {
             pagHtml += `<span class="text-gray-400 w-9 h-9 flex items-center justify-center">...</span>`;
@@ -1065,7 +1065,7 @@ function renderPage(page, scroll = true) {
     }
     
     if (page < totalPages) {
-      pagHtml += `<button onclick="renderPage(${page + 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-none shadow-sm"><i class="ph-bold ph-caret-right"></i></button>`;
+      pagHtml += `<button onclick="renderPage(${page + 1}, true)" class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange transition-colors rounded-xl shadow-sm"><i class="ph-bold ph-caret-right"></i></button>`;
     }
     pagHtml += `</div>`;
     html += pagHtml;

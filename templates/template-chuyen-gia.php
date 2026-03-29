@@ -53,8 +53,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .story-item:nth-child(even){direction:rtl}
 .story-item:nth-child(even) > *{direction:ltr}
 .story-item__photo{position:relative}
-.story-item__photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:24px;box-shadow:0 32px 64px -16px rgba(0,0,0,0.5);filter:saturate(0.95);transition:filter .5s, transform .7s cubic-bezier(.16,1,.3,1)}
-.story-item:hover .story-item__photo img{filter:saturate(1.1);transform:scale(1.03)}
+.story-item__photo img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:24px;box-shadow:0 32px 64px -16px rgba(0,0,0,0.5);transition:filter .5s, transform .7s cubic-bezier(.16,1,.3,1)}
+.story-item:hover .story-item__photo img{transform:scale(1.03)}
 .story-item__role{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:16px;display:flex;align-items:center;gap:12px}
 .story-item__role::before{content:'';display:block;width:32px;height:1px;background:var(--o)}
 .story-item:nth-child(odd) .story-item__role::before{display:none}

@@ -60,8 +60,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ── PROJECT PROOF ── */
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .proof-card{background:var(--navy3);position:relative;overflow:hidden;min-height:300px}
-.proof-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.38) saturate(.5) hue-rotate(185deg);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.proof-card:hover img{filter:brightness(.28) saturate(.7);transform:scale(1.05)}
+.proof-card img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
+.proof-card:hover img{transform:scale(1.05)}
 .proof-card__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(15,24,53,.95) 100%)}
 .proof-card__body{position:absolute;bottom:0;left:0;right:0;padding:24px 22px 20px}
 .proof-card__num{font-family:var(--ff);font-size:2.4rem;font-weight:800;letter-spacing:-.07em;color:#fff;line-height:1}
@@ -182,7 +182,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   </div>
   <div class="proof-grid rv d1">
     <div class="proof-card">
-      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg" alt="">
       <div class="proof-card__over"></div>
       <div class="proof-card__body">
         <div class="proof-card__num"><span class="cnt" data-to="150">0</span><span>+</span></div>
@@ -191,7 +191,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
       </div>
     </div>
     <div class="proof-card">
-      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg" alt="">
       <div class="proof-card__over"></div>
       <div class="proof-card__body">
         <div class="proof-card__num"><span class="cnt" data-to="120">0</span><span>+</span></div>
@@ -200,7 +200,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
       </div>
     </div>
     <div class="proof-card">
-      <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80" alt="">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg" alt="">
       <div class="proof-card__over"></div>
       <div class="proof-card__body">
         <div class="proof-card__num"><span class="cnt" data-to="230">0</span><span>+</span></div>

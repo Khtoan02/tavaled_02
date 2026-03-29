@@ -64,7 +64,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                         ?>
                             <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>" class="h-12 w-auto transition-transform group-hover:scale-105 duration-300">
                         <?php else: ?>
-                            <div class="w-12 h-12 bg-brand-orange rounded-none flex justify-center items-center text-white shadow-md shadow-brand-orange/30 transition-transform group-hover:scale-105 duration-300">
+                            <div class="w-12 h-12 bg-brand-orange rounded-xl flex justify-center items-center text-white shadow-md shadow-brand-orange/30 transition-transform group-hover:scale-105 duration-300">
                                 <i class="ph-bold ph-aperture text-3xl"></i>
                             </div>
                             <span class="text-2xl lg:text-3xl font-black tracking-tight text-gray-900 group-hover:text-brand-orange transition-colors"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
@@ -221,19 +221,19 @@ $about_items = $mega_custom_data['about'] ?? [];
                                     <h3 class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-6">Hệ sinh thái</h3>
                                     <ul class="space-y-3 mb-6">
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-none flex items-center justify-between transition-all bg-white text-[#1d2857] shadow-lg border border-gray-100 cursor-pointer" data-target="mega-led">
+                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all bg-white text-[#1d2857] shadow-lg border border-gray-100 cursor-pointer" data-target="mega-led">
                                                 <span class="flex items-center gap-3 text-lg font-bold hover:text-brand-orange transition-colors"><i class="ph-fill ph-monitor-play text-2xl text-brand-orange"></i> Màn hình LED</span>
                                                 <i class="ph-bold ph-caret-right text-brand-orange"></i>
                                             </button>
                                         </li>
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-none flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-audio">
+                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-audio">
                                                 <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-speaker-hifi text-2xl text-gray-400"></i> Âm thanh</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
                                         </li>
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-none flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-light">
+                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-light">
                                                 <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-lightbulb text-2xl text-gray-400"></i> Ánh sáng</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
@@ -242,7 +242,7 @@ $about_items = $mega_custom_data['about'] ?? [];
 
                                     <!-- Banner Khuyến Cáo / Doanh nghiệp -->
                                     <div class="mt-auto flex-1 flex flex-col justify-end">
-                                        <div class="relative w-full rounded-none overflow-hidden group/banner shadow-sm cursor-pointer block ring-1 ring-gray-100">
+                                        <div class="relative w-full rounded-xl overflow-hidden group/banner shadow-sm cursor-pointer block ring-1 ring-gray-100">
                                             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" alt="Về <?php echo esc_attr(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?>" class="w-full h-[150px] object-cover transition-transform duration-700 group-hover/banner:scale-110">
                                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent"></div>
                                             <div class="absolute bottom-4 left-4 right-4 z-10">
@@ -254,7 +254,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                         </div>
                                     </div>
                                     <div class="mt-6 pt-6 border-t border-gray-200/60">
-                                        <a href="#" class="w-full flex justify-center items-center gap-2 py-3.5 bg-[#1d2857] text-white rounded-none font-bold hover:bg-brand-orange transition-all shadow-lg shadow-navy-900/10 text-sm tracking-widest uppercase">
+                                        <a href="#" class="w-full flex justify-center items-center gap-2 py-3.5 bg-[#1d2857] text-white rounded-xl font-bold hover:bg-brand-orange transition-all shadow-lg shadow-navy-900/10 text-sm tracking-widest uppercase">
                                             <i class="ph-bold ph-download-simple text-lg"></i> Tải Catalog <?php echo date('Y'); ?>
                                         </a>
                                     </div>
@@ -278,7 +278,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $is_first = ($i === 0);
                                             ?>
                                             <a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode($subcat->name)); ?>"
-                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-none text-[13px] border transition-colors"
+                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-led"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
                                                data-sub-desc="<?php echo esc_attr($sub_desc); ?>">
@@ -290,8 +290,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                                             <?php endif; ?>
                                         </div>
                                         <div class="relative slider-container flex-1 mt-2">
-                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
+                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
+                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
                                             <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                 <div class="flex gap-6 slider-track transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
                                                     <?php
@@ -338,7 +338,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $is_first = ($i === 0);
                                             ?>
                                             <a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode($subcat->name)); ?>"
-                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-none text-[13px] border transition-colors"
+                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-audio"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
                                                data-sub-desc="<?php echo esc_attr($sub_desc); ?>">
@@ -350,8 +350,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                                             <?php endif; ?>
                                         </div>
                                         <div class="relative slider-container flex-1 mt-2">
-                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
+                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
+                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
                                             <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                 <div class="flex gap-6 slider-track transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
                                                     <?php
@@ -398,7 +398,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $is_first = ($i === 0);
                                             ?>
                                             <a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode($subcat->name)); ?>"
-                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-none text-[13px] border transition-colors"
+                                               class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-light"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
                                                data-sub-desc="<?php echo esc_attr($sub_desc); ?>">
@@ -410,8 +410,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                                             <?php endif; ?>
                                         </div>
                                         <div class="relative slider-container flex-1 mt-2">
-                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
-                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-none shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
+                                            <button class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-left text-xl"></i></button>
+                                            <button class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i class="ph-bold ph-caret-right text-xl"></i></button>
                                             <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                 <div class="flex gap-6 slider-track transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
                                                     <?php
@@ -473,12 +473,26 @@ $about_items = $mega_custom_data['about'] ?? [];
 
                                 <!-- Lưới 3 Cột x 2 Hàng – Premium Dark Overlay Cards -->
                                 <div class="sol-grid">
-                                    <?php if(!empty($sol_items)):
-                                        foreach($sol_items as $item):
-                                            $image = $item['image'] ?? 'https://images.unsplash.com/photo-1524178232363-1fb2b07ceb58?q=80&w=600&auto=format&fit=crop';
-                                            $slug = $item['slug'] ?? '#';
-                                            $title = $item['title'] ?? '';
-                                            $is_hot = isset($item['is_hot']) && $item['is_hot'] == '1';
+                                    <?php 
+                                    $desktop_sol_items = $sol_items;
+                                    if(empty($desktop_sol_items)) {
+                                        $desktop_sol_items = [
+                                            ['title' => 'Giáo Dục & Tương Tác', 'slug' => '/giao-duc', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg'],
+                                            ['title' => 'Hội Họp Doanh Nghiệp', 'slug' => '/hoi-hop-doanh-nghiep', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg'],
+                                            ['title' => 'Sự Kiện & Sân Khấu', 'slug' => '/su-kien-san-khau', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg'],
+                                            ['title' => 'Quảng Cáo Thương Hiệu', 'slug' => '/quang-cao-thuong-hieu', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg'],
+                                            ['title' => 'F&B & Giải Trí Đêm', 'slug' => '/fnb-giai-tri', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg'],
+                                            ['title' => 'Giải Trí Tại Gia', 'slug' => '/giai-tri-tai-nha', 'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg'],
+                                        ];
+                                    }
+                                    if(!empty($desktop_sol_items)):
+                                        foreach($desktop_sol_items as $item):
+                                            // Handle both object and array safely
+                                            $is_obj = is_object($item);
+                                            $image = $is_obj ? ($item->image ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg') : ($item['image'] ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg');
+                                            $slug = $is_obj ? ($item->url ?? ($item->slug ?? '#')) : ($item['slug'] ?? '#');
+                                            $title = $is_obj ? ($item->title ?? '') : ($item['title'] ?? '');
+                                            $is_hot = $is_obj ? (isset($item->is_hot) && $item->is_hot == '1') : (isset($item['is_hot']) && $item['is_hot'] == '1');
                                     ?>
                                     <a href="<?php echo esc_url($slug); ?>" class="sol-card">
                                         <div class="sol-card__img-wrap">
@@ -486,8 +500,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 <span class="sol-card__hot">HOT</span>
                                             <?php endif; ?>
                                             <img src="<?php echo esc_url($image); ?>"
-                                                 onerror="this.onerror=null;this.src='https://placehold.co/600x375/1d2857/FFF?text=TavaLLS';"
                                                  alt="<?php echo esc_attr($title); ?>"
+                                                 loading="lazy"
                                                  class="sol-card__img">
                                             <div class="sol-card__overlay"></div>
                                             <div class="sol-card__body">
@@ -527,7 +541,7 @@ $about_items = $mega_custom_data['about'] ?? [];
 
                         <!-- MOBILE & TABLET STACKED VIEW (Hidden on Desktop) -->
                         <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex lg:hidden items-center gap-2.5 group hover:text-brand-orange">
-                            <div class="w-8 h-8 md:w-9 md:h-9 rounded-none bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20 group-hover:-translate-y-1 transition-transform">
+                            <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20 group-hover:-translate-y-1 transition-transform">
                                 <i class="ph-bold ph-phone-call text-[16px] md:text-[18px]"></i>
                             </div>
                             <div class="flex flex-col justify-center">
@@ -540,7 +554,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                         <div class="hidden lg:flex items-center gap-6">
                             <!-- Hotline CSKH -->
                             <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex items-center gap-2.5 group">
-                                <div class="w-10 h-10 rounded-none bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
+                                <div class="w-10 h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
                                     <i class="ph-bold ph-phone text-[22px]"></i>
                                 </div>
                                 <div class="flex flex-col whitespace-nowrap">
@@ -550,7 +564,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                             </a>
                             <!-- Hotline Kinh doanh -->
                             <a href="tel:<?php echo esc_attr($hotline_kd_tel); ?>" class="flex items-center gap-2.5 border-l border-gray-100 pl-6 group">
-                                <div class="w-10 h-10 rounded-none bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
+                                <div class="w-10 h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
                                     <i class="ph-bold ph-phone text-[22px]"></i>
                                 </div>
                                 <div class="flex flex-col whitespace-nowrap">
@@ -563,7 +577,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
 
                     <!-- Mobile Menu Trigger -->
-                    <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-none shrink-0 transition-colors">
+                    <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-xl shrink-0 transition-colors">
                         <i class="ph-bold ph-list text-2xl md:text-3xl"></i>
                     </button>
                 </div>
@@ -589,7 +603,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     <span class="text-white font-black text-lg tracking-tight"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
                     <?php endif; ?>
                 </a>
-                <button id="closeMobileMenuBtn" class="w-9 h-9 flex items-center justify-center rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Đóng menu">
+                <button id="closeMobileMenuBtn" class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Đóng menu">
                     <i class="ph ph-x text-xl"></i>
                 </button>
             </div>
@@ -603,7 +617,7 @@ $about_items = $mega_custom_data['about'] ?? [];
             ?>
             <div class="flex items-stretch shrink-0 border-b border-gray-100" style="background:#fff8f6;">
                 <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex-1 flex items-center gap-2.5 px-4 py-3 hover:bg-orange-50 transition-colors border-r border-gray-100">
-                    <div class="w-8 h-8 rounded-none flex items-center justify-center shrink-0" style="background:#f05a25;">
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style="background:#f05a25;">
                         <i class="ph-bold ph-phone text-white text-[14px]"></i>
                     </div>
                     <div>
@@ -612,7 +626,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
                 </a>
                 <a href="tel:<?php echo esc_attr($hotline_kd_tel); ?>" class="flex-1 flex items-center gap-2.5 px-4 py-3 hover:bg-orange-50 transition-colors">
-                    <div class="w-8 h-8 rounded-none flex items-center justify-center shrink-0" style="background:#f05a25;">
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style="background:#f05a25;">
                         <i class="ph-bold ph-phone text-white text-[14px]"></i>
                     </div>
                     <div>
@@ -699,7 +713,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                             <i class="ph ph-caret-down text-gray-400 text-sm" id="icon-mobileSolutions"></i>
                         </button>
                         <ul id="mobileSolutions" class="mobile-accordion-body" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.35s ease,margin-top 0.3s ease,padding-bottom 0.3s ease;list-style:none;padding-left:0;padding-right:0;">
-                            <?php if(!empty($sol_items)):
+                            <?php if(!empty($sol_items) && is_object(reset($sol_items))):
                                 foreach($sol_items as $i => $item):
                                     if($item->menu_item_parent != 0) continue;
                                     $icon_class = get_post_meta($item->ID, '_menu_item_icon_class', true) ?: 'ph-fill ph-presentation-chart';
@@ -771,8 +785,8 @@ $about_items = $mega_custom_data['about'] ?? [];
             <div class="mt-8">
                 <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Gợi ý tìm kiếm phổ biến</h4>
                 <div class="flex flex-wrap gap-2">
-                    <a href="#" class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-none text-sm text-gray-700 transition-colors">Màn hình LED P2.5 Indoor</a>
-                    <a href="#" class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-none text-sm text-gray-700 transition-colors">Loa Line Array JBL</a>
+                    <a href="#" class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Màn hình LED P2.5 Indoor</a>
+                    <a href="#" class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Loa Line Array JBL</a>
                 </div>
             </div>
         </div>

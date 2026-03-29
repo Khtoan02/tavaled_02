@@ -32,7 +32,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 }
 .hero__bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px}
 .hero__bg-cell{overflow:hidden}
-.hero__bg-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.2) saturate(.3) hue-rotate(185deg);animation:bgz 16s ease-in-out infinite alternate}
+.hero__bg-cell img{width:100%;height:100%;object-fit:cover;animation:bgz 16s ease-in-out infinite alternate}
 .hero__bg-cell:nth-child(2) img{animation-delay:-5s}
 .hero__bg-cell:nth-child(3) img{animation-delay:-10s}
 .hero__bg-cell:nth-child(4) img{animation-delay:-14s}
@@ -86,8 +86,8 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 /* ── CRITERIA GRID — 3 pillars ── */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .pillar{background:var(--navy);overflow:hidden;position:relative;cursor:default}
-.pillar__img{width:100%;height:280px;object-fit:cover;filter:brightness(.3) saturate(.4) hue-rotate(185deg);transition:filter .5s}
-.pillar:hover .pillar__img{filter:brightness(.25) saturate(.5) hue-rotate(185deg)}
+.pillar__img{width:100%;height:280px;object-fit:cover;transition:filter .5s}
+.pillar:hover .pillar__img{}
 .pillar__overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(15,24,53,.95) 100%)}
 .pillar__body{position:absolute;bottom:0;left:0;right:0;padding:28px 28px 24px}
 .pillar__num{font-family:var(--ff);font-size:3.5rem;font-weight:800;letter-spacing:-.08em;color:rgba(240,90,37,.2);line-height:1;margin-bottom:4px}
@@ -186,10 +186,10 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero__bg" aria-hidden="true">
-    <div class="hero__bg-cell"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt=""></div>
-    <div class="hero__bg-cell"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt=""></div>
-    <div class="hero__bg-cell"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt=""></div>
-    <div class="hero__bg-cell"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt=""></div>
+ <div class="hero__bg-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg" alt=""></div>
+ <div class="hero__bg-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg" alt=""></div>
+ <div class="hero__bg-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" alt=""></div>
+ <div class="hero__bg-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0016_TavaLED_Hinh_Anh.jpg" alt=""></div>
   </div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
@@ -235,7 +235,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
   </div>
   <div class="pillars rv d1">
     <div class="pillar">
-      <img class="pillar__img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85" alt="Chất lượng sản phẩm">
+ <img class="pillar__img" src="https://tavaled.vn/wp-content/uploads/2026/03/0017_TavaLED_Hinh_Anh.jpg" alt="Chất lượng sản phẩm">
       <div class="pillar__overlay"></div>
       <div class="pillar__body">
         <div class="pillar__num">01</div>
@@ -244,7 +244,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
       </div>
     </div>
     <div class="pillar">
-      <img class="pillar__img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85" alt="Năng lực đối tác">
+ <img class="pillar__img" src="https://tavaled.vn/wp-content/uploads/2026/03/0018_TavaLED_Hinh_Anh.jpg" alt="Năng lực đối tác">
       <div class="pillar__overlay"></div>
       <div class="pillar__body">
         <div class="pillar__num">02</div>
@@ -253,7 +253,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
       </div>
     </div>
     <div class="pillar">
-      <img class="pillar__img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85" alt="Chuẩn thi công">
+ <img class="pillar__img" src="https://tavaled.vn/wp-content/uploads/2026/03/0019_TavaLED_Hinh_Anh.jpg" alt="Chuẩn thi công">
       <div class="pillar__overlay"></div>
       <div class="pillar__body">
         <div class="pillar__num">03</div>

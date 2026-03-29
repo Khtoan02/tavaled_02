@@ -26,8 +26,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .hero{height:100vh;min-height:700px;position:relative;overflow:hidden;display:flex;align-items:flex-end;background:var(--ink)}
 .hero__collage{position:absolute;inset:0;display:grid;grid-template-columns:1.8fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px}
 .hero__cell{overflow:hidden}
-.hero__cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.38) saturate(.7);transition:filter .5s}
-.hero__cell:hover img{filter:brightness(.28)}
+.hero__cell img{width:100%;height:100%;object-fit:cover;transition:filter .5s}
+.hero__cell:hover img{}
 .hero__cell--main{grid-row:span 2}
 .hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(17,24,39,.6) 0%,transparent 30%,rgba(17,24,39,.45) 55%,rgba(17,24,39,.97) 100%),linear-gradient(90deg,rgba(17,24,39,.4) 0%,transparent 60%)}
 .hero__grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
@@ -70,8 +70,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ USE CASES MOSAIC ══ */
 .use-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:260px;gap:4px}
 .um{position:relative;overflow:hidden;cursor:default}
-.um img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.7);transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
-.um:hover img{filter:brightness(.3) saturate(.9);transform:scale(1.06)}
+.um img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s cubic-bezier(.16,1,.3,1)}
+.um:hover img{transform:scale(1.06)}
 .um__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(17,24,39,.92) 100%)}
 .um__body{position:absolute;bottom:0;left:0;right:0;padding:22px 20px 18px}
 .um__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:5px}
@@ -97,8 +97,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 .sol-card{background:var(--light);border:2px solid var(--bdr);border-radius:12px;overflow:hidden;transition:border-color .22s,transform .3s cubic-bezier(.16,1,.3,1),box-shadow .26s}
 .sol-card:hover{border-color:rgba(28,40,87,.2);transform:translateY(-5px);box-shadow:0 18px 48px rgba(28,40,87,.09)}
 .sol-card__img{height:200px;overflow:hidden}
-.sol-card__img img{width:100%;height:100%;object-fit:cover;filter:saturate(.82);transition:transform .6s cubic-bezier(.16,1,.3,1),filter .35s}
-.sol-card:hover .sol-card__img img{transform:scale(1.06);filter:saturate(1)}
+.sol-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .35s}
+.sol-card:hover .sol-card__img img{transform:scale(1.06);}
 .sol-card__body{padding:20px 22px 22px}
 .sol-card__tag{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--o);margin-bottom:7px}
 .sol-card__title{font-family:var(--ff);font-weight:800;font-size:1.1rem;letter-spacing:-.04em;color:var(--navy);margin-bottom:8px;transition:color .2s;line-height:1.2}
@@ -124,8 +124,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ══ CASES ══ */
 .cases{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4px;border-radius:12px;overflow:hidden}
 .case{position:relative;overflow:hidden;min-height:380px;background:var(--navy3);text-decoration:none;display:block}
-.case img{width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.65);transition:filter .5s,transform .7s}
-.case:hover img{filter:brightness(.28) saturate(.85);transform:scale(1.05)}
+.case img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .7s}
+.case:hover img{transform:scale(1.05)}
 .case__over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,24,39,.2) 0%,rgba(17,24,39,.94) 100%)}
 .case__body{position:absolute;bottom:0;left:0;right:0;padding:26px 22px 20px}
 .case__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:7px;display:flex;align-items:center;gap:6px}
@@ -165,11 +165,11 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 <!-- HERO -->
 <section class="hero">
   <div class="hero__collage" aria-hidden="true">
-    <div class="hero__cell hero__cell--main"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=900&q=85" alt="Billboard LED ngoài trời" loading="eager"></div>
-    <div class="hero__cell"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85" alt="Digital Signage TTTM" loading="eager"></div>
-    <div class="hero__cell"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=85" alt="Showroom LED" loading="eager"></div>
-    <div class="hero__cell"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=85" alt="LED Lobby" loading="eager"></div>
-    <div class="hero__cell"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=600&q=85" alt="LED quảng cáo" loading="eager"></div>
+ <div class="hero__cell hero__cell--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0035_TavaLED_Hinh_Anh.jpg" alt="Billboard LED ngoài trời" loading="eager"></div>
+ <div class="hero__cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0036_TavaLED_Hinh_Anh.jpg" alt="Digital Signage TTTM" loading="eager"></div>
+ <div class="hero__cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0037_TavaLED_Hinh_Anh.jpg" alt="Showroom LED" loading="eager"></div>
+ <div class="hero__cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0038_TavaLED_Hinh_Anh.jpg" alt="LED Lobby" loading="eager"></div>
+ <div class="hero__cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0039_TavaLED_Hinh_Anh.jpg" alt="LED quảng cáo" loading="eager"></div>
   </div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
@@ -209,13 +209,13 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     </div>
   </div>
   <div class="use-mosaic rv d1">
-    <div class="um c4 r2"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=85" alt="Billboard" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Billboard Ngoài trời</div><div class="um__title">Màn hình LED P5–P10 kích thước 30–200m²</div><div class="um__spec">Độ sáng 10.000 nit · IP65 · 24/7</div></div></div>
-    <div class="um c4"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=85" alt="TTTM" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Trung tâm thương mại</div><div class="um__title">LED P2–P3 Indoor cho TTTM, chuỗi bán lẻ</div></div></div>
-    <div class="um c4"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85" alt="Lobby" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Sảnh & Lobby</div><div class="um__title">Màn hình LED P2 tạo ấn tượng đầu tiên</div></div></div>
-    <div class="um c3"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85" alt="Showroom" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Showroom</div><div class="um__title">LED P1.5–P2 trưng bày sản phẩm</div></div></div>
-    <div class="um c3"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=600&q=85" alt="Ngân hàng" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Ngân hàng & Tài chính</div><div class="um__title">Ticker board, rate board LED</div></div></div>
-    <div class="um c3"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=85" alt="Sân bay" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Sân bay & Nhà ga</div><div class="um__title">LED P3–P4 wayfinding & quảng cáo</div></div></div>
-    <div class="um c3"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=85" alt="Tòa nhà" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Tòa nhà Văn phòng</div><div class="um__title">Màn hình công trình kiến trúc</div></div></div>
+ <div class="um c4 r2"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0040_TavaLED_Hinh_Anh.jpg" alt="Billboard" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Billboard Ngoài trời</div><div class="um__title">Màn hình LED P5–P10 kích thước 30–200m²</div><div class="um__spec">Độ sáng 10.000 nit · IP65 · 24/7</div></div></div>
+ <div class="um c4"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0041_TavaLED_Hinh_Anh.jpg" alt="TTTM" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Trung tâm thương mại</div><div class="um__title">LED P2–P3 Indoor cho TTTM, chuỗi bán lẻ</div></div></div>
+ <div class="um c4"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0042_TavaLED_Hinh_Anh.jpg" alt="Lobby" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Sảnh & Lobby</div><div class="um__title">Màn hình LED P2 tạo ấn tượng đầu tiên</div></div></div>
+ <div class="um c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0043_TavaLED_Hinh_Anh.jpg" alt="Showroom" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Showroom</div><div class="um__title">LED P1.5–P2 trưng bày sản phẩm</div></div></div>
+ <div class="um c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0044_TavaLED_Hinh_Anh.jpg" alt="Ngân hàng" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Ngân hàng & Tài chính</div><div class="um__title">Ticker board, rate board LED</div></div></div>
+ <div class="um c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0045_TavaLED_Hinh_Anh.jpg" alt="Sân bay" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Sân bay & Nhà ga</div><div class="um__title">LED P3–P4 wayfinding & quảng cáo</div></div></div>
+ <div class="um c3"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0046_TavaLED_Hinh_Anh.jpg" alt="Tòa nhà" loading="lazy"><div class="um__over"></div><div class="um__body"><div class="um__tag">Tòa nhà Văn phòng</div><div class="um__title">Màn hình công trình kiến trúc</div></div></div>
   </div>
 </section>
 
@@ -239,7 +239,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
     <div class="sec-head rv"><div><div class="ey">Giải pháp theo nhu cầu</div><h2 class="sh sh--d">3 hướng triển khai <em>phổ biến nhất</em></h2></div></div>
     <div class="sol-grid rv d1">
       <div class="sol-card">
-        <div class="sol-card__img"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=85" alt="" loading="lazy"></div>
+ <div class="sol-card__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0047_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div>
         <div class="sol-card__body">
           <div class="sol-card__tag">Outdoor Billboard</div>
           <div class="sol-card__title">Màn hình LED ngoài trời cố định</div>
@@ -248,7 +248,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         </div>
       </div>
       <div class="sol-card">
-        <div class="sol-card__img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85" alt="" loading="lazy"></div>
+ <div class="sol-card__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0048_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div>
         <div class="sol-card__body">
           <div class="sol-card__tag">Indoor Digital Signage</div>
           <div class="sol-card__title">Màn hình quảng cáo trong nhà</div>
@@ -257,7 +257,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
         </div>
       </div>
       <div class="sol-card">
-        <div class="sol-card__img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=85" alt="" loading="lazy"></div>
+ <div class="sol-card__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0049_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div>
         <div class="sol-card__body">
           <div class="sol-card__tag">Architectural LED</div>
           <div class="sol-card__title">LED kiến trúc công trình</div>
@@ -295,9 +295,9 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
   <div class="inner">
     <div class="sec-head rv"><div><div class="ey">Dự án thực tế</div><h2 class="sh sh--d">Thương hiệu đã <em>tin tưởng</em></h2></div><a href="/du-an" style="font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--bdr);padding-bottom:3px">Xem tất cả →</a></div>
     <div class="cases rv d1">
-      <a href="#" class="case case--main"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Hà Nội · 2024</div><div class="case__name">Vingroup — Chuỗi 48 billboard LED P6 tại 12 tỉnh thành</div><div class="case__specs"><span class="spec">P6 Outdoor</span><span class="spec">48 điểm</span><span class="spec">CMS tập trung</span><span class="spec">12 tỉnh</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">TP.HCM · 2024</div><div class="case__name">Aeon Mall — Digital Signage P2.5 toàn bộ TTTM</div><div class="case__specs"><span class="spec">P2.5 Indoor</span><span class="spec">120 màn hình</span></div></div></a>
-      <a href="#" class="case"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=85" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Đà Nẵng · 2023</div><div class="case__name">Sân bay Quốc tế Đà Nẵng — LED P3 terminal</div><div class="case__specs"><span class="spec">P3 Terminal</span><span class="spec">Wayfinding</span></div></div></a>
+ <a href="#" class="case case--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0050_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Hà Nội · 2024</div><div class="case__name">Vingroup — Chuỗi 48 billboard LED P6 tại 12 tỉnh thành</div><div class="case__specs"><span class="spec">P6 Outdoor</span><span class="spec">48 điểm</span><span class="spec">CMS tập trung</span><span class="spec">12 tỉnh</span></div></div></a>
+ <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0051_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">TP.HCM · 2024</div><div class="case__name">Aeon Mall — Digital Signage P2.5 toàn bộ TTTM</div><div class="case__specs"><span class="spec">P2.5 Indoor</span><span class="spec">120 màn hình</span></div></div></a>
+ <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0052_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"><div class="case__over"></div><div class="case__body"><div class="case__tag">Đà Nẵng · 2023</div><div class="case__name">Sân bay Quốc tế Đà Nẵng — LED P3 terminal</div><div class="case__specs"><span class="spec">P3 Terminal</span><span class="spec">Wayfinding</span></div></div></a>
     </div>
   </div>
 </section>

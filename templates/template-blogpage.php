@@ -190,9 +190,9 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 .card__thumb img {
   width:100%; height:100%; object-fit:cover; display:block;
   transition: transform .7s cubic-bezier(.16,1,.3,1), filter .4s;
-  filter: saturate(.82) brightness(.98);
+  
 }
-.card:hover .card__thumb img { transform:scale(1.07); filter:saturate(1) brightness(1.01); }
+.card:hover .card__thumb img { transform:scale(1.07);  }
 
 /* Badge — whisper quiet */
 .cat {
@@ -626,8 +626,8 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
    ANIMATIONS
 ══════════════════════════════════ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px) scale(0.98); filter: blur(6px); }
-  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  from { opacity: 0; transform: translateY(30px) scale(0.98);  }
+  to   { opacity: 1; transform: translateY(0) scale(1);  }
 }
 .anim { opacity:0; animation: fadeUp .85s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .d1{animation-delay:.05s} .d2{animation-delay:.12s} .d3{animation-delay:.18s}

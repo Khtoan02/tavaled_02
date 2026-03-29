@@ -27,7 +27,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 .hero{min-height:85vh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:flex-end}
 .hero__imgs{position:absolute;inset:0;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2px}
 .hero__img{overflow:hidden}
-.hero__img img{width:100%;height:100%;object-fit:cover;filter:brightness(.25) saturate(.35) hue-rotate(185deg);animation:zz 14s ease-in-out infinite alternate}
+.hero__img img{width:100%;height:100%;object-fit:cover;animation:zz 14s ease-in-out infinite alternate}
 .hero__img:nth-child(2) img{animation-delay:-5s}
 .hero__img:nth-child(3) img{animation-delay:-9s}
 @keyframes zz{from{transform:scale(1.1)}to{transform:scale(1.02)}}
@@ -83,8 +83,8 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 .culture{padding:0}
 .culture-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:280px;gap:4px}
 .cult-cell{position:relative;overflow:hidden;cursor:default}
-.cult-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.6) hue-rotate(185deg);transition:filter .5s,transform .6s cubic-bezier(.16,1,.3,1)}
-.cult-cell:hover img{filter:brightness(.38) saturate(.8);transform:scale(1.06)}
+.cult-cell img{width:100%;height:100%;object-fit:cover;transition:filter .5s,transform .6s cubic-bezier(.16,1,.3,1)}
+.cult-cell:hover img{transform:scale(1.06)}
 .cult-cell__over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(15,24,53,.92) 100%)}
 .cult-cell__body{position:absolute;bottom:0;left:0;right:0;padding:22px 20px 18px}
 .cult-cell__tag{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:5px}
@@ -157,9 +157,9 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero__imgs" aria-hidden="true">
-    <div class="hero__img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=85" alt="Đội ngũ TavaLED"></div>
-    <div class="hero__img"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=85" alt="Làm việc nhóm"></div>
-    <div class="hero__img"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=85" alt="Dự án thực tế"></div>
+ <div class="hero__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0002_TavaLED_Hinh_Anh.jpg" alt="Đội ngũ TavaLED"></div>
+ <div class="hero__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0003_TavaLED_Hinh_Anh.jpg" alt="Làm việc nhóm"></div>
+ <div class="hero__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0004_TavaLED_Hinh_Anh.jpg" alt="Dự án thực tế"></div>
   </div>
   <div class="hero__fog" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
@@ -216,27 +216,27 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 <section class="culture" aria-label="Văn hóa TavaLED">
   <div class="culture-grid">
     <div class="cult-cell cult-cell--wide">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=85" alt="Đội ngũ TavaLED làm việc">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0005_TavaLED_Hinh_Anh.jpg" alt="Đội ngũ TavaLED làm việc">
       <div class="cult-cell__over"></div>
       <div class="cult-cell__body"><div class="cult-cell__tag">Văn hóa làm việc</div><div class="cult-cell__title">Mỗi dự án là cơ hội học hỏi — không có lần nào giống lần nào</div></div>
     </div>
     <div class="cult-cell">
-      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=85" alt="Họp nhóm">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0006_TavaLED_Hinh_Anh.jpg" alt="Họp nhóm">
       <div class="cult-cell__over"></div>
       <div class="cult-cell__body"><div class="cult-cell__tag">Teamwork</div><div class="cult-cell__title">Ý kiến của mọi người đều được lắng nghe</div></div>
     </div>
     <div class="cult-cell">
-      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=85" alt="Hiện trường">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0007_TavaLED_Hinh_Anh.jpg" alt="Hiện trường">
       <div class="cult-cell__over"></div>
       <div class="cult-cell__body"><div class="cult-cell__tag">Hiện trường</div><div class="cult-cell__title">Niềm tự hào khi màn hình sáng lên lần đầu</div></div>
     </div>
     <div class="cult-cell">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=85" alt="Đào tạo">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0008_TavaLED_Hinh_Anh.jpg" alt="Đào tạo">
       <div class="cult-cell__over"></div>
       <div class="cult-cell__body"><div class="cult-cell__tag">Đào tạo</div><div class="cult-cell__title">Học từ dự án thực, không từ sách vở</div></div>
     </div>
     <div class="cult-cell">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=85" alt="Công nghệ">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0009_TavaLED_Hinh_Anh.jpg" alt="Công nghệ">
       <div class="cult-cell__over"></div>
       <div class="cult-cell__body"><div class="cult-cell__tag">Công nghệ</div><div class="cult-cell__title">Luôn làm việc với thiết bị tốt nhất</div></div>
     </div>

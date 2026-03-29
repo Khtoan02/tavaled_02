@@ -3,12 +3,6 @@
  * Template Name: Trang chủ
  */
 get_header(); ?>
-
-
-
-
-
-
     <main>
 
         <!-- ================= SECTION 1: HERO VIDEO BACKGROUND ================= -->
@@ -18,7 +12,7 @@ get_header(); ?>
                 <img src="https://ledkimlong.com/wp-content/uploads/2023/10/384277662_6540973292664442_2689789734785120511_n.jpg"
                      alt="TavaLLS Vision Background"
                      class="absolute w-full h-full object-cover"
-                     style="filter: brightness(0.5) saturate(1.2);">
+                     style="">
             </div>
 
             <div class="hero-overlay"></div>
@@ -227,19 +221,19 @@ get_header(); ?>
                         // Demo content nếu admin chưa setup
                     ?>
                         <div class="g-item">
-                            <img src="https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?w=1000&q=80" alt="EDM">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0031_TavaLED_Hinh_Anh.jpg" alt="EDM">
                         </div>
                         <div class="g-item">
-                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Club">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0032_TavaLED_Hinh_Anh.jpg" alt="Club">
                         </div>
                         <div class="g-item">
-                            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&q=80" alt="Laser">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0033_TavaLED_Hinh_Anh.jpg" alt="Laser">
                         </div>
                         <div class="g-item">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&q=80" alt="Concert">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0034_TavaLED_Hinh_Anh.jpg" alt="Concert">
                         </div>
                         <div class="g-item">
-                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Stage">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0035_TavaLED_Hinh_Anh.jpg" alt="Stage">
                         </div>
                     <?php } ?>
                 </div>
@@ -283,7 +277,7 @@ get_header(); ?>
 
                         <!-- Tech Image Support -->
                         <div class="relative overflow-hidden mb-8 aspect-video border border-white/10 group interactive">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Hỗ trợ kỹ thuật" class="w-full h-full object-cover filter brightness-[0.6] group-hover:brightness-90 group-hover:scale-105 transition-all duration-700">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0036_TavaLED_Hinh_Anh.jpg" alt="Hỗ trợ kỹ thuật" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
                             <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#1c2857] to-transparent p-6">
                                 <p class="text-white font-bold tracking-wide uppercase text-sm">Trung Tâm Hỗ Trợ Kỹ Thuật</p>
                             </div>
@@ -387,7 +381,7 @@ get_header(); ?>
 
         <!-- ================= SECTION 7: CTA ================= -->
         <section class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Background" class="absolute inset-0 w-full h-full object-cover filter brightness-[0.2] saturate-50">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0037_TavaLED_Hinh_Anh.jpg" alt="Background" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]"></div>
             
             <div class="container mx-auto px-4 relative z-10 text-center reveal-up">

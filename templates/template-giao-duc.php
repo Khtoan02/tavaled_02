@@ -103,7 +103,7 @@ body {
 }
 .hero__right-img img {
   width:100%; height:100%; object-fit:cover;
-  filter:brightness(.55) saturate(.7) hue-rotate(8deg);
+  
 }
 .hero__right-img::after {
   content:'';
@@ -346,7 +346,7 @@ body {
 }
 .turn__bg img {
   width:100%; height:100%; object-fit:cover;
-  filter:brightness(.3) saturate(.5) hue-rotate(10deg);
+  
 }
 .turn__bg::after {
   content:''; position:absolute; inset:0;
@@ -493,10 +493,10 @@ body {
 }
 .space-feat img {
   width:100%; height:100%; object-fit:cover;
-  filter:brightness(.72) saturate(.8);
+  
   transition:transform .6s cubic-bezier(.16,1,.3,1), filter .4s;
 }
-.space-feat:hover img { transform:scale(1.07); filter:brightness(.6) saturate(1); }
+.space-feat:hover img { transform:scale(1.07);  }
 .space-feat__overlay {
   position:absolute; inset:0;
   background:linear-gradient(180deg, transparent 30%, rgba(15,24,53,.85) 100%);
@@ -545,10 +545,10 @@ body {
 }
 .space-prod__thumb img {
   width:100%; height:100%; object-fit:cover;
-  filter:saturate(.8);
+  
   transition:transform .5s, filter .3s;
 }
-.space-prod:hover .space-prod__thumb img { transform:scale(1.06); filter:saturate(1); }
+.space-prod:hover .space-prod__thumb img { transform:scale(1.06);  }
 .space-prod__body { padding:12px 14px 14px; }
 .space-prod__cat { font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--o); opacity:.75; margin-bottom:4px; }
 .space-prod__name {
@@ -583,10 +583,10 @@ body {
 }
 .case img {
   width:100%; height:100%; object-fit:cover;
-  filter:brightness(.55) saturate(.7) hue-rotate(8deg);
+  
   transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s;
 }
-.case:hover img { transform:scale(1.06); filter:brightness(.4) saturate(.9); }
+.case:hover img { transform:scale(1.06);  }
 .case__overlay {
   position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(28,40,87,.2) 0%, rgba(15,24,53,.9) 100%);
@@ -987,7 +987,7 @@ body {
 
   <div class="hero__left-bg"></div>
   <div class="hero__right-img">
-    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1400&q=90" alt="Học sinh trong lớp học hiện đại với màn hình LED" loading="eager">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0038_TavaLED_Hinh_Anh.jpg" alt="Học sinh trong lớp học hiện đại với màn hình LED" loading="eager">
   </div>
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__line" aria-hidden="true"></div>
@@ -1083,7 +1083,7 @@ body {
 ══════════════════ -->
 <section class="turn" aria-label="Giải pháp TavaLLS">
   <div class="turn__bg">
-    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=85" alt="Lớp học hiện đại với màn hình LED" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0039_TavaLED_Hinh_Anh.jpg" alt="Lớp học hiện đại với màn hình LED" loading="lazy">
   </div>
   <div class="turn__grid" aria-hidden="true"></div>
   <div class="turn__inner">
@@ -1141,7 +1141,7 @@ body {
     <div class="space-panel active" id="sp-lophoc">
       <div class="space-content reveal">
         <div class="space-content__main">
-          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=900&q=90" alt="Lớp học với màn hình LED" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0040_TavaLED_Hinh_Anh.jpg" alt="Lớp học với màn hình LED" loading="lazy">
           <div class="space-content__main__overlay"></div>
           <div class="space-content__main__body">
             <div class="space-tag">Phòng học</div>
@@ -1151,7 +1151,7 @@ body {
         </div>
         <div class="space-content__side">
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=80" alt="Âm thanh phòng học" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0041_TavaLED_Hinh_Anh.jpg" alt="Âm thanh phòng học" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Âm thanh</div>
@@ -1159,7 +1159,7 @@ body {
             </div>
           </div>
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt="Điều khiển thông minh" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0042_TavaLED_Hinh_Anh.jpg" alt="Điều khiển thông minh" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Điều khiển</div>
@@ -1172,19 +1172,19 @@ body {
         <div class="space-products__label">Sản phẩm gợi ý cho lớp học</div>
         <div class="space-prods-grid">
           <a href="#" class="space-prod">
-            <div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="LED P2 Indoor" loading="lazy"></div>
+ <div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0043_TavaLED_Hinh_Anh.jpg" alt="LED P2 Indoor" loading="lazy"></div>
             <div class="space-prod__body"><div class="space-prod__cat">Màn hình LED</div><div class="space-prod__name">LED P2 Indoor 40"–120"</div></div>
           </a>
           <a href="#" class="space-prod">
-            <div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Loa phòng học" loading="lazy"></div>
+ <div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0044_TavaLED_Hinh_Anh.jpg" alt="Loa phòng học" loading="lazy"></div>
             <div class="space-prod__body"><div class="space-prod__cat">Âm thanh</div><div class="space-prod__name">JBL Control 25 Speaker Set</div></div>
           </a>
           <a href="#" class="space-prod">
-            <div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1488229297570-58520851e868?w=400&q=80" alt="Micro giáo viên" loading="lazy"></div>
+ <div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0045_TavaLED_Hinh_Anh.jpg" alt="Micro giáo viên" loading="lazy"></div>
             <div class="space-prod__body"><div class="space-prod__cat">Micro</div><div class="space-prod__name">Shure MXW Wireless Lavalier</div></div>
           </a>
           <a href="#" class="space-prod">
-            <div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="Đèn LED lớp học" loading="lazy"></div>
+ <div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0046_TavaLED_Hinh_Anh.jpg" alt="Đèn LED lớp học" loading="lazy"></div>
             <div class="space-prod__body"><div class="space-prod__cat">Ánh sáng</div><div class="space-prod__name">Panel LED Anti-glare 40W</div></div>
           </a>
         </div>
@@ -1195,7 +1195,7 @@ body {
     <div class="space-panel" id="sp-hoitruong">
       <div class="space-content">
         <div class="space-content__main">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=90" alt="Hội trường trường học" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0047_TavaLED_Hinh_Anh.jpg" alt="Hội trường trường học" loading="lazy">
           <div class="space-content__main__overlay"></div>
           <div class="space-content__main__body">
             <div class="space-tag">Hội trường</div>
@@ -1205,7 +1205,7 @@ body {
         </div>
         <div class="space-content__side">
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=500&q=80" alt="Ánh sáng hội trường" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0048_TavaLED_Hinh_Anh.jpg" alt="Ánh sáng hội trường" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Ánh sáng</div>
@@ -1213,7 +1213,7 @@ body {
             </div>
           </div>
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500&q=80" alt="Màn hình LED sân khấu" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0049_TavaLED_Hinh_Anh.jpg" alt="Màn hình LED sân khấu" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Màn hình</div>
@@ -1225,10 +1225,10 @@ body {
       <div class="space-products">
         <div class="space-products__label">Sản phẩm gợi ý cho hội trường</div>
         <div class="space-prods-grid">
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Màn hình LED</div><div class="space-prod__name">LED P3 Stage Full Wall</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Line Array</div><div class="space-prod__name">JBL VTX A8 Line Array</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Moving Head</div><div class="space-prod__name">Robe Pointe 280W Hybrid</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Mixer</div><div class="space-prod__name">Yamaha QL5 Digital Console</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0050_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Màn hình LED</div><div class="space-prod__name">LED P3 Stage Full Wall</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0051_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Line Array</div><div class="space-prod__name">JBL VTX A8 Line Array</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0052_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Moving Head</div><div class="space-prod__name">Robe Pointe 280W Hybrid</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0053_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Mixer</div><div class="space-prod__name">Yamaha QL5 Digital Console</div></div></a>
         </div>
       </div>
     </div>
@@ -1237,7 +1237,7 @@ body {
     <div class="space-panel" id="sp-thuvien">
       <div class="space-content">
         <div class="space-content__main">
-          <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=900&q=90" alt="Thư viện trường học hiện đại" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0054_TavaLED_Hinh_Anh.jpg" alt="Thư viện trường học hiện đại" loading="lazy">
           <div class="space-content__main__overlay"></div>
           <div class="space-content__main__body">
             <div class="space-tag">Thư viện & Phòng lab</div>
@@ -1247,7 +1247,7 @@ body {
         </div>
         <div class="space-content__side">
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt="Phòng lab" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0055_TavaLED_Hinh_Anh.jpg" alt="Phòng lab" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Phòng lab IT</div>
@@ -1255,7 +1255,7 @@ body {
             </div>
           </div>
           <div class="space-feat">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80" alt="Digital signage" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0056_TavaLED_Hinh_Anh.jpg" alt="Digital signage" loading="lazy">
             <div class="space-feat__overlay"></div>
             <div class="space-feat__body">
               <div class="space-feat__label">Digital Signage</div>
@@ -1267,10 +1267,10 @@ body {
       <div class="space-products">
         <div class="space-products__label">Sản phẩm gợi ý cho thư viện & phòng lab</div>
         <div class="space-prods-grid">
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">LED Ghép</div><div class="space-prod__name">Màn hình ghép LCD 4K 55"</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Signage</div><div class="space-prod__name">LED P2.5 Digital Board 65"</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Âm thanh nền</div><div class="space-prod__name">Ceiling Speaker Set 5.1</div></div></a>
-          <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Điều khiển</div><div class="space-prod__name">Control System Crestron</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0057_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">LED Ghép</div><div class="space-prod__name">Màn hình ghép LCD 4K 55"</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0058_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Signage</div><div class="space-prod__name">LED P2.5 Digital Board 65"</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0059_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Âm thanh nền</div><div class="space-prod__name">Ceiling Speaker Set 5.1</div></div></a>
+ <a href="#" class="space-prod"><div class="space-prod__thumb"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0060_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy"></div><div class="space-prod__body"><div class="space-prod__cat">Điều khiển</div><div class="space-prod__name">Control System Crestron</div></div></a>
         </div>
       </div>
     </div>
@@ -1292,7 +1292,7 @@ body {
 
     <div class="cases reveal">
       <a href="#" class="case case--main" aria-label="THPT Nguyễn Du Hà Nội">
-        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=900&q=85" alt="THPT Nguyễn Du" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0061_TavaLED_Hinh_Anh.jpg" alt="THPT Nguyễn Du" loading="lazy">
         <div class="case__overlay"></div>
         <div class="case__body">
           <div class="case__tag">Hà Nội · 2024</div>
@@ -1307,7 +1307,7 @@ body {
         </div>
       </a>
       <a href="#" class="case" aria-label="Đại học Bách Khoa">
-        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=85" alt="Đại học Bách Khoa" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0062_TavaLED_Hinh_Anh.jpg" alt="Đại học Bách Khoa" loading="lazy">
         <div class="case__overlay"></div>
         <div class="case__body">
           <div class="case__tag">TP.HCM · 2024</div>
@@ -1319,7 +1319,7 @@ body {
         </div>
       </a>
       <a href="#" class="case" aria-label="THCS Lê Hồng Phong">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=85" alt="THCS Lê Hồng Phong" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0063_TavaLED_Hinh_Anh.jpg" alt="THCS Lê Hồng Phong" loading="lazy">
         <div class="case__overlay"></div>
         <div class="case__body">
           <div class="case__tag">Đà Nẵng · 2023</div>
@@ -1362,10 +1362,10 @@ body {
       <div class="why__visual reveal">
         <div class="why__img-stack">
           <div class="why__img-main">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=85" alt="Hội trường trường học" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0064_TavaLED_Hinh_Anh.jpg" alt="Hội trường trường học" loading="lazy">
           </div>
           <div class="why__img-accent">
-            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=85" alt="Lớp học LED" loading="lazy">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0001_TavaLED_Hinh_Anh.jpg" alt="Lớp học LED" loading="lazy">
           </div>
           <div class="why__badge">
             <div class="why__badge-num">10<span style="color:rgba(255,255,255,.5);font-size:.5em">+</span></div>

@@ -8,6 +8,8 @@ get_header(); ?>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     
+    <link rel="preconnect" href="https://toan.host">
+    <link rel="preconnect" href="https://images.unsplash.com">
     <style>
         /* BASE & SCROLL */
         body { font-family: var(--font-body); background-color: #fffcfb; margin: 0; overflow-x: hidden; color: #1e293b; }
@@ -111,7 +113,7 @@ get_header(); ?>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-brand-orange/10 filter blur-[100px] rounded-full pointer-events-none"></div>
 
             <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 reveal-up">
+                <div class="lg:col-span-5 reveal-up">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-[2px] bg-brand-orange"></div>
                         <p class="font-mono text-brand-orange font-bold tracking-[0.2em] uppercase text-sm">Chương I: Kỷ Nguyên Số</p>
@@ -123,12 +125,12 @@ get_header(); ?>
                         Tại TavaLLS, chúng tôi không đơn thuần cung cấp phần cứng vô tri. Chúng tôi mang đến "nhịp đập", đánh thức mọi giác quan và hiện thực hóa những tầm nhìn nghệ thuật khắt khe nhất.
                     </p>
                 </div>
-                <div class="lg:col-span-5 relative reveal-up reveal-delay-1">
-                    <div class="aspect-[4/5] bg-gray-900 relative overflow-hidden group">
-                        <!-- Hình ảnh hiển thị chuẩn nhất, bỏ opacity -->
-                        <img src="https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000">
-                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-brand-dark to-transparent">
-                            <i class="ph-fill ph-play-circle text-5xl text-brand-orange mb-4 hover:scale-110 transition-transform cursor-pointer"></i>
+                <div class="lg:col-span-7 relative reveal-up reveal-delay-1">
+                    <div class="bg-gray-900 relative overflow-hidden group shadow-2xl rounded-sm">
+                        <!-- Video hiển thị trực tiếp với preload và poster giúp tăng tốc load -->
+ <video src="https://toan.host/wp-content/uploads/2026/03/14.mp4" preload="auto" poster="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" autoplay loop muted playsinline class="w-full h-auto block group-hover:scale-105 transition-all duration-1000"></video>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-brand-dark to-transparent pointer-events-none">
+                            <i class="ph-fill ph-play-circle text-5xl text-brand-orange mb-4 hover:scale-110 transition-transform cursor-pointer pointer-events-auto"></i>
                             <p class="text-white font-mono text-sm tracking-widest uppercase">Trải Nghiệm Visual 2026</p>
                         </div>
                     </div>
@@ -164,10 +166,9 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="relative reveal-up reveal-delay-1 h-full min-h-[400px]">
-                        <!-- Ảnh bối cảnh vẫn để filter nhẹ để hòa vào nền tối -->
-                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="" class="absolute inset-0 w-full h-full object-cover filter grayscale opacity-40">
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#0a0f1a] to-transparent"></div>
+                    <div class="relative reveal-up reveal-delay-1 h-full min-h-[400px] rounded-lg overflow-hidden shadow-2xl">
+                        <!-- Ảnh bối cảnh nguyên bản, không dùng filter -->
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/2.jpg" alt="TavaLLS Matrix" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
                     </div>
                 </div>
 
@@ -339,8 +340,8 @@ get_header(); ?>
                     </div>
                     <!-- Box 4 -->
                     <div class="glass-dark p-10 border-t-2 border-gray-700 hover:border-brand-orange hover:bg-[#0a0f1a] transition-colors group relative overflow-hidden">
-                        <div class="absolute right-0 bottom-0 opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-30 transition-all duration-700 pointer-events-none">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="" class="w-64 h-64 object-cover object-left-top">
+                        <div class="absolute right-0 bottom-0     transition-all duration-700 pointer-events-none">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0016_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy" class="w-64 h-64 object-cover object-left-top">
                         </div>
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-12">
@@ -410,7 +411,6 @@ get_header(); ?>
 
         <!-- 8. MASONRY GRID (Kiệt tác Không Gian - Ảnh nguyên bản chuẩn nhất) -->
         <section class="py-32 bg-brand-light relative">
-            <div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#0a0f1a] to-transparent opacity-10 pointer-events-none"></div>
             
             <div class="container mx-auto px-6 lg:px-12 text-center mb-10 reveal-up">
                 <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương VII: Minh Chứng</h3>
@@ -431,17 +431,17 @@ get_header(); ?>
                             if (!$img_src) continue;
                     ?>
                     <div class="g-item">
-                        <img src="<?php echo esc_url($img_src); ?>" alt="">
+                        <img src="<?php echo esc_url($img_src); ?>" alt="" loading="lazy">
                     </div>
                     <?php 
                         }
                     } else {
                     ?>
-                        <div class="g-item"><img src="https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?w=1000&q=80" alt="EDM"></div>
-                        <div class="g-item"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Club"></div>
-                        <div class="g-item"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&q=80" alt="Laser"></div>
-                        <div class="g-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&q=80" alt="Concert"></div>
-                        <div class="g-item"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Stage"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0017_TavaLED_Hinh_Anh.jpg" alt="EDM" loading="lazy"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0018_TavaLED_Hinh_Anh.jpg" alt="Club" loading="lazy"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0019_TavaLED_Hinh_Anh.jpg" alt="Laser" loading="lazy"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0020_TavaLED_Hinh_Anh.jpg" alt="Concert" loading="lazy"></div>
+ <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0021_TavaLED_Hinh_Anh.jpg" alt="Stage" loading="lazy"></div>
                     <?php } ?>
                 </div>
 
@@ -456,7 +456,6 @@ get_header(); ?>
 
         <!-- 9. NETWORK MAP 3D PARALLAX (Hiệu ứng chuyển động chuột siêu mượt) -->
         <section class="network-section py-32 bg-white border-t border-gray-100 relative">
-            <div class="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-brand-light to-white pointer-events-none"></div>
             
             <div class="container mx-auto px-4 lg:px-8 max-w-[1600px] relative z-10 flex flex-col items-center text-center mb-16 reveal-up">
                 <h3 class="font-mono text-brand-orange uppercase tracking-widest text-sm mb-4">Chương VIII: Niềm Tin Rộng Khắp</h3>
@@ -517,7 +516,7 @@ get_header(); ?>
                     <div class="lg:col-span-5">
                         <div class="relative w-full aspect-[3/4] bg-gray-900 border border-gray-700 overflow-hidden group">
                             <!-- Ảnh CEO chuẩn màu 100%, không grayscale, không opacity -->
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                            <img src="https://tavaled.vn/wp-content/uploads/2026/03/A-Tuyen-CEO-Tava.png" alt="Hồ Văn Tuyền - CEO TavaLLS" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
                             <div class="absolute inset-4 border border-white/20 pointer-events-none"></div>
                         </div>
                         <div class="mt-6 border-l-4 border-brand-orange pl-4">
@@ -654,7 +653,7 @@ get_header(); ?>
             // Demo data if none
             $partners_arr = [
                 ["name" => "VTV", "size" => "lg", "pos" => [22, 22], "tooltipPos" => "bottom", "logo" => "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/VTV_logo_2013.svg/1024px-VTV_logo_2013.svg.png", "desc" => "Đài Truyền Hình VTV"],
-                ["name" => "GEM Center", "size" => "lg", "pos" => [75, 25], "tooltipPos" => "bottom", "logo" => "https://via.placeholder.com/150", "desc" => "Trung tâm Sự kiện GEM"]
+ ["name" =>"GEM Center","size" =>"lg","pos" => [75, 25],"tooltipPos" =>"bottom","logo" =>"https://tavaled.vn/wp-content/uploads/2026/03/0022_TavaLED_Hinh_Anh.jpg","desc" =>"Trung tâm Sự kiện GEM"]
             ];
         }
         ?>
@@ -673,7 +672,7 @@ get_header(); ?>
             const svgLines = document.getElementById('networkLines');
             const canvas = document.getElementById('networkCanvas');
             const centerX = 50, centerY = 50; 
-            const defaultCoverImg = "https://images.unsplash.com/photo-1540039155732-d674d0e8c04c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+ const defaultCoverImg ="https://tavaled.vn/wp-content/uploads/2026/03/0023_TavaLED_Hinh_Anh.jpg";
 
             partnersData.forEach((partner, index) => {
                 const nodeDiv = document.createElement('div');
@@ -689,7 +688,7 @@ get_header(); ?>
                 nodeDiv.style.top = `${partner.pos[1]}%`;
 
                 const isImageLogo = partner.logo && partner.logo.startsWith('http');
-                const logoContent = isImageLogo ? `<img src="${partner.logo}" alt="">` : `<span class="font-bold text-sm" style="padding: 10px;">${partner.name}</span>`;
+                const logoContent = isImageLogo ? `<img src="${partner.logo}" alt="" loading="lazy">` : `<span class="font-bold text-sm" style="padding: 10px;">${partner.name}</span>`;
 
                 nodeDiv.innerHTML = `
                     <div class="network-logo logo-${partner.size}">${logoContent}</div>

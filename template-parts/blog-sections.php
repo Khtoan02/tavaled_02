@@ -1,10 +1,8 @@
-<?php
-// Blog Sections Template Part - Hiển thị 4 chuyên mục DỰ ÁN, KINH NGHIỆM, DỊCH VỤ, TIN TỨC.
-// Đã tối ưu UI/UX: Ưu tiên bài mới, toàn bộ card click được, chữ bài to đặc biệt lớn hơn.
-
+<?php 
+// Blog Sections Template Part
 // Hàm helper để render fallback thumbnail
 if (!function_exists('render_blog_thumbnail')) {
-    function render_blog_thumbnail($size = 'full', $fallback_img = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80', $category_name = 'Blog', $location = '') {
+    function render_blog_thumbnail($size = 'full', $fallback_img = 'https://tavaled.vn/wp-content/uploads/2026/03/0020_TavaLED_Hinh_Anh.jpg', $category_name = 'Blog', $location = '') {
         if (has_post_thumbnail()) {
             the_post_thumbnail($size);
         } else {
@@ -15,6 +13,7 @@ if (!function_exists('render_blog_thumbnail')) {
     }
 }
 ?>
+
 
 <!-- ================= 01 — DỰ ÁN ================= -->
 <?php
@@ -48,7 +47,7 @@ if ($q_duan->have_posts()) :
         <div class="card card-feat relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb" style="height:380px">
-                <?php render_blog_thumbnail('large', 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80', 'Dự án'); ?>
+ <?php render_blog_thumbnail('large', 'https://tavaled.vn/wp-content/uploads/2026/03/0021_TavaLED_Hinh_Anh.jpg', 'Dự án'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('F Y'); ?></span></div>
@@ -64,7 +63,7 @@ if ($q_duan->have_posts()) :
         <div class="card relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb" style="height:178px">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80', 'Dự án'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0022_TavaLED_Hinh_Anh.jpg', 'Dự án'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('F Y'); ?></span></div>
@@ -84,7 +83,7 @@ if ($q_duan->have_posts()) :
         <div class="card relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb" style="height:150px">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80', 'Dự án'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0023_TavaLED_Hinh_Anh.jpg', 'Dự án'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('F Y'); ?></span></div>
@@ -103,7 +102,7 @@ if ($q_duan->have_posts()) :
         <div class="card relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb" style="height:165px">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80', 'Dự án'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg', 'Dự án'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('F Y'); ?></span></div>
@@ -151,7 +150,7 @@ if ($q_kinhnghiem->have_posts()) :
         <div class="card card-big relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb">
-                <?php render_blog_thumbnail('large', 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80', 'Kinh Nghiệm'); ?>
+ <?php render_blog_thumbnail('large', 'https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg', 'Kinh Nghiệm'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date(); ?></span></div>
@@ -166,7 +165,7 @@ if ($q_kinhnghiem->have_posts()) :
         <div class="card card-sm relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&q=80', 'Kinh Nghiệm'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg', 'Kinh Nghiệm'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('j F'); ?></span></div>
@@ -216,7 +215,7 @@ if ($q_dichvu->have_posts()) :
         <div class="card card-big relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb">
-                <?php render_blog_thumbnail('large', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80', 'Dịch vụ'); ?>
+ <?php render_blog_thumbnail('large', 'https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg', 'Dịch vụ'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date(); ?></span></div>
@@ -232,7 +231,7 @@ if ($q_dichvu->have_posts()) :
         <div class="card card-md relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb" style="height:155px">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80', 'Dịch vụ'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0028_TavaLED_Hinh_Anh.jpg', 'Dịch vụ'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('j F, Y'); ?></span></div>
@@ -283,7 +282,7 @@ if ($q_tintuc->have_posts()) :
         <div class="card card-big relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb">
-                <?php render_blog_thumbnail('large', 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80', 'Tin Tức'); ?>
+ <?php render_blog_thumbnail('large', 'https://tavaled.vn/wp-content/uploads/2026/03/0029_TavaLED_Hinh_Anh.jpg', 'Tin Tức'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('j F'); ?></span></div>
@@ -296,7 +295,7 @@ if ($q_tintuc->have_posts()) :
         <div class="card card-sm relative group">
             <a href="<?php the_permalink(); ?>" class="absolute inset-0 z-10" aria-label="<?php the_title_attribute(); ?>"></a>
             <div class="card__thumb">
-                <?php render_blog_thumbnail('medium', 'https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=600&q=80', 'Tin Tức'); ?>
+ <?php render_blog_thumbnail('medium', 'https://tavaled.vn/wp-content/uploads/2026/03/0030_TavaLED_Hinh_Anh.jpg', 'Tin Tức'); ?>
             </div>
             <div class="card__body">
                 <div class="card__meta"><span><?php echo get_the_date('j F'); ?></span></div>

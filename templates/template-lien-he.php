@@ -52,7 +52,7 @@ body {
 .hero__collage-cell { overflow: hidden; }
 .hero__collage-cell img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: brightness(.28) saturate(.4) hue-rotate(185deg);
+  
   animation: zoom 14s ease-in-out infinite alternate;
 }
 .hero__collage-cell:nth-child(2) img { animation-delay: -5s; }
@@ -250,7 +250,7 @@ body {
 }
 .o-map img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: brightness(.5) saturate(.5) hue-rotate(185deg);
+  
   transition: transform 8s ease;
 }
 .office-panel.active .o-map img { transform: scale(1.04); }
@@ -475,7 +475,7 @@ a.info-row__val:hover { color: var(--o); }
 .faq__img {
   width: 100%; height: 240px; object-fit: cover;
   border-radius: 10px; margin-top: 24px;
-  filter: brightness(.85) saturate(.8);
+  
   box-shadow: 0 16px 48px rgba(28,40,87,.1);
 }
 .faq__link {
@@ -614,9 +614,9 @@ a.info-row__val:hover { color: var(--o); }
 <!-- ══ HERO ══ -->
 <section class="hero" aria-label="Liên hệ TavaLED">
   <div class="hero__collage" aria-hidden="true">
-    <div class="hero__collage-cell"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=85" alt="Hà Nội" loading="eager"></div>
-    <div class="hero__collage-cell"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=900&q=85" alt="TP.HCM" loading="eager"></div>
-    <div class="hero__collage-cell"><img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=900&q=85" alt="Đà Nẵng" loading="eager"></div>
+ <div class="hero__collage-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0028_TavaLED_Hinh_Anh.jpg" alt="Hà Nội" loading="eager"></div>
+ <div class="hero__collage-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0029_TavaLED_Hinh_Anh.jpg" alt="TP.HCM" loading="eager"></div>
+ <div class="hero__collage-cell"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0030_TavaLED_Hinh_Anh.jpg" alt="Đà Nẵng" loading="eager"></div>
   </div>
   <div class="hero__fog"    aria-hidden="true"></div>
   <div class="hero__texture" aria-hidden="true"></div>
@@ -689,7 +689,7 @@ a.info-row__val:hover { color: var(--o); }
     <!-- HÀ NỘI -->
     <div class="office-panel active" id="panel-hanoi">
       <div class="o-map">
-        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&q=85" alt="Hà Nội">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0031_TavaLED_Hinh_Anh.jpg" alt="Hà Nội">
         <div class="o-map__fog"></div>
         <div class="o-pin" aria-hidden="true"><div class="o-pin__ring"><div class="o-pin__dot"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div></div></div>
         <div class="o-city-label"><div class="o-city-label__name">Hà Nội</div><div class="o-city-label__sub">Văn phòng miền Bắc · Trụ sở chính</div></div>
@@ -716,7 +716,7 @@ a.info-row__val:hover { color: var(--o); }
     <!-- TP.HCM -->
     <div class="office-panel" id="panel-hochiminh">
       <div class="o-map">
-        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1000&q=85" alt="TP.HCM">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0032_TavaLED_Hinh_Anh.jpg" alt="TP.HCM">
         <div class="o-map__fog"></div>
         <div class="o-pin" aria-hidden="true"><div class="o-pin__ring"><div class="o-pin__dot"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div></div></div>
         <div class="o-city-label"><div class="o-city-label__name">TP. Hồ Chí Minh</div><div class="o-city-label__sub">Văn phòng miền Nam</div></div>
@@ -743,7 +743,7 @@ a.info-row__val:hover { color: var(--o); }
     <!-- ĐÀ NẴNG -->
     <div class="office-panel" id="panel-danang">
       <div class="o-map">
-        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1000&q=85" alt="Đà Nẵng">
+ <img src="https://tavaled.vn/wp-content/uploads/2026/03/0033_TavaLED_Hinh_Anh.jpg" alt="Đà Nẵng">
         <div class="o-map__fog"></div>
         <div class="o-pin" aria-hidden="true"><div class="o-pin__ring"><div class="o-pin__dot"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div></div></div>
         <div class="o-city-label"><div class="o-city-label__name">Đà Nẵng</div><div class="o-city-label__sub">Văn phòng miền Trung</div></div>
@@ -826,7 +826,7 @@ a.info-row__val:hover { color: var(--o); }
     <div class="rv">
       <div class="eyebrow">FAQ</div>
       <h2 class="sec-h" id="faq-heading">Trước khi<br><em>liên hệ</em></h2>
-      <img class="faq__img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Đội ngũ TavaLED" loading="lazy">
+ <img class="faq__img" src="https://tavaled.vn/wp-content/uploads/2026/03/0034_TavaLED_Hinh_Anh.jpg" alt="Đội ngũ TavaLED" loading="lazy">
       <a href="https://www.tavaled.vn" class="faq__link" target="_blank" rel="noopener">Xem thêm tại tavaled.vn →</a>
     </div>
     <div class="faq-list rv d2" id="faqList"></div>

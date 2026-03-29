@@ -25,7 +25,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 /* ... (remaining styles compressed for brevity or kept) ... */
 
 .hero__bg{position:absolute;inset:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(1)}
+.hero__bg img{width:100%;height:100%;object-fit:cover;}
 .hero__fog{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(12,12,20,.8) 0%,rgba(12,12,20,.4) 40%,transparent 100%)}
 .hero__stars{position:absolute;inset:0;z-index:1;background-image:radial-gradient(1.5px 1.5px at 20% 30%,rgba(255,255,255,.3),transparent),radial-gradient(1px 1px at 50% 15%,rgba(255,255,255,.2),transparent),radial-gradient(1.5px 1.5px at 80% 60%,rgba(255,255,255,.25),transparent),radial-gradient(1px 1px at 35% 75%,rgba(255,255,255,.2),transparent),radial-gradient(1.5px 1.5px at 65% 85%,rgba(255,255,255,.15),transparent);pointer-events:none}
 .hero__bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--o),var(--odk) 45%,rgba(240,90,37,.2))}
