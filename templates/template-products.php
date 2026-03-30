@@ -835,13 +835,14 @@ get_header(); ?>
 <?php
 $cat_definitions = [
   'led' => [
-    'db_name' => 'Màn hình LED',
-    'title' => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
-    'seo_title' => 'Giải pháp Màn hình LED Chuyên nghiệp',
+    'db_name'   => 'Màn hình LED',
+    'old_names' => [], // không đổi tên, không cần fallback
+    'title'     => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
+    'seo_title'   => 'Giải pháp Màn hình LED Chuyên nghiệp',
     'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
-    'pills' => ['Tất cả','LED trong nhà','LED ngoài trời','Sân khấu','Trong suốt'],
+    'pills'     => ['Tất cả','LED trong nhà','LED ngoài trời','Sân khấu','Trong suốt'],
     'specTitle' => 'Pixel Pitch',
-    'specs' => [
+    'specs'     => [
       ['label'=>'P1.5', 'cats'=>['LED trong nhà']], ['label'=>'P2', 'cats'=>['LED trong nhà']],
       ['label'=>'P2.5', 'cats'=>['LED trong nhà']], ['label'=>'P3', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']],
       ['label'=>'P4', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']], ['label'=>'P5', 'cats'=>['LED ngoài trời','LED sân khấu (Rental)']],
@@ -849,24 +850,26 @@ $cat_definitions = [
     ]
   ],
   'am-thanh' => [
-    'db_name' => 'Thiết bị âm thanh',
+    'db_name'   => 'Thiết bị âm thanh',
+    'old_names' => ['Âm thanh'], // tên cũ còn trong DB
     'title' => 'Thiết bị <em>Âm Thanh</em>', 'eyebrow' => 'Audio Equipment',
-    'seo_title' => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
+    'seo_title'   => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
     'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
-    'pills' => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
+    'pills'     => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
     'specTitle' => 'Công suất',
-    'specs' => [
+    'specs'     => [
       ['label'=>'Dưới 200W','count'=>18], ['label'=>'200W – 500W','count'=>24], ['label'=>'500W – 1000W','count'=>20], ['label'=>'Trên 1000W','count'=>16]
     ]
   ],
   'anh-sang' => [
-    'db_name' => 'Thiết bị ánh sáng',
+    'db_name'   => 'Thiết bị ánh sáng',
+    'old_names' => ['Ánh sáng'], // tên cũ còn trong DB
     'title' => 'Thiết bị <em>Ánh Sáng</em>', 'eyebrow' => 'Lighting Equipment',
-    'seo_title' => 'Hệ thống Ánh sáng Nghệ thuật',
+    'seo_title'   => 'Hệ thống Ánh sáng Nghệ thuật',
     'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
-    'pills' => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],
+    'pills'     => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],
     'specTitle' => 'Công suất đèn',
-    'specs' => [
+    'specs'     => [
       ['label'=>'Dưới 200W','count'=>20], ['label'=>'200W – 400W','count'=>28], ['label'=>'400W – 700W','count'=>18], ['label'=>'Trên 700W','count'=>8]
     ]
   ]
@@ -880,16 +883,20 @@ foreach ($cat_definitions as $cat_slug => $def) {
     $dynamic_data[$cat_slug]['brands'] = [];
     $dynamic_data[$cat_slug]['subcats'] = [];
     
-    // Fetch products
+    // Gộp tên mới và tên cũ vào mảng để query, tránh mất data
+    $all_names = array_merge([$def['db_name']], $def['old_names'] ?? []);
+    
+    // Fetch products (query theo cả tên mới + tên cũ)
     $args = [
-        'post_type' => 'tava_product',
+        'post_type'      => 'tava_product',
         'posts_per_page' => -1,
-        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
-        'tax_query' => [
+        'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
+        'tax_query'      => [
             [
                 'taxonomy' => 'product_cat',
-                'field' => 'name',
-                'terms' => $def['db_name']
+                'field'    => 'name',
+                'terms'    => $all_names,
+                'operator' => 'IN',
             ]
         ]
     ];
@@ -900,16 +907,19 @@ foreach ($cat_definitions as $cat_slug => $def) {
     $total_count = $query->found_posts;
     $dynamic_data[$cat_slug]['count'] = $total_count;
 
+    $fallback_img = 'https://tavaled.vn/wp-content/uploads/2026/03/0030_TavaLED_Hinh_Anh.jpg';
+
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
             $post_id = get_the_ID();
             
             $model = get_post_meta($post_id, '_product_model', true);
-            $tag = get_post_meta($post_id, '_product_tag', true);
-            $img = get_post_meta($post_id, '_product_img', true);
+            $tag   = get_post_meta($post_id, '_product_tag', true);
+            $img   = get_post_meta($post_id, '_product_img', true);
             if (!$img) $img = get_the_post_thumbnail_url($post_id, 'medium');
- if (!$img) $img = 'https://tavaled.vn/wp-content/uploads/2026/03/0030_TavaLED_Hinh_Anh.jpg'; // fallback
+            $has_real_img = !empty($img); // TRUE nếu có hình thật
+            if (!$img) $img = $fallback_img;
 
             $terms_sub = wp_get_post_terms($post_id, 'product_subcat');
             $subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : '';
@@ -932,18 +942,26 @@ foreach ($cat_definitions as $cat_slug => $def) {
             $html_content = ob_get_clean();
 
             $dynamic_data[$cat_slug]['products'][] = [
-                'name' => get_the_title(),
-                'model' => $model,
-                'cat' => $subcat_name,
-                'badge' => $badge_name,
-                'brand' => $brand_name,
-                'tag' => $tag,
-                'img' => $img,
-                'html' => $html_content
+                'name'         => get_the_title(),
+                'model'        => $model,
+                'cat'          => $subcat_name,
+                'badge'        => $badge_name,
+                'brand'        => $brand_name,
+                'tag'          => $tag,
+                'img'          => $img,
+                'has_real_img' => $has_real_img, // dùng để sort
+                'html'         => $html_content
             ];
         }
         wp_reset_postdata();
     }
+
+    // --- ƯU TIÊN SẢN PHẨM CÓ HÌNH THẬT LÊN ĐẦU ---
+    usort($dynamic_data[$cat_slug]['products'], function($a, $b) {
+        // Sản phẩm có hình thật (has_real_img=true) lên trước
+        if ($a['has_real_img'] === $b['has_real_img']) return 0;
+        return $a['has_real_img'] ? -1 : 1;
+    });
 
     $dynamic_data[$cat_slug]['brands'] = array_keys($brands_raw);
     

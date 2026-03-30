@@ -171,14 +171,16 @@ $about_items = $mega_custom_data['about'] ?? [];
 
                             // Cấu hình ngành hàng chính → sub-categories động từ database
                             $mega_cat_map = [
-                                'mega-led'   => ['db_name' => 'Màn hình LED', 'url_slug' => 'led',       'default_title' => 'Màn hình LED',      'default_desc' => 'Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.'],
-                                'mega-audio' => ['db_name' => 'Thiết bị âm thanh',     'url_slug' => 'am-thanh',  'default_title' => 'Thiết bị Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
-                                'mega-light' => ['db_name' => 'Thiết bị ánh sáng',     'url_slug' => 'anh-sang',  'default_title' => 'Thiết bị Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
+                                'mega-led'   => ['db_name' => 'Màn hình LED',      'old_names' => [],            'url_slug' => 'led',       'default_title' => 'Màn hình LED',      'default_desc' => 'Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.'],
+                                'mega-audio' => ['db_name' => 'Thiết bị âm thanh', 'old_names' => ['Âm thanh'], 'url_slug' => 'am-thanh', 'default_title' => 'Thiết bị Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
+                                'mega-light' => ['db_name' => 'Thiết bị ánh sáng', 'old_names' => ['Ánh sáng'], 'url_slug' => 'anh-sang', 'default_title' => 'Thiết bị Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
                             ];
 
                             // Lấy sub-categories động từ database cho từng ngành hàng
                             $mega_subcats = [];
                             foreach ($mega_cat_map as $panel_id => $cat_def) {
+                                // Gộp tên mới + tên cũ vào mảng query
+                                $all_cat_names = array_merge([$cat_def['db_name']], $cat_def['old_names'] ?? []);
                                 $product_ids = get_posts([
                                     'post_type'      => 'tava_product',
                                     'posts_per_page' => -1,
@@ -186,7 +188,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                                     'tax_query'      => [[
                                         'taxonomy' => 'product_cat',
                                         'field'    => 'name',
-                                        'terms'    => $cat_def['db_name'],
+                                        'terms'    => $all_cat_names,
+                                        'operator' => 'IN',
                                     ]],
                                 ]);
                                 $terms = !empty($product_ids) ? get_terms([
@@ -201,7 +204,14 @@ $about_items = $mega_custom_data['about'] ?? [];
 
                             // Ghi đè default_desc bằng description của term nếu admin đã điền
                             foreach ($mega_cat_map as $panel_id => $cat_def) {
+                                // Thử tên mới trước, sau đó tên cũ nếu không tìm thấy
                                 $term = get_term_by('name', $cat_def['db_name'], 'product_cat');
+                                if (!$term && !empty($cat_def['old_names'])) {
+                                    foreach ($cat_def['old_names'] as $old_name) {
+                                        $term = get_term_by('name', $old_name, 'product_cat');
+                                        if ($term) break;
+                                    }
+                                }
                                 if ($term && !empty($term->description)) {
                                     $mega_cat_map[$panel_id]['default_desc'] = $term->description;
                                 }
