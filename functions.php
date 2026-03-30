@@ -190,3 +190,17 @@ function tavaled_custom_product_order($orderby, $query) {
 }
 add_filter('posts_orderby', 'tavaled_custom_product_order', 10, 2);
 
+/**
+ * Reverse sort order for tava_product in Admin (Product Management)
+ */
+function tavaled_reverse_admin_product_order($query) {
+    if (is_admin() && $query->is_main_query() && $query->get('post_type') === 'tava_product') {
+        $order = $query->get('order') ?: 'DESC';
+        $new_order = (strtoupper($order) === 'ASC') ? 'DESC' : 'ASC';
+        
+        $query->set('orderby', 'date');
+        $query->set('order', $new_order);
+    }
+}
+add_action('pre_get_posts', 'tavaled_reverse_admin_product_order');
+
