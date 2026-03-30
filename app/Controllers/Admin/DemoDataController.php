@@ -70,11 +70,11 @@ class DemoDataController {
                 'img' => 'https://tavaled.vn/wp-content/uploads/2023/01/P2.5-indoor.png',
                 'products' => []
             ],
-            'Âm thanh' => [
+            'Thiết bị âm thanh' => [
                 'img' => 'https://tavaled.vn/wp-content/uploads/2025/11/16-TD-Classic-.jpg',
                 'products' => []
             ],
-            'Ánh sáng' => [
+            'Thiết bị ánh sáng' => [
                 'img' => 'https://tavaled.vn/wp-content/uploads/2025/12/TavaLED-2-400x400.png',
                 'products' => []
             ]
@@ -110,7 +110,7 @@ class DemoDataController {
                 $power = "Digital";
             }
             
-            $data['Âm thanh']['products'][] = [
+            $data['Thiết bị âm thanh']['products'][] = [
                 'title' => "{$subcat} {$brand} V-Series - Demo {$i}",
                 'model' => strtoupper(substr($brand, 0, 2)) . rand(1000, 9000),
                 'badge' => $badge,
@@ -130,7 +130,7 @@ class DemoDataController {
                 $w = "Digital";
             }
             
-            $data['Ánh sáng']['products'][] = [
+            $data['Thiết bị ánh sáng']['products'][] = [
                 'title' => "Đèn {$subcat} {$brand} Studio - Demo {$i}",
                 'model' => strtoupper(substr($subcat, 0, 2)) . "-" . rand(100, 999),
                 'badge' => $badge,

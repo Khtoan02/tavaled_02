@@ -624,8 +624,8 @@ get_header(); ?>
           <div class="page-header__eyebrow" id="header-eyebrow">Sản phẩm</div>
           <div class="page-header__cat-switch">
             <button class="cat-switch-btn active" onclick="switchCat('led')">Màn hình LED</button>
-            <button class="cat-switch-btn" onclick="switchCat('am-thanh')">Âm thanh</button>
-            <button class="cat-switch-btn" onclick="switchCat('anh-sang')">Ánh sáng</button>
+            <button class="cat-switch-btn" onclick="switchCat('am-thanh')">Thiết bị âm thanh</button>
+            <button class="cat-switch-btn" onclick="switchCat('anh-sang')">Thiết bị ánh sáng</button>
           </div>
           <h1 class="page-header__title" id="header-title">Màn hình <em>LED</em></h1>
           <div class="page-header__count" id="header-count">Hiển thị 48 sản phẩm</div>
@@ -849,8 +849,8 @@ $cat_definitions = [
     ]
   ],
   'am-thanh' => [
-    'db_name' => 'Âm thanh',
-    'title' => 'Âm <em>Thanh</em>', 'eyebrow' => 'Audio Equipment',
+    'db_name' => 'Thiết bị âm thanh',
+    'title' => 'Thiết bị <em>Âm Thanh</em>', 'eyebrow' => 'Audio Equipment',
     'seo_title' => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
     'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
     'pills' => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
@@ -860,8 +860,8 @@ $cat_definitions = [
     ]
   ],
   'anh-sang' => [
-    'db_name' => 'Ánh sáng',
-    'title' => 'Ánh <em>Sáng</em>', 'eyebrow' => 'Lighting Equipment',
+    'db_name' => 'Thiết bị ánh sáng',
+    'title' => 'Thiết bị <em>Ánh Sáng</em>', 'eyebrow' => 'Lighting Equipment',
     'seo_title' => 'Hệ thống Ánh sáng Nghệ thuật',
     'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
     'pills' => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],

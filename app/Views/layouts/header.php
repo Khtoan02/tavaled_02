@@ -172,8 +172,8 @@ $about_items = $mega_custom_data['about'] ?? [];
                             // Cấu hình ngành hàng chính → sub-categories động từ database
                             $mega_cat_map = [
                                 'mega-led'   => ['db_name' => 'Màn hình LED', 'url_slug' => 'led',       'default_title' => 'Màn hình LED',      'default_desc' => 'Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.'],
-                                'mega-audio' => ['db_name' => 'Âm thanh',     'url_slug' => 'am-thanh',  'default_title' => 'Hệ thống Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
-                                'mega-light' => ['db_name' => 'Ánh sáng',     'url_slug' => 'anh-sang',  'default_title' => 'Hệ thống Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
+                                'mega-audio' => ['db_name' => 'Thiết bị âm thanh',     'url_slug' => 'am-thanh',  'default_title' => 'Thiết bị Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
+                                'mega-light' => ['db_name' => 'Thiết bị ánh sáng',     'url_slug' => 'anh-sang',  'default_title' => 'Thiết bị Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
                             ];
 
                             // Lấy sub-categories động từ database cho từng ngành hàng
@@ -228,13 +228,13 @@ $about_items = $mega_custom_data['about'] ?? [];
                                         </li>
                                         <li>
                                             <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-audio">
-                                                <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-speaker-hifi text-2xl text-gray-400"></i> Âm thanh</span>
+                                                <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-speaker-hifi text-2xl text-gray-400"></i> Thiết bị âm thanh</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
                                         </li>
                                         <li>
                                             <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-light">
-                                                <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-lightbulb text-2xl text-gray-400"></i> Ánh sáng</span>
+                                                <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-lightbulb text-2xl text-gray-400"></i> Thiết bị ánh sáng</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
                                         </li>
@@ -327,7 +327,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                     <div id="mega-audio" class="mega-tab-content hidden animate-fade-in-tab h-full flex flex-col" data-default-title="<?php echo esc_attr($mega_cat_map['mega-audio']['default_title']); ?>" data-default-desc="<?php echo esc_attr($mega_cat_map['mega-audio']['default_desc']); ?>">
                                         
                                         <div class="flex justify-between items-center mb-2">
-                                            <h3 id="mega-audio-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Hệ thống Âm thanh</h3>
+                                            <h3 id="mega-audio-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Âm thanh</h3>
                                             <a href="<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
                                         </div>
                                         <p id="mega-audio-desc" class="text-[14px] text-gray-500 font-medium mb-4 leading-relaxed max-w-2xl">Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.</p>
@@ -362,7 +362,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                             array(
                                                                 'taxonomy' => 'product_cat',
                                                                 'field' => 'name',
-                                                                'terms' => 'Âm thanh'
+                                                                'terms' => 'Thiết bị âm thanh'
                                                             )
                                                         )
                                                     ));
@@ -387,7 +387,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                     <div id="mega-light" class="mega-tab-content hidden animate-fade-in-tab h-full flex flex-col" data-default-title="<?php echo esc_attr($mega_cat_map['mega-light']['default_title']); ?>" data-default-desc="<?php echo esc_attr($mega_cat_map['mega-light']['default_desc']); ?>">
                                         
                                         <div class="flex justify-between items-center mb-2">
-                                            <h3 id="mega-light-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Hệ thống Ánh sáng</h3>
+                                            <h3 id="mega-light-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Ánh sáng</h3>
                                             <a href="<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
                                         </div>
                                         <p id="mega-light-desc" class="text-[14px] text-gray-500 font-medium mb-4 leading-relaxed max-w-2xl">Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.</p>
@@ -422,7 +422,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                             array(
                                                                 'taxonomy' => 'product_cat',
                                                                 'field' => 'name',
-                                                                'terms' => 'Ánh sáng'
+                                                                'terms' => 'Thiết bị ánh sáng'
                                                             )
                                                         )
                                                     ));
@@ -677,7 +677,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                             <!-- Âm thanh -->
                             <div class="mobile-subnav-group">
                                 <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'">
-                                    <span><i class="ph ph-speaker-hifi text-[#f05a25] text-[13px]"></i> Âm thanh</span>
+                                    <span><i class="ph ph-speaker-hifi text-[#f05a25] text-[13px]"></i> Thiết bị âm thanh</span>
                                     <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subAudio')" id="icon-subAudio"></i>
                                 </div>
                                 <ul id="subAudio" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
@@ -690,7 +690,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                             <!-- Ánh sáng -->
                             <div class="mobile-subnav-group">
                                 <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'">
-                                    <span><i class="ph ph-lightbulb text-[#f05a25] text-[13px]"></i> Ánh sáng</span>
+                                    <span><i class="ph ph-lightbulb text-[#f05a25] text-[13px]"></i> Thiết bị ánh sáng</span>
                                     <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subLight')" id="icon-subLight"></i>
                                 </div>
                                 <ul id="subLight" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">

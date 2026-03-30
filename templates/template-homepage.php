@@ -119,7 +119,7 @@ get_header(); ?>
                             [
                                 'taxonomy' => 'product_cat',
                                 'field' => 'name',
-                                'terms' => 'Âm thanh'
+                                'terms' => 'Thiết bị âm thanh'
                             ]
                         ]
                     ]);
@@ -161,7 +161,7 @@ get_header(); ?>
                             [
                                 'taxonomy' => 'product_cat',
                                 'field' => 'name',
-                                'terms' => 'Ánh sáng'
+                                'terms' => 'Thiết bị ánh sáng'
                             ]
                         ]
                     ]);
