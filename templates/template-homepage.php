@@ -70,21 +70,29 @@ get_header(); ?>
                     <div class="prod-grid reveal-up" id="grid-led">
                     <?php
                     $query_led = new WP_Query([
-                        'post_type' => 'tava_product',
-                        'posts_per_page' => 4,
-                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
-                        'tax_query' => [
-                            [
-                                'taxonomy' => 'product_cat',
-                                'field' => 'name',
-                                'terms' => 'Màn hình LED'
-                            ]
-                        ]
+                        'post_type'      => 'tava_product',
+                        'posts_per_page' => -1, // fetch all rồi sort
+                        'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
+                        'tax_query'      => [[
+                            'taxonomy' => 'product_cat',
+                            'field'    => 'slug',
+                            'terms'    => ['man-hinh-led'],
+                            'operator' => 'IN',
+                        ]]
                     ]);
-                    if ($query_led->have_posts()) :
-                        while ($query_led->have_posts()) : $query_led->the_post();
+                    // Ưu tiên SP có hình thật lên đầu
+                    $led_posts = $query_led->posts;
+                    usort($led_posts, function($a, $b) {
+                        $a_img = get_post_meta($a->ID, '_product_img', true) ?: get_the_post_thumbnail_url($a->ID, 'medium');
+                        $b_img = get_post_meta($b->ID, '_product_img', true) ?: get_the_post_thumbnail_url($b->ID, 'medium');
+                        return ($b_img ? 1 : 0) - ($a_img ? 1 : 0);
+                    });
+                    $led_posts = array_slice($led_posts, 0, 4);
+                    if (!empty($led_posts)) :
+                        foreach ($led_posts as $post) :
+                            setup_postdata($post);
                             get_template_part('app/Views/components/product-card');
-                        endwhile;
+                        endforeach;
                         wp_reset_postdata();
                     else :
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';
@@ -112,21 +120,28 @@ get_header(); ?>
                     <div class="prod-grid reveal-up" id="grid-audio">
                     <?php
                     $query_audio = new WP_Query([
-                        'post_type' => 'tava_product',
-                        'posts_per_page' => 4,
-                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
-                        'tax_query' => [
-                            [
-                                'taxonomy' => 'product_cat',
-                                'field' => 'name',
-                                'terms' => 'Thiết bị âm thanh'
-                            ]
-                        ]
+                        'post_type'      => 'tava_product',
+                        'posts_per_page' => -1,
+                        'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
+                        'tax_query'      => [[
+                            'taxonomy' => 'product_cat',
+                            'field'    => 'slug',
+                            'terms'    => ['thiet-bi-am-thanh', 'am-thanh'],
+                            'operator' => 'IN',
+                        ]]
                     ]);
-                    if ($query_audio->have_posts()) :
-                        while ($query_audio->have_posts()) : $query_audio->the_post();
+                    $audio_posts = $query_audio->posts;
+                    usort($audio_posts, function($a, $b) {
+                        $a_img = get_post_meta($a->ID, '_product_img', true) ?: get_the_post_thumbnail_url($a->ID, 'medium');
+                        $b_img = get_post_meta($b->ID, '_product_img', true) ?: get_the_post_thumbnail_url($b->ID, 'medium');
+                        return ($b_img ? 1 : 0) - ($a_img ? 1 : 0);
+                    });
+                    $audio_posts = array_slice($audio_posts, 0, 4);
+                    if (!empty($audio_posts)) :
+                        foreach ($audio_posts as $post) :
+                            setup_postdata($post);
                             get_template_part('app/Views/components/product-card');
-                        endwhile;
+                        endforeach;
                         wp_reset_postdata();
                     else :
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';
@@ -154,21 +169,28 @@ get_header(); ?>
                     <div class="prod-grid reveal-up" id="grid-light">
                     <?php
                     $query_light = new WP_Query([
-                        'post_type' => 'tava_product',
-                        'posts_per_page' => 4,
-                        'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
-                        'tax_query' => [
-                            [
-                                'taxonomy' => 'product_cat',
-                                'field' => 'name',
-                                'terms' => 'Thiết bị ánh sáng'
-                            ]
-                        ]
+                        'post_type'      => 'tava_product',
+                        'posts_per_page' => -1,
+                        'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
+                        'tax_query'      => [[
+                            'taxonomy' => 'product_cat',
+                            'field'    => 'slug',
+                            'terms'    => ['thiet-bi-anh-sang', 'anh-sang'],
+                            'operator' => 'IN',
+                        ]]
                     ]);
-                    if ($query_light->have_posts()) :
-                        while ($query_light->have_posts()) : $query_light->the_post();
+                    $light_posts = $query_light->posts;
+                    usort($light_posts, function($a, $b) {
+                        $a_img = get_post_meta($a->ID, '_product_img', true) ?: get_the_post_thumbnail_url($a->ID, 'medium');
+                        $b_img = get_post_meta($b->ID, '_product_img', true) ?: get_the_post_thumbnail_url($b->ID, 'medium');
+                        return ($b_img ? 1 : 0) - ($a_img ? 1 : 0);
+                    });
+                    $light_posts = array_slice($light_posts, 0, 4);
+                    if (!empty($light_posts)) :
+                        foreach ($light_posts as $post) :
+                            setup_postdata($post);
                             get_template_part('app/Views/components/product-card');
-                        endwhile;
+                        endforeach;
                         wp_reset_postdata();
                     else :
                         echo '<p class="text-gray-500 col-span-full">Đang cập nhật sản phẩm.</p>';

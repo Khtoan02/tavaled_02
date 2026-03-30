@@ -835,8 +835,9 @@ get_header(); ?>
 <?php
 $cat_definitions = [
   'led' => [
-    'db_name'   => 'Màn hình LED',
-    'old_names' => [], // không đổi tên, không cần fallback
+    'db_name'    => 'Màn hình LED',
+    'old_names'  => [],
+    'cat_slugs'  => ['man-hinh-led'], // tất cả slug có thể có trong DB
     'title'     => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
     'seo_title'   => 'Giải pháp Màn hình LED Chuyên nghiệp',
     'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
@@ -850,8 +851,9 @@ $cat_definitions = [
     ]
   ],
   'am-thanh' => [
-    'db_name'   => 'Thiết bị âm thanh',
-    'old_names' => ['Âm thanh'], // tên cũ còn trong DB
+    'db_name'    => 'Thiết bị âm thanh',
+    'old_names'  => ['Âm thanh'],
+    'cat_slugs'  => ['thiet-bi-am-thanh', 'am-thanh'], // slug mới (import tạo) + slug cũ
     'title' => 'Thiết bị <em>Âm Thanh</em>', 'eyebrow' => 'Audio Equipment',
     'seo_title'   => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
     'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
@@ -862,8 +864,9 @@ $cat_definitions = [
     ]
   ],
   'anh-sang' => [
-    'db_name'   => 'Thiết bị ánh sáng',
-    'old_names' => ['Ánh sáng'], // tên cũ còn trong DB
+    'db_name'    => 'Thiết bị ánh sáng',
+    'old_names'  => ['Ánh sáng'],
+    'cat_slugs'  => ['thiet-bi-anh-sang', 'anh-sang'], // slug mới (import tạo) + slug cũ
     'title' => 'Thiết bị <em>Ánh Sáng</em>', 'eyebrow' => 'Lighting Equipment',
     'seo_title'   => 'Hệ thống Ánh sáng Nghệ thuật',
     'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
@@ -883,10 +886,10 @@ foreach ($cat_definitions as $cat_slug => $def) {
     $dynamic_data[$cat_slug]['brands'] = [];
     $dynamic_data[$cat_slug]['subcats'] = [];
     
-    // Gộp tên mới và tên cũ vào mảng để query, tránh mất data
-    $all_names = array_merge([$def['db_name']], $def['old_names'] ?? []);
+    // Query bằng slug — ổn định hơn name (không bị lỗi tiếng Việt hay cache)
+    $cat_slugs = $def['cat_slugs'] ?? [sanitize_title($def['db_name'])];
     
-    // Fetch products (query theo cả tên mới + tên cũ)
+    // Fetch products
     $args = [
         'post_type'      => 'tava_product',
         'posts_per_page' => -1,
@@ -894,8 +897,8 @@ foreach ($cat_definitions as $cat_slug => $def) {
         'tax_query'      => [
             [
                 'taxonomy' => 'product_cat',
-                'field'    => 'name',
-                'terms'    => $all_names,
+                'field'    => 'slug',
+                'terms'    => $cat_slugs,
                 'operator' => 'IN',
             ]
         ]
