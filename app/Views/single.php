@@ -182,6 +182,7 @@
   gap: 32px !important;
   align-self: flex-start;
   min-width: 340px !important;
+  height: fit-content;
 }
 
 /* ARTICLE BODY */
@@ -503,11 +504,6 @@
 }
 
 /* SIDEBAR */
-.sidebar {
-  position: sticky; top: 100px;
-  display: flex; flex-direction: column; gap: 28px;
-  align-self: flex-start; height: fit-content;
-}
 .sidebar-quote {
   background: var(--ink);
   border-radius: 10px; padding: 28px 24px;
@@ -624,8 +620,10 @@
   border-top: 1px solid var(--border);
   padding: 64px 0;
   margin-top: 0;
+  width: 100% !important;
+  overflow: hidden !important;
 }
-.related-section .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.related-section .wrap { max-width: 1200px; width: 100% !important; margin: 0 auto; padding: 0 32px; box-sizing: border-box !important; }
 .related-section__head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
 .related-section__eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); opacity: .8; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .related-section__eyebrow::before { content:''; display:inline-block; width:22px; height:1.5px; background:var(--orange); }
@@ -636,22 +634,31 @@
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-  .post-layout { gap: 40px !important; }
+  .post-layout { gap: 40px !important; padding-left: 24px !important; padding-right: 24px !important; }
   .sidebar { width: 300px !important; min-width: 300px !important; }
+  .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .related-section .wrap { padding: 0 24px !important; }
 }
 
 @media (max-width: 1024px) {
   .post-layout { flex-direction: column !important; padding-top: 40px !important; }
   .post-body, .sidebar { width: 100% !important; max-width: 100% !important; min-width: 100% !important; }
   .sidebar { position: static !important; }
+  .post-hero__img { height: 400px !important; }
 }
 
 @media (max-width: 640px) {
-  .post-layout { padding: 36px 18px 80px !important; }
-  .post-hero__img { height: 320px !important; }
-  .post-hero__title { font-size: 1.65rem !important; }
+  .post-layout { padding: 36px 16px 80px !important; }
+  .post-hero__img { height: 300px !important; }
+  .post-hero__title { font-size: 1.6rem !important; }
+  .post-hero__content { padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 32px !important; }
+  .post-hero__content::before { left: 20px !important; bottom: 32px !important; }
   .related-grid { grid-template-columns: 1fr !important; }
+  .related-section .wrap { padding: 0 16px !important; }
 }
+
+/* Global sanity check for the wrapper */
+.single-post-wrapper * { box-sizing: border-box !important; }
 </style>
 
 <div class="single-post-wrapper">
