@@ -236,25 +236,36 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
 }
+/* Force ALL images inside article to be constrained */
+.article { overflow: hidden; }
 .article img, .article figure img {
-  display: block;
+  display: block !important;
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
   object-fit: cover !important;
-  border-radius: 12px;
+  border-radius: 12px !important;
   margin: 42px auto !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
+  /* Neutralize WordPress inline width/height attributes */
+  min-width: 0 !important;
+  flex-shrink: 1 !important;
+}
+/* WordPress adds width/height inline — override via attribute selectors */
+.article img[width], .article figure img[width] {
+  width: 100% !important;
+  height: auto !important;
 }
 .article figure {
   width: 100% !important;
   max-width: 100% !important;
   margin: 42px 0 !important;
   overflow: hidden !important;
+  padding: 0 !important;
 }
 .article table {
-  display: block;
+  display: block !important;
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: auto;
@@ -602,8 +613,23 @@
   border-color: rgba(240,90,37,.25); box-shadow: 0 4px 16px rgba(240,90,37,.1); transform: translateX(3px);
 }
 .related-card__img {
-  width: 64px; height: 52px; flex-shrink: 0; border-radius: 6px; object-fit: cover;
-  filter: saturate(.8); transition: filter .3s;
+  width: 64px !important;
+  height: 52px !important;
+  aspect-ratio: unset !important;
+  flex-shrink: 0 !important;
+  border-radius: 6px !important;
+  object-fit: cover !important;
+  filter: saturate(.8);
+  transition: filter .3s;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+.post-hero__avatar {
+  width: 32px !important;
+  height: 32px !important;
+  aspect-ratio: unset !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 .related-card:hover .related-card__img { filter: saturate(1); }
 .related-card__title {
@@ -766,9 +792,9 @@
         </article>
 
         <!-- ── SIDEBAR ── -->
-        <aside class="sidebar block">
+        <aside class="sidebar">
             <!-- TOC Widget -->
-            <div class="toc mb-8" id="toc-container" style="display:none;">
+            <div class="toc" id="toc-container" style="display:none;">
                 <div class="toc__head">
                     <div class="toc__head-line"></div>
                     <span class="toc__head-title">Mục lục bài viết</span>
@@ -777,14 +803,14 @@
             </div>
 
             <!-- Quote widget -->
-            <div class="sidebar-quote mb-8">
+            <div class="sidebar-quote">
                 <p class="sq__text">Ánh sáng đúng chỗ, đúng lúc không chỉ truyền tải thông tin — nó định hình cảm xúc và ký ức của người nhìn.</p>
                 <div class="sq__author">TavaLLS</div>
             </div>
 
             <!-- Bài Viết Được Đề Xuất (Recent Posts) -->
             <?php if (!empty($recent_posts)): ?>
-            <div class="sidebar-related mb-8">
+            <div class="sidebar-related">
                 <div class="sidebar-related__title">Bài viết mới</div>
                 <div class="related-mini">
                     <?php foreach($recent_posts as $rp): ?>
