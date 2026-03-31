@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Trang về chúng tôi
+ * Template Name: Du an truong sao mai
  */
 
 get_header(); ?>
