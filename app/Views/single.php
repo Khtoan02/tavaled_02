@@ -162,6 +162,7 @@
   gap: 56px;
   align-items: start;
 }
+.post-body { min-width: 0; } /* Fix overflow and grid breakout */
 
 /* ARTICLE BODY */
 .post-actions {
@@ -214,18 +215,37 @@
   line-height: 1.45;
   letter-spacing: -0.01em;
 }
-.article p {
-  font-size: 15.5px; color: var(--mid); line-height: 1.65;
-  margin-bottom: 0; font-weight: 400; font-family: var(--font-heading);
+.article img, .article figure img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+  margin: 42px auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
-.article img, .article figure {
-  max-width: 100%; border-radius: 10px; height: auto; margin: 36px 0;
+.article figure {
+  max-width: 100% !important;
+  margin: 42px 0;
+  overflow: hidden;
 }
-.article figcaption, .article .wp-caption-text {
-  text-align: center; font-size: 11.5px; color: var(--muted);
-  font-style: italic; margin-top: 10px; letter-spacing: 0.03em;
+.article table {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
 }
-
+.article iframe, .article video {
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  margin: 42px 0;
+}
 .article a { color: var(--orange); text-decoration: none; border-bottom: 1px solid rgba(240,90,37,.3); }
 .article a:hover { border-color: var(--orange); }
 
@@ -334,30 +354,131 @@
 }
 .tag:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-xlt); }
 
-/* AUTHOR BOX */
-.author-box {
-  margin-top: 48px;
-  padding: 28px 28px 28px 24px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  display: flex; gap: 20px; align-items: flex-start;
-  box-shadow: 0 2px 12px rgba(17,24,39,.04);
+/* AUTHOR CARD - Modern Redesign */
+.author-card {
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--ink); /* Navy background */
+  border-radius: 24px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(29,40,87,0.15);
+  color: #fff;
 }
-.author-box__avatar {
-  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
-  object-fit: cover; border: 2.5px solid var(--orange-lt);
+
+.author-card__bg {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: var(--orange);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
 }
-.author-box__name {
+
+.author-card__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.author-card__avatar {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 18px !important; /* Modern rounded square */
+  object-fit: cover !important;
+  border: 3px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  aspect-ratio: 1/1 !important; /* Override article global img styles */
+  margin: 0 !important;
+}
+
+.author-card__content {
+  flex: 1;
+  z-index: 1;
+}
+
+.author-card__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.author-card__name {
   font-family: var(--font-heading);
-  font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-bottom: 2px;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin-bottom: 4px;
 }
-.author-box__role {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+
+.author-card__role {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.author-box__bio {
-  font-size: 13px; color: var(--muted); line-height: 1.65; margin: 0 !important;
+
+.author-card__role::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+.author-card__bio {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin-bottom: 20px !important;
+}
+
+.author-card__social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.social-link:hover {
+  background: var(--orange);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 640px) {
+  .author-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 20px;
+  }
+  .author-card__role { justify-content: center; }
+  .author-card__role::after { display: none; }
+  .author-card__social { justify-content: center; }
 }
 
 /* SIDEBAR */
@@ -587,17 +708,26 @@
                 }
                 ?>
 
-                <!-- Author box -->
-                <div class="author-box">
-                    <?php echo get_avatar(get_the_author_meta('ID'), 56, '', '', ['class' => 'author-box__avatar']); ?>
-                    <div>
-                        <div class="author-box__name"><?php the_author(); ?></div>
-                        <div class="author-box__role">Quản trị viên · <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></div>
-                        <p class="author-box__bio"><?php echo get_the_author_meta('description') ?: 'Chuyên gia cung cấp tài liệu kỹ thuật và giải pháp hiển thị, sự kiện.'; ?></p>
+            </div><!-- /article -->
+            
+            <!-- Author box Modernized -->
+            <div class="author-card anim d4">
+                <div class="author-card__bg"></div>
+                <div class="author-card__avatar-wrap">
+                    <?php echo get_avatar(get_the_author_meta('ID'), 100, '', '', ['class' => 'author-card__avatar']); ?>
+                </div>
+                <div class="author-card__content">
+                    <div class="author-card__eyebrow">Người viết bài</div>
+                    <h3 class="author-card__name"><?php the_author(); ?></h3>
+                    <div class="author-card__role">Quản trị viên · <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></div>
+                    <p class="author-card__bio"><?php echo get_the_author_meta('description') ?: 'Chuyên gia cung cấp tài liệu kỹ thuật và giải pháp hiển thị, sự kiện.'; ?></p>
+                    <div class="author-card__social">
+                        <a href="mailto:<?php echo get_the_author_meta('user_email'); ?>" class="social-link" title="Email"><i class="ph ph-envelope"></i></a>
+                        <a href="#" class="social-link" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="social-link" title="Facebook"><i class="ph ph-facebook-logo"></i></a>
                     </div>
                 </div>
-
-            </div><!-- /article -->
+            </div>
         </article>
 
         <!-- ── SIDEBAR ── -->

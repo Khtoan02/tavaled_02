@@ -349,6 +349,37 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .desc-content h4 { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: 24px 0 10px; }
 .desc-content h5 { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); margin: 20px 0 8px; }
 .desc-content p { font-size: 14.5px; color: var(--mid); line-height: 1.8; margin-bottom: 18px; }
+.desc-content img, .desc-content figure img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  border-radius: 12px;
+  margin: 42px auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+.desc-content figure {
+  max-width: 100% !important;
+  margin: 42px 0;
+  overflow: hidden;
+}
+.desc-content table {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+.desc-content iframe, .desc-content video {
+  width: 100% !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  margin: 42px 0;
+}
 .desc-content ul { list-style: none; margin-bottom: 18px; padding:0;}
 .desc-content ul li { padding: 8px 0 8px 24px; position: relative; font-size: 14px; color: var(--mid); line-height: 1.65; border-bottom: 1px solid var(--border-lt); }
 .desc-content ul li:last-child { border-bottom: none; }
