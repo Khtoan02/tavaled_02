@@ -53,7 +53,7 @@ $about_items = $mega_custom_data['about'] ?? [];
     <!-- MAIN HEADER -->
     <header id="mainHeader" class="w-full bg-white border-b border-gray-100 shadow-sm">
         <div class="w-full max-w-[1600px] mx-auto px-4 lg:px-8 relative">
-            <div class="flex justify-between items-center h-24 gap-4 xl:gap-8">
+            <div class="flex justify-between items-center h-16 md:h-20 xl:h-24 gap-2 md:gap-4 xl:gap-4 2xl:gap-8">
                 
                 <!-- LOGO -->
                 <div class="flex-1 flex items-center justify-start">
@@ -62,20 +62,20 @@ $about_items = $mega_custom_data['about'] ?? [];
                             $logo = \App\Helpers\ThemeHelper::getOption('logo');
                             if ($logo): 
                         ?>
-                            <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>" class="h-12 w-auto transition-transform group-hover:scale-105 duration-300">
+                            <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>" class="h-8 md:h-10 lg:h-12 w-auto transition-transform group-hover:scale-105 duration-300">
                         <?php else: ?>
-                            <div class="w-12 h-12 bg-brand-orange rounded-xl flex justify-center items-center text-white shadow-md shadow-brand-orange/30 transition-transform group-hover:scale-105 duration-300">
-                                <i class="ph-bold ph-aperture text-3xl"></i>
+                            <div class="w-9 h-9 lg:w-12 lg:h-12 bg-brand-orange rounded-xl flex justify-center items-center text-white shadow-md shadow-brand-orange/30 transition-transform group-hover:scale-105 duration-300">
+                                <i class="ph-bold ph-aperture text-xl lg:text-3xl"></i>
                             </div>
-                            <span class="text-2xl lg:text-3xl font-black tracking-tight text-gray-900 group-hover:text-brand-orange transition-colors"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
+                            <span class="text-xl xl:text-xl 2xl:text-2xl font-black tracking-tight text-gray-900 group-hover:text-brand-orange transition-colors"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'))); ?></span>
                         <?php endif; ?>
                     </a>
                 </div>
 
                 <!-- DESKTOP MENU -->
-                <nav class="hidden lg:flex h-full items-center justify-center gap-6 xl:gap-8 font-bold text-[15px] text-gray-800 tracking-[0.05em] uppercase whitespace-nowrap">
+                <nav class="hidden xl:flex h-full items-center justify-center gap-3 2xl:gap-8 font-bold text-[13px] 2xl:text-[15px] text-gray-800 tracking-[0.05em] uppercase whitespace-nowrap">
                     <!-- Mega Menu Item: Về TavaLLS -->
-                    <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
+                    <div class="group h-full flex items-center cursor-pointer hover-trigger static">
                         <a href="/ve-chung-toi" class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
                             Về chúng tôi
                             <i class="ph-bold ph-caret-down text-[12px] mt-0.5 text-gray-400 group-hover:text-brand-orange transition-transform duration-300 group-hover:rotate-180"></i>
@@ -165,7 +165,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
                     
                     <!-- MEGA MENU SẢN PHẨM -->
-                    <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
+                    <div class="group h-full flex items-center cursor-pointer hover-trigger static">
                         <?php 
                             $prod_url = home_url('/tat-ca-san-pham');
 
@@ -459,7 +459,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
 
                     <!-- Giải pháp trọn gói -->
-                    <div class="group h-full flex items-center cursor-pointer hover-trigger static text-[16px]">
+                    <div class="group h-full flex items-center cursor-pointer hover-trigger static">
                         <a href="/giai-phap" class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
                             Giải pháp trọn gói <i class="ph-bold ph-caret-down text-[12px] mt-0.5 text-gray-400 group-hover:text-brand-orange transition-transform duration-300 group-hover:rotate-180"></i>
                             <span class="absolute bottom-[28px] left-0 w-[calc(100%-16px)] h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left group-hover:scale-x-100"></span>
@@ -550,36 +550,36 @@ $about_items = $mega_custom_data['about'] ?? [];
                     <div class="flex items-center border-r border-gray-100 pr-3 md:pr-4">
 
                         <!-- MOBILE & TABLET STACKED VIEW (Hidden on Desktop) -->
-                        <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex lg:hidden items-center gap-2.5 group hover:text-brand-orange">
+                        <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex xl:hidden items-center gap-2.5 group hover:text-brand-orange">
                             <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20 group-hover:-translate-y-1 transition-transform">
                                 <i class="ph-bold ph-phone-call text-[16px] md:text-[18px]"></i>
                             </div>
-                            <div class="flex flex-col justify-center">
-                                <span class="font-bold text-gray-900 text-[13px] md:text-[14px] leading-tight"><?php echo esc_html($hotline_cskh); ?></span>
-                                <span class="font-bold text-brand-orange text-[13px] md:text-[14px] leading-tight mt-0.5"><?php echo esc_html($hotline_kd); ?></span>
+                            <div class="hidden xs:flex flex-col justify-center">
+                                <span class="font-bold text-gray-900 text-[13px] md:text-[14px] leading-tight whitespace-nowrap"><?php echo esc_html($hotline_cskh); ?></span>
+                                <span class="font-bold text-brand-orange text-[13px] md:text-[14px] leading-tight mt-0.5 whitespace-nowrap"><?php echo esc_html($hotline_kd); ?></span>
                             </div>
                         </a>
 
                         <!-- DESKTOP SIDE-BY-SIDE VIEW (Hidden on Mobile/Tablet) -->
-                        <div class="hidden lg:flex items-center gap-6">
+                        <div class="hidden xl:flex items-center gap-3 2xl:gap-6">
                             <!-- Hotline CSKH -->
-                            <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex items-center gap-2.5 group">
-                                <div class="w-10 h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
-                                    <i class="ph-bold ph-phone text-[22px]"></i>
+                             <a href="tel:<?php echo esc_attr($hotline_cskh_tel); ?>" class="flex items-center gap-2 group">
+                                <div class="w-9 h-9 2xl:w-10 2xl:h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
+                                    <i class="ph-bold ph-phone text-[18px] 2xl:text-[22px]"></i>
                                 </div>
                                 <div class="flex flex-col whitespace-nowrap">
-                                    <span class="font-bold text-gray-900 text-[17px] xl:text-[18px] leading-tight group-hover:text-brand-orange transition-colors"><?php echo esc_html($hotline_cskh); ?></span>
-                                    <span class="text-[12px] xl:text-[13px] text-gray-500 font-medium leading-tight mt-0.5">CSKH</span>
+                                    <span class="font-bold text-gray-900 text-[15px] 2xl:text-[18px] leading-tight group-hover:text-brand-orange transition-colors"><?php echo esc_html($hotline_cskh); ?></span>
+                                    <span class="hidden 2xl:block text-[12px] xl:text-[13px] text-gray-500 font-medium leading-tight mt-0.5">CSKH</span>
                                 </div>
                             </a>
                             <!-- Hotline Kinh doanh -->
-                            <a href="tel:<?php echo esc_attr($hotline_kd_tel); ?>" class="flex items-center gap-2.5 border-l border-gray-100 pl-6 group">
-                                <div class="w-10 h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
-                                    <i class="ph-bold ph-phone text-[22px]"></i>
+                            <a href="tel:<?php echo esc_attr($hotline_kd_tel); ?>" class="flex items-center gap-2 border-l border-gray-100 pl-3 2xl:pl-6 group">
+                                <div class="w-9 h-9 2xl:w-10 2xl:h-10 rounded-xl bg-[#f05a25] text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/20">
+                                    <i class="ph-bold ph-phone text-[18px] 2xl:text-[22px]"></i>
                                 </div>
                                 <div class="flex flex-col whitespace-nowrap">
-                                    <span class="font-bold text-gray-900 text-[17px] xl:text-[18px] leading-tight group-hover:text-brand-orange transition-colors"><?php echo esc_html($hotline_kd); ?></span>
-                                    <span class="text-[12px] xl:text-[13px] text-gray-500 font-medium leading-tight mt-0.5">Kinh doanh</span>
+                                    <span class="font-bold text-gray-900 text-[15px] 2xl:text-[18px] leading-tight group-hover:text-brand-orange transition-colors"><?php echo esc_html($hotline_kd); ?></span>
+                                    <span class="hidden 2xl:block text-[12px] xl:text-[13px] text-gray-500 font-medium leading-tight mt-0.5">Kinh doanh</span>
                                 </div>
                             </a>
                         </div>
@@ -587,7 +587,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
 
                     <!-- Mobile Menu Trigger -->
-                    <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-xl shrink-0 transition-colors">
+                    <button id="mobileMenuBtn" class="xl:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-xl shrink-0 transition-colors">
                         <i class="ph-bold ph-list text-2xl md:text-3xl"></i>
                     </button>
                 </div>
