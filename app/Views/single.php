@@ -167,21 +167,23 @@
 }
 
 .post-body {
-  flex: 1 !important;
-  min-width: 0 !important; /* CRITICAL: Allows flex children to shrink below their content size */
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
   max-width: 100% !important;
+  overflow: hidden !important;
 }
 
 .sidebar {
   width: 340px !important;
+  min-width: 340px !important;
+  max-width: 340px !important;
   flex-shrink: 0 !important;
   position: sticky !important;
   top: 120px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 32px !important;
-  align-self: flex-start;
-  min-width: 340px !important;
+  align-self: flex-start !important;
   height: fit-content;
 }
 
@@ -658,33 +660,62 @@
 
 .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .post-layout { gap: 40px !important; padding-left: 24px !important; padding-right: 24px !important; }
-  .sidebar { width: 300px !important; min-width: 300px !important; }
-  .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
+/* RESPONSIVE - Tiered breakpoints */
+
+/* Large desktop */
+@media (max-width: 1400px) {
+  .post-layout { padding-left: 24px !important; padding-right: 24px !important; }
   .related-section .wrap { padding: 0 24px !important; }
 }
 
-@media (max-width: 1024px) {
-  .post-layout { flex-direction: column !important; padding-top: 40px !important; }
-  .post-body, .sidebar { width: 100% !important; max-width: 100% !important; min-width: 100% !important; }
-  .sidebar { position: static !important; }
-  .post-hero__img { height: 400px !important; }
+/* Standard desktop / large tablet landscape */
+@media (max-width: 1280px) {
+  .post-layout { gap: 40px !important; }
+  .sidebar { width: 300px !important; min-width: 300px !important; max-width: 300px !important; }
+  .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
+/* Tablet portrait + small laptop */
+@media (max-width: 1100px) {
+  .post-layout {
+    flex-direction: column !important;
+    padding-top: 40px !important;
+  }
+  .post-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+  .sidebar {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+  }
+  .post-hero__img { height: 400px !important; }
+  .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
-  .post-layout { padding: 36px 16px 80px !important; }
-  .post-hero__img { height: 300px !important; }
-  .post-hero__title { font-size: 1.6rem !important; }
-  .post-hero__content { padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 32px !important; }
-  .post-hero__content::before { left: 20px !important; bottom: 32px !important; }
+  .post-layout { padding: 32px 16px 80px !important; gap: 32px !important; }
+  .post-hero__img { height: 260px !important; }
+  .post-hero__title { font-size: 1.55rem !important; line-height: 1.2 !important; }
+  .post-hero__content { padding-left: 16px !important; padding-right: 16px !important; padding-bottom: 28px !important; }
+  .post-hero__content::before { left: 16px !important; bottom: 28px !important; }
   .related-grid { grid-template-columns: 1fr !important; }
   .related-section .wrap { padding: 0 16px !important; }
+  .author-card { flex-direction: column !important; text-align: center !important; padding: 28px 20px !important; gap: 16px !important; }
+  .author-card__role { justify-content: center !important; }
+  .author-card__role::after { display: none !important; }
+  .author-card__social { justify-content: center !important; }
 }
 
-/* Global sanity check for the wrapper */
-.single-post-wrapper * { box-sizing: border-box !important; }
+/* Global overflow safety */
+.single-post-wrapper { overflow-x: hidden !important; }
+.single-post-wrapper * { box-sizing: border-box !important; max-width: 100%; }
 </style>
 
 <div class="single-post-wrapper">
@@ -866,7 +897,7 @@
         <a href="<?php echo $cat_link; ?>" class="related-section__more">Xem thêm →</a>
         </div>
 
-        <div class="related-grid pt-4">
+        <div class="related-grid">
             <?php
             // Lấy trực tiếp từ WP_Query (mẫu mã ở trên controller, nhưng controller cũng gửi biến $related_posts)
             if (!empty($related_posts)) {
@@ -965,6 +996,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// === LAYOUT ENFORCER: Run on load & resize to guarantee correct responsive layout ===
+function enforceLayout() {
+    var layout = document.querySelector('.post-layout');
+    var body   = document.querySelector('.post-body');
+    var sidebar = document.querySelector('.sidebar');
+    if (!layout || !body || !sidebar) return;
+
+    var w = window.innerWidth;
+    if (w <= 1100) {
+        // Mobile / Tablet: stack vertically
+        layout.style.setProperty('flex-direction', 'column', 'important');
+        body.style.setProperty('width', '100%', 'important');
+        body.style.setProperty('max-width', '100%', 'important');
+        body.style.setProperty('flex', 'none', 'important');
+        sidebar.style.setProperty('position', 'static', 'important');
+        sidebar.style.setProperty('width', '100%', 'important');
+        sidebar.style.setProperty('max-width', '100%', 'important');
+        sidebar.style.setProperty('min-width', '0', 'important');
+    } else {
+        // Desktop: side by side
+        layout.style.setProperty('flex-direction', 'row', 'important');
+        body.style.removeProperty('flex');
+        body.style.removeProperty('width');
+        body.style.setProperty('min-width', '0', 'important');
+        sidebar.style.setProperty('position', 'sticky', 'important');
+        sidebar.style.setProperty('width', w <= 1280 ? '300px' : '340px', 'important');
+        sidebar.style.setProperty('max-width', w <= 1280 ? '300px' : '340px', 'important');
+        sidebar.style.setProperty('min-width', w <= 1280 ? '300px' : '340px', 'important');
+    }
+}
+enforceLayout();
+window.addEventListener('resize', enforceLayout);
 </script>
 
 <?php view('layouts/footer'); ?>
