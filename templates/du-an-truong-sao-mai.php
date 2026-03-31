@@ -3,7 +3,15 @@
  * Template Name: Du an truong sao mai
  */
 
-get_header(); ?>
+get_header(); ?><!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án Mầm Non Sao Việt</title>
+    <!-- Script Tailwind này chỉ dùng để bạn xem trước, nếu theme WP của bạn đã có sẵn Tailwind CSS thì có thể bỏ dòng script này đi khi đưa vào template .php -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body>
 
 <div class="bg-[#f8f9fa] font-sans text-[#17264a] selection:bg-[#f36428]/20">
@@ -238,6 +246,5 @@ get_header(); ?>
 </div>
 
 </body>
-</html>
-
 <?php get_footer(); ?>
+</html>
