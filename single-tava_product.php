@@ -430,6 +430,26 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   .product-wrap { grid-template-columns: 1fr; gap: 32px; }
   .product-info { position: static; }
   .rel-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Tab + Sidebar layout: stack vertically on mobile */
+  .prod-detail-inner {
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+  .prod-detail-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .tabs-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 }
 @media (max-width: 560px) {
   .sp-breadcrumb, .product-wrap, .prod-detail, .related-products { padding-left: 16px; padding-right: 16px; }
@@ -652,9 +672,9 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
     <!-- ══ DETAIL TABS ══ -->
     <div class="prod-detail anim d3">
 
-    <div style="display: flex; flex-wrap: wrap; gap: 50px;">
+    <div class="prod-detail-inner" style="display: flex; flex-wrap: wrap; gap: 50px;">
         <!-- Left: Main Tabs -->
-        <div style="flex: 1; min-width: 0;">
+        <div style="flex: 1; min-width: 0; overflow: hidden;">
             <div class="tabs-nav" style="flex-wrap: wrap;">
                 <button class="tab-btn active" onclick="switchTab(this,'tab-desc')">Mô tả chuyên sâu</button>
                 <?php if(!empty($specs)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-specs')">Thông số kỹ thuật</button><?php } ?>
@@ -838,7 +858,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
         </div>
 
         <!-- Right: Sidebar News Widget -->
-        <div style="width: 100%; max-width: 340px; flex-shrink: 0;">
+        <div class="prod-detail-sidebar" style="width: 100%; max-width: 340px; flex-shrink: 0;">
             <!-- DỰ ÁN NỔI BẬT -->
             <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Dự án nổi bật</h3>
             <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px;">

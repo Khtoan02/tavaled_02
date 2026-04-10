@@ -1,4 +1,128 @@
+/* ════════════════════════════════════════════════════════
+   HERO V2 — Canvas Animations
+   ════════════════════════════════════════════════════════ */
+
+/* ── BACKGROUND CANVAS: LED particle field ── */
+(function () {
+    var c = document.getElementById('bgCanvas');
+    if (!c) return;
+    var hero = c.parentElement;
+
+    function resize() {
+        c.width  = hero.offsetWidth;
+        c.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var ctx = c.getContext('2d');
+    var STEP = 32;
+    var dots = [];
+    var COLORS = [
+        'rgba(255,95,0,',
+        'rgba(255,140,60,',
+        'rgba(200,60,0,',
+        'rgba(255,180,80,',
+    ];
+
+    function buildDots() {
+        dots = [];
+        var cols = Math.floor(c.width / STEP);
+        var rows = Math.floor(c.height / STEP);
+        for (var i = 0; i < cols; i++) {
+            for (var j = 0; j < rows; j++) {
+                if (Math.random() > 0.72) {
+                    dots.push({
+                        x: i * STEP + 16,
+                        y: j * STEP + 16,
+                        r: Math.random() * 1.5 + 0.5,
+                        speed: Math.random() * 0.004 + 0.001,
+                        phase: Math.random() * Math.PI * 2,
+                        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                    });
+                }
+            }
+        }
+    }
+    buildDots();
+    window.addEventListener('resize', buildDots);
+
+    var t = 0;
+    function drawBg() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        t += 1;
+        dots.forEach(function(d) {
+            var alpha = (Math.sin(d.phase + t * d.speed * 60) + 1) / 2 * 0.35 + 0.02;
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+            ctx.fillStyle = d.color + alpha + ')';
+            ctx.fill();
+        });
+        requestAnimationFrame(drawBg);
+    }
+    drawBg();
+})();
+
+/* ── HERO IMAGE SLIDER ── */
+(function () {
+    var slides   = document.querySelectorAll('.hero-slide');
+    var dots     = document.querySelectorAll('.hero-slider__dot');
+    var slider   = document.getElementById('heroSlider');
+    if (!slides.length) return;
+
+    var current  = 0;
+    var total    = slides.length;
+    var interval = null;
+    var DELAY    = 4500; // ms between slides
+
+    function goTo(idx) {
+        slides[current].classList.remove('hero-slide--active');
+        if (dots[current]) dots[current].classList.remove('hero-slider__dot--active');
+        current = ((idx % total) + total) % total;
+        slides[current].classList.add('hero-slide--active');
+        if (dots[current]) dots[current].classList.add('hero-slider__dot--active');
+    }
+
+    function next() { goTo(current + 1); }
+
+    function startAuto() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(next, DELAY);
+    }
+
+    function stopAuto() {
+        clearInterval(interval);
+        interval = null;
+    }
+
+    // Dot click
+    dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+            stopAuto();
+            goTo(i);
+            startAuto();
+        });
+    });
+
+    // Pause on hover
+    if (slider) {
+        slider.addEventListener('mouseenter', stopAuto);
+        slider.addEventListener('mouseleave', startAuto);
+    }
+
+    // Keyboard: left/right arrows
+    document.addEventListener('keydown', function (e) {
+        if (!document.getElementById('heroSlider')) return;
+        if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
+        if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+    });
+
+    startAuto();
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+
+
     // Product Slider Dots — mobile only
     function initSliderDots(gridId, dotsId, itemsPerView) {
         var grid = document.getElementById(gridId);

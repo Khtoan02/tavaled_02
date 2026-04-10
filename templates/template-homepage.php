@@ -6,41 +6,117 @@ get_header(); ?>
     <main>
 
         <!-- ================= SECTION 1: HERO VIDEO BACKGROUND ================= -->
-        <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-navy3">
+        <section class="hero-v2" id="hero" aria-label="Hero TavaLED">
+            <!-- Background particle canvas -->
+            <canvas class="hero-v2__bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
+            <div class="hero-v2__depth" aria-hidden="true"></div>
 
-            <div class="hero-video-wrap">
-                <img src="https://ledkimlong.com/wp-content/uploads/2023/10/384277662_6540973292664442_2689789734785120511_n.jpg"
-                     alt="TavaLLS Vision Background"
-                     class="absolute w-full h-full object-cover"
-                     style="">
-            </div>
+            <!-- ── LEFT CONTENT (30%) ── -->
+            <div class="hero-v2__left">
 
-            <div class="hero-overlay"></div>
+                <!-- Eyebrow tagline -->
+                <div class="hero-v2__eyebrow" aria-hidden="true">
+                    <span class="hero-v2__eyebrow-dot"></span>
+                    Giải Pháp Hình Ảnh & Âm Thanh Toàn Diện
+                </div>
 
-
-            <div class="relative z-10 px-6 lg:px-20 max-w-5xl mt-20 text-center reveal-up">
-                <p class="font-mono text-brand-orange font-bold tracking-[0.25em] uppercase text-xs mb-5 flex items-center justify-center gap-4">
-                    <span class="w-8 h-[1px] bg-brand-orange"></span> Giải Pháp Hình Ảnh &amp; Âm Thanh Toàn Diện <span class="w-8 h-[1px] bg-brand-orange"></span>
-                </p>
-
-                <h1 id="hero-title" class="font-serif font-black text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[1.05] text-white tracking-tight mb-6">
-                    Đánh Thức Mọi <br>
-                    <span class="italic font-light text-brand-orange">Giác Quan.</span>
+                <h1 class="hero-v2__h1">
+                    <span class="h1-line1">TavaLED:</span>
+                    <span class="h1-line2">Thi Công Trọn Gói</span>
+                    <span class="h1-line3">Màn Hình LED, Âm Thanh &amp; Ánh Sáng</span>
                 </h1>
 
-                <p id="hero-sub" class="text-white/70 font-light text-sm md:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-                    Hơn một thập kỷ tiên phong, TavaLLS tự hào là nhà cung cấp và thi công trọn gói hệ thống Màn hình LED, Âm thanh &amp; Ánh sáng chuyên nghiệp cho hàng trăm đại dự án trên toàn quốc.
-                </p>
+                <h2 class="hero-v2__desc">
+                    Cung cấp giải pháp thiết bị sân khấu, sự kiện và không gian thương mại.
+                    Tư vấn thiết kế và lắp đặt chuyên nghiệp, phủ sóng toàn quốc.
+                </h2>
 
-                <div class="flex flex-wrap items-center justify-center gap-6">
-                    <a href="#product-led" class="btn-primary interactive">
-                        Khám phá giải pháp <i class="ph-bold ph-arrow-down-right text-lg"></i>
+                <div class="hero-v2__ctas">
+                    <a href="#products" class="hero-v2-btn hero-v2-btn--primary interactive">
+                        Nhận báo giá miễn phí
+                        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 12L12 2M12 2H6M12 2v6"/></svg>
+                    </a>
+                    <a href="#projects" class="hero-v2-btn hero-v2-btn--ghost interactive">
+                        Xem dự án thực tế
                     </a>
                 </div>
             </div>
 
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-                <a href="#product-led" class="text-white/50 hover:text-brand-orange interactive transition-colors"><i class="ph ph-caret-double-down text-3xl"></i></a>
+            <!-- ── RIGHT: FULL-HEIGHT IMAGE SLIDER (70%) ── -->
+            <div class="hero-v2__right" aria-hidden="true">
+
+                <!-- Image slider -->
+                <div class="hero-slider" id="heroSlider">
+                    <div class="hero-slide hero-slide--active">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110034.jpg" alt="Sân khấu sự kiện LED TavaLED" loading="eager">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035-TavaLED.jpg" alt="Màn hình LED hội trường TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035.jpg" alt="Hệ thống LED âm thanh ánh sáng" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-1-TavaLED.jpg" alt="Thi công màn hình LED chuyên nghiệp" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-TavaLED.jpg" alt="LED sân khấu ca nhạc TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-1-TavaLED.jpg" alt="Lắp đặt màn hình LED toàn quốc" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-TavaLED.jpg" alt="Giải pháp LED âm thanh ánh sáng TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Man-hinh-LED-la-thiet-bi-hien-thi-khong-vien-kich-thuoc-lon-TavaLED.jpg" alt="Màn hình LED chuyên nghiệp TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tdclassic.vn/wp-content/uploads/2026/01/tdclassic_cover-scaled.webp" alt="Hệ thống âm thanh ánh sáng sân khấu" loading="lazy">
+                    </div>
+
+                    <!-- Dot navigation -->
+                    <div class="hero-slider__dots" id="heroSliderDots">
+                    <button class="hero-slider__dot hero-slider__dot--active" aria-label="Ảnh 1"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 2"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 3"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 4"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 5"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 6"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 7"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 8"></button>
+                    <button class="hero-slider__dot" aria-label="Ảnh 9"></button>
+                    </div>
+                </div>
+
+                <!-- Floating badges -->
+                <div class="spec-tag spec-tag--1">
+                    <div class="spec-tag__icon-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        <div class="spec-tag__label">Độ phân giải cao</div>
+                    </div>
+                    <div class="spec-tag__val">P<em>2.5</em> – P<em>10</em></div>
+                </div>
+                <div class="spec-tag spec-tag--2">
+                    <div class="spec-tag__icon-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                        <div class="spec-tag__label">Âm thanh</div>
+                    </div>
+                    <div class="spec-tag__val">Chuẩn <em>Quốc tế</em></div>
+                </div>
+                <div class="spec-tag spec-tag--3">
+                    <div class="spec-tag__icon-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <div class="spec-tag__label">Bảo hành chính hãng</div>
+                    </div>
+                    <div class="spec-tag__val"><em>3</em> năm</div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="hero-v2__scroll" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span>Cuộn xuống</span>
             </div>
         </section>
 

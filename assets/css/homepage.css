@@ -15,17 +15,645 @@ html { scroll-behavior: smooth; }
 .delay-1 { transition-delay: 0.15s; }
 .delay-2 { transition-delay: 0.3s; }
 
-/* HERO VIDEO OVERLAY */
-.hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c2857; pointer-events: none; }
-.hero-video-wrap iframe { 
-    position: absolute; top: 50%; left: 50%; 
-    width: 100vw; height: 56.25vw; 
-    min-height: 100vh; min-width: 177.77vh; 
-    transform: translate(-50%, -50%); 
-    pointer-events: none; filter: brightness(0.5) saturate(1.2); border: none;
+/* ═══════════════════════════════════════════════════════════════
+   HERO V2 — Split Layout (Left Content | Right LED Wall)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Fonts: Bebas Neue for display headings ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+    --hero-navy:   #04080f;
+    --hero-navy2:  #080f1e;
+    --hero-orange: #FF5F00;
+    --hero-orange-bright: #FF7A24;
 }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(28,40,87,0.3) 0%, rgba(28,40,87,0.8) 60%, #1c2857 100%); }
-.text-stroke-light { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); }
+
+/* ── Hero Wrapper ── */
+.hero-v2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 560px;
+    max-height: 860px;
+    display: grid;
+    grid-template-columns: 30fr 70fr;
+    align-items: center;
+    overflow: hidden;
+    background: var(--hero-navy);
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+/* ── Background depth glow ── */
+.hero-v2__bg-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+.hero-v2__depth {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 80% at 75% 50%, rgba(255,80,0,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 50% at 30% 80%, rgba(0,80,200,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ═══════════════════════
+   LEFT — CONTENT COLUMN
+═══════════════════════ */
+.hero-v2__left {
+    position: relative;
+    z-index: 20;
+    padding: clamp(32px, 5vw, 80px) clamp(24px, 4vw, 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+.hero-v2__left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(4,8,15,1) 60%, rgba(4,8,15,0) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ── Eyebrow tagline ── */
+.hero-v2__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    animation: heroSlideRight 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-v2__eyebrow-dot {
+    width: 8px; height: 8px;
+    background: var(--hero-orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: heroPulseDot 2s infinite;
+}
+@keyframes heroPulseDot {
+    0%,100% { box-shadow: 0 0 0 0 rgba(255,95,0,0.5); }
+    50%      { box-shadow: 0 0 0 6px rgba(255,95,0,0); }
+}
+
+/* ── H1 — 3 lines, 2 colours ── */
+.hero-v2__h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 0.94;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+    animation: heroSlideRight 0.7s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+/* Line 1: brand name — white, large */
+.h1-line1 {
+    display: block;
+    font-size: clamp(28px, 4.7vw, 64px);
+    color: #ffffff;
+    font-weight: 900;
+    line-height: 1;
+}
+/* Line 2: service line — white, same size */
+.h1-line2 {
+    display: block;
+    font-size: clamp(28px, 4.7vw, 64px);
+    color: #ffffff;
+    font-weight: 900;
+    line-height: 1;
+}
+/* Line 3: product/solution highlight — ORANGE, full bold */
+.h1-line3 {
+    display: block;
+    font-size: clamp(12px, 2vw, 27px);
+    color: var(--hero-orange);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+}
+
+/* ── H2 description ── */
+.hero-v2__desc {
+    font-size: clamp(13px, 0.9vw, 14px);
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.42);
+    max-width: 460px;
+    margin: 0 0 0 0;
+    animation: heroSlideRight 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* CTAs */
+.hero-v2__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+    animation: heroSlideRight 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-v2-btn {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+.hero-v2-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.hero-v2-btn--primary {
+    background: var(--hero-orange);
+    color: #fff;
+}
+.hero-v2-btn--primary:hover {
+    background: var(--hero-orange-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255,95,0,0.38);
+    color: #fff;
+}
+.hero-v2-btn--ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.hero-v2-btn--ghost:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
+    transform: translateY(-2px);
+}
+
+@keyframes heroSlideRight {
+    from { opacity: 0; transform: translateX(-28px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════
+   RIGHT — FULL-HEIGHT IMAGE SLIDER
+═══════════════════════ */
+.hero-v2__right {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+/* Soft fade on the left edge — blends slider into left content */
+.hero-v2__right::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 22%;
+    background: linear-gradient(to right, var(--hero-navy), transparent);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ── Image Slider ── */
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+.hero-slide.hero-slide--active {
+    opacity: 1;
+}
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+/* Slide dot navigation */
+.hero-slider__dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 20;
+}
+.hero-slider__dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.35s ease;
+    flex-shrink: 0;
+}
+.hero-slider__dot.hero-slider__dot--active {
+    background: var(--hero-orange);
+    width: 24px;
+    border-radius: 3px;
+}
+
+/* ── Floating badges (over slider) ── */
+.spec-tag {
+    position: absolute;
+    z-index: 15;
+    background: rgba(4,8,15,0.82);
+    border: 1px solid rgba(255,95,0,0.28);
+    border-radius: 4px;
+    padding: 9px 14px;
+    backdrop-filter: blur(10px);
+    min-width: 140px;
+    -webkit-backdrop-filter: blur(10px);
+}
+.spec-tag__icon-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+}
+.spec-tag__icon-row svg {
+    stroke: var(--hero-orange);
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+.spec-tag__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+}
+.spec-tag__val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+}
+.spec-tag__val em { color: var(--hero-orange); font-style: normal; }
+
+/* Badge positions */
+.spec-tag--1 { top: 12%; left: 28px;  animation: heroFloatTagLeft 1s 0.9s  cubic-bezier(0.16,1,0.3,1) both; }
+.spec-tag--2 { top: 12%; right: 16px; animation: heroFloatTag     1s 1.05s cubic-bezier(0.16,1,0.3,1) both; }
+.spec-tag--3 {
+    bottom: 52px;
+    left: 50%; transform: translateX(-50%);
+    animation: heroFloatTagUp 1s 1.15s cubic-bezier(0.16,1,0.3,1) both;
+    min-width: 180px; text-align: center;
+}
+.spec-tag--3 .spec-tag__icon-row { justify-content: center; }
+
+@keyframes heroFloatTag {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFloatTagLeft {
+    from { opacity: 0; transform: translateX(-18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFloatTagUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.hero-v2__right {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#ledCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: heroFadeIn 1s 0.5s forwards;
+}
+@keyframes heroFadeIn {
+    to { opacity: 1; }
+}
+/* Left edge gradient blends LED into content */
+.hero-v2__right::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 28%;
+    background: linear-gradient(to right, var(--hero-navy), transparent);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* LED wall frame */
+.led-frame {
+    position: relative;
+    z-index: 10;
+    width: clamp(320px, 45vw, 680px);
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    border: 1px solid rgba(255,95,0,0.3);
+    box-shadow:
+        0 0 0 4px rgba(255,95,0,0.06),
+        0 0 60px rgba(255,95,0,0.2),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    overflow: hidden;
+    animation: heroFramePop 0.8s 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes heroFramePop {
+    from { opacity: 0; transform: scale(0.88) translateX(24px); }
+    to   { opacity: 1; transform: scale(1) translateX(0); }
+}
+
+/* Panel grid lines */
+.led-panel-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.55) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.55) 1px, transparent 1px);
+    background-size: 25% 33.33%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Scanline sweep */
+.led-scan {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right,
+        transparent, rgba(255,95,0,0.5), rgba(255,200,120,0.8), rgba(255,95,0,0.5), transparent
+    );
+    animation: heroScanDown 2.8s linear infinite;
+    z-index: 4;
+}
+@keyframes heroScanDown {
+    from { top: 0%; }
+    to   { top: 100%; }
+}
+
+/* LED screen content */
+.led-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    overflow: hidden;
+}
+/* Real LED wall images inside frame — crossfade between 2 slides */
+.led-frame__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+/* Slide 1: LED — visible first, fades out at midpoint */
+.led-frame__img--1 {
+    z-index: 1;
+    animation: heroImgShow1 10s ease-in-out infinite;
+}
+/* Slide 2: Audio — starts invisible, fades in at midpoint */
+.led-frame__img--2 {
+    z-index: 2;
+    animation: heroImgShow2 10s ease-in-out infinite;
+}
+@keyframes heroImgShow1 {
+    0%, 40%   { opacity: 1; }
+    50%, 90%  { opacity: 0; }
+    100%      { opacity: 1; }
+}
+@keyframes heroImgShow2 {
+    0%, 40%   { opacity: 0; }
+    50%, 90%  { opacity: 1; }
+    100%      { opacity: 0; }
+}
+/* Caption labels sync with images */
+.led-label--1 { animation: heroImgShow1 10s ease-in-out infinite; }
+.led-label--2 { animation: heroImgShow2 10s ease-in-out infinite; }
+
+/* Overlay on top of real images */
+.led-frame__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(4,8,15,0.75) 100%
+    );
+}
+.led-sub-text {
+    position: absolute;
+    font-size: clamp(8px, 1vw, 11px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    bottom: 12px;
+}
+
+/* Resolution badge */
+.led-badge {
+    position: absolute;
+    bottom: 8px; right: 10px;
+    z-index: 5;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(255,95,0,0.6);
+    text-transform: uppercase;
+}
+
+/* Corner bracket accents */
+.corner-acc {
+    position: absolute;
+    width: 14px; height: 14px;
+    z-index: 6;
+}
+.corner-acc--tl { top: -1px;   left: -1px;   border-top: 2px solid var(--hero-orange); border-left: 2px solid var(--hero-orange); }
+.corner-acc--tr { top: -1px;   right: -1px;  border-top: 2px solid var(--hero-orange); border-right: 2px solid var(--hero-orange); }
+.corner-acc--bl { bottom: -1px; left: -1px;  border-bottom: 2px solid var(--hero-orange); border-left: 2px solid var(--hero-orange); }
+.corner-acc--br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--hero-orange); border-right: 2px solid var(--hero-orange); }
+
+/* Floating badges */
+.spec-tag {
+    position: absolute;
+    z-index: 15;
+    background: rgba(4,8,15,0.88);
+    border: 1px solid rgba(255,95,0,0.28);
+    border-radius: 4px;
+    padding: 9px 14px;
+    backdrop-filter: blur(10px);
+    min-width: 140px;
+}
+.spec-tag__icon-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 3px;
+}
+.spec-tag__icon-row svg {
+    stroke: var(--hero-orange);
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+.spec-tag__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+}
+.spec-tag__val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+}
+.spec-tag__val em { color: var(--hero-orange); font-style: normal; }
+
+/* Badge 1: top-LEFT — slide in from left */
+.spec-tag--1 {
+    top: 12%; left: -8px;
+    animation: heroFloatTagLeft 1s 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+/* Badge 2: top-RIGHT — slide in from right */
+.spec-tag--2 {
+    top: 12%; right: -8px;
+    animation: heroFloatTag 1s 1.05s cubic-bezier(0.16,1,0.3,1) both;
+}
+/* Badge 3: bottom-CENTER — slide in from below */
+.spec-tag--3 {
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: heroFloatTagUp 1s 1.15s cubic-bezier(0.16,1,0.3,1) both;
+    min-width: 180px;
+    text-align: center;
+}
+.spec-tag--3 .spec-tag__icon-row { justify-content: center; }
+
+@keyframes heroFloatTag {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFloatTagLeft {
+    from { opacity: 0; transform: translateX(-18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroFloatTagUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Scroll indicator ── */
+.hero-v2__scroll {
+    position: absolute;
+    bottom: 24px;
+    left: clamp(24px, 5vw, 80px);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: heroFadeIn 0.8s 1.3s forwards;
+}
+.scroll-line {
+    width: 32px; height: 1px;
+    background: linear-gradient(to right, var(--hero-orange), transparent);
+    animation: heroScrollPulse 2s ease-in-out infinite;
+}
+@keyframes heroScrollPulse {
+    0%,100% { width: 32px; }
+    50%      { width: 56px; }
+}
+.hero-v2__scroll span {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+}
+
+/* ── Mobile background: hero-v2__mobile-bg no longer used ── */
+.hero-v2__mobile-bg { display: none !important; }
+
+/* ── Responsive: mobile single column ── */
+@media (max-width: 760px) {
+    .hero-v2 {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100svh;
+        max-height: none;
+    }
+    /* Right column: absolute, fills entire section as bg */
+    .hero-v2__right {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    /* Fade the left edge wider to cover full width on mobile */
+    .hero-v2__right::before {
+        width: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(4,8,15,0.45) 0%,
+            rgba(4,8,15,0.82) 55%,
+            rgba(4,8,15,0.97) 100%
+        );
+    }
+    /* Badges & dots: hidden on mobile */
+    .spec-tag { display: none; }
+    .hero-slider__dots { display: none; }
+    /* Left column sits on top of slider bg */
+    .hero-v2__left { position: relative; z-index: 20; padding: 40px 24px 80px; }
+    .hero-v2__left::before { background: transparent; }
+    .hero-v2__depth { z-index: 0; }
+    /* Cân đối font H1/H2 trên mobile */
+    .h1-line1      { font-size: 36px; }
+    .h1-line2      { font-size: 36px; }
+    .h1-line3      { font-size: 14px; letter-spacing: 0.03em; margin-top: 8px; }
+    .hero-v2__desc { font-size: 13px; line-height: 1.65; }
+}
+
+/* LEGACY hero selectors — kept for back-compat but scoped to avoid clashes */
+.hero-video-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c2857; pointer-events: none; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,35,0.5) 0%, rgba(10,15,35,0.85) 65%, #0a0f23 100%); }
+
 
 /* SOLUTIONS LIST */
 .sol-list-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 3rem 0; transition: all 0.4s; }
