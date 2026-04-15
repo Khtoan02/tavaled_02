@@ -927,10 +927,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-/* Đảm bảo glass card luôn flex column (TẤT CẢ variant) */
+/* Glass card: flex-direction do Tailwind class quyết định (flex-col hoặc md:flex-row) */
 .tava-3d-glass {
     display: flex;
-    flex-direction: column;  /* Luôn dọc — không bao giờ ngang trong grid */
+    /* KHÔNG set flex-direction ở đây — để Tailwind class từ PHP quyết định */
     height: 100%;
     min-height: 0;
 }
@@ -954,4 +954,25 @@ h1, h2, h3, h4, h5, h6 {
 .tava-3d-content p {
     overflow: hidden;
     word-break: break-word;
+}
+
+/* ── BIG variant: horizontal (ảnh trái | text phải) ─────────── */
+/* Khi tava-3d-glass có class md:flex-row, img-box cần giữ tỉ lệ 16:9 */
+@media (min-width: 768px) {
+    /* Target: article trong wrapper khi có class flex-row (BIG variant) */
+    .tava-3d-glass.md\:flex-row .tava-3d-img-box {
+        /* Tắt aspect-ratio khi nằm ngang — để ảnh stretch full height của card */
+        aspect-ratio: unset;
+        height: 100%;
+        min-height: 200px;
+    }
+    .tava-3d-glass.md\:flex-row {
+        align-items: stretch; /* Cả ảnh và text cùng chiều cao */
+        gap: 0;
+    }
+    /* Content area trong BIG ngang: flex column để CTA xuống đáy */
+    .tava-3d-glass.md\:flex-row .tava-3d-content {
+        display: flex;
+        flex-direction: column;
+    }
 }

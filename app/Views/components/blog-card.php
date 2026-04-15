@@ -32,21 +32,27 @@ if ( empty( $category_label ) ) {
     $category_label = !empty($categories) ? $categories[0]->name : 'Tin Tức';
 }
 
-// 3. LOGIC XỬ LÝ LAYOUT — Tất cả variant đều DỌNG (flex-col)
-// Lý do: row variant trong grid 4-col chỉ có ~25% viewport → ngang quá hẹp
+// 3. LOGIC XỬ LÝ LAYOUT
+// BIG variant: nằm ngang trên desktop (ảnh trái | text phải)
+// SM/MD/ROW: luôn dọc (flex-col) vì trong lưới hẹp
 
-// Bố cục Flexbox: luôn dọng để đảm bảo grid layout
-$card_direction = 'flex-col';
-$img_width      = 'w-full';
-$content_width  = 'w-full mt-4';
+if ( $variant === 'big' ) {
+    $card_direction = 'flex-col md:flex-row';           // ngang trên desktop
+    $img_width      = 'w-full md:w-[52%] shrink-0';    // ảnh chiếm 52%
+    $content_width  = 'w-full md:pl-6 mt-4 md:mt-0 flex flex-col flex-1'; // text chiếm phần còn lại
+} else {
+    $card_direction = 'flex-col';   // dọc cho tất cả variant khác
+    $img_width      = 'w-full';
+    $content_width  = 'w-full mt-4';
+}
 
-// Tùy chỉnh Font chữ & Excerpt theo Variant — TẤT CẢ đều có mô tả
+// Tùy chỉnh Font chữ & Excerpt theo Variant
 $show_excerpt = true;
 switch ( $variant ) {
     case 'big':
-        $title_size    = 'text-2xl md:text-[28px] leading-[1.3]';
-        $excerpt_clamp = 'line-clamp-3';
-        $excerpt_words = 35;
+        $title_size    = 'text-xl md:text-2xl leading-[1.35]';
+        $excerpt_clamp = 'line-clamp-4';  // 4 dòng vì content đủ rộng
+        $excerpt_words = 40;
         break;
     case 'md':
         $title_size    = 'text-lg md:text-xl leading-snug';
@@ -88,8 +94,8 @@ if ( ! $tava_card_css_printed ) :
     position: relative;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 14px;
+    /* flex-direction do Tailwind class tự xử lý (flex-col / md:flex-row) */
+    gap: 0;  /* gap sẽ do từng variant đối xử qua img_width / content_width */
     padding: 20px;
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
