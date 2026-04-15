@@ -44,18 +44,20 @@ add_action('after_setup_theme', 'tavaled_theme_setup');
 
 // Enqueue styles and scripts
 function tavaled_enqueue_scripts() {
-    // Preconnect Google Fonts để DNS resolve sớm hơn
-    wp_enqueue_style('tavaled-fonts-preconnect', 'https://fonts.gstatic.com', [], null);
-    add_filter('style_loader_tag', function($html, $handle) {
-        if ($handle === 'tavaled-fonts-preconnect') {
-            return '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n"
-                 . '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-        }
-        return $html;
-    }, 10, 2);
+    // Preconnect Google Fonts để DNS resolve sớm hơn (googleapis phải trước gstatic)
+    add_action('wp_head', function() {
+        echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+        echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    }, 1);
 
-    // Google Fonts Inter and Mona Sans
-    wp_enqueue_style('tavaled-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap', [], null);
+    // Google Fonts: Fira Sans (primary — hỗ trợ Tiếng Việt đầy đủ, dùng cho cả heading lẫn body)
+    // Fallback: Be Vietnam Pro (nếu Fira Sans không load được)
+    wp_enqueue_style(
+        'tavaled-fonts',
+        'https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,700&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap',
+        [],
+        null
+    );
 
     // Tailwind compiled CSS
     wp_enqueue_style('tavaled-tailwind', TAVALED_URI . '/assets/css/tailwind-output.css', [], time());

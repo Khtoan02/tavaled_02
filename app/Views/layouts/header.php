@@ -3,8 +3,8 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Phosphor Icons: async — tải song song, không block render, thực thi ngay khi sẵn sàng -->
-    <script src="https://unpkg.com/@phosphor-icons/web" async></script>
+    <!-- Phosphor Icons: defer — đảm bảo icon luôn render đúng sau khi HTML parse xong -->
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class('text-brand-dark font-sans text-[15px] leading-relaxed'); ?>>

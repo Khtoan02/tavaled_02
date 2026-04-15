@@ -21,8 +21,8 @@ get_header(); ?>
                 </div>
 
                 <h1 class="hero-v2__h1">
-                    <span class="h1-line1">TavaLED:</span>
-                    <span class="h1-line2">Thi Công Trọn Gói</span>
+                    <span class="h1-line1">TAVALED:</span>
+                    <span class="h1-line2">THI CÔNG TRỌN GÓI</span>
                     <span class="h1-line3">Màn Hình LED, Âm Thanh &amp; Ánh Sáng</span>
                 </h1>
 

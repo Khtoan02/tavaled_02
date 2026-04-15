@@ -17,9 +17,9 @@
     --border-color: #f3e5e1;       /* Màu đường viền / border */
 
     /* 2. FONT CHỮ (Typography) */
-    /* Hãy import font chữ bằng @import ở trên cùng file này hoặc wp_head nếu bạn dùng font custom */
-    --font-heading: 'Mona Sans', sans-serif; /* Font dàn cho các thẻ tiêu đề (H1, H2,...) */
-    --font-body: 'Inter', sans-serif;    /* Font dàn cho nội dung chữ thường */
+    /* Font được load qua functions.php (wp_enqueue_style) */
+    --font-heading: 'Fira Sans', 'Be Vietnam Pro', sans-serif; /* Font tiêu đề — hỗ trợ Tiếng Việt đầy đủ */
+    --font-body: 'Fira Sans', 'Be Vietnam Pro', sans-serif;    /* Font nội dung chính */
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
     --container-width: 1600px;     /* Độ rộng siêu lớn cho Desktop hiện đại (hiển thị nhiều sản phẩm hơn) */

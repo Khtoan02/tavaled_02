@@ -1,5 +1,8 @@
 /* =========================================================================
    HOMEPAGE SPECIFIC STYLES
+   =========================================================================
+   Lưu ý: Font (Bebas Neue, Be Vietnam Pro, Inter) được load qua functions.php
+   để tránh lỗi @import không đứng đầu file CSS bị ignore trên Safari/iOS.
    ========================================================================= */
 /* BASE & RESET overrides for Home */
 /* BASE & RESET — no global border-radius override; each component controls its own radius */
@@ -18,9 +21,6 @@ html { scroll-behavior: smooth; }
 /* ═══════════════════════════════════════════════════════════════
    HERO V2 — Split Layout (Left Content | Right LED Wall)
    ═══════════════════════════════════════════════════════════════ */
-
-/* ── Fonts: Bebas Neue for display headings ── */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
 
 /* ── CSS Variables ── */
 :root {
@@ -124,13 +124,15 @@ html { scroll-behavior: smooth; }
     font-weight: 900;
     line-height: 1;
 }
-/* Line 2: service line — white, same size */
+/* Line 2: service line — white, same size, always on ONE line */
 .h1-line2 {
     display: block;
-    font-size: clamp(28px, 4.7vw, 64px);
+    font-size: clamp(18px, 4.7vw, 64px);
     color: #ffffff;
     font-weight: 900;
     line-height: 1;
+    white-space: nowrap;   /* Không cho phép xuống dòng */
+    overflow: visible;     /* Cho phép tràn ra - container sẽ co giãn */
 }
 /* Line 3: product/solution highlight — ORANGE, full bold */
 .h1-line3 {
@@ -643,10 +645,10 @@ html { scroll-behavior: smooth; }
     .hero-v2__left { position: relative; z-index: 20; padding: 40px 24px 80px; }
     .hero-v2__left::before { background: transparent; }
     .hero-v2__depth { z-index: 0; }
-    /* Cân đối font H1/H2 trên mobile */
-    .h1-line1      { font-size: 36px; }
-    .h1-line2      { font-size: 36px; }
-    .h1-line3      { font-size: 14px; letter-spacing: 0.03em; margin-top: 8px; }
+    /* Cân đối font H1/H2 trên mobile — h1-line2 dùng clamp viewport để luôn 1 hàng */
+    .h1-line1      { font-size: clamp(28px, 8.5vw, 48px); white-space: nowrap; }
+    .h1-line2      { font-size: clamp(18px, 7.2vw, 48px); white-space: nowrap; }
+    .h1-line3      { font-size: 14px; letter-spacing: 0.03em; margin-top: 8px; white-space: normal; }
     .hero-v2__desc { font-size: 13px; line-height: 1.65; }
 }
 
