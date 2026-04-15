@@ -33,7 +33,7 @@ $sections = [
         'fallback_img' => $_fb . '0021_TavaLED_Hinh_Anh.jpg',
         'cta_text' => 'Xem dự án',
         'excerpt_words' => 40,
-        'is_first' => true,   // ✓ section đầu → không có border-top
+        'is_first' => false,
     ],
 
     // ── 02: CHIA SẺ KINH NGHIỆM ─────────────────────────────────────────────

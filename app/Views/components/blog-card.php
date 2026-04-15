@@ -32,37 +32,37 @@ if ( empty( $category_label ) ) {
     $category_label = !empty($categories) ? $categories[0]->name : 'Tin Tức';
 }
 
-// 3. LOGIC XỬ LÝ LAYOUT (ADAPTIVE DESIGN)
-$is_row = ($variant === 'row');
+// 3. LOGIC XỬ LÝ LAYOUT — Tất cả variant đều DỌNG (flex-col)
+// Lý do: row variant trong grid 4-col chỉ có ~25% viewport → ngang quá hẹp
 
-// Bố cục Flexbox theo Variant
-$card_direction = $is_row ? 'flex-col md:flex-row' : 'flex-col';
-$img_width      = $is_row ? 'w-full md:w-[45%] shrink-0' : 'w-full';
-$content_width  = $is_row ? 'w-full md:w-[55%] md:pl-8 mt-5 md:mt-0' : 'w-full mt-5';
+// Bố cục Flexbox: luôn dọng để đảm bảo grid layout
+$card_direction = 'flex-col';
+$img_width      = 'w-full';
+$content_width  = 'w-full mt-4';
 
 // Tùy chỉnh Font chữ & Excerpt theo Variant — TẤT CẢ đều có mô tả
-$show_excerpt = true; // Luôn hiển thị excerpt trên mọi variant
+$show_excerpt = true;
 switch ( $variant ) {
     case 'big':
         $title_size    = 'text-2xl md:text-[28px] leading-[1.3]';
-        $excerpt_clamp = 'line-clamp-3'; // 3 dòng cho card lớn
+        $excerpt_clamp = 'line-clamp-3';
         $excerpt_words = 35;
         break;
     case 'md':
-        $title_size    = 'text-xl md:text-[22px] leading-[1.35]';
-        $excerpt_clamp = 'line-clamp-2'; // 2 dòng cho card vừa
+        $title_size    = 'text-lg md:text-xl leading-snug';
+        $excerpt_clamp = 'line-clamp-2';
         $excerpt_words = 20;
         break;
     case 'row':
-        $title_size    = 'text-lg md:text-xl leading-snug';
-        $excerpt_clamp = 'line-clamp-2'; // 2 dòng cho card ngang
-        $excerpt_words = 20;
+        $title_size    = 'text-sm md:text-base leading-snug';
+        $excerpt_clamp = 'line-clamp-2';
+        $excerpt_words = 15;
         break;
     case 'sm':
     default:
-        $title_size    = 'text-base md:text-lg leading-snug';
-        $excerpt_clamp = 'line-clamp-2'; // 2 dòng cho card nhỏ
-        $excerpt_words = 15;
+        $title_size    = 'text-sm md:text-base leading-snug';
+        $excerpt_clamp = 'line-clamp-2';
+        $excerpt_words = 12;
         break;
 }
 ?>
@@ -88,7 +88,9 @@ if ( ! $tava_card_css_printed ) :
     position: relative;
     height: 100%;
     display: flex;
-    padding: <?php echo ($variant === 'sm') ? '16px' : '24px'; ?>;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
     backdrop-filter: blur(24px);

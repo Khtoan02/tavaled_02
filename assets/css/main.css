@@ -927,8 +927,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-/* Đảm bảo glass card luôn flex column */
+/* Đảm bảo glass card luôn flex column (TẤT CẢ variant) */
 .tava-3d-glass {
+    display: flex;
+    flex-direction: column;  /* Luôn dọc — không bao giờ ngang trong grid */
     height: 100%;
     min-height: 0;
 }
@@ -940,17 +942,16 @@ h1, h2, h3, h4, h5, h6 {
     flex-shrink: 0;
 }
 
-/* ROW variant: card nằm ngang trên desktop */
-.tava-3d-wrapper.tava-blog-card--row .tava-3d-glass {
-    flex-direction: row;
-    gap: 20px;
+/* SM và ROW variant: compact padding (dùng inline style PHP) */
+/* Phân biệt bằng font-size (Tailwind classes từ PHP) không bằng direction */
+
+/* Đảm bảo content trong card không overflow */
+.tava-3d-content {
+    min-width: 0;           /* Cho phép flex child co lại */
+    overflow: hidden;
 }
-.tava-3d-wrapper.tava-blog-card--row .tava-3d-img-box {
-    width: 45%;
-    flex-shrink: 0;
-    aspect-ratio: 16 / 9;
-}
-@media (max-width: 640px) {
-    .tava-3d-wrapper.tava-blog-card--row .tava-3d-glass { flex-direction: column; }
-    .tava-3d-wrapper.tava-blog-card--row .tava-3d-img-box { width: 100%; }
+.tava-3d-content h3,
+.tava-3d-content p {
+    overflow: hidden;
+    word-break: break-word;
 }
