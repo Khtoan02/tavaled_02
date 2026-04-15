@@ -67,7 +67,13 @@ switch ( $variant ) {
 }
 ?>
 
-<style>
+<?php
+// ── In CSS một lần duy nhất per-page (tránh duplicate khi render nhiều card) ──
+static $tava_card_css_printed = false;
+if ( ! $tava_card_css_printed ) :
+    $tava_card_css_printed = true;
+?>
+<style id="tava-blog-card-css">
 /* ==========================================================================
    CSS 3D WHITE GLASSMORPHISM ĐỘC QUYỀN TAVALED
    ========================================================================== */
@@ -182,6 +188,7 @@ switch ( $variant ) {
     }
 }
 </style>
+<?php endif; // end: chỉ in CSS 1 lần ?>
 
 <div class="tava-3d-wrapper group">
     <article class="tava-3d-glass <?php echo esc_attr($card_direction); ?>">
