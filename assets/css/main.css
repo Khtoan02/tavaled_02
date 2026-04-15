@@ -784,3 +784,368 @@ h1, h2, h3, h4, h5, h6 {
         left: -10px;
     }
 }
+
+
+/* =========================================================================
+   COMPONENT: BLOG CARD  (tava-glass-card + variant system)
+   3D Floating Image + White Frosted Glass + Preserve-3D
+   ─────────────────────────────────────────────────────────────────────────
+   HƯỚNG DẪN TUỲ CHỈNH:
+   • Độ đậm kính    → .tava-glass-card        { backdrop-filter: blur(Npx); }
+   • Góc 3D hover   → .tava-wrapper:hover .tava-glass-card { transform: rotateX(Ndeg)... }
+   • Chiều cao ảnh  → Dùng aspect-ratio (16/9 tự động) — không cần sửa
+   • Font title BIG → .tava-blog-card--big .tava-title { font-size: Npx; }
+   • Số dòng title  → .tava-blog-card--[v] .tava-title { -webkit-line-clamp: N; }
+   • Số dòng excerpt→ .tava-excerpt { -webkit-line-clamp: N; }
+   ========================================================================= */
+
+/* ── Outer wrapper: perspective container ─────────────────── */
+.tava-wrapper {
+    width: 100%;
+    perspective: 1200px;
+}
+
+/* ── Glass card: base layer ───────────────────────────────── */
+.tava-glass-card {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.20);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23,1,0.32,1),
+                box-shadow 0.6s ease,
+                border-color 0.4s ease,
+                background 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ── Image float: 16:9, elevated 30px ────────────────────── */
+.tava-image-float {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    transform: translateZ(30px);
+    transition: transform 0.6s cubic-bezier(0.23,1,0.32,1), box-shadow 0.6s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.30);
+    border: 1px solid rgba(255,255,255,0.20);
+    display: block;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.tava-image-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    display: block;
+}
+
+/* ── Content float: text area ─────────────────────────────── */
+.tava-content-float {
+    transform: translateZ(20px);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    transform-style: preserve-3d;
+}
+
+/* ── Badge ────────────────────────────────────────────────── */
+.tava-badge {
+    align-self: flex-start;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-radius: 999px;
+    margin-bottom: 7px;
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ── Meta (date) ──────────────────────────────────────────── */
+.tava-meta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.48);
+    margin-bottom: 7px;
+}
+.tava-meta svg { flex-shrink: 0; stroke: rgba(255,255,255,0.4); }
+.tava-meta time { line-height: 1; }
+
+/* ── Title ────────────────────────────────────────────────── */
+.tava-title {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.20);
+}
+.tava-title a { color: inherit; text-decoration: none; }
+.tava-title a:focus { outline: none; }
+
+/* ── EXCERPT ──────────────────────────────────────────────── */
+/* Mặc định ẩn — chỉ hiện khi $show_excerpt = true (variant big) */
+.tava-excerpt {
+    display: none;
+}
+/* Khi PHP inject class --big vào .tava-wrapper, excerpt sẽ hiển thị */
+.tava-blog-card--big .tava-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 13px;
+    color: rgba(255,255,255,0.60);
+    line-height: 1.65;
+    margin: 0 0 12px;
+}
+
+/* ── Action bar ───────────────────────────────────────────── */
+.tava-action-bar {
+    margin-top: auto;
+    padding-top: 11px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateZ(25px);
+    transform-style: preserve-3d;
+}
+
+/* ── Circle buttons ───────────────────────────────────────── */
+.tava-buttons { display: flex; gap: 8px; }
+.tava-btn-circle {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.tava-btn-circle:hover { background: #fff; color: #0f172a; transform: scale(1.12); }
+.tava-btn-circle svg { width: 13px; height: 13px; }
+
+/* ── CTA ──────────────────────────────────────────────────── */
+.tava-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255,255,255,0.85);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    transition: gap 0.25s ease, color 0.25s ease;
+}
+.tava-cta svg { width: 13px; height: 13px; transition: transform 0.25s ease; flex-shrink: 0; }
+.tava-cta:hover { color: #fff; gap: 9px; }
+.tava-cta:hover svg { transform: translateX(3px); }
+
+/* ── Tech circles (decoration, on image corner) ───────────── */
+.tava-tech-circles {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 44px; height: 44px;
+    transform-style: preserve-3d;
+    z-index: 20;
+    pointer-events: none;
+}
+.tava-circle {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+}
+.tava-circle-1 { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); backdrop-filter: blur(2px); transform: translate(-50%,-50%) translateZ(8px); }
+.tava-circle-2 { width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); transform: translate(-50%,-50%) translateZ(22px); }
+.tava-circle-3 { width: 20px; height: 20px; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.5); transform: translate(-50%,-50%) translateZ(36px); display: flex; align-items: center; justify-content: center; }
+.tava-circle-3 svg { width: 10px; height: 10px; fill: #0f172a; }
+
+/* ══════════════════════════════════════════════════════════
+   HOVER EFFECTS: 3D INTERACTION
+   ══════════════════════════════════════════════════════════ */
+.tava-wrapper:hover .tava-glass-card {
+    transform: rotateX(5deg) rotateY(-3deg);
+    box-shadow: -12px 22px 28px rgba(0,0,0,0.28);
+    border-color: rgba(255,255,255,0.45);
+    background: linear-gradient(135deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.08) 100%);
+}
+.tava-wrapper:hover .tava-image-float {
+    transform: translateZ(60px) scale(1.02);
+    box-shadow: -8px 18px 28px rgba(0,0,0,0.35);
+}
+.tava-wrapper:hover .tava-image-float img { transform: scale(1.05); }
+.tava-wrapper:hover .tava-content-float { transform: translateZ(30px); }
+.tava-wrapper:hover .tava-action-bar    { transform: translateZ(40px); }
+.tava-wrapper:hover .tava-cta { color: #fff; }
+.tava-wrapper:hover .tava-cta svg { transform: translateX(3px); }
+.tava-wrapper:hover .tava-circle-1 { transform: translate(-50%,-50%) translateZ(24px); }
+.tava-wrapper:hover .tava-circle-2 { transform: translate(-50%,-50%) translateZ(44px); }
+.tava-wrapper:hover .tava-circle-3 { transform: translate(-50%,-50%) translateZ(70px); box-shadow: 0 0 14px #fff; }
+
+/* ══════════════════════════════════════════════════════════
+   VARIANTS  (đặt trên .tava-wrapper — ví dụ: class="tava-wrapper tava-blog-card--big")
+   ══════════════════════════════════════════════════════════ */
+
+/* ── BIG: full size, ảnh lớn, có excerpt ─────────────────── */
+.tava-blog-card--big .tava-glass-card  { padding: 20px; gap: 18px; }
+.tava-blog-card--big .tava-image-float { border-radius: 14px; }
+.tava-blog-card--big .tava-badge       { font-size: 11px; padding: 5px 14px; margin-bottom: 10px; }
+.tava-blog-card--big .tava-meta        { font-size: 12px; margin-bottom: 9px; }
+.tava-blog-card--big .tava-title       { font-size: 22px; -webkit-line-clamp: 3; margin-bottom: 10px; }
+.tava-blog-card--big .tava-btn-circle  { width: 36px; height: 36px; }
+.tava-blog-card--big .tava-btn-circle svg { width: 16px; height: 16px; }
+.tava-blog-card--big .tava-cta         { font-size: 12px; }
+.tava-blog-card--big .tava-tech-circles { width: 50px; height: 50px; top: 12px; right: 12px; }
+.tava-blog-card--big .tava-circle-1    { width: 50px; height: 50px; }
+.tava-blog-card--big .tava-circle-2    { width: 36px; height: 36px; }
+.tava-blog-card--big .tava-circle-3    { width: 22px; height: 22px; }
+.tava-blog-card--big .tava-circle-3 svg { width: 12px; height: 12px; }
+/* BIG hover nổi hơn */
+.tava-blog-card--big.tava-wrapper:hover .tava-glass-card  { transform: rotateX(6deg) rotateY(-4deg); }
+.tava-blog-card--big.tava-wrapper:hover .tava-image-float { transform: translateZ(70px) scale(1.02); }
+
+/* ── SM: card nhỏ, không excerpt, không tech circles ─────── */
+.tava-blog-card--sm .tava-glass-card  { padding: 11px; gap: 9px; border-radius: 16px; }
+.tava-blog-card--sm .tava-image-float { transform: translateZ(14px); border-radius: 9px; }
+.tava-blog-card--sm .tava-badge       { font-size: 9px; padding: 3px 8px; margin-bottom: 5px; }
+.tava-blog-card--sm .tava-meta        { font-size: 10px; margin-bottom: 5px; }
+.tava-blog-card--sm .tava-title       { font-size: 13px; -webkit-line-clamp: 2; margin-bottom: 4px; }
+.tava-blog-card--sm .tava-action-bar  { padding-top: 8px; }
+.tava-blog-card--sm .tava-btn-circle  { width: 26px; height: 26px; }
+.tava-blog-card--sm .tava-btn-circle svg { width: 11px; height: 11px; }
+.tava-blog-card--sm .tava-cta         { font-size: 9px; }
+/* SM hover nhẹ hơn */
+.tava-blog-card--sm.tava-wrapper:hover .tava-glass-card  { transform: rotateX(3deg) rotateY(-2deg); }
+.tava-blog-card--sm.tava-wrapper:hover .tava-image-float { transform: translateZ(30px) scale(1.01); }
+
+/* ── MD: vừa, không excerpt ──────────────────────────────── */
+.tava-blog-card--md .tava-glass-card  { padding: 13px; gap: 11px; }
+.tava-blog-card--md .tava-image-float { transform: translateZ(20px); }
+.tava-blog-card--md .tava-badge       { font-size: 10px; padding: 4px 10px; margin-bottom: 6px; }
+.tava-blog-card--md .tava-meta        { font-size: 11px; margin-bottom: 6px; }
+.tava-blog-card--md .tava-title       { font-size: 15px; -webkit-line-clamp: 2; }
+.tava-blog-card--md .tava-btn-circle  { width: 28px; height: 28px; }
+.tava-blog-card--md .tava-cta         { font-size: 10px; }
+.tava-blog-card--md .tava-tech-circles { width: 38px; height: 38px; top: 8px; right: 8px; }
+.tava-blog-card--md .tava-circle-1    { width: 38px; height: 38px; }
+.tava-blog-card--md .tava-circle-2    { width: 28px; height: 28px; }
+.tava-blog-card--md .tava-circle-3    { width: 18px; height: 18px; }
+.tava-blog-card--md.tava-wrapper:hover .tava-glass-card  { transform: rotateX(4deg) rotateY(-2deg); }
+.tava-blog-card--md.tava-wrapper:hover .tava-image-float { transform: translateZ(42px) scale(1.01); }
+
+/* ── ROW: compact 4-col, không excerpt, không tech circles ── */
+.tava-blog-card--row .tava-glass-card  { padding: 10px; gap: 8px; border-radius: 14px; }
+.tava-blog-card--row .tava-image-float { transform: translateZ(10px); border-radius: 8px; }
+.tava-blog-card--row .tava-badge       { font-size: 8px; padding: 2px 7px; margin-bottom: 4px; }
+.tava-blog-card--row .tava-meta        { font-size: 10px; margin-bottom: 4px; }
+.tava-blog-card--row .tava-title       { font-size: 12px; -webkit-line-clamp: 2; margin-bottom: 3px; }
+.tava-blog-card--row .tava-action-bar  { padding-top: 7px; }
+.tava-blog-card--row .tava-btn-circle  { width: 24px; height: 24px; }
+.tava-blog-card--row .tava-btn-circle svg { width: 10px; height: 10px; }
+.tava-blog-card--row .tava-cta         { font-size: 9px; }
+.tava-blog-card--row.tava-wrapper:hover .tava-glass-card  { transform: rotateX(2deg) rotateY(-1deg); }
+.tava-blog-card--row.tava-wrapper:hover .tava-image-float { transform: translateZ(22px) scale(1.01); }
+
+/* ══════════════════════════════════════════════════════════
+   GRID LAYOUTS  (tava-blog-grid--)
+   ══════════════════════════════════════════════════════════ */
+
+/* HERO row-1: 1 big + right column của 2 sm */
+.tava-blog-grid--hero { display: grid; grid-template-columns: 1.8fr 1fr; gap: 16px; margin-bottom: 16px; }
+.tava-blog-grid--hero__right { display: flex; flex-direction: column; gap: 16px; }
+
+/* HERO row-2: 4 col */
+.tava-blog-grid--row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+
+/* HERO row-3: 3 col */
+.tava-blog-grid--row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+
+/* FEATURED: big card span 2 rows — CSS grid auto-placement */
+.tava-blog-grid--featured {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 16px;
+}
+.tava-blog-grid--featured > .tava-wrapper.tava-blog-card--big {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+/* SERVICE: 1 big + stacked md */
+.tava-blog-grid--service { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+.tava-blog-grid--service__right { display: flex; flex-direction: column; gap: 12px; }
+
+/* EQUAL: uniform 3 col */
+.tava-blog-grid--equal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+    .tava-blog-grid--row4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+    .tava-blog-grid--featured { grid-template-columns: 1fr 1fr; }
+    .tava-blog-grid--hero     { grid-template-columns: 1fr 1fr; }
+    .tava-blog-grid--service  { grid-template-columns: 1fr 1fr; }
+    .tava-blog-grid--equal    { grid-template-columns: repeat(2, 1fr); }
+    .tava-blog-card--big .tava-title { font-size: 18px; }
+}
+@media (max-width: 640px) {
+    .tava-blog-grid--hero     { grid-template-columns: 1fr; }
+    .tava-blog-grid--featured { grid-template-columns: 1fr; }
+    .tava-blog-grid--featured > .tava-wrapper.tava-blog-card--big { grid-column: 1; grid-row: auto; }
+    .tava-blog-grid--service  { grid-template-columns: 1fr; }
+    .tava-blog-grid--row4     { grid-template-columns: repeat(2, 1fr); }
+    .tava-blog-grid--row3     { grid-template-columns: repeat(2, 1fr); }
+    .tava-blog-grid--equal    { grid-template-columns: 1fr; }
+    .tava-blog-card--big .tava-title { font-size: 16px; }
+    .tava-blog-card--big .tava-excerpt { -webkit-line-clamp: 2; }
+}
+
+/* ── Disable heavy 3D on touch / low-performance devices ─── */
+@media (hover: none) {
+    .tava-wrapper:hover .tava-glass-card,
+    .tava-blog-card--big.tava-wrapper:hover .tava-glass-card,
+    .tava-blog-card--sm.tava-wrapper:hover .tava-glass-card,
+    .tava-blog-card--md.tava-wrapper:hover .tava-glass-card,
+    .tava-blog-card--row.tava-wrapper:hover .tava-glass-card {
+        transform: none;
+    }
+    .tava-wrapper:hover .tava-image-float,
+    .tava-blog-card--big.tava-wrapper:hover .tava-image-float,
+    .tava-blog-card--sm.tava-wrapper:hover .tava-image-float,
+    .tava-blog-card--md.tava-wrapper:hover .tava-image-float,
+    .tava-blog-card--row.tava-wrapper:hover .tava-image-float {
+        transform: translateZ(0) scale(1.02);
+    }
+    .tava-wrapper:hover .tava-content-float { transform: none; }
+    .tava-wrapper:hover .tava-action-bar    { transform: none; }
+}
