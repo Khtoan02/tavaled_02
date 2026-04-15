@@ -55,8 +55,8 @@ $sections = [
     // ── 03: DỊCH VỤ ─────────────────────────────────────────────────────────
     [
         'category' => 'dich-vu',
-        'layout' => 'service',
-        'posts_per_page' => 7,
+        'layout' => 'featured',
+        'posts_per_page' => 3,
         'title' => 'Cung Cấp <em>Dịch Vụ</em>',
         'eyebrow' => 'Giải pháp chuyên nghiệp',
         'ghost_text' => 'Dịch Vụ',
