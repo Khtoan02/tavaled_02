@@ -32,42 +32,33 @@ if ( empty( $category_label ) ) {
     $category_label = !empty($categories) ? $categories[0]->name : 'Tin Tức';
 }
 
-// 3. LOGIC XỬ LÝ LAYOUT
-// BIG variant: nằm ngang trên desktop (ảnh trái | text phải)
-// SM/MD/ROW: luôn dọc (flex-col) vì trong lưới hẹp
+// 3. LAYOUT LOGIC
+// BIG: thêm class 'tava-card-big' → CSS sẽ xử lý horizontal trên desktop
+// SM/MD/ROW: layout dọc (flex-col) luôn luôn — kông phụ thuộc Tailwind compile
+$extra_card_class = ( $variant === 'big' ) ? 'tava-card-big' : '';
 
-if ( $variant === 'big' ) {
-    $card_direction = 'flex-col md:flex-row';           // ngang trên desktop
-    $img_width      = 'w-full md:w-[52%] shrink-0';    // ảnh chiếm 52%
-    $content_width  = 'w-full md:pl-6 mt-4 md:mt-0 flex flex-col flex-1'; // text chiếm phần còn lại
-} else {
-    $card_direction = 'flex-col';   // dọc cho tất cả variant khác
-    $img_width      = 'w-full';
-    $content_width  = 'w-full mt-4';
-}
-
-// Tùy chỉnh Font chữ & Excerpt theo Variant
+// Tuy chỉnh Font chữ & Excerpt theo Variant
 $show_excerpt = true;
 switch ( $variant ) {
     case 'big':
         $title_size    = 'text-xl md:text-2xl leading-[1.35]';
-        $excerpt_clamp = 'line-clamp-4';  // 4 dòng vì content đủ rộng
+        $excerpt_clamp = 4;  // số dòng (dùng trong style inline)
         $excerpt_words = 40;
         break;
     case 'md':
-        $title_size    = 'text-lg md:text-xl leading-snug';
-        $excerpt_clamp = 'line-clamp-2';
+        $title_size    = 'text-lg leading-snug';
+        $excerpt_clamp = 2;
         $excerpt_words = 20;
         break;
     case 'row':
-        $title_size    = 'text-sm md:text-base leading-snug';
-        $excerpt_clamp = 'line-clamp-2';
+        $title_size    = 'text-sm leading-snug';
+        $excerpt_clamp = 2;
         $excerpt_words = 15;
         break;
     case 'sm':
     default:
-        $title_size    = 'text-sm md:text-base leading-snug';
-        $excerpt_clamp = 'line-clamp-2';
+        $title_size    = 'text-sm leading-snug';
+        $excerpt_clamp = 2;
         $excerpt_words = 12;
         break;
 }
@@ -89,13 +80,13 @@ if ( ! $tava_card_css_printed ) :
     height: 100%;
 }
 
-/* Base: Khung Kính Trắng */
+/* Base: Khung Kính Trắng — dọc (flex-col) mặc định */
 .tava-3d-glass {
     position: relative;
     height: 100%;
     display: flex;
-    /* flex-direction do Tailwind class tự xử lý (flex-col / md:flex-row) */
-    gap: 0;  /* gap sẽ do từng variant đối xử qua img_width / content_width */
+    flex-direction: column;   /* mặc định: dọc */
+    gap: 16px;
     padding: 20px;
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -105,6 +96,28 @@ if ( ! $tava_card_css_printed ) :
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+
+/* BIG variant: chuyển sang ngang trên desktop */
+@media (min-width: 768px) {
+    .tava-3d-glass.tava-card-big {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 20px;
+    }
+    /* Ảnh BIG: chiếm 52%, tắt aspect-ratio cố định để stretch theo chiều cao card */
+    .tava-3d-glass.tava-card-big .tava-3d-img-box {
+        width: 52%;
+        flex-shrink: 0;
+        aspect-ratio: unset;   /* không cố định tỷ lệ, để stretch full height */
+        height: auto;
+        min-height: 220px;
+    }
+    /* Content BIG: phần còn lại, flex-col để CTA xuống đáy */
+    .tava-3d-glass.tava-card-big .tava-3d-content {
+        flex: 1;
+        min-width: 0;
+    }
 }
 
 /* LỚP 1: GLOBAL LINK (Phủ kín thẻ để bắt Click - Quan trọng nhất) */
@@ -199,11 +212,11 @@ if ( ! $tava_card_css_printed ) :
 <?php endif; // end: chỉ in CSS 1 lần ?>
 
 <div class="tava-3d-wrapper group">
-    <article class="tava-3d-glass <?php echo esc_attr($card_direction); ?>">
+    <article class="tava-3d-glass <?php echo esc_attr($extra_card_class); ?>">
         
         <a href="<?php echo esc_url($permalink); ?>" class="tava-global-overlay" aria-label="<?php echo esc_attr($title); ?>"></a>
 
-        <div class="tava-3d-img-box <?php echo esc_attr($img_width); ?>">
+        <div class="tava-3d-img-box">
             <?php if ( has_post_thumbnail( $post_id ) ) : 
                 echo get_the_post_thumbnail( $post_id, ($variant === 'big') ? 'large' : 'medium', ['class' => 'w-full h-full object-cover'] );
             else : ?>
@@ -215,7 +228,7 @@ if ( ! $tava_card_css_printed ) :
             </div>
         </div>
 
-        <div class="tava-3d-content <?php echo esc_attr($content_width); ?>">
+        <div class="tava-3d-content">
             
             <span class="inline-block w-max px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/30 rounded-full text-[10px] font-extrabold text-white uppercase tracking-widest mb-4 shadow-sm">
                 <?php echo esc_html($category_label); ?>
@@ -226,10 +239,11 @@ if ( ! $tava_card_css_printed ) :
             </h3>
 
             <?php if ( $show_excerpt && $excerpt ) : ?>
-                <p class="tava-3d-excerpt <?php echo esc_attr($excerpt_clamp); ?>">
+                <p class="tava-3d-excerpt" style="-webkit-line-clamp:<?php echo (int)$excerpt_clamp; ?>">
                     <?php echo esc_html( wp_trim_words( $excerpt, $excerpt_words, '...' ) ); ?>
                 </p>
             <?php endif; ?>
+
 
             <div class="tava-3d-footer">
                 
