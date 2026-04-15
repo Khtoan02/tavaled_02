@@ -138,7 +138,7 @@ $render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($ca
             <?php $render_card($big[0], 'big'); ?>
             <?php if ($right): ?>
             <div class="tava-blog-grid--hero__right">
-                <?php foreach ($right as $p): $render_card($p, 'sm'); endforeach; ?>
+                <?php foreach ($right as $p): $render_card($p, 'sm-row'); endforeach; ?>
             </div>
             <?php endif; ?>
         </div>

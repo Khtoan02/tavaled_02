@@ -33,28 +33,30 @@ if ( empty( $category_label ) ) {
 }
 
 // 3. LAYOUT LOGIC
-// BIG: thêm class 'tava-card-big' → CSS sẽ xử lý horizontal trên desktop
-// SM/MD/ROW: layout dọc (flex-col) luôn luôn — kông phụ thuộc Tailwind compile
-$extra_card_class = ( $variant === 'big' ) ? 'tava-card-big' : '';
+// BIG: cột (ảnh trên, text dưới) — giữ nguyên
+// SM-ROW: nằm ngang (ảnh trái | text phải) — dùng cho hero right column
+// SM/MD/ROW/default: cột thảng
+$extra_card_class = ( $variant === 'sm-row' ) ? 'tava-card-sm-row' : '';
 
 // Tuy chỉnh Font chữ & Excerpt theo Variant
 $show_excerpt = true;
 switch ( $variant ) {
     case 'big':
-        $title_size    = 'text-xl md:text-2xl leading-[1.35]';
-        $excerpt_clamp = 4;  // số dòng (dùng trong style inline)
-        $excerpt_words = 40;
+        $title_size    = 'text-xl leading-snug';
+        $excerpt_clamp = 3;
+        $excerpt_words = 30;
         break;
-    case 'md':
-        $title_size    = 'text-lg leading-snug';
-        $excerpt_clamp = 2;
-        $excerpt_words = 20;
-        break;
-    case 'row':
+    case 'sm-row':
         $title_size    = 'text-sm leading-snug';
         $excerpt_clamp = 2;
-        $excerpt_words = 15;
+        $excerpt_words = 12;
         break;
+    case 'md':
+        $title_size    = 'text-base leading-snug';
+        $excerpt_clamp = 2;
+        $excerpt_words = 18;
+        break;
+    case 'row':
     case 'sm':
     default:
         $title_size    = 'text-sm leading-snug';
@@ -85,8 +87,8 @@ if ( ! $tava_card_css_printed ) :
     position: relative;
     height: 100%;
     display: flex;
-    flex-direction: column;   /* mặc định: dọc */
-    gap: 16px;
+    flex-direction: column;
+    gap: 14px;
     padding: 20px;
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -98,25 +100,30 @@ if ( ! $tava_card_css_printed ) :
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
 }
 
-/* BIG variant: chuyển sang ngang trên desktop */
+/* SM-ROW variant: nằm ngang trên desktop (ảnh trái | text phải) */
 @media (min-width: 768px) {
-    .tava-3d-glass.tava-card-big {
+    .tava-3d-glass.tava-card-sm-row {
         flex-direction: row;
         align-items: stretch;
-        gap: 20px;
+        gap: 14px;
+        padding: 14px;
     }
-    /* Ảnh BIG: chiếm 52%, tắt aspect-ratio cố định để stretch theo chiều cao card */
-    .tava-3d-glass.tava-card-big .tava-3d-img-box {
-        width: 52%;
+    .tava-3d-glass.tava-card-sm-row .tava-3d-img-box {
+        width: 44%;
         flex-shrink: 0;
-        aspect-ratio: unset;   /* không cố định tỷ lệ, để stretch full height */
+        aspect-ratio: unset;
         height: auto;
-        min-height: 220px;
+        min-height: 130px;
     }
-    /* Content BIG: phần còn lại, flex-col để CTA xuống đáy */
-    .tava-3d-glass.tava-card-big .tava-3d-content {
+    .tava-3d-glass.tava-card-sm-row .tava-3d-content {
         flex: 1;
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    /* Ẩnh BIG vẫn giữ 16:9 đủ rộng */
+    .tava-3d-glass:not(.tava-card-sm-row) .tava-3d-img-box {
+        aspect-ratio: 16 / 9;
     }
 }
 

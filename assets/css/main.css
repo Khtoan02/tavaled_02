@@ -957,22 +957,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* ── BIG variant: horizontal layout (ảnh trái | text phải) ────────────── */
-/* Đồng bộ với class 'tava-card-big' trong blog-card.php                  */
+/* ── SM-ROW variant: horizontal (ảnh trái | text phải) ─────────── */
+/* Dùng cho hero right column — 2 card SM nằm ngang, mỗi card ngắn hơn */
+/* Đồng bộ với class 'tava-card-sm-row' từ blog-card.php               */
 @media (min-width: 768px) {
-    .tava-3d-glass.tava-card-big {
+    .tava-3d-glass.tava-card-sm-row {
         flex-direction: row !important;
         align-items: stretch;
-        gap: 20px;
+        gap: 14px;
+        padding: 14px;
     }
-    .tava-3d-glass.tava-card-big .tava-3d-img-box {
-        width: 52%;
+    .tava-3d-glass.tava-card-sm-row .tava-3d-img-box {
+        width: 44%;
         flex-shrink: 0;
         aspect-ratio: unset;
         height: auto;
-        min-height: 220px;
+        min-height: 130px;
     }
-    .tava-3d-glass.tava-card-big .tava-3d-content {
+    .tava-3d-glass.tava-card-sm-row .tava-3d-content {
         flex: 1;
         min-width: 0;
         display: flex;
