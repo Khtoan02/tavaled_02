@@ -16,10 +16,10 @@
     
     --border-color: #f3e5e1;       /* Màu đường viền / border */
 
-    /* 2. FONT CHỮ (Typography) */
     /* Sử dụng font mặc định của hệ thống */
     --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
     --container-width: 1600px;     /* Độ rộng siêu lớn cho Desktop hiện đại (hiển thị nhiều sản phẩm hơn) */
