@@ -30,8 +30,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        serif: ['"Mona Sans"', 'sans-serif'],
-        heading: ['"Mona Sans"', 'sans-serif']
+        serif: ['"Be Vietnam Pro"', 'sans-serif'],
+        heading: ['"Be Vietnam Pro"', 'sans-serif']
       }
     }
   },

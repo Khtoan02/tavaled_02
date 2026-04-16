@@ -50,10 +50,10 @@ function tavaled_enqueue_scripts() {
         echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
     }, 1);
 
-    // Google Fonts: Inter (sans) và Mona Sans (heading), hỗ trợ đầy đủ Tiếng Việt
+    // Google Fonts: Inter (sans) và Be Vietnam Pro (heading), hỗ trợ đầy đủ Tiếng Việt
     wp_enqueue_style(
         'tavaled-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,700&display=swap',
         [],
         null
     );

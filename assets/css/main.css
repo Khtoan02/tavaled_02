@@ -18,7 +18,7 @@
 
     /* 2. FONT CHỮ (Typography) */
     /* Font được load qua functions.php (wp_enqueue_style) */
-    --font-heading: 'Mona Sans', sans-serif; /* Font tiêu đề — hỗ trợ Tiếng Việt đầy đủ */
+    --font-heading: 'Be Vietnam Pro', sans-serif; /* Font tiêu đề — hỗ trợ Tiếng Việt đầy đủ */
     --font-body: 'Inter', sans-serif;    /* Font nội dung chính */
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
