@@ -42,7 +42,7 @@ $posts_eq   = array_slice($all_posts, 0, 6);
     min-height: 100vh;
     background: #0f172a;
     padding: 40px 0 80px;
-    font-family: var(--font-body, 'Fira Sans', sans-serif);
+    font-family: var(--font-body, 'Inter', sans-serif);
 }
 .preview-header {
     text-align: center;
@@ -55,7 +55,7 @@ $posts_eq   = array_slice($all_posts, 0, 6);
     font-weight: 800;
     color: #fff;
     margin: 0 0 8px;
-    font-family: var(--font-heading, 'Fira Sans', sans-serif);
+    font-family: var(--font-heading, 'Mona Sans', sans-serif);
 }
 .preview-header p { color: rgba(255,255,255,0.5); margin: 0; font-size: 14px; }
 .preview-badge {

@@ -18,8 +18,8 @@
 
     /* 2. FONT CHỮ (Typography) */
     /* Font được load qua functions.php (wp_enqueue_style) */
-    --font-heading: 'Fira Sans', 'Be Vietnam Pro', sans-serif; /* Font tiêu đề — hỗ trợ Tiếng Việt đầy đủ */
-    --font-body: 'Fira Sans', 'Be Vietnam Pro', sans-serif;    /* Font nội dung chính */
+    --font-heading: 'Mona Sans', sans-serif; /* Font tiêu đề — hỗ trợ Tiếng Việt đầy đủ */
+    --font-body: 'Inter', sans-serif;    /* Font nội dung chính */
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
     --container-width: 1600px;     /* Độ rộng siêu lớn cho Desktop hiện đại (hiển thị nhiều sản phẩm hơn) */
