@@ -1,7 +1,7 @@
 /* =========================================================================
    HOMEPAGE SPECIFIC STYLES
    =========================================================================
-   Lưu ý: Font (Bebas Neue, Mona Sans, Inter) được load qua functions.php
+   Lưu ý: Font hệ thống mặc định của WordPress được load qua functions.php
    để tránh lỗi @import không đứng đầu file CSS bị ignore trên Safari/iOS.
    ========================================================================= */
 /* BASE & RESET overrides for Home */
@@ -42,7 +42,7 @@ html { scroll-behavior: smooth; }
     align-items: center;
     overflow: hidden;
     background: var(--hero-navy);
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 /* ── Background depth glow ── */
@@ -165,7 +165,7 @@ html { scroll-behavior: smooth; }
     animation: heroSlideRight 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both;
 }
 .hero-v2-btn {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
