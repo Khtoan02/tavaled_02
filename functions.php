@@ -175,14 +175,47 @@ add_filter('term_link', function($url, $term, $taxonomy) {
 }, 10, 3);
 
 add_filter('generate_rewrite_rules', function($wp_rewrite) {
-    $rules = [
-        // Các quy tắc cứng để đảm bảo rewrite cho 3 ngành chính hoạt động ổn định
-        'man-hinh-led/?$' => 'index.php?post_type=tava_product&product_industry=man-hinh-led',
-        'thiet-bi-am-thanh/?$' => 'index.php?post_type=tava_product&product_industry=thiet-bi-am-thanh',
-        'thiet-bi-anh-sang/?$' => 'index.php?post_type=tava_product&product_industry=thiet-bi-anh-sang',
-    ];
+    $rules = [];
+    $terms = get_terms([
+        'taxonomy' => ['product_industry', 'product_cat', 'product_subcat'],
+        'hide_empty' => false,
+    ]);
+
+    if (!is_wp_error($terms) && !empty($terms)) {
+        foreach ($terms as $term) {
+            $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
+            $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
+        }
+    }
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 });
+
+// Tự động Flush Rewrite Rules khi người dùng thêm/sửa/xoá Ngành hàng/Danh mục để tránh lỗi 404
+add_action('created_product_industry', 'flush_rewrite_rules');
+add_action('edited_product_industry', 'flush_rewrite_rules');
+add_action('delete_product_industry', 'flush_rewrite_rules');
+add_action('created_product_cat', 'flush_rewrite_rules');
+add_action('edited_product_cat', 'flush_rewrite_rules');
+add_action('delete_product_cat', 'flush_rewrite_rules');
+add_action('created_product_subcat', 'flush_rewrite_rules');
+add_action('edited_product_subcat', 'flush_rewrite_rules');
+add_action('delete_product_subcat', 'flush_rewrite_rules');
+
+/**
+ * Replace %product_industry% tag with the actual term slug in product URLs
+ * Converts /%product_industry%/ten-sp/ to /man-hinh-led/ten-sp/
+ */
+add_filter('post_type_link', function($post_link, $post) {
+    if (is_object($post) && $post->post_type == 'tava_product') {
+        $terms = wp_get_object_terms($post->ID, 'product_industry');
+        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) {
+            return str_replace('%product_industry%', $terms[0]->slug, $post_link);
+        }
+        // Fallback if no industry is selected
+        return str_replace('%product_industry%', 'san-pham', $post_link);
+    }
+    return $post_link;
+}, 10, 2);
 
 
 /**
