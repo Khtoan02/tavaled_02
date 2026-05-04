@@ -183,8 +183,15 @@ add_filter('generate_rewrite_rules', function($wp_rewrite) {
 
     if (!is_wp_error($terms) && !empty($terms)) {
         foreach ($terms as $term) {
+            // Quy tắc cho trang danh mục
             $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
             $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
+            
+            // Quy tắc cho trang chi tiết sản phẩm nằm trong danh mục (chỉ áp dụng cho Ngành hàng hoặc Danh mục cấp 1 để URL không quá sâu)
+            // Ví dụ: /man-hinh-led/ten-san-pham/
+            if ($term->taxonomy === 'product_industry' || $term->taxonomy === 'product_cat') {
+                $rules['^' . $term->slug . '/([^/]+)/?$'] = 'index.php?post_type=tava_product&name=$matches[1]';
+            }
         }
     }
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
@@ -202,17 +209,20 @@ add_action('edited_product_subcat', 'flush_rewrite_rules');
 add_action('delete_product_subcat', 'flush_rewrite_rules');
 
 /**
- * Replace %product_industry% tag with the actual term slug in product URLs
- * Converts /%product_industry%/ten-sp/ to /man-hinh-led/ten-sp/
+ * Replace /san-pham/ tag with the actual term slug in product URLs
+ * Converts /san-pham/ten-sp/ to /man-hinh-led/ten-sp/
  */
 add_filter('post_type_link', function($post_link, $post) {
     if (is_object($post) && $post->post_type == 'tava_product') {
         $terms = wp_get_object_terms($post->ID, 'product_industry');
         if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) {
-            return str_replace('%product_industry%', $terms[0]->slug, $post_link);
+            return str_replace('/san-pham/', '/' . $terms[0]->slug . '/', $post_link);
         }
-        // Fallback if no industry is selected
-        return str_replace('%product_industry%', 'san-pham', $post_link);
+        // Fallback to product_cat if no industry is selected
+        $cat_terms = wp_get_object_terms($post->ID, 'product_cat');
+        if (!is_wp_error($cat_terms) && !empty($cat_terms) && is_object($cat_terms[0])) {
+            return str_replace('/san-pham/', '/' . $cat_terms[0]->slug . '/', $post_link);
+        }
     }
     return $post_link;
 }, 10, 2);
