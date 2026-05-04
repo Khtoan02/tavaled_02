@@ -308,3 +308,13 @@ function tavaled_reverse_admin_product_order($query) {
 }
 add_action('pre_get_posts', 'tavaled_reverse_admin_product_order');
 
+/**
+ * Add Category and Tag support to Pages
+ * This allows Pages to be mixed with Posts in category-based queries (like the Projects template).
+ */
+function tavaled_add_taxonomies_to_pages() {
+    register_taxonomy_for_object_type('category', 'page');
+    register_taxonomy_for_object_type('post_tag', 'page');
+}
+add_action('init', 'tavaled_add_taxonomies_to_pages');
+
