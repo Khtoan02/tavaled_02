@@ -18,6 +18,7 @@ class SitemapController {
         add_rewrite_rule('^products_sitemap\.xml$', 'index.php?custom_sitemap=products', 'top');
         add_rewrite_rule('^page_sitemap\.xml$', 'index.php?custom_sitemap=page', 'top');
         add_rewrite_rule('^category_sitemap\.xml$', 'index.php?custom_sitemap=category', 'top');
+        add_rewrite_rule('^project_sitemap\.xml$', 'index.php?custom_sitemap=project', 'top');
         add_rewrite_rule('^sitemap\.xml$', 'index.php?custom_sitemap=index', 'top');
     }
 
@@ -41,7 +42,7 @@ class SitemapController {
 
     private function render_index_sitemap() {
         echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        $sitemaps = ['post_sitemap.xml', 'products_sitemap.xml', 'page_sitemap.xml', 'category_sitemap.xml'];
+        $sitemaps = ['post_sitemap.xml', 'products_sitemap.xml', 'page_sitemap.xml', 'category_sitemap.xml', 'project_sitemap.xml'];
         $base_url = trailingslashit(home_url());
         foreach ($sitemaps as $sitemap) {
             echo '<sitemap>' . "\n";
@@ -63,6 +64,8 @@ class SitemapController {
             $this->query_and_render_posts('page', 0.7);
         } elseif ($type === 'category') {
             $this->query_and_render_terms('category', 0.6);
+        } elseif ($type === 'project') {
+            $this->query_and_render_project_posts(0.85);
         }
         
         echo '</urlset>' . "\n";
@@ -71,6 +74,32 @@ class SitemapController {
     private function query_and_render_posts($post_type, $priority = 0.8) {
         $args = [
             'post_type' => $post_type,
+            'post_status' => 'publish',
+            'posts_per_page' => 1000,
+            'ignore_sticky_posts' => true
+        ];
+        $query = new \WP_Query($args);
+        
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $url = get_permalink();
+                $modified = get_the_modified_date('c');
+                echo '<url>' . "\n";
+                echo '<loc>' . esc_url($url) . '</loc>' . "\n";
+                if ($modified) echo '<lastmod>' . $modified . '</lastmod>' . "\n";
+                echo '<changefreq>weekly</changefreq>' . "\n";
+                echo '<priority>' . $priority . '</priority>' . "\n";
+                echo '</url>' . "\n";
+            }
+            wp_reset_postdata();
+        }
+    }
+
+    private function query_and_render_project_posts($priority = 0.85) {
+        $args = [
+            'post_type' => ['post', 'page'],
+            'category_name' => 'du-an',
             'post_status' => 'publish',
             'posts_per_page' => 1000,
             'ignore_sticky_posts' => true
