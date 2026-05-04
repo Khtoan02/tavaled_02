@@ -90,7 +90,7 @@ class PageSetupController {
             ],
             [
                 'title'    => 'Tiêu chí',
-                'slug'     => 'tieu-chi',
+                'slug'     => 'tieu-chi-phat-trien',
                 'template' => 'templates/template-tieu-chi.php'
             ],
             [

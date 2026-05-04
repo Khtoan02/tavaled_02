@@ -189,7 +189,7 @@
                         <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                             <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
                                 <li><a href="/ve-chung-toi" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Câu chuyện thương hiệu</a></li>
-                                <li><a href="/tieu-chi" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tiêu chí phát triển</a></li>
+                                <li><a href="/tieu-chi-phat-trien" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tiêu chí phát triển</a></li>
                                 <li><a href="/minh-bach-nang-luc" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Hồ sơ năng lực</a></li>
                                 <li><a href="/chuyen-gia" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chuyên gia TavaLED</a></li>
                                 <li><a href="/tuyen-dung" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cơ hội nghề nghiệp</a></li>
