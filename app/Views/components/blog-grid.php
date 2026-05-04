@@ -64,8 +64,10 @@ $theme         = $section['theme']          ?? 'dark';
 
 if (!$category) return;
 
-// ── WP_Query ──────────────────────────────────────────────────────────────
+// Include both posts and pages for project category (or all categories if applicable)
+$post_types = ($category === 'du-an') ? ['post', 'page'] : ['post', 'page']; // Applying to all to be safe, or just 'du-an'. Wait, the prompt says "phần lọc dự án", so let's apply to all just in case they add pages to other categories too.
 $q = new WP_Query([
+    'post_type'      => ['post', 'page'],
     'category_name'  => $category,
     'posts_per_page' => $posts_per_page,
     'orderby'        => 'date',
@@ -86,11 +88,17 @@ if (!$view_all_url && $category) {
 }
 
 // ── Helper: render 1 card ─────────────────────────────────────────────────
-$render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($cat_label, $fallback_img, $cta_text, $excerpt_words, $theme) {
+$render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($cat_label, $fallback_img, $cta_text, $excerpt_words, $theme, $category) {
+    // Phân biệt Trang và Bài Viết giống template-du-an.php
+    $final_label = $cat_label;
+    if ($category === 'du-an') {
+        $final_label = ($post_obj->post_type === 'page') ? 'Trang ' . $cat_label : 'Bài Viết ' . $cat_label;
+    }
+
     get_template_part('app/Views/components/blog-card', null, [
         'post'           => $post_obj,
         'variant'        => $variant,
-        'category_label' => $cat_label,
+        'category_label' => $final_label,
         'fallback_img'   => $fallback_img,
         'cta_text'       => $override_cta ?: $cta_text,
         'excerpt_words'  => $excerpt_words,
