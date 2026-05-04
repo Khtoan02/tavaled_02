@@ -127,6 +127,11 @@ class PageSetupController {
                 'title'    => 'Blog',
                 'slug'     => 'blog',
                 'template' => 'templates/template-blogpage.php'
+            ],
+            [
+                'title'    => 'Dự án tiêu biểu',
+                'slug'     => 'du-an-tieu-bieu',
+                'template' => 'templates/template-du-an.php'
             ]
         ];
 
@@ -203,13 +208,14 @@ class PageSetupController {
                     <li>✓ Chính sách bảo mật</li>
                     <li>✓ Tất cả sản phẩm</li>
                     <li>✓ Blog</li>
+                    <li>✓ Dự án tiêu biểu (/du-an-tieu-bieu)</li>
                 </ul>
 
                 <form method="post">
                     <?php wp_nonce_field('tava_page_setup_action'); ?>
                     <input type="hidden" name="tava_setup_action" value="generate">
                     <p class="submit">
-                        <button type="submit" class="button button-primary button-large" onclick="return confirm('Hệ thống sẽ tạo/cập nhật 19 trang. Bạn có chắc chắn?')">Kích hoạt tạo toàn bộ trang</button>
+                        <button type="submit" class="button button-primary button-large" onclick="return confirm('Hệ thống sẽ tạo/cập nhật 20 trang. Bạn có chắc chắn?')">Kích hoạt tạo toàn bộ trang</button>
                     </p>
                 </form>
             </div>

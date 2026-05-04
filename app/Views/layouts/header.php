@@ -527,7 +527,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                         </div>
                     </div>
 
-                    <a href="/du-an" class="hover:text-brand-orange transition-colors py-8 relative group/link">
+                    <a href="/du-an-tieu-bieu" class="hover:text-brand-orange transition-colors py-8 relative group/link">
                         Dự án tiêu biểu
                         <span class="absolute bottom-[28px] left-0 w-max h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                     </a>
@@ -746,7 +746,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     </div>
 
                     <!-- Standalone links -->
-                    <a href="/du-an" class="mobile-nav-link">
+                    <a href="/du-an-tieu-bieu" class="mobile-nav-link">
                         <i class="ph ph-briefcase text-[#f05a25] text-[16px]"></i> Dự án tiêu biểu
                     </a>
                     <a href="/lien-he" class="mobile-nav-link">
