@@ -120,6 +120,10 @@ if (is_admin()) {
 $product_setup = new \App\Controllers\ProductSetupController();
 $product_setup->register();
 
+// Đăng ký Custom XML Sitemaps
+$sitemap_setup = new \App\Controllers\SitemapController();
+$sitemap_setup->register();
+
 /**
  * Add Favicon from Theme Settings
  */
