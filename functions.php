@@ -175,18 +175,12 @@ add_filter('term_link', function($url, $term, $taxonomy) {
 }, 10, 3);
 
 add_filter('generate_rewrite_rules', function($wp_rewrite) {
-    $rules = [];
-    $terms = get_terms([
-        'taxonomy' => ['product_industry', 'product_cat', 'product_subcat'],
-        'hide_empty' => false,
-    ]);
-
-    if (!is_wp_error($terms) && !empty($terms)) {
-        foreach ($terms as $term) {
-            $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
-            $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
-        }
-    }
+    $rules = [
+        // Các quy tắc cứng để đảm bảo rewrite cho 3 ngành chính hoạt động ổn định
+        'man-hinh-led/?$' => 'index.php?post_type=tava_product&product_industry=man-hinh-led',
+        'thiet-bi-am-thanh/?$' => 'index.php?post_type=tava_product&product_industry=thiet-bi-am-thanh',
+        'thiet-bi-anh-sang/?$' => 'index.php?post_type=tava_product&product_industry=thiet-bi-anh-sang',
+    ];
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 });
 
