@@ -738,53 +738,40 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
             
             // Phân biệt Post và Page
             $type_label = (get_post_type() === 'page') ? 'Trang Dự Án' : 'Bài Viết Dự Án';
+            $post_obj = get_post();
 
             if ($count === 1) : ?>
                 <!-- Hero Project -->
-                <a href="<?php echo esc_url($link); ?>" class="card card-feat anim d3 group">
-                    <div class="card__thumb">
-                        <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
-                        <div class="cat"><?php echo esc_html($type_label); ?></div>
-                    </div>
-                    <div class="card__body">
-                        <div class="card__meta"><div class="meta-dot"></div> <?php echo esc_html($date); ?></div>
-                        <h3 class="card__title"><?php echo esc_html($title); ?></h3>
-                        <p class="card__desc"><?php echo esc_html($excerpt); ?></p>
-                        <div class="card__foot">
-                            <span class="read-more">Xem chi tiết dự án</span>
-                        </div>
-                    </div>
-                </a>
+                <?php get_template_part('app/Views/components/blog-card', null, [
+                    'post'           => $post_obj,
+                    'variant'        => 'big',
+                    'category_label' => $type_label,
+                    'cta_text'       => 'Xem chi tiết dự án',
+                    'excerpt_words'  => 30,
+                    'theme'          => 'light',
+                ]); ?>
                 <div class="project-hero__right">
             <?php elseif ($count <= 3) : ?>
                 <!-- Side Projects -->
-                <a href="<?php echo esc_url($link); ?>" class="card anim d4 group">
-                    <div class="card__thumb">
-                        <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
-                        <div class="cat"><?php echo esc_html($type_label); ?></div>
-                    </div>
-                    <div class="card__body">
-                        <h3 class="card__title"><?php echo esc_html($title); ?></h3>
-                        <div class="card__foot">
-                            <span class="read-more">Chi tiết</span>
-                        </div>
-                    </div>
-                </a>
+                <?php get_template_part('app/Views/components/blog-card', null, [
+                    'post'           => $post_obj,
+                    'variant'        => 'sm-row',
+                    'category_label' => $type_label,
+                    'cta_text'       => 'Chi tiết',
+                    'excerpt_words'  => 12,
+                    'theme'          => 'light',
+                ]); ?>
                 <?php if ($count === 3) echo '</div></div><div class="grid-3" style="margin-top: 16px;">'; ?>
             <?php else : ?>
                 <!-- Grid Projects -->
-                <a href="<?php echo esc_url($link); ?>" class="card anim d5 group">
-                    <div class="card__thumb">
-                        <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
-                        <div class="cat"><?php echo esc_html($type_label); ?></div>
-                    </div>
-                    <div class="card__body">
-                        <h3 class="card__title"><?php echo esc_html($title); ?></h3>
-                        <div class="card__foot">
-                            <span class="read-more">Chi tiết</span>
-                        </div>
-                    </div>
-                </a>
+                <?php get_template_part('app/Views/components/blog-card', null, [
+                    'post'           => $post_obj,
+                    'variant'        => 'md',
+                    'category_label' => $type_label,
+                    'cta_text'       => 'Chi tiết',
+                    'excerpt_words'  => 15,
+                    'theme'          => 'light',
+                ]); ?>
             <?php endif; ?>
         <?php endwhile; ?>
         

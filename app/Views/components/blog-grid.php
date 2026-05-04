@@ -60,6 +60,7 @@ $fallback_img  = $section['fallback_img']   ?? 'https://tavaled.vn/wp-content/up
 $cta_text      = $section['cta_text']       ?? 'Đọc thêm';
 $excerpt_words = (int)($section['excerpt_words'] ?? 25);
 $is_first      = (bool)($section['is_first'] ?? false);
+$theme         = $section['theme']          ?? 'dark';
 
 if (!$category) return;
 
@@ -85,7 +86,7 @@ if (!$view_all_url && $category) {
 }
 
 // ── Helper: render 1 card ─────────────────────────────────────────────────
-$render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($cat_label, $fallback_img, $cta_text, $excerpt_words) {
+$render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($cat_label, $fallback_img, $cta_text, $excerpt_words, $theme) {
     get_template_part('app/Views/components/blog-card', null, [
         'post'           => $post_obj,
         'variant'        => $variant,
@@ -93,14 +94,18 @@ $render_card = function($post_obj, $variant = 'sm', $override_cta = '') use ($ca
         'fallback_img'   => $fallback_img,
         'cta_text'       => $override_cta ?: $cta_text,
         'excerpt_words'  => $excerpt_words,
+        'theme'          => $theme,
     ]);
 };
 ?>
 
 <div class="tava-blog-section reveal-up">
 
-    <?php /* ── Section Heading ─────────────────────────────── */ ?>
-    <div class="tava-heading tava-heading--light <?php echo (!$is_first) ? 'border-t border-white/10 pt-16 mt-8' : ''; ?>">
+    <?php /* ── Section Heading ─────────────────────────────── */ 
+    $heading_class = ($theme === 'light') ? 'tava-heading--dark' : 'tava-heading--light';
+    $border_class  = ($theme === 'light') ? 'border-t border-slate-200 pt-16 mt-8' : 'border-t border-white/10 pt-16 mt-8';
+    ?>
+    <div class="tava-heading <?php echo esc_attr($heading_class); ?> <?php echo (!$is_first) ? esc_attr($border_class) : ''; ?>">
         <?php if ($ghost_text): ?>
         <span class="tava-heading__ghost" aria-hidden="true"><?php echo esc_html($ghost_text); ?></span>
         <?php endif; ?>

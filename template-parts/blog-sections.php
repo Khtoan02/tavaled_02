@@ -17,6 +17,7 @@
  */
 
 $_fb = 'https://tavaled.vn/wp-content/uploads/2026/03/'; // Base URL ảnh fallback
+$global_theme = $args['theme'] ?? 'dark';
 
 $sections = [
 
@@ -34,6 +35,7 @@ $sections = [
         'cta_text' => 'Xem dự án',
         'excerpt_words' => 40,
         'is_first' => false,
+        'theme' => $global_theme,
     ],
 
     // ── 02: CHIA SẺ KINH NGHIỆM ─────────────────────────────────────────────
@@ -50,6 +52,7 @@ $sections = [
         'cta_text' => 'Đọc ngay',
         'excerpt_words' => 40,
         'is_first' => false,
+        'theme' => $global_theme,
     ],
 
     // ── 03: DỊCH VỤ ─────────────────────────────────────────────────────────
@@ -66,6 +69,7 @@ $sections = [
         'cta_text' => 'Chi tiết',
         'excerpt_words' => 40,
         'is_first' => false,
+        'theme' => $global_theme,
     ],
 
     // ── 04: TIN TỨC ─────────────────────────────────────────────────────────
@@ -82,6 +86,7 @@ $sections = [
         'cta_text' => 'Đọc chi tiết',
         'excerpt_words' => 40,
         'is_first' => false,
+        'theme' => $global_theme,
     ],
 
     // ── THÊM SECTION MỚI: Sao chép block trên và chỉnh config ───────────────

@@ -702,7 +702,7 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
 <main><div class="wrap">
 
 
-<?php get_template_part('template-parts/blog-sections'); ?>
+<?php get_template_part('template-parts/blog-sections', null, ['theme' => 'light']); ?>
 
 
 
