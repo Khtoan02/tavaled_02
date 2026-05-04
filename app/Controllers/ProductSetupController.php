@@ -4,8 +4,8 @@ namespace App\Controllers;
 class ProductSetupController {
 
     public function register() {
-        add_action('init', [$this, 'registerCustomPostType']);
-        add_action('init', [$this, 'registerTaxonomies']);
+        add_action('init', [$this, 'registerCustomPostType'], 0);
+        add_action('init', [$this, 'registerTaxonomies'], 0);
     }
 
     public function registerCustomPostType() {
@@ -33,24 +33,25 @@ class ProductSetupController {
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => ['slug' => 'san-pham'],
+            'rewrite'            => ['slug' => 'san-pham', 'with_front' => false],
             'capability_type'    => 'post',
-            'has_archive'        => true,
+            'has_archive'        => 'san-pham', // Tạo trang lưu trữ tổng chuẩn SEO
             'hierarchical'       => false,
             'menu_position'      => 5,
             'menu_icon'          => 'dashicons-cart',
             'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'],
+            'show_in_rest'       => true, // Kích hoạt REST API để RankMath/Gutenberg nhận diện tốt hơn
         ];
 
         register_post_type('tava_product', $args);
     }
 
     public function registerTaxonomies() {
-        // 1. NGÀNH HÀNG (Category)
-        register_taxonomy('product_cat', ['tava_product'], [
+                // 0. NGÀNH HÀNG (Industry - Top Level)
+        register_taxonomy('product_industry', ['tava_product'], [
             'hierarchical'      => true,
             'labels'            => [
-                'name'              => 'Ngành hàng (Lớn)',
+                'name'              => 'Ngành hàng',
                 'singular_name'     => 'Ngành hàng',
                 'search_items'      => 'Tìm Ngành hàng',
                 'all_items'         => 'Tất cả Ngành hàng',
@@ -65,7 +66,31 @@ class ProductSetupController {
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => ['slug' => 'nganh-hang'],
+            'rewrite'           => ['slug' => 'nganh-hang', 'with_front' => false],
+            'show_in_rest'      => true,
+        ]);
+
+        // 1. PHÂN LOẠI SẢN PHẨM (Category)
+        register_taxonomy('product_cat', ['tava_product'], [
+            'hierarchical'      => true,
+            'labels'            => [
+                'name'              => 'Phân loại sản phẩm',
+                'singular_name'     => 'Phân loại sản phẩm',
+                'search_items'      => 'Tìm Phân loại',
+                'all_items'         => 'Tất cả Phân loại',
+                'parent_item'       => 'Phân loại cha',
+                'parent_item_colon' => 'Phân loại cha:',
+                'edit_item'         => 'Sửa Phân loại',
+                'update_item'       => 'Cập nhật',
+                'add_new_item'      => 'Thêm Phân loại mới',
+                'new_item_name'     => 'Tên Phân loại mới',
+                'menu_name'         => 'Phân loại SP',
+            ],
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => ['slug' => 'phan-loai', 'with_front' => false], // Trang danh mục riêng biệt
+            'show_in_rest'      => true,
         ]);
 
         // 2. DANH MỤC CON (Sub-category)
@@ -85,6 +110,7 @@ class ProductSetupController {
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
+            'show_in_rest'      => true,
         ]);
 
         // 3. NHÃN HÀNG (Brand)

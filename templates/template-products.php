@@ -4,6 +4,79 @@
  */
 get_header(); ?>
 
+<?php
+// 1. Hardcoded configs for the BIG 3 (to preserve their custom logic and SEO text)
+$cat_definitions = [
+  'led' => [
+    'db_name'    => 'Màn hình LED',
+    'old_names'  => [],
+    'cat_slugs'  => ['man-hinh-led'], 
+    'title'     => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
+    'seo_title'   => 'Giải pháp Màn hình LED Chuyên nghiệp',
+    'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
+    'pills'     => ['Tất cả','LED trong nhà','LED ngoài trời','Sân khấu','Trong suốt'],
+    'specTitle' => 'Pixel Pitch',
+    'specs'     => [
+      ['label'=>'P1.5', 'cats'=>['LED trong nhà']], ['label'=>'P2', 'cats'=>['LED trong nhà']],
+      ['label'=>'P2.5', 'cats'=>['LED trong nhà']], ['label'=>'P3', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']],
+      ['label'=>'P4', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']], ['label'=>'P5', 'cats'=>['LED ngoài trời','LED sân khấu (Rental)']],
+      ['label'=>'P6', 'cats'=>['LED ngoài trời']], ['label'=>'P8', 'cats'=>['LED ngoài trời']], ['label'=>'P10', 'cats'=>['LED ngoài trời']],
+    ]
+  ],
+  'am-thanh' => [
+    'db_name'    => 'Thiết bị âm thanh',
+    'old_names'  => ['Âm thanh'],
+    'cat_slugs'  => ['thiet-bi-am-thanh', 'am-thanh'], 
+    'title' => 'Thiết bị <em>Âm Thanh</em>', 'eyebrow' => 'Audio Equipment',
+    'seo_title'   => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
+    'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
+    'pills'     => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
+    'specTitle' => 'Công suất',
+    'specs'     => [
+      ['label'=>'Dưới 200W','count'=>18], ['label'=>'200W – 500W','count'=>24], ['label'=>'500W – 1000W','count'=>20], ['label'=>'Trên 1000W','count'=>16]
+    ]
+  ],
+  'anh-sang' => [
+    'db_name'    => 'Thiết bị ánh sáng',
+    'old_names'  => ['Ánh sáng'],
+    'cat_slugs'  => ['thiet-bi-anh-sang', 'anh-sang'],
+    'title' => 'Thiết bị <em>Ánh Sáng</em>', 'eyebrow' => 'Lighting Equipment',
+    'seo_title'   => 'Hệ thống Ánh sáng Nghệ thuật',
+    'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
+    'pills'     => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],
+    'specTitle' => 'Công suất đèn',
+    'specs'     => [
+      ['label'=>'Dưới 200W','count'=>20], ['label'=>'200W – 400W','count'=>28], ['label'=>'400W – 700W','count'=>18], ['label'=>'Trên 700W','count'=>8]
+    ]
+  ]
+];
+
+// 2. Fetch all actual terms from DB and inject any new ones!
+$all_terms = get_terms(['taxonomy' => 'product_industry', 'hide_empty' => false, 'parent' => 0]);
+$existing_slugs = ['man-hinh-led', 'am-thanh', 'anh-sang'];
+
+if (!is_wp_error($all_terms) && !empty($all_terms)) {
+    foreach ($all_terms as $term) {
+        if (!in_array($term->slug, $existing_slugs)) {
+            // It's a new dynamic category!
+            $cat_definitions[$term->slug] = [
+                'db_name' => $term->name,
+                'old_names' => [],
+                'cat_slugs' => [$term->slug],
+                'title' => $term->name,
+                'eyebrow' => 'Products',
+                'seo_title' => $term->name,
+                'seo_content' => wpautop($term->description),
+                'pills' => ['Tất cả'], // Will be populated dynamically by products
+                'specTitle' => 'Thông số',
+                'specs' => [] // Generic checkbox list
+            ];
+        }
+    }
+}
+?>
+
+
 <style>
 /* ══════════════════
    RESET & VARIABLES FOR PRODUCT PAGE
@@ -622,10 +695,10 @@ get_header(); ?>
       <div class="page-header">
         <div class="page-header__left">
           <div class="page-header__eyebrow" id="header-eyebrow">Sản phẩm</div>
-          <div class="page-header__cat-switch">
-            <button class="cat-switch-btn active" onclick="switchCat('led')">Màn hình LED</button>
-            <button class="cat-switch-btn" onclick="switchCat('am-thanh')">Thiết bị âm thanh</button>
-            <button class="cat-switch-btn" onclick="switchCat('anh-sang')">Thiết bị ánh sáng</button>
+          <div class="page-header__cat-switch" id="dynamic-cat-switch">
+            <?php foreach ($cat_definitions as $key => $def): ?>
+                <button class="cat-switch-btn" onclick="switchCat('<?php echo esc_js($key); ?>')"><?php echo esc_html(strip_tags($def['title'])); ?></button>
+            <?php endforeach; ?>
           </div>
           <h1 class="page-header__title" id="header-title">Màn hình <em>LED</em></h1>
           <div class="page-header__count" id="header-count">Hiển thị 48 sản phẩm</div>
@@ -833,52 +906,12 @@ get_header(); ?>
 
 <script>
 <?php
-$cat_definitions = [
-  'led' => [
-    'db_name'    => 'Màn hình LED',
-    'old_names'  => [],
-    'cat_slugs'  => ['man-hinh-led'], // tất cả slug có thể có trong DB
-    'title'     => 'Màn hình <em>LED</em>', 'eyebrow' => 'LED Display',
-    'seo_title'   => 'Giải pháp Màn hình LED Chuyên nghiệp',
-    'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
-    'pills'     => ['Tất cả','LED trong nhà','LED ngoài trời','Sân khấu','Trong suốt'],
-    'specTitle' => 'Pixel Pitch',
-    'specs'     => [
-      ['label'=>'P1.5', 'cats'=>['LED trong nhà']], ['label'=>'P2', 'cats'=>['LED trong nhà']],
-      ['label'=>'P2.5', 'cats'=>['LED trong nhà']], ['label'=>'P3', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']],
-      ['label'=>'P4', 'cats'=>['LED trong nhà','LED ngoài trời','LED sân khấu (Rental)']], ['label'=>'P5', 'cats'=>['LED ngoài trời','LED sân khấu (Rental)']],
-      ['label'=>'P6', 'cats'=>['LED ngoài trời']], ['label'=>'P8', 'cats'=>['LED ngoài trời']], ['label'=>'P10', 'cats'=>['LED ngoài trời']],
-    ]
-  ],
-  'am-thanh' => [
-    'db_name'    => 'Thiết bị âm thanh',
-    'old_names'  => ['Âm thanh'],
-    'cat_slugs'  => ['thiet-bi-am-thanh', 'am-thanh'], // slug mới (import tạo) + slug cũ
-    'title' => 'Thiết bị <em>Âm Thanh</em>', 'eyebrow' => 'Audio Equipment',
-    'seo_title'   => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
-    'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
-    'pills'     => ['Tất cả','Loa','Amply','Micro','Sub','Đẩy công suất','Vang số','Mixer','Crossover'],
-    'specTitle' => 'Công suất',
-    'specs'     => [
-      ['label'=>'Dưới 200W','count'=>18], ['label'=>'200W – 500W','count'=>24], ['label'=>'500W – 1000W','count'=>20], ['label'=>'Trên 1000W','count'=>16]
-    ]
-  ],
-  'anh-sang' => [
-    'db_name'    => 'Thiết bị ánh sáng',
-    'old_names'  => ['Ánh sáng'],
-    'cat_slugs'  => ['thiet-bi-anh-sang', 'anh-sang'], // slug mới (import tạo) + slug cũ
-    'title' => 'Thiết bị <em>Ánh Sáng</em>', 'eyebrow' => 'Lighting Equipment',
-    'seo_title'   => 'Hệ thống Ánh sáng Nghệ thuật',
-    'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
-    'pills'     => ['Tất cả','Moving Head','Par LED','Laser','Fog/Khói','Strobo','Follow Spot','LED Bar','DMX'],
-    'specTitle' => 'Công suất đèn',
-    'specs'     => [
-      ['label'=>'Dưới 200W','count'=>20], ['label'=>'200W – 400W','count'=>28], ['label'=>'400W – 700W','count'=>18], ['label'=>'Trên 700W','count'=>8]
-    ]
-  ]
-];
+
+
+// Moved to top
 
 $dynamic_data = [];
+
 
 foreach ($cat_definitions as $cat_slug => $def) {
     $dynamic_data[$cat_slug] = $def;
@@ -896,7 +929,7 @@ foreach ($cat_definitions as $cat_slug => $def) {
         'orderby'        => ['menu_order' => 'ASC', 'date' => 'DESC'],
         'tax_query'      => [
             [
-                'taxonomy' => 'product_cat',
+                'taxonomy' => 'product_industry',
                 'field'    => 'slug',
                 'terms'    => $cat_slugs,
                 'operator' => 'IN',
@@ -924,7 +957,7 @@ foreach ($cat_definitions as $cat_slug => $def) {
             $has_real_img = !empty($img); // TRUE nếu có hình thật
             if (!$img) $img = $fallback_img;
 
-            $terms_sub = wp_get_post_terms($post_id, 'product_subcat');
+            $terms_sub = wp_get_post_terms($post_id, 'product_cat');
             $subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : '';
             if ($subcat_name) {
                 if (!isset($subcats_raw[$subcat_name])) $subcats_raw[$subcat_name] = 0;
@@ -1112,18 +1145,10 @@ function toggleSection(id) {
 }
 
 function switchCat(catKey) {
-  document.querySelectorAll('.cat-switch-btn').forEach(b => b.classList.remove('active'));
-  const targetBtn = document.querySelector(`.cat-switch-btn[onclick*="'${catKey}'"]`);
-  if (targetBtn) targetBtn.classList.add('active');
-
-  // Push URL History without reload
-  const url = new URL(window.location);
-  url.searchParams.set('cat', catKey);
-  url.searchParams.delete('subcat'); // Xoá subcat khi nhảy cat mới
-  window.history.pushState({}, '', url);
-
-  currentCat = catKey;
-  renderAll(catKey);
+  let newPath = '/san-pham/';
+  if (catKey === 'led') newPath = '/man-hinh-led/';
+  else newPath = '/' + catKey + '/';
+  window.location.href = newPath;
 }
 
 function toggleBrand(btn, brand) {
@@ -1357,10 +1382,21 @@ function toggleSeoDesc(btn) {
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   let loadedCat = 'led';
-  const catParam = params.get('cat');
-  if (catParam && DATA[catParam]) {
-      loadedCat = catParam;
+  const pathParts = window.location.pathname.toLowerCase().split('/').filter(Boolean);
+  const lastSegment = pathParts[pathParts.length - 1] || '';
+  
+  if (lastSegment === 'man-hinh-led') loadedCat = 'led';
+  else if (DATA[lastSegment]) loadedCat = lastSegment;
+  else {
+     // Fallback fuzzy match
+     for (let key in DATA) {
+         if (lastSegment.includes(key)) { loadedCat = key; break; }
+     }
   }
+  
+  // URL parameter override for backward compatibility
+  const catParam = params.get('cat');
+  if (catParam && DATA[catParam]) loadedCat = catParam;
   
   // Đồng bộ nút tab
   document.querySelectorAll('.cat-switch-btn').forEach(b => b.classList.remove('active'));

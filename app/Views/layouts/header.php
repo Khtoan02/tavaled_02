@@ -167,7 +167,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                     <!-- MEGA MENU SẢN PHẨM -->
                     <div class="group h-full flex items-center cursor-pointer hover-trigger static">
                         <?php 
-                            $prod_url = home_url('/tat-ca-san-pham');
+                            $prod_url = home_url('/san-pham/');
 
                             // Cấu hình ngành hàng chính → sub-categories động từ database
                             $mega_cat_map = [
@@ -231,19 +231,19 @@ $about_items = $mega_custom_data['about'] ?? [];
                                     <h3 class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-6">Hệ sinh thái</h3>
                                     <ul class="space-y-3 mb-6">
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all bg-white text-[#1d2857] shadow-lg border border-gray-100 cursor-pointer" data-target="mega-led">
+                                            <button onclick="window.location.href='<?php echo esc_url(home_url('/man-hinh-led/')); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all bg-white text-[#1d2857] shadow-lg border border-gray-100 cursor-pointer" data-target="mega-led">
                                                 <span class="flex items-center gap-3 text-lg font-bold hover:text-brand-orange transition-colors"><i class="ph-fill ph-monitor-play text-2xl text-brand-orange"></i> Màn hình LED</span>
                                                 <i class="ph-bold ph-caret-right text-brand-orange"></i>
                                             </button>
                                         </li>
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-audio">
+                                            <button onclick="window.location.href='<?php echo esc_url(home_url('/am-thanh/')); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-audio">
                                                 <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-speaker-hifi text-2xl text-gray-400"></i> Thiết bị âm thanh</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
                                         </li>
                                         <li>
-                                            <button onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-light">
+                                            <button onclick="window.location.href='<?php echo esc_url(home_url('/anh-sang/')); ?>'" class="mega-tab-btn w-full text-left px-5 py-4 rounded-xl flex items-center justify-between transition-all text-gray-500 hover:bg-white hover:text-[#1d2857] font-bold hover:shadow-lg border border-transparent hover:border-gray-100 cursor-pointer" data-target="mega-light">
                                                 <span class="flex items-center gap-3 text-lg hover:text-brand-orange transition-colors"><i class="ph-fill ph-lightbulb text-2xl text-gray-400"></i> Thiết bị ánh sáng</span>
                                                 <i class="ph-bold ph-caret-right text-gray-300"></i>
                                             </button>
@@ -278,7 +278,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                         
                                         <div class="flex justify-between items-center mb-2">
                                             <h3 id="mega-led-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Màn hình LED</h3>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=led'); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
+                                            <a href="<?php echo esc_url(home_url('/man-hinh-led/')); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
                                         </div>
                                         <p id="mega-led-desc" class="text-[14px] text-gray-500 font-medium mb-4 leading-relaxed max-w-2xl">Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.</p>
                                         
@@ -287,7 +287,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $sub_desc = !empty($subcat->description) ? $subcat->description : ('Xem các sản phẩm ' . $subcat->name . ' chất lượng cao từ Tavaled.');
                                                 $is_first = ($i === 0);
                                             ?>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode($subcat->name)); ?>"
+                                            <a href="<?php echo esc_url(home_url('/man-hinh-led/?subcat=' . urlencode($subcat->name))); ?>"
                                                class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-led"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
@@ -338,7 +338,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                         
                                         <div class="flex justify-between items-center mb-2">
                                             <h3 id="mega-audio-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Âm thanh</h3>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
+                                            <a href="<?php echo esc_url(home_url('/am-thanh/')); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
                                         </div>
                                         <p id="mega-audio-desc" class="text-[14px] text-gray-500 font-medium mb-4 leading-relaxed max-w-2xl">Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.</p>
                                         
@@ -347,7 +347,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $sub_desc = !empty($subcat->description) ? $subcat->description : ('Xem các sản phẩm ' . $subcat->name . ' chất lượng cao từ Tavaled.');
                                                 $is_first = ($i === 0);
                                             ?>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode($subcat->name)); ?>"
+                                            <a href="<?php echo esc_url(home_url('/am-thanh/?subcat=' . urlencode($subcat->name))); ?>"
                                                class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-audio"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
@@ -398,7 +398,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                         
                                         <div class="flex justify-between items-center mb-2">
                                             <h3 id="mega-light-title" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Ánh sáng</h3>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
+                                            <a href="<?php echo esc_url(home_url('/anh-sang/')); ?>" class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem tất cả <i class="ph-bold ph-arrow-right transition-transform group-hover/link:translate-x-1"></i></a>
                                         </div>
                                         <p id="mega-light-desc" class="text-[14px] text-gray-500 font-medium mb-4 leading-relaxed max-w-2xl">Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.</p>
                                         
@@ -407,7 +407,7 @@ $about_items = $mega_custom_data['about'] ?? [];
                                                 $sub_desc = !empty($subcat->description) ? $subcat->description : ('Xem các sản phẩm ' . $subcat->name . ' chất lượng cao từ Tavaled.');
                                                 $is_first = ($i === 0);
                                             ?>
-                                            <a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode($subcat->name)); ?>"
+                                            <a href="<?php echo esc_url(home_url('/anh-sang/?subcat=' . urlencode($subcat->name))); ?>"
                                                class="mega-subcat-pill <?php echo $is_first ? 'px-4 py-1.5 bg-orange-50 text-brand-orange font-bold border-orange-200/50 hover:bg-brand-orange hover:text-white' : 'px-3.5 py-1.5 bg-gray-50 text-gray-600 font-semibold border-gray-200 hover:bg-orange-50 hover:text-brand-orange hover:border-orange-200/50'; ?> rounded-xl text-[13px] border transition-colors"
                                                data-panel="mega-light"
                                                data-sub-title="<?php echo esc_attr($subcat->name); ?>"
@@ -673,41 +673,41 @@ $about_items = $mega_custom_data['about'] ?? [];
                         <div id="mobileProducts" class="mobile-accordion-body" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.35s ease,margin-top 0.3s ease,padding-bottom 0.3s ease;">
                             <!-- LED -->
                             <div class="mobile-subnav-group">
-                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=led'); ?>'">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url(home_url('/man-hinh-led/')); ?>'">
                                     <span><i class="ph ph-monitor-play text-[#f05a25] text-[13px]"></i> Màn hình LED</span>
                                     <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subLed')" id="icon-subLed"></i>
                                 </div>
                                 <ul id="subLed" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong nhà')); ?>">Trong nhà (Indoor)</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED ngoài trời')); ?>">Ngoài trời (Outdoor)</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED sân khấu (Rental)')); ?>">Màn hình sân khấu (Rental)</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=led&subcat=' . urlencode('LED trong suốt')); ?>">Trong suốt</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/man-hinh-led/?subcat=' . urlencode('LED trong nhà'))); ?>">Trong nhà (Indoor)</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/man-hinh-led/?subcat=' . urlencode('LED ngoài trời'))); ?>">Ngoài trời (Outdoor)</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/man-hinh-led/?subcat=' . urlencode('LED sân khấu (Rental)'))); ?>">Màn hình sân khấu (Rental)</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/man-hinh-led/?subcat=' . urlencode('LED trong suốt'))); ?>">Trong suốt</a></li>
                                 </ul>
                             </div>
                             <!-- Âm thanh -->
                             <div class="mobile-subnav-group">
-                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=am-thanh'); ?>'">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url(home_url('/am-thanh/')); ?>'">
                                     <span><i class="ph ph-speaker-hifi text-[#f05a25] text-[13px]"></i> Thiết bị âm thanh</span>
                                     <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subAudio')" id="icon-subAudio"></i>
                                 </div>
                                 <ul id="subAudio" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa')); ?>">Các loại Loa</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Loa siêu trầm (Sub)')); ?>">Loa Subwoofer</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Mixer')); ?>">Mixer Digital</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=am-thanh&subcat=' . urlencode('Micro')); ?>">Microphones</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/am-thanh/?subcat=' . urlencode('Loa'))); ?>">Các loại Loa</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/am-thanh/?subcat=' . urlencode('Loa siêu trầm (Sub)'))); ?>">Loa Subwoofer</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/am-thanh/?subcat=' . urlencode('Mixer'))); ?>">Mixer Digital</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/am-thanh/?subcat=' . urlencode('Micro'))); ?>">Microphones</a></li>
                                 </ul>
                             </div>
                             <!-- Ánh sáng -->
                             <div class="mobile-subnav-group">
-                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url($prod_url . '?cat=anh-sang'); ?>'">
+                                <div class="mobile-subnav-title" onclick="window.location.href='<?php echo esc_url(home_url('/anh-sang/')); ?>'">
                                     <span><i class="ph ph-lightbulb text-[#f05a25] text-[13px]"></i> Thiết bị ánh sáng</span>
                                     <i class="ph ph-caret-down text-xs text-gray-400" onclick="event.stopPropagation();toggleAccordion('subLight')" id="icon-subLight"></i>
                                 </div>
                                 <ul id="subLight" class="mobile-subnav-list" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.35s ease,opacity 0.3s ease,margin-top 0.25s ease,padding-bottom 0.25s ease;">
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Moving Head')); ?>">Đèn Moving Head</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Laser')); ?>">Đèn Laser Sân Khấu</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('Par LED')); ?>">Đèn Par LED</a></li>
-                                    <li><a href="<?php echo esc_url($prod_url . '?cat=anh-sang&subcat=' . urlencode('DMX')); ?>">Bàn điều khiển Ánh sáng</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/anh-sang/?subcat=' . urlencode('Moving Head'))); ?>">Đèn Moving Head</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/anh-sang/?subcat=' . urlencode('Laser'))); ?>">Đèn Laser Sân Khấu</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/anh-sang/?subcat=' . urlencode('Par LED'))); ?>">Đèn Par LED</a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/anh-sang/?subcat=' . urlencode('DMX'))); ?>">Bàn điều khiển Ánh sáng</a></li>
                                 </ul>
                             </div>
                         </div>

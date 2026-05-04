@@ -60,7 +60,7 @@ function tavaled_enqueue_scripts() {
     wp_enqueue_style('tavaled-main-css', TAVALED_URI . '/assets/css/main.css', [], time());
     wp_enqueue_script('tavaled-main-js', TAVALED_URI . '/assets/js/main.js', ['jquery'], time(), true);
 
-    if (is_front_page() || is_page_template('templates/template-homepage.php') || is_page_template('templates/template-products.php')) {
+    if (is_front_page() || is_page_template('templates/template-homepage.php') || is_page_template('templates/template-products.php') || is_post_type_archive('tava_product') || is_tax('product_cat') || is_tax('product_industry')) {
         wp_enqueue_style('tavaled-homepage-css', TAVALED_URI . '/assets/css/homepage.css', [], time());
         wp_enqueue_script('tavaled-homepage-js', TAVALED_URI . '/assets/js/homepage.js', ['jquery'], time(), true);
     }
@@ -120,9 +120,79 @@ if (is_admin()) {
 $product_setup = new \App\Controllers\ProductSetupController();
 $product_setup->register();
 
-// Đăng ký Custom XML Sitemaps
-$sitemap_setup = new \App\Controllers\SitemapController();
-$sitemap_setup->register();
+// Tự động vô hiệu hoá custom Sitemap & Schema nếu user cài RankMath / Yoast SEO
+// Để tránh xung đột (Conflict) và nhường quyền cho Plugin chuyên dụng xử lý
+if (!class_exists('RankMath') && !defined('WPSEO_VERSION')) {
+    // Đăng ký Custom XML Sitemaps nội bộ
+    $sitemap_setup = new \App\Controllers\SitemapController();
+    $sitemap_setup->register();
+
+    // Đăng ký Cấu trúc chuẩn Google Schema JSON-LD
+    $seo_schema_setup = new \App\Controllers\SeoSchemaController();
+    $seo_schema_setup->register();
+}
+
+/**
+ * Xoá bộ nhớ đệm (Cache) của Rank Math để ép nhận diện và làm mới Sitemap Index
+ */
+delete_transient('rank_math_accessible_post_types');
+delete_transient('rank_math_accessible_taxonomies');
+global $wpdb;
+$wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_rank_math_sitemap_%'");
+$wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_rank_math_sitemap_%'");
+
+/**
+ * Tự động bật cấu hình Sitemap của Rank Math cho tava_product và product_cat
+ */
+if (class_exists('RankMath')) {
+    $rm_sitemap_opts = get_option('rank-math-options-sitemap');
+    $needs_update = false;
+    
+    if (is_array($rm_sitemap_opts)) {
+        if (empty($rm_sitemap_opts['pt_tava_product_sitemap']) || $rm_sitemap_opts['pt_tava_product_sitemap'] !== 'on') {
+            $rm_sitemap_opts['pt_tava_product_sitemap'] = 'on';
+            $needs_update = true;
+        }
+        if (empty($rm_sitemap_opts['tax_product_cat_sitemap']) || $rm_sitemap_opts['tax_product_cat_sitemap'] !== 'on') {
+            $rm_sitemap_opts['tax_product_cat_sitemap'] = 'on';
+            $needs_update = true;
+        }
+        if (empty($rm_sitemap_opts['tax_product_industry_sitemap']) || $rm_sitemap_opts['tax_product_industry_sitemap'] !== 'on') {
+            $rm_sitemap_opts['tax_product_industry_sitemap'] = 'on';
+            $needs_update = true;
+        }
+        if ($needs_update) {
+            update_option('rank-math-options-sitemap', $rm_sitemap_opts);
+        }
+    }
+}
+
+/**
+ * Xoá bỏ tiền tố (base slug) cho taxonomy product_cat và product_subcat
+ * Biến URL từ /danh-muc/man-hinh-led thành /man-hinh-led
+ */
+add_filter('term_link', function($url, $term, $taxonomy) {
+    if (in_array($taxonomy, ['product_industry', 'product_cat', 'product_subcat'])) {
+        return home_url('/' . $term->slug . '/');
+    }
+    return $url;
+}, 10, 3);
+
+add_filter('generate_rewrite_rules', function($wp_rewrite) {
+    $rules = [];
+    $terms = get_terms([
+        'taxonomy' => ['product_industry', 'product_cat', 'product_subcat'],
+        'hide_empty' => false,
+    ]);
+
+    if (!is_wp_error($terms) && !empty($terms)) {
+        foreach ($terms as $term) {
+            $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
+            $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
+        }
+    }
+    $wp_rewrite->rules = $rules + $wp_rewrite->rules;
+});
 
 /**
  * Add Favicon from Theme Settings
