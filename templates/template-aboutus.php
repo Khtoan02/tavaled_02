@@ -4,9 +4,7 @@
  */
 
 get_header(); ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
     
     <link rel="preconnect" href="https://toan.host">
     <link rel="preconnect" href="https://images.unsplash.com">

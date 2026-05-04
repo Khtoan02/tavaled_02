@@ -44,11 +44,7 @@ add_action('after_setup_theme', 'tavaled_theme_setup');
 
 // Enqueue styles and scripts
 function tavaled_enqueue_scripts() {
-    // Preconnect Google Fonts để DNS resolve sớm hơn (googleapis phải trước gstatic)
-    add_action('wp_head', function() {
-        echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-        echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-    }, 1);
+    // Preconnect removed as we use system fonts
 
     // Sử dụng bộ font hệ thống mặc định của WordPress (System Fonts)
     // Không tải font bên ngoài để đảm bảo nét chữ Việt hoá hiển thị hoàn toàn tự nhiên trên thiết bị

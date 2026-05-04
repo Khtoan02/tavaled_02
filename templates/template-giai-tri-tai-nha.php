@@ -12,7 +12,7 @@ get_header(); ?>
   --deep:#0c0c14;--deep2:#080810;
   --w:#fff;--ink:#111827;--mid:#374151;--muted:#6b7280;
   --light:#f9fafb;--bdr:#e5e7eb;
-  --ff:'Mona Sans','Mona-Sans',sans-serif;
+  --ff:var(--font-body);
 }
 .page-template-giai-tri-tai-nha { font-family:var(--ff);background:var(--deep);color:var(--w);-webkit-font-smoothing:antialiased;overflow-x:hidden; }
 #cd,#cr{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}

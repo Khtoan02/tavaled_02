@@ -22,7 +22,7 @@ get_header(); ?>
   --muted: #9ca3af;
   --light: #f9fafb;
   --bdr:   #e5e7eb;
-  --ff:    'Mona Sans', 'Mona-Sans', sans-serif;
+  --ff: var(--font-body);
 }
 
 html { scroll-behavior: smooth; }

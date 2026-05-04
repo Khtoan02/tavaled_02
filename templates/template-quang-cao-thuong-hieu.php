@@ -13,7 +13,7 @@ get_header(); ?>
   --o:#f05a25;--odk:#c8451a;--olt:#fff3ee;
   --w:#fff;--ink:#111827;--mid:#374151;--muted:#6b7280;
   --light:#f9fafb;--bdr:#e5e7eb;
-  --ff:'Mona Sans','Mona-Sans',sans-serif;
+  --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--ff);background:var(--ink);color:var(--w);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}

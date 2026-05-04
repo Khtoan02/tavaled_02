@@ -28,7 +28,7 @@ get_header(); ?>
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Mona Sans', sans-serif;
+  font-family: var(--font-body);
   background: var(--w);
   color: var(--ink);
   overflow-x: hidden;
@@ -875,7 +875,7 @@ body {
   width:100%; padding:12px 16px;
   background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.12);
   border-radius:8px; font-size:13.5px; color:var(--w);
-  font-family:'Mona Sans',sans-serif;
+  font-family: var(--font-body);
   outline:none; transition:border-color .2s, background .2s;
 }
 .form-input::placeholder { color:rgba(255,255,255,.3); }
@@ -884,7 +884,7 @@ body {
   width:100%; padding:12px 16px;
   background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.12);
   border-radius:8px; font-size:13.5px; color:rgba(255,255,255,.7);
-  font-family:'Mona Sans',sans-serif;
+  font-family: var(--font-body);
   outline:none; cursor:pointer;
   transition:border-color .2s; appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -895,7 +895,7 @@ body {
 .form-submit {
   width:100%; padding:14px; background:var(--o); color:var(--w);
   font-size:13.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-  border:none; border-radius:8px; cursor:pointer; font-family:'Mona Sans',sans-serif;
+  border:none; border-radius:8px; cursor:pointer; font-family: var(--font-body);
   box-shadow:0 4px 24px rgba(240,90,37,.4);
   transition:background .2s, transform .15s, box-shadow .2s;
 }

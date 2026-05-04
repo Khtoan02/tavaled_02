@@ -14,7 +14,7 @@ get_header(); ?>
   --green:#16a34a;--glt:#f0fdf4;
   --w:#fff;--ink:#111827;--mid:#374151;--muted:#6b7280;
   --light:#f9fafb;--bdr:#e5e7eb;
-  --ff:'Mona Sans','Mona-Sans',sans-serif;
+  --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--ff);background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}

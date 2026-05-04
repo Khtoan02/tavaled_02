@@ -12,7 +12,7 @@ get_header(); ?>
   --red:#dc2626;--red-lt:#fef2f2;
   --w:#fff;--ink:#111827;--mid:#374151;--muted:#6b7280;
   --light:#f9fafb;--bdr:#e5e7eb;
-  --ff:'Mona Sans','Mona-Sans',sans-serif;
+  --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
 .policy-page-content{font-family:var(--ff);background:var(--light);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.75}
