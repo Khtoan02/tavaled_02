@@ -43,8 +43,23 @@ class ProductSetupController {
             'show_in_rest'       => true, // Kích hoạt REST API để RankMath/Gutenberg nhận diện tốt hơn
         ];
 
-        // Đăng ký tag để WordPress hiểu %product_industry%
-        add_rewrite_tag('%product_industry%', '([^/]+)');
+        // Đăng ký tag để WordPress hiểu %product_industry%, chỉ match các term có thật để tránh lỗi 404 trang tĩnh
+        $industries = get_terms([
+            'taxonomy'   => 'product_industry',
+            'hide_empty' => false,
+        ]);
+        
+        $slugs = [];
+        if (!is_wp_error($industries) && !empty($industries)) {
+            $slugs = wp_list_pluck($industries, 'slug');
+        }
+        // Thêm fallback để regex không bị rỗng
+        if (empty($slugs)) {
+            $slugs = ['san-pham'];
+        }
+        
+        $regex = '(' . implode('|', $slugs) . ')';
+        add_rewrite_tag('%product_industry%', $regex);
         register_post_type('tava_product', $args);
     }
 
