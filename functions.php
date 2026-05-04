@@ -194,6 +194,27 @@ add_filter('generate_rewrite_rules', function($wp_rewrite) {
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 });
 
+// Tự động Flush Rewrite Rules khi người dùng thêm/sửa/xoá Ngành hàng để tránh lỗi 404
+add_action('created_product_industry', 'flush_rewrite_rules');
+add_action('edited_product_industry', 'flush_rewrite_rules');
+add_action('delete_product_industry', 'flush_rewrite_rules');
+
+/**
+ * Replace %product_industry% tag with the actual term slug in product URLs
+ * Converts /%product_industry%/ten-sp/ to /man-hinh-led/ten-sp/
+ */
+add_filter('post_type_link', function($post_link, $post) {
+    if (is_object($post) && $post->post_type == 'tava_product') {
+        $terms = wp_get_object_terms($post->ID, 'product_industry');
+        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) {
+            return str_replace('%product_industry%', $terms[0]->slug, $post_link);
+        }
+        // Fallback if no industry is selected
+        return str_replace('%product_industry%', 'san-pham', $post_link);
+    }
+    return $post_link;
+}, 10, 2);
+
 /**
  * Add Favicon from Theme Settings
  */

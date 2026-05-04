@@ -33,7 +33,7 @@ class ProductSetupController {
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => ['slug' => 'san-pham', 'with_front' => false],
+            'rewrite'            => ['slug' => '%product_industry%', 'with_front' => false],
             'capability_type'    => 'post',
             'has_archive'        => 'san-pham', // Tạo trang lưu trữ tổng chuẩn SEO
             'hierarchical'       => false,
@@ -43,6 +43,8 @@ class ProductSetupController {
             'show_in_rest'       => true, // Kích hoạt REST API để RankMath/Gutenberg nhận diện tốt hơn
         ];
 
+        // Đăng ký tag để WordPress hiểu %product_industry%
+        add_rewrite_tag('%product_industry%', '([^/]+)');
         register_post_type('tava_product', $args);
     }
 
