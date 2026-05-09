@@ -26,14 +26,10 @@ class SettingsController {
             'tavaled_logo',
             'tavaled_fallback_image', /* Ảnh mặc định mới */
             'tavaled_phone',
-            'tavaled_phone_kd',
             'tavaled_phone_cskh',
-            'tavaled_zalo',
             'tavaled_email',
             'tavaled_slogan',
-            'tavaled_address',
-            'tavaled_office',
-            'tavaled_showroom'
+            'tavaled_address'
         ];
 
         foreach ($fields as $field) {

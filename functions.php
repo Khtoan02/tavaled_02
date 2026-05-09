@@ -31,19 +31,21 @@ spl_autoload_register(function ($class) {
 });
 
 // Setup Theme
-function tavaled_theme_setup() {
+function tavaled_theme_setup()
+{
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     register_nav_menus([
-        'primary'        => __('Primary Menu', 'tavaled02'),
-        'mega_about'     => __('Mega: Về chúng tôi', 'tavaled02'),
+        'primary' => __('Primary Menu', 'tavaled02'),
+        'mega_about' => __('Mega: Về chúng tôi', 'tavaled02'),
         'mega_solutions' => __('Mega: Giải pháp trọn gói', 'tavaled02'),
     ]);
 }
 add_action('after_setup_theme', 'tavaled_theme_setup');
 
 // Enqueue styles and scripts
-function tavaled_enqueue_scripts() {
+function tavaled_enqueue_scripts()
+{
     // Preconnect removed as we use system fonts
 
     // Sử dụng bộ font hệ thống mặc định của WordPress (System Fonts)
@@ -66,7 +68,8 @@ add_action('wp_enqueue_scripts', 'tavaled_enqueue_scripts');
 /**
  * Global helper to render views
  */
-function view($view_name, $data = []) {
+function view($view_name, $data = [])
+{
     extract($data);
     $view_file = TAVALED_DIR . '/app/Views/' . $view_name . '.php';
     if (file_exists($view_file)) {
@@ -82,7 +85,7 @@ function view($view_name, $data = []) {
 if (is_admin()) {
     $settings = new \App\Controllers\Admin\SettingsController();
     $settings->register();
-    
+
     // Đăng ký Page Templates từ folder /templates
     $templates = new \App\Controllers\TemplateController();
     $templates->register();
@@ -143,7 +146,7 @@ $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_ti
 if (class_exists('RankMath')) {
     $rm_sitemap_opts = get_option('rank-math-options-sitemap');
     $needs_update = false;
-    
+
     if (is_array($rm_sitemap_opts)) {
         if (empty($rm_sitemap_opts['pt_tava_product_sitemap']) || $rm_sitemap_opts['pt_tava_product_sitemap'] !== 'on') {
             $rm_sitemap_opts['pt_tava_product_sitemap'] = 'on';
@@ -167,14 +170,14 @@ if (class_exists('RankMath')) {
  * Xoá bỏ tiền tố (base slug) cho taxonomy product_cat và product_subcat
  * Biến URL từ /danh-muc/man-hinh-led thành /man-hinh-led
  */
-add_filter('term_link', function($url, $term, $taxonomy) {
+add_filter('term_link', function ($url, $term, $taxonomy) {
     if (in_array($taxonomy, ['product_industry', 'product_cat', 'product_subcat'])) {
         return home_url('/' . $term->slug . '/');
     }
     return $url;
 }, 10, 3);
 
-add_filter('generate_rewrite_rules', function($wp_rewrite) {
+add_filter('generate_rewrite_rules', function ($wp_rewrite) {
     $rules = [];
     $terms = get_terms([
         'taxonomy' => ['product_industry', 'product_cat', 'product_subcat'],
@@ -186,7 +189,7 @@ add_filter('generate_rewrite_rules', function($wp_rewrite) {
             // Quy tắc cho trang danh mục
             $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
             $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
-            
+
             // Quy tắc cho trang chi tiết sản phẩm nằm trong danh mục (chỉ áp dụng cho Ngành hàng hoặc Danh mục cấp 1 để URL không quá sâu)
             // Ví dụ: /man-hinh-led/ten-san-pham/
             if ($term->taxonomy === 'product_industry' || $term->taxonomy === 'product_cat') {
@@ -212,7 +215,7 @@ add_action('delete_product_subcat', 'flush_rewrite_rules');
  * Replace /san-pham/ tag with the actual term slug in product URLs
  * Converts /san-pham/ten-sp/ to /man-hinh-led/ten-sp/
  */
-add_filter('post_type_link', function($post_link, $post) {
+add_filter('post_type_link', function ($post_link, $post) {
     if (is_object($post) && $post->post_type == 'tava_product') {
         $terms = wp_get_object_terms($post->ID, 'product_industry');
         if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) {
@@ -231,7 +234,8 @@ add_filter('post_type_link', function($post_link, $post) {
 /**
  * Add Favicon from Theme Settings
  */
-function tavaled_add_favicon() {
+function tavaled_add_favicon()
+{
     $logo = \App\Helpers\ThemeHelper::getOption('logo');
     if ($logo) {
         echo '<link rel="icon" href="' . esc_url($logo) . '" sizes="32x32" />' . "\n";
@@ -243,36 +247,118 @@ add_action('wp_head', 'tavaled_add_favicon');
 /**
  * Add Floating Contacts to Footer
  */
-function tavaled_floating_contacts() {
-    $phone_kd = \App\Helpers\ThemeHelper::getOption('phone_kd', '0936 543 389');
-    $phone_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh', '0936 543 389');
-    $zalo = \App\Helpers\ThemeHelper::getOption('zalo', '0936543389');
+function tavaled_floating_contacts()
+{
+    $main_phone = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
+    $cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+    $cskh_data = json_decode($cskh_val, true);
+    if (!is_array($cskh_data)) {
+        $cskh_data = [];
+        $phones = array_filter(array_map('trim', explode("\n", str_replace(',', "\n", $cskh_val))));
+        foreach ($phones as $p) {
+            $cskh_data[] = ['name' => 'CSKH', 'role' => '', 'phone' => $p, 'email' => ''];
+        }
+    }
+    $first_cskh = !empty($cskh_data) ? $cskh_data[0]['phone'] : null;
 
-    if (!$phone_kd && !$phone_cskh && !$zalo) return;
+    if (!$main_phone && !$first_cskh)
+        return;
     ?>
     <div class="floating-contact-wrapper fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <?php if ($phone_kd): ?>
-        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone_kd)); ?>" class="floating-btn phone-kd-btn group relative flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition duration-300">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" style="animation-duration: 1.5s;"></span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            <span class="absolute right-full mr-4 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-md pointer-events-none">Kinh doanh: <?php echo esc_html($phone_kd); ?></span>
-        </a>
+        <?php if ($main_phone): ?>
+            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $main_phone)); ?>"
+                class="floating-btn phone-kd-btn group relative flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition duration-300">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"
+                    style="animation-duration: 1.5s;"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 relative z-10" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span
+                    class="absolute right-full mr-4 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-md pointer-events-none">Hotline:
+                    <?php echo esc_html($main_phone); ?></span>
+            </a>
         <?php endif; ?>
 
-        <?php if ($phone_cskh): ?>
-        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone_cskh)); ?>" class="floating-btn phone-cskh-btn group relative flex items-center justify-center w-14 h-14 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 hover:scale-110 transition duration-300">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" style="animation-duration: 1.5s; animation-delay: 0.5s;"></span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-            <span class="absolute right-full mr-4 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-md pointer-events-none">CSKH: <?php echo esc_html($phone_cskh); ?></span>
-        </a>
+        <?php if (!empty($cskh_data)): ?>
+            <style>
+                .tav-float-wrap:hover .tav-float-dropdown {
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    transform: translateX(0) !important;
+                }
+            </style>
+            <div class="relative tav-float-wrap flex items-center">
+                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $first_cskh)); ?>"
+                    class="floating-btn phone-cskh-btn relative flex items-center justify-center w-14 h-14 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 hover:scale-110 transition duration-300">
+                    <span class="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping"
+                        style="animation-duration: 1.5s; animation-delay: 0.5s;"></span>
+                    <i class="ph-fill ph-headset text-2xl relative z-10"></i>
+                </a>
+
+                <!-- Dropdown cho nút Floating -->
+                <div class="tav-float-dropdown absolute right-full bottom-0 mr-4 rounded-2xl opacity-0 invisible transition-all duration-300 z-50 overflow-hidden transform translate-x-4 w-[350px]"
+                    style="background: rgba(255,255,255,0.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 20px 60px -15px rgba(0,0,0,0.25);">
+                    <div class="px-5 py-3.5 flex items-center gap-2.5" style="border-bottom: 1px solid rgba(0,0,0,0.06);">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(240,90,37,0.12);">
+                            <i class="ph-fill ph-headset text-brand-orange text-base"></i>
+                        </div>
+                        <span class="font-bold text-gray-800 text-[14px]">KD &amp; CSKH</span>
+                    </div>
+                    <ul class="max-h-[480px] overflow-y-auto p-3 space-y-2" style="scrollbar-width: thin;">
+                        <?php foreach ($cskh_data as $cskh_item):
+                            $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
+                        ?>
+                        <li class="rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); transition: all 0.2s;" onmouseenter="this.style.background='rgba(255,255,255,0.95)';this.style.borderColor='rgba(240,90,37,0.25)';this.style.boxShadow='0 4px 20px rgba(240,90,37,0.08)'" onmouseleave="this.style.background='rgba(255,255,255,0.6)';this.style.borderColor='rgba(0,0,0,0.05)';this.style.boxShadow='none'">
+                            <div class="p-3.5">
+                                <div class="flex items-center gap-3">
+                                    <?php if (!empty($cskh_item['avatar'])): ?>
+                                        <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?>" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
+                                    <?php else: ?>
+                                        <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-md text-white" style="background: linear-gradient(135deg, #fdba74, #f97316);">
+                                            <i class="ph-fill ph-user text-xl"></i>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-bold text-gray-900 text-[14px] leading-tight truncate"><?php echo esc_html($cskh_item['name'] ?: 'Nhân viên'); ?></div>
+                                        <?php if (!empty($cskh_item['role'])): ?>
+                                            <div class="text-[10px] font-semibold text-brand-orange uppercase tracking-wider mt-0.5 truncate"><?php echo esc_html($cskh_item['role']); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-2.5 flex items-center gap-2" style="border-top: 1px dashed rgba(0,0,0,0.07);">
+                                    <a href="tel:<?php echo esc_attr($c_tel); ?>" class="flex-1 flex items-center justify-center gap-1.5 h-[34px] text-gray-600 text-[12px] font-bold rounded-lg transition-all hover:bg-brand-orange hover:text-white hover:border-brand-orange" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);">
+                                        <i class="ph-fill ph-phone-call text-[13px]"></i> Gọi điện
+                                    </a>
+                                    <a href="https://zalo.me/<?php echo esc_attr($c_tel); ?>" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 h-[34px] text-[#0068ff] text-[12px] font-bold rounded-lg transition-all hover:bg-[#0068ff] hover:text-white hover:border-[#0068ff]" style="background: rgba(0,104,255,0.05); border: 1px solid rgba(0,104,255,0.1);">
+                                        ZALO
+                                    </a>
+                                    <?php if (!empty($cskh_item['email'])): ?>
+                                    <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="flex items-center justify-center w-[34px] h-[34px] text-gray-400 rounded-lg transition-all hover:bg-gray-700 hover:text-white hover:border-gray-700" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);" title="<?php echo esc_attr($cskh_item['email']); ?>">
+                                        <i class="ph-fill ph-envelope-simple text-[14px]"></i>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
         <?php endif; ?>
 
-        <?php if ($zalo): ?>
-        <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $zalo)); ?>" target="_blank" class="floating-btn zalo-btn group relative flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg hover:bg-gray-50 hover:scale-110 transition duration-300">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping" style="animation-duration: 1.5s; animation-delay: 1s;"></span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1280px-Icon_of_Zalo.svg.png" alt="Zalo" class="w-10 h-10 relative z-10" style="object-fit: contain;">
-            <span class="absolute right-full mr-4 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-md pointer-events-none">Zalo: <?php echo esc_html($zalo); ?></span>
-        </a>
+        <?php if ($main_phone): ?>
+            <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $main_phone)); ?>" target="_blank"
+                class="floating-btn zalo-btn group relative flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg hover:bg-gray-50 hover:scale-110 transition duration-300">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping"
+                    style="animation-duration: 1.5s; animation-delay: 1s;"></span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1280px-Icon_of_Zalo.svg.png"
+                    alt="Zalo" class="w-10 h-10 relative z-10" style="object-fit: contain;">
+                <span
+                    class="absolute right-full mr-4 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-md pointer-events-none">Zalo:
+                    <?php echo esc_html($main_phone); ?></span>
+            </a>
         <?php endif; ?>
     </div>
     <?php
@@ -282,7 +368,8 @@ add_action('wp_footer', 'tavaled_floating_contacts', 100);
 /**
  * Custom Order for tava_product to push menu_order=0 to the end
  */
-function tavaled_custom_product_order($orderby, $query) {
+function tavaled_custom_product_order($orderby, $query)
+{
     if ($query->get('post_type') === 'tava_product' && !is_admin()) {
         $orderbacks = $query->get('orderby');
         if (is_array($orderbacks) && isset($orderbacks['menu_order'])) {
@@ -297,11 +384,12 @@ add_filter('posts_orderby', 'tavaled_custom_product_order', 10, 2);
 /**
  * Reverse sort order for tava_product in Admin (Product Management)
  */
-function tavaled_reverse_admin_product_order($query) {
+function tavaled_reverse_admin_product_order($query)
+{
     if (is_admin() && $query->is_main_query() && $query->get('post_type') === 'tava_product') {
         $order = $query->get('order') ?: 'DESC';
         $new_order = (strtoupper($order) === 'ASC') ? 'DESC' : 'ASC';
-        
+
         $query->set('orderby', 'date');
         $query->set('order', $new_order);
     }
@@ -312,7 +400,8 @@ add_action('pre_get_posts', 'tavaled_reverse_admin_product_order');
  * Add Category and Tag support to Pages
  * This allows Pages to be mixed with Posts in category-based queries (like the Projects template).
  */
-function tavaled_add_taxonomies_to_pages() {
+function tavaled_add_taxonomies_to_pages()
+{
     register_taxonomy_for_object_type('category', 'page');
     register_taxonomy_for_object_type('post_tag', 'page');
 }
