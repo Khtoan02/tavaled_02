@@ -242,36 +242,68 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .prod-cta { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
 .btn-primary-sp {
   display: flex; align-items: center; justify-content: center; gap: 9px;
-  width: 100%; padding: 15px 24px; background: var(--orange); color: #fff; font-size: 14px; font-weight: 700;
-  letter-spacing: 0.04em; border: none; border-radius: 9px; cursor: pointer; text-decoration: none;
-  transition: background .2s, box-shadow .2s, transform .15s; box-shadow: 0 4px 20px rgba(240,90,37,.32); position: relative; overflow: hidden;
+  width: 100%; padding: 16px 24px; background: linear-gradient(135deg, var(--orange), var(--orange-dk)); color: #fff; font-size: 14.5px; font-weight: 700;
+  letter-spacing: 0.04em; border: none; border-radius: 12px; cursor: pointer; text-decoration: none;
+  transition: all .3s cubic-bezier(.16,1,.3,1); box-shadow: 0 8px 24px -6px rgba(240,90,37,.4); position: relative; overflow: hidden;
 }
-.btn-primary-sp::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,.12) 0%, transparent 60%); pointer-events: none; }
-.btn-primary-sp:hover { background: var(--orange-dk); box-shadow: 0 6px 28px rgba(240,90,37,.45); transform: translateY(-2px); color:#fff;}
-.btn-primary-sp:active { transform: translateY(0); }
-.btn-primary-sp svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 2; flex-shrink: 0; }
+.btn-primary-sp::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent); transform: skewX(-20deg); transition: left .5s; }
+.btn-primary-sp:hover { transform: translateY(-3px); box-shadow: 0 12px 32px -8px rgba(240,90,37,.5); }
+.btn-primary-sp:hover::before { left: 150%; }
+.btn-primary-sp:active { transform: translateY(-1px); box-shadow: 0 4px 16px -4px rgba(240,90,37,.4); }
+.btn-primary-sp svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.2; flex-shrink: 0; }
+
+.cskh-dropdown-wrapper { position: relative; margin-bottom: 24px; z-index: 50; }
+.cskh-dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--white); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(17,24,39,0.15); opacity: 0; visibility: hidden;
+  transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  max-height: 380px; overflow-y: auto;
+}
+.cskh-dropdown-menu::-webkit-scrollbar { width: 6px; }
+.cskh-dropdown-menu::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+.cskh-dropdown-wrapper:hover .cskh-dropdown-menu,
+.cskh-dropdown-wrapper:focus-within .cskh-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.cskh-dropdown-wrapper:hover .dropdown-chevron { transform: rotate(180deg); }
+
+.cskh-dropdown-item {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  border-bottom: 1px solid var(--border-lt); transition: background 0.2s;
+}
+.cskh-dropdown-item:last-child { border-bottom: none; }
+.cskh-dropdown-item:hover { background: #fafafb; }
+.cskh-dropdown-avatar { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--orange-lt); overflow: hidden; flex-shrink: 0; }
+.cskh-dropdown-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.cskh-dropdown-info { flex: 1; min-width: 0; }
+.cskh-dropdown-role { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; }
+.cskh-dropdown-name { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cskh-dropdown-phone { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800; color: var(--orange); letter-spacing: -0.01em; }
+.cskh-action-btns { display: flex; gap: 6px; }
+.cskh-action-btn { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s, background 0.2s; flex-shrink: 0; }
+.cskh-btn-zalo { background: #e8f4fc; color: #0088ff; }
+.cskh-btn-zalo:hover { background: #0088ff; color: #fff; transform: scale(1.1); }
+.cskh-btn-call { background: var(--orange-xlt); color: var(--orange); }
+.cskh-btn-call:hover { background: var(--orange); color: #fff; transform: scale(1.1); }
 
 .btn-secondary-sp {
   display: flex; align-items: center; justify-content: center; gap: 9px;
-  width: 100%; padding: 14px 24px; background: var(--white); color: var(--ink); font-size: 14px; font-weight: 600;
-  letter-spacing: 0.03em; border: 2px solid var(--border); border-radius: 9px; cursor: pointer; text-decoration: none;
-  transition: border-color .2s, color .2s, background .2s, transform .15s;
+  width: 100%; padding: 15px 24px; background: var(--white); color: var(--ink); font-size: 14.5px; font-weight: 700;
+  letter-spacing: 0.03em; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; text-decoration: none;
+  transition: all .3s cubic-bezier(.16,1,.3,1);
 }
-.btn-secondary-sp:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-xlt); transform: translateY(-1px); }
-.btn-secondary-sp svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+.btn-secondary-sp:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-xlt); transform: translateY(-2px); box-shadow: 0 8px 24px -8px rgba(240,90,37,.15); }
+.btn-secondary-sp svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2.2; flex-shrink: 0; }
 
-.commitment-box { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
-.commitment-box__head { background: var(--ink); padding: 11px 16px; display: flex; align-items: center; gap: 9px; position: relative; overflow: hidden; }
-.commitment-box__head::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--orange); }
-.commitment-box__head-title { font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,.7); }
-.commitment-box__head-icon { font-size: 14px; }
-.commitment-list { list-style: none; padding: 6px 0; margin:0;}
-.commitment-list li { display: flex; align-items: flex-start; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--border-lt); transition: background .15s; }
+.commitment-box { background: var(--white); border: 1px solid rgba(0,0,0,.04); border-radius: 12px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 4px 24px -8px rgba(17,24,39,.04); }
+.commitment-box__head { background: var(--ink); padding: 14px 20px; display: flex; align-items: center; gap: 9px; position: relative; overflow: hidden; }
+.commitment-box__head::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--orange); }
+.commitment-box__head-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,.9); margin-left: 4px; }
+.commitment-list { list-style: none; padding: 4px 0; margin:0;}
+.commitment-list li { display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--border-lt); transition: background .2s; }
 .commitment-list li:last-child { border-bottom: none; }
-.commitment-list li:hover { background: var(--orange-xlt); }
-.commit-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--orange-xlt); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; border: 1px solid var(--orange-lt); }
-.commit-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-.commit-desc { font-size: 11.5px; color: var(--muted); line-height: 1.55; }
+.commitment-list li:hover { background: #fafafb; }
+.commit-icon { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; opacity: 0.8; }
+.commit-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
 
 .contact-strip { display: flex; align-items: center; gap: 10px; background: var(--orange-xlt); border: 1px solid var(--orange-lt); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; }
 .contact-strip__icon { width: 34px; height: 34px; border-radius: 50%; background: var(--orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
@@ -290,11 +322,21 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
    DETAIL TABS
 ══════════════════════════════════ */
 .prod-detail { max-width: 1600px; margin: 0 auto; padding: 0 32px 80px; }
-.tabs-nav { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 40px; }
-.tab-btn { padding: 13px 24px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; border: none; background: none; border-bottom: 3px solid transparent; margin-bottom: -2px; letter-spacing: 0.03em; transition: color .2s, border-color .2s; }
-.tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
-.tab-btn:hover:not(.active) { color: var(--ink); }
-.tab-panel { display: none; }
+.tabs-nav { 
+  display: inline-flex; gap: 6px; background: rgba(0,0,0,.03); padding: 6px; 
+  border-radius: 12px; margin-bottom: 40px; border: 1px solid rgba(0,0,0,.03);
+}
+.tab-btn { 
+  padding: 10px 24px; font-size: 13.5px; font-weight: 600; color: var(--muted); 
+  cursor: pointer; border: none; background: transparent; border-radius: 8px;
+  letter-spacing: 0.02em; transition: all .3s cubic-bezier(.16,1,.3,1); 
+}
+.tab-btn.active { 
+  color: var(--orange); background: var(--white); 
+  box-shadow: 0 4px 16px -4px rgba(17,24,39,.1); font-weight: 700;
+}
+.tab-btn:hover:not(.active) { color: var(--ink); background: rgba(0,0,0,.02); }
+.tab-panel { display: none; animation: fadeUp .4s cubic-bezier(.16,1,.3,1); }
 .tab-panel.active { display: block; }
 
 .specs-section-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
@@ -395,22 +437,22 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 .rel-more { font-size: 11.5px; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid var(--border-lt); padding-bottom: 1px; transition: color .2s, border-color .2s; }
 .rel-more:hover { color: var(--orange); border-color: var(--orange); }
 
-.rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.prod-card-sp { background: var(--white); border-radius: 10px; overflow: hidden; border: 1px solid var(--border-lt); transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, border-color .25s; cursor: pointer; text-decoration: none; display: flex; flex-direction: column; }
-.prod-card-sp:hover { transform: translateY(-5px); box-shadow: 0 20px 56px -12px rgba(240,90,37,.13), 0 4px 18px rgba(17,24,39,.06); border-color: rgba(240,90,37,.2); }
-.prod-card-sp__thumb { position: relative; overflow: hidden; flex-shrink: 0; aspect-ratio: 1/1; background: var(--bg); }
-.prod-card-sp__thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; filter: saturate(.8); transition: transform .65s cubic-bezier(.16,1,.3,1), filter .4s; }
-.prod-card-sp:hover .prod-card-sp__thumb img { transform: scale(1.07); filter: saturate(1); }
-.prod-card-sp__cat { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,.78); backdrop-filter: blur(8px); color: var(--mid); font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; border: 1px solid rgba(255,255,255,.5); }
-.prod-card-sp__body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-.prod-card-sp__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem; line-height: 1.25; color: var(--ink); margin-bottom: 6px; transition: color .2s; letter-spacing: -0.01em; }
+.rel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.prod-card-sp { background: var(--white); border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); transition: all .4s cubic-bezier(.16,1,.3,1); cursor: pointer; text-decoration: none; display: flex; flex-direction: column; }
+.prod-card-sp:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -12px rgba(17,24,39,.08); border-color: rgba(240,90,37,.2); }
+.prod-card-sp__thumb { position: relative; overflow: hidden; flex-shrink: 0; aspect-ratio: 4/3; background: #fafafb; }
+.prod-card-sp__thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; mix-blend-mode: multiply; transition: transform .65s cubic-bezier(.16,1,.3,1); }
+.prod-card-sp:hover .prod-card-sp__thumb img { transform: scale(1.05); }
+.prod-card-sp__cat { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.9); backdrop-filter: blur(8px); color: var(--mid); font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+.prod-card-sp__body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.prod-card-sp__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; line-height: 1.3; color: var(--ink); margin-bottom: 8px; transition: color .2s; }
 .prod-card-sp:hover .prod-card-sp__name { color: var(--orange); }
-.prod-card-sp__model { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
-.prod-card-sp__foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 11px; border-top: 1px solid var(--border-lt); }
-.prod-card-sp__cta { font-size: 11px; font-weight: 700; color: var(--orange); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; display: flex; align-items: center; gap: 4px; transition: gap .2s; }
-.prod-card-sp__cta::after { content: '→'; font-size: 12px; }
+.prod-card-sp__model { font-size: 11.5px; color: var(--muted); margin-bottom: 16px; font-weight: 500; }
+.prod-card-sp__foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--border); }
+.prod-card-sp__cta { font-size: 11.5px; font-weight: 700; color: var(--orange); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; display: flex; align-items: center; gap: 4px; transition: gap .2s; }
+.prod-card-sp__cta::after { content: '→'; font-size: 14px; }
 .prod-card-sp:hover .prod-card-sp__cta { gap: 8px; }
-.prod-card-sp__tag { font-size: 10px; font-weight: 600; color: var(--muted); background: var(--bg); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-lt); }
+.prod-card-sp__tag { font-size: 10.5px; font-weight: 600; color: var(--muted); background: #f3f4f6; padding: 4px 10px; border-radius: 6px; }
 
 /* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -603,48 +645,67 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
             SẴN SÀNG THI CÔNG LẮP ĐẶT TOÀN QUỐC
         </div>
 
-        <!-- CTA Buttons -->
-        <div class="prod-cta">
-        <?php 
-            $phone_cskh = \App\Helpers\ThemeHelper::getOption('phone_cskh') ?: '';
-        ?>
-        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $phone_cskh)); ?>" class="btn-primary-sp">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Liên hệ nhận báo giá ngay
-        </a>
+        <!-- CTA with Dropdown -->
+        <div class="cskh-dropdown-wrapper">
+            <?php 
+                $phone_raw = \App\Helpers\ThemeHelper::getOption('phone_cskh');
+                $phone_arr = is_string($phone_raw) ? json_decode($phone_raw, true) : $phone_raw;
+                if(!is_array($phone_arr) || empty($phone_arr)) {
+                    $phone_arr = [['name' => 'Chuyên viên tư vấn', 'phone' => $phone_raw, 'role' => 'Tư vấn miễn phí 24/7', 'avatar' => '']];
+                }
+            ?>
+            <a href="javascript:void(0)" class="btn-primary-sp" style="justify-content: flex-start; padding-left: 20px;">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Liên hệ nhận báo giá ngay
+                <svg class="dropdown-chevron" style="width: 20px; height: 20px; stroke: #fff; fill: none; margin-left: auto; transition: transform 0.3s;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+
+            <!-- Dropdown Menu -->
+            <div class="cskh-dropdown-menu">
+                <?php foreach($phone_arr as $contact): 
+                    $c_name = $contact['name'] ?? 'Chuyên viên tư vấn';
+                    $c_phone = $contact['phone'] ?? '';
+                    $c_role = $contact['role'] ?? 'Hỗ trợ kỹ thuật';
+                    $c_avatar = !empty($contact['avatar']) ? $contact['avatar'] : 'https://placehold.co/100x100/f05a25/ffffff?text=' . urlencode(mb_substr($c_name, 0, 1));
+                ?>
+                <div class="cskh-dropdown-item">
+                    <div class="cskh-dropdown-avatar">
+                        <img src="<?php echo esc_url($c_avatar); ?>" alt="<?php echo esc_attr($c_name); ?>">
+                    </div>
+                    <div class="cskh-dropdown-info">
+                        <div class="cskh-dropdown-role"><?php echo esc_html($c_role); ?></div>
+                        <div class="cskh-dropdown-name"><?php echo esc_html($c_name); ?></div>
+                        <div class="cskh-dropdown-phone"><?php echo esc_html($c_phone); ?></div>
+                    </div>
+                    <div class="cskh-action-btns">
+                        <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $c_phone)); ?>" class="cskh-action-btn cskh-btn-call" title="Gọi điện">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </a>
+                        <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $c_phone)); ?>" target="_blank" class="cskh-action-btn cskh-btn-zalo" title="Chat Zalo">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
         </div>
 
-        <!-- Contact strip -->
-        <div class="contact-strip">
-        <div class="contact-strip__icon">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div>
-            <div class="contact-strip__label">Tư vấn miễn phí 24/7</div>
-            <div class="contact-strip__number"><?php echo esc_html($phone_cskh); ?></div>
-        </div>
-        </div>
-
-        <!-- Commitment box -->
         <div class="commitment-box">
         <div class="commitment-box__head">
-            <span class="commitment-box__head-title" style="margin-left:8px; font-size:12px;">Cam kết của TavaLLS</span>
+            <span class="commitment-box__head-title">Cam kết của TavaLLS</span>
         </div>
         <ul class="commitment-list">
             <li>
-            <div>
-                <div class="commit-title">• Hàng chính hãng 100%</div>
-            </div>
+                <div class="commit-icon"></div>
+                <div class="commit-title">Hàng chính hãng 100%</div>
             </li>
             <li>
-            <div>
-                <div class="commit-title">• Nguồn gốc xuất xứ rõ ràng</div>
-            </div>
+                <div class="commit-icon"></div>
+                <div class="commit-title">Nguồn gốc xuất xứ rõ ràng</div>
             </li>
             <li>
-            <div>
-                <div class="commit-title">• Giá cạnh tranh nhất thị trường</div>
-            </div>
+                <div class="commit-icon"></div>
+                <div class="commit-title">Giá cạnh tranh nhất thị trường</div>
             </li>
         </ul>
         </div>
@@ -871,13 +932,13 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                         $duan_query->the_post();
                         $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
                         ?>
-                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
-                            <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
-                                <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 16px; align-items: center; text-decoration: none; padding: 12px; margin: -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#fafafb'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
+                            <div style="width: 86px; height: 86px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                                <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
                             </div>
                             <div style="flex: 1;">
-                                <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
-                                <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                <h4 style="margin: 0 0 8px; font-size: 13.5px; line-height: 1.4; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
+                                <div style="font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
                             </div>
                         </a>
                         <?php
@@ -905,13 +966,13 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                         $tintuc_query->the_post();
                         $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=News';
                         ?>
-                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;" onmouseover="this.querySelector('h4').style.color='var(--orange)'" onmouseout="this.querySelector('h4').style.color='var(--ink)'">
-                            <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
-                                <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 16px; align-items: center; text-decoration: none; padding: 12px; margin: -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#fafafb'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
+                            <div style="width: 86px; height: 86px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                                <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
                             </div>
                             <div style="flex: 1;">
-                                <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;"><?php echo get_the_title(); ?></h4>
-                                <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                <h4 style="margin: 0 0 8px; font-size: 13.5px; line-height: 1.4; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
+                                <div style="font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
                             </div>
                         </a>
                         <?php
