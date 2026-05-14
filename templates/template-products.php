@@ -5,6 +5,29 @@
 get_header(); ?>
 
 <?php
+// Helper function to pull dynamic SEO content from WP Pages
+function get_dynamic_seo_data($default_title, $default_content, $slugs) {
+  foreach ($slugs as $slug) {
+    $page = get_page_by_path($slug);
+    if ($page) {
+      return [
+        'seo_title' => $page->post_title,
+        'seo_content' => apply_filters('the_content', $page->post_content)
+      ];
+    }
+  }
+  return [
+    'seo_title' => $default_title,
+    'seo_content' => $default_content
+  ];
+}
+
+$led_seo = get_dynamic_seo_data('Giải pháp Màn hình LED Chuyên nghiệp', '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>', ['man-hinh-led']);
+
+$am_thanh_seo = get_dynamic_seo_data('Hệ thống Âm thanh Sự kiện đỉnh cao', '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>', ['thiet-bi-am-thanh', 'am-thanh']);
+
+$anh_sang_seo = get_dynamic_seo_data('Hệ thống Ánh sáng Nghệ thuật', '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>', ['thiet-bi-anh-sang', 'anh-sang']);
+
 // 1. Hardcoded configs for the BIG 3 (to preserve their custom logic and SEO text)
 $cat_definitions = [
   'led' => [
@@ -13,8 +36,8 @@ $cat_definitions = [
     'cat_slugs' => ['man-hinh-led'],
     'title' => 'Màn hình <em>LED</em>',
     'eyebrow' => 'LED Display',
-    'seo_title' => 'Giải pháp Màn hình LED Chuyên nghiệp',
-    'seo_content' => '<p>TavaLLS cung cấp các giải pháp hiển thị Màn hình LED đa dạng từ trong nhà (Indoor) đến ngoài trời (Outdoor). Với công nghệ pixel pitch siêu nhỏ, màn hình LED mang lại chất lượng hình ảnh sắc nét, màu sắc chân thực và độ bền vượt trội. Chúng tôi nhận tư vấn, thiết kế và thi công trọn gói cho hội trường, phòng họp, trung tâm thương mại và các dự án quy mô lớn.</p>',
+    'seo_title' => $led_seo['seo_title'],
+    'seo_content' => $led_seo['seo_content'],
     'pills' => ['Tất cả', 'LED trong nhà', 'LED ngoài trời', 'Sân khấu', 'Trong suốt'],
     'specTitle' => 'Pixel Pitch',
     'specs' => [
@@ -35,8 +58,8 @@ $cat_definitions = [
     'cat_slugs' => ['thiet-bi-am-thanh', 'am-thanh'],
     'title' => 'Thiết bị <em>Âm Thanh</em>',
     'eyebrow' => 'Audio Equipment',
-    'seo_title' => 'Hệ thống Âm thanh Sự kiện đỉnh cao',
-    'seo_content' => '<p>Từ hệ thống loa Line Array công suất lớn cho sân khấu ngoài trời đến các dàn âm thanh hội thảo chuyên dụng, TavaLLS phân phối thiết bị âm thanh chính hãng chất lượng cao. Chúng tôi cung cấp giải pháp toàn diện đáp ứng mọi quy mô sự kiện với chất âm trong trẻo, trung thực và uy lực nhất.</p>',
+    'seo_title' => $am_thanh_seo['seo_title'],
+    'seo_content' => $am_thanh_seo['seo_content'],
     'pills' => ['Tất cả', 'Loa', 'Amply', 'Micro', 'Sub', 'Đẩy công suất', 'Vang số', 'Mixer', 'Crossover'],
     'specTitle' => 'Công suất',
     'specs' => [
@@ -52,8 +75,8 @@ $cat_definitions = [
     'cat_slugs' => ['thiet-bi-anh-sang', 'anh-sang'],
     'title' => 'Thiết bị <em>Ánh Sáng</em>',
     'eyebrow' => 'Lighting Equipment',
-    'seo_title' => 'Hệ thống Ánh sáng Nghệ thuật',
-    'seo_content' => '<p>Đánh thức mọi giác quan với hệ thống ánh sáng kỹ thuật số từ TavaLLS. Chúng tôi chuyên lắp đặt đèn Moving Head, đèn Par LED, Laser và hệ thống điều khiển thông minh. Giải pháp ánh sáng của chúng tôi không chỉ đáp ứng công năng chiếu sáng mà còn tạo ra những hiệu ứng thị giác mãn nhãn, nâng tầm trải nghiệm cho mọi không gian.</p>',
+    'seo_title' => $anh_sang_seo['seo_title'],
+    'seo_content' => $anh_sang_seo['seo_content'],
     'pills' => ['Tất cả', 'Moving Head', 'Par LED', 'Laser', 'Fog/Khói', 'Strobo', 'Follow Spot', 'LED Bar', 'DMX'],
     'specTitle' => 'Công suất đèn',
     'specs' => [

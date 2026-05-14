@@ -307,6 +307,8 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   border: 1px solid #e5e7eb; 
   margin: 16px 0 24px; 
   background: var(--white);
+  display: block;
+  overflow-x: auto;
 }
 .desc-content table th, .desc-content table td {
   padding: 10px 14px; 
@@ -316,6 +318,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   text-align: left;
   vertical-align: top;
   line-height: 1.5;
+  min-width: 120px;
 }
 .desc-content table th {
   background: #f9fafb;
@@ -365,14 +368,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
   margin: 42px 0;
   overflow: hidden;
 }
-.desc-content table {
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: auto;
-  border-collapse: collapse;
-  white-space: nowrap;
-}
+
 .desc-content iframe, .desc-content video {
   width: 100% !important;
   max-width: 100% !important;
@@ -566,7 +562,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                 <?php endif; ?>
             ">
                 <div class="prod-desc-inner">
-                    <?php echo wp_kses_post($overview); ?>
+                    <?php echo apply_filters('the_content', $overview); ?>
                 </div>
                 
                 <?php if($needs_expand): ?>
@@ -684,7 +680,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
             <!-- Tab: Mô tả -->
             <div class="tab-panel active" id="tab-desc">
                 <?php 
-                $content = apply_filters('the_content', get_the_content());
+                $content = apply_filters('the_content', get_post_field('post_content', $post_id));
                 if(!empty($content)):
                     $desc_clean = wp_strip_all_tags($content);
                     $desc_words = count(explode(' ', trim($desc_clean)));
@@ -760,7 +756,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                         <?php endif; ?>
                     ">
                         <div class="prod-desc-inner desc-content">
-                            <?php echo wp_kses_post($specs); ?>
+                            <?php echo apply_filters('the_content', $specs); ?>
                         </div>
                         
                         <?php if($sp_needs_expand): ?>
@@ -817,7 +813,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                         <?php endif; ?>
                     ">
                         <div class="prod-desc-inner desc-content">
-                            <?php echo wp_kses_post($install_info); ?>
+                            <?php echo apply_filters('the_content', $install_info); ?>
                         </div>
                         
                         <?php if($inst_needs_expand): ?>
@@ -939,7 +935,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
             <div style="width: 50px; height: 3px; background: var(--orange); margin-top: 10px; border-radius: 3px;"></div>
         </div>
         <div class="desc-content" style="background: var(--white); border: 1px solid var(--border-lt); padding: 32px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.025);">
-            <?php echo wp_kses_post($faq); ?>
+            <?php echo apply_filters('the_content', $faq); ?>
         </div>
     </div>
     <?php } ?>
@@ -1080,18 +1076,27 @@ function switchTab(btn, panelId) {
 function toggleDesc(btn) {
     const content = btn.previousElementSibling;
     const gradient = content.querySelector('.prod-desc-gradient');
-    const isExpanded = content.style.maxHeight === '2500px';
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
         // Collapse
+        content.classList.remove('expanded');
         content.style.maxHeight = '320px';
         if(gradient) gradient.style.opacity = '1';
         btn.innerHTML = 'Xem thêm <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
     } else {
         // Expand
-        content.style.maxHeight = '2500px';
+        content.classList.add('expanded');
+        content.style.maxHeight = content.scrollHeight + 'px';
         if(gradient) gradient.style.opacity = '0';
         btn.innerHTML = 'Thu gọn <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>';
+        
+        // Cập nhật lại height nếu nội dung load thêm ảnh
+        setTimeout(() => {
+            if(content.classList.contains('expanded')) {
+                content.style.maxHeight = 'none';
+            }
+        }, 400);
     }
 }
 
@@ -1099,18 +1104,19 @@ function toggleDesc(btn) {
 function toggleSpDesc(btn) {
     const content = btn.previousElementSibling;
     const gradient = content.querySelector('.prod-desc-gradient');
-    const isExpanded = content.style.maxHeight === '4000px';
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
-        // Collapse
+        content.classList.remove('expanded');
         content.style.maxHeight = '400px';
         if(gradient) gradient.style.opacity = '1';
         btn.innerHTML = 'Xem toàn bộ thông số kỹ thuật <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
     } else {
-        // Expand
-        content.style.maxHeight = '4000px';
+        content.classList.add('expanded');
+        content.style.maxHeight = content.scrollHeight + 'px';
         if(gradient) gradient.style.opacity = '0';
         btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+        setTimeout(() => { if(content.classList.contains('expanded')) content.style.maxHeight = 'none'; }, 400);
     }
 }
 
@@ -1118,16 +1124,19 @@ function toggleSpDesc(btn) {
 function toggleMainDesc(btn) {
     const content = btn.previousElementSibling;
     const gradient = content.querySelector('.prod-desc-gradient');
-    const isExpanded = content.style.maxHeight === '8000px';
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
+        content.classList.remove('expanded');
         content.style.maxHeight = '500px';
         if(gradient) gradient.style.opacity = '1';
         btn.innerHTML = 'Đọc toàn bộ nội dung <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
     } else {
-        content.style.maxHeight = '8000px';
+        content.classList.add('expanded');
+        content.style.maxHeight = content.scrollHeight + 'px';
         if(gradient) gradient.style.opacity = '0';
         btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+        setTimeout(() => { if(content.classList.contains('expanded')) content.style.maxHeight = 'none'; }, 400);
     }
 }
 
@@ -1135,16 +1144,19 @@ function toggleMainDesc(btn) {
 function toggleInstDesc(btn) {
     const content = btn.previousElementSibling;
     const gradient = content.querySelector('.prod-desc-gradient');
-    const isExpanded = content.style.maxHeight === '5000px';
+    const isExpanded = content.classList.contains('expanded');
     
     if (isExpanded) {
+        content.classList.remove('expanded');
         content.style.maxHeight = '400px';
         if(gradient) gradient.style.opacity = '1';
         btn.innerHTML = 'Xem chi tiết phần lắp đặt <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>';
     } else {
-        content.style.maxHeight = '5000px';
+        content.classList.add('expanded');
+        content.style.maxHeight = content.scrollHeight + 'px';
         if(gradient) gradient.style.opacity = '0';
         btn.innerHTML = 'Thu gọn <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 15l-6-6-6 6"/></svg>';
+        setTimeout(() => { if(content.classList.contains('expanded')) content.style.maxHeight = 'none'; }, 400);
     }
 }
 </script>

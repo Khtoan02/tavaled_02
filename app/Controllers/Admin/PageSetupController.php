@@ -132,6 +132,21 @@ class PageSetupController {
                 'title'    => 'Dự án tiêu biểu',
                 'slug'     => 'du-an-tieu-bieu',
                 'template' => 'templates/template-du-an.php'
+            ],
+            [
+                'title'    => 'Màn hình LED',
+                'slug'     => 'man-hinh-led',
+                'template' => 'templates/template-products.php'
+            ],
+            [
+                'title'    => 'Thiết bị âm thanh',
+                'slug'     => 'thiet-bi-am-thanh',
+                'template' => 'templates/template-products.php'
+            ],
+            [
+                'title'    => 'Thiết bị ánh sáng',
+                'slug'     => 'thiet-bi-anh-sang',
+                'template' => 'templates/template-products.php'
             ]
         ];
 
@@ -209,6 +224,9 @@ class PageSetupController {
                     <li>✓ Tất cả sản phẩm</li>
                     <li>✓ Blog</li>
                     <li>✓ Dự án tiêu biểu (/du-an-tieu-bieu)</li>
+                    <li>✓ Màn hình LED (/man-hinh-led)</li>
+                    <li>✓ Thiết bị âm thanh (/thiet-bi-am-thanh)</li>
+                    <li>✓ Thiết bị ánh sáng (/thiet-bi-anh-sang)</li>
                 </ul>
 
                 <form method="post">
