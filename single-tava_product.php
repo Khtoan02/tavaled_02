@@ -736,6 +736,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
                 <button class="tab-btn active" onclick="switchTab(this,'tab-desc')">Mô tả chuyên sâu</button>
                 <?php if(!empty($specs)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-specs')">Thông số kỹ thuật</button><?php } ?>
                 <?php if(!empty($install_info)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-install')">Thông tin dự án / Lắp đặt</button><?php } ?>
+                <?php if(!empty($faq)) { ?><button class="tab-btn" onclick="switchTab(this,'tab-faq')">Câu hỏi thường gặp</button><?php } ?>
             </div>
 
             <!-- Tab: Mô tả -->
@@ -856,6 +857,15 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
             </div>
             <?php } ?>
 
+            <!-- Tab: FAQ -->
+            <?php if(!empty($faq)) { ?>
+            <div class="tab-panel" id="tab-faq">
+                <div class="desc-content">
+                    <?php echo apply_filters('the_content', $faq); ?>
+                </div>
+            </div>
+            <?php } ?>
+
             <!-- Tab: Lắp đặt -->
             <?php if(!empty($install_info)) { ?>
             <div class="tab-panel" id="tab-install">
@@ -916,93 +926,90 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 
         <!-- Right: Sidebar News Widget -->
         <div class="prod-detail-sidebar" style="width: 100%; max-width: 340px; flex-shrink: 0;">
-            <!-- DỰ ÁN NỔI BẬT -->
-            <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Dự án nổi bật</h3>
-            <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px;">
-                <?php
-                $duan_query = new WP_Query([
-                    'post_type' => 'post',
-                    'category_name' => 'du-an',
-                    'posts_per_page' => 3,
-                    'orderby' => 'date',
-                    'order' => 'DESC'
-                ]);
-                if ($duan_query->have_posts()) {
-                    while ($duan_query->have_posts()) {
-                        $duan_query->the_post();
-                        $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
-                        ?>
-                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 16px; align-items: center; text-decoration: none; padding: 12px; margin: -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#fafafb'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
-                            <div style="width: 86px; height: 86px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                                <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
-                            </div>
-                            <div style="flex: 1;">
-                                <h4 style="margin: 0 0 8px; font-size: 13.5px; line-height: 1.4; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
-                                <div style="font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
-                            </div>
-                        </a>
-                        <?php
+            
+            <!-- DỰ ÁN NỔI BẬT WIDGET -->
+            <div style="background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px -8px rgba(17,24,39,0.06); margin-bottom: 24px;">
+                <h3 style="margin-top:0; margin-bottom: 20px; font-size: 14.5px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+                    <span style="display: block; width: 4px; height: 16px; background: var(--orange); border-radius: 4px;"></span>
+                    Dự án nổi bật
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <?php
+                    $duan_query = new WP_Query([
+                        'post_type' => 'post',
+                        'category_name' => 'du-an',
+                        'posts_per_page' => 3,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ]);
+                    if ($duan_query->have_posts()) {
+                        while ($duan_query->have_posts()) {
+                            $duan_query->the_post();
+                            $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
+                            ?>
+                            <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 12px; margin: 0 -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#f3f4f6'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
+                                <div style="width: 72px; height: 72px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05);">
+                                    <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
+                                    <div style="font-size: 10.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                </div>
+                            </a>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                    } else {
+                        echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật dự án...</p>';
                     }
-                    wp_reset_postdata();
-                } else {
-                    echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật dự án...</p>';
-                }
-                ?>
+                    ?>
+                </div>
             </div>
 
-            <!-- TIN TỨC MỚI NHẤT -->
-            <h3 style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">Tin tức mới nhất</h3>
-            <div style="display: flex; flex-direction: column; gap: 18px;">
-                <?php
-                $tintuc_query = new WP_Query([
-                    'post_type' => 'post',
-                    'category_name' => 'tin-tuc',
-                    'posts_per_page' => 3,
-                    'orderby' => 'date',
-                    'order' => 'DESC'
-                ]);
-                if ($tintuc_query->have_posts()) {
-                    while ($tintuc_query->have_posts()) {
-                        $tintuc_query->the_post();
-                        $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=News';
-                        ?>
-                        <a href="<?php the_permalink(); ?>" style="display: flex; gap: 16px; align-items: center; text-decoration: none; padding: 12px; margin: -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#fafafb'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
-                            <div style="width: 86px; height: 86px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-                                <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
-                            </div>
-                            <div style="flex: 1;">
-                                <h4 style="margin: 0 0 8px; font-size: 13.5px; line-height: 1.4; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
-                                <div style="font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
-                            </div>
-                        </a>
-                        <?php
+            <!-- TIN TỨC MỚI NHẤT WIDGET -->
+            <div style="background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px -8px rgba(17,24,39,0.06);">
+                <h3 style="margin-top:0; margin-bottom: 20px; font-size: 14.5px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+                    <span style="display: block; width: 4px; height: 16px; background: var(--orange); border-radius: 4px;"></span>
+                    Tin tức mới nhất
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <?php
+                    $tintuc_query = new WP_Query([
+                        'post_type' => 'post',
+                        'category_name' => 'tin-tuc',
+                        'posts_per_page' => 3,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    ]);
+                    if ($tintuc_query->have_posts()) {
+                        while ($tintuc_query->have_posts()) {
+                            $tintuc_query->the_post();
+                            $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=News';
+                            ?>
+                            <a href="<?php the_permalink(); ?>" style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 12px; margin: 0 -12px; border-radius: 12px; transition: background 0.3s;" onmouseover="this.style.background='#f3f4f6'; this.querySelector('h4').style.color='var(--orange)'; this.querySelector('img').style.transform='scale(1.1)';" onmouseout="this.style.background='transparent'; this.querySelector('h4').style.color='var(--ink)'; this.querySelector('img').style.transform='scale(1)';">
+                                <div style="width: 72px; height: 72px; border-radius: 10px; overflow: hidden; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.05);">
+                                    <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(.16,1,.3,1);" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.3s;"><?php echo get_the_title(); ?></h4>
+                                    <div style="font-size: 10.5px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;"><?php echo get_the_date('d/m/Y'); ?></div>
+                                </div>
+                            </a>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                    } else {
+                        echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật tin tức...</p>';
                     }
-                    wp_reset_postdata();
-                } else {
-                    echo '<p style="font-size:13px; color:var(--muted);">Đang cập nhật tin tức...</p>';
-                }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 
     </div>
 
-    <!-- ══ FAQ SECTION ══ -->
-    <?php if(!empty($faq)) { ?>
-    <div class="prod-faq prod-detail anim d4">
-        <div style="margin-bottom: 24px;">
-            <h2 style="font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; color: var(--ink); margin: 0; letter-spacing: -0.01em;">Câu Hỏi Thường Gặp (FAQ)</h2>
-            <div style="width: 50px; height: 3px; background: var(--orange); margin-top: 10px; border-radius: 3px;"></div>
-        </div>
-        <div class="desc-content" style="background: var(--white); border: 1px solid var(--border-lt); padding: 32px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.025);">
-            <?php echo apply_filters('the_content', $faq); ?>
-        </div>
-    </div>
-    <?php } ?>
-
-    <!-- ══ RELATED PRODUCTS ══ -->
-    <div class="related-products anim d4">
+    <div class="related-products anim d4" style="margin-top: 40px;">
     <div class="rel-head">
         <div>
         <div class="rel-eyebrow">Giải pháp mở rộng</div>
@@ -1032,29 +1039,7 @@ $brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
 
         if ($related_query->have_posts()) :
             while ($related_query->have_posts()) : $related_query->the_post();
-                $rel_title = get_the_title();
-                $rel_model = get_post_meta(get_the_ID(), '_product_model', true);
-                $rel_img_meta = get_post_meta(get_the_ID(), '_product_img', true);
-                $rel_thumbnail = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : (!empty($rel_img_meta) ? $rel_img_meta : $img_fallback);
-                
-                $rel_subcat = wp_get_post_terms(get_the_ID(), 'product_subcat');
-                $rel_subcat_name = !empty($rel_subcat) ? $rel_subcat[0]->name : 'Sản phẩm';
-        ?>
-        <a href="<?php the_permalink(); ?>" class="prod-card-sp">
-        <div class="prod-card-sp__thumb">
-            <img src="<?php echo esc_url($rel_thumbnail); ?>" alt="<?php echo esc_attr($rel_title); ?>">
-            <span class="prod-card-sp__cat"><?php echo esc_html($rel_subcat_name); ?></span>
-        </div>
-        <div class="prod-card-sp__body">
-            <div class="prod-card-sp__name"><?php echo esc_html($rel_title); ?></div>
-            <div class="prod-card-sp__model"><?php echo esc_html($rel_model); ?></div>
-            <div class="prod-card-sp__foot">
-            <span class="prod-card-sp__tag">Khám phá</span>
-            <span class="prod-card-sp__cta">Xem ngay</span>
-            </div>
-        </div>
-        </a>
-        <?php 
+                get_template_part('app/Views/components/product-card');
             endwhile;
             wp_reset_postdata();
         else:
