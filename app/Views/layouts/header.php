@@ -286,29 +286,25 @@
                                 // Lấy sub-categories động từ database cho từng ngành hàng
                                 $mega_subcats = [];
                                 foreach ($mega_cat_map as $panel_id => $cat_def) {
-                                    // Gộp tên mới + tên cũ vào mảng query
                                     $all_cat_names = array_merge([$cat_def['db_name']], $cat_def['old_names'] ?? []);
-                                    $product_ids = get_posts([
-                                        'post_type' => 'tava_product',
-                                        'posts_per_page' => -1,
-                                        'fields' => 'ids',
-                                        'tax_query' => [
-                                            [
-                                                'taxonomy' => 'product_cat',
-                                                'field' => 'name',
-                                                'terms' => $all_cat_names,
-                                                'operator' => 'IN',
-                                            ]
-                                        ],
-                                    ]);
-                                    $terms = !empty($product_ids) ? get_terms([
-                                        'taxonomy' => 'product_subcat',
-                                        'hide_empty' => true,
-                                        'object_ids' => $product_ids,
-                                        'orderby' => 'count',
-                                        'order' => 'DESC',
-                                    ]) : [];
-                                    $mega_subcats[$panel_id] = is_array($terms) ? $terms : [];
+                                    $parent_term = null;
+                                    foreach ($all_cat_names as $cname) {
+                                        $t = get_term_by('name', $cname, 'product_cat');
+                                        if ($t) { $parent_term = $t; break; }
+                                    }
+                                    
+                                    if ($parent_term) {
+                                        $terms = get_terms([
+                                            'taxonomy' => 'product_cat',
+                                            'hide_empty' => false,
+                                            'parent' => $parent_term->term_id,
+                                            'orderby' => 'count',
+                                            'order' => 'DESC',
+                                        ]);
+                                        $mega_subcats[$panel_id] = is_array($terms) ? $terms : [];
+                                    } else {
+                                        $mega_subcats[$panel_id] = [];
+                                    }
                                 }
 
                                 // Ghi đè default_desc bằng description của term nếu admin đã điền
@@ -481,8 +477,10 @@
                                                             if ($query_led->have_posts()):
                                                                 while ($query_led->have_posts()):
                                                                     $query_led->the_post();
-                                                                    $_sc = wp_get_post_terms(get_the_ID(), 'product_subcat', ['fields' => 'names']);
-                                                                    $_sc_attr = esc_attr(wp_json_encode(is_array($_sc) ? array_values($_sc) : []));
+                                                                    $post_terms = wp_get_post_terms(get_the_ID(), 'product_cat');
+                                                                    $_sc = [];
+                                                                    foreach($post_terms as $pt) { if ($pt->parent != 0) $_sc[] = $pt->name; }
+                                                                    $_sc_attr = esc_attr(wp_json_encode($_sc));
                                                                     ?>
                                                                     <div class="mega-slide-item w-[260px] shrink-0 transform will-change-transform"
                                                                         data-subcats="<?php echo $_sc_attr; ?>">
@@ -561,8 +559,10 @@
                                                             if ($query_audio->have_posts()):
                                                                 while ($query_audio->have_posts()):
                                                                     $query_audio->the_post();
-                                                                    $_sc = wp_get_post_terms(get_the_ID(), 'product_subcat', ['fields' => 'names']);
-                                                                    $_sc_attr = esc_attr(wp_json_encode(is_array($_sc) ? array_values($_sc) : []));
+                                                                    $post_terms = wp_get_post_terms(get_the_ID(), 'product_cat');
+                                                                    $_sc = [];
+                                                                    foreach($post_terms as $pt) { if ($pt->parent != 0) $_sc[] = $pt->name; }
+                                                                    $_sc_attr = esc_attr(wp_json_encode($_sc));
                                                                     ?>
                                                                     <div class="mega-slide-item w-[260px] shrink-0 transform will-change-transform"
                                                                         data-subcats="<?php echo $_sc_attr; ?>">
@@ -641,8 +641,10 @@
                                                             if ($query_light->have_posts()):
                                                                 while ($query_light->have_posts()):
                                                                     $query_light->the_post();
-                                                                    $_sc = wp_get_post_terms(get_the_ID(), 'product_subcat', ['fields' => 'names']);
-                                                                    $_sc_attr = esc_attr(wp_json_encode(is_array($_sc) ? array_values($_sc) : []));
+                                                                    $post_terms = wp_get_post_terms(get_the_ID(), 'product_cat');
+                                                                    $_sc = [];
+                                                                    foreach($post_terms as $pt) { if ($pt->parent != 0) $_sc[] = $pt->name; }
+                                                                    $_sc_attr = esc_attr(wp_json_encode($_sc));
                                                                     ?>
                                                                     <div class="mega-slide-item w-[260px] shrink-0 transform will-change-transform"
                                                                         data-subcats="<?php echo $_sc_attr; ?>">

@@ -207,9 +207,15 @@ class ProductImportController {
                         update_post_meta($post_id, '_product_faq', wp_kses_post($row['faq']));
                     }
 
-                    // Handle Taxonomies
-                    $this->assign_category($post_id, 'product_cat', $row['nganh_hang'] ?? '');
-                    $this->assign_multiple_terms($post_id, 'product_subcat', $row['danh_muc_con'] ?? '');
+                    // Handle Taxonomies (Gộp Ngành hàng và Danh mục con vào cùng product_cat)
+                    $parent_cat_id = 0;
+                    if (!empty($row['nganh_hang'])) {
+                        $parent_cat_id = $this->assign_category($post_id, 'product_cat', $row['nganh_hang']);
+                    }
+                    if (!empty($row['danh_muc_con'])) {
+                        $this->assign_multiple_terms($post_id, 'product_cat', $row['danh_muc_con'], $parent_cat_id);
+                    }
+                    
                     $this->assign_category($post_id, 'product_brand', $row['thuong_hieu'] ?? '');
 
                     $count++;
@@ -225,38 +231,40 @@ class ProductImportController {
         }
     }
 
-    private function assign_category($post_id, $taxonomy, $term_name) {
+    private function assign_category($post_id, $taxonomy, $term_name, $parent_id = 0) {
         $term_name = sanitize_text_field(trim($term_name));
-        if (empty($term_name)) return;
+        if (empty($term_name)) return 0;
         
-        $term = term_exists($term_name, $taxonomy);
+        $term = term_exists($term_name, $taxonomy, $parent_id);
         if (!$term) {
-            $term = wp_insert_term($term_name, $taxonomy);
+            $term = wp_insert_term($term_name, $taxonomy, ['parent' => $parent_id]);
         }
         
         if (!is_wp_error($term)) {
             $term_id = is_array($term) ? $term['term_id'] : $term;
-            wp_set_object_terms($post_id, intval($term_id), $taxonomy, false);
+            wp_set_object_terms($post_id, intval($term_id), $taxonomy, true); // append
+            return intval($term_id);
         }
+        return 0;
     }
 
-    private function assign_multiple_terms($post_id, $taxonomy, $terms_string) {
+    private function assign_multiple_terms($post_id, $taxonomy, $terms_string, $parent_id = 0) {
         $terms = explode('|', $terms_string);
         $term_ids = [];
         foreach ($terms as $t) {
             $t = sanitize_text_field(trim($t));
             if (empty($t)) continue;
             
-            $term = term_exists($t, $taxonomy);
+            $term = term_exists($t, $taxonomy, $parent_id);
             if (!$term) {
-                $term = wp_insert_term($t, $taxonomy);
+                $term = wp_insert_term($t, $taxonomy, ['parent' => $parent_id]);
             }
             if (!is_wp_error($term)) {
                 $term_ids[] = intval(is_array($term) ? $term['term_id'] : $term);
             }
         }
         if (!empty($term_ids)) {
-            wp_set_object_terms($post_id, $term_ids, $taxonomy, false);
+            wp_set_object_terms($post_id, $term_ids, $taxonomy, true); // append
         }
     }
 }

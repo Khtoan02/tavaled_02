@@ -47,69 +47,26 @@ class ProductSetupController {
     }
 
     public function registerTaxonomies() {
-                // 0. NGÀNH HÀNG (Industry - Top Level)
-        register_taxonomy('product_industry', ['tava_product'], [
-            'hierarchical'      => true,
-            'labels'            => [
-                'name'              => 'Ngành hàng',
-                'singular_name'     => 'Ngành hàng',
-                'search_items'      => 'Tìm Ngành hàng',
-                'all_items'         => 'Tất cả Ngành hàng',
-                'parent_item'       => 'Ngành hàng cha',
-                'parent_item_colon' => 'Ngành hàng cha:',
-                'edit_item'         => 'Sửa Ngành hàng',
-                'update_item'       => 'Cập nhật',
-                'add_new_item'      => 'Thêm Ngành hàng mới',
-                'new_item_name'     => 'Tên Ngành hàng mới',
-                'menu_name'         => 'Ngành hàng',
-            ],
-            'show_ui'           => true,
-            'show_admin_column' => true,
-            'query_var'         => true,
-            'rewrite'           => ['slug' => 'nganh-hang', 'with_front' => false],
-            'show_in_rest'      => true,
-        ]);
-
-        // 1. PHÂN LOẠI SẢN PHẨM (Category)
+        // 1. DANH MỤC SẢN PHẨM (Category - Gộp chung Ngành hàng, Phân loại, Danh mục con thành cấu trúc cha-con)
         register_taxonomy('product_cat', ['tava_product'], [
             'hierarchical'      => true,
             'labels'            => [
-                'name'              => 'Phân loại sản phẩm',
-                'singular_name'     => 'Phân loại sản phẩm',
-                'search_items'      => 'Tìm Phân loại',
-                'all_items'         => 'Tất cả Phân loại',
-                'parent_item'       => 'Phân loại cha',
-                'parent_item_colon' => 'Phân loại cha:',
-                'edit_item'         => 'Sửa Phân loại',
+                'name'              => 'Danh mục sản phẩm',
+                'singular_name'     => 'Danh mục sản phẩm',
+                'search_items'      => 'Tìm Danh mục',
+                'all_items'         => 'Tất cả Danh mục',
+                'parent_item'       => 'Danh mục cha',
+                'parent_item_colon' => 'Danh mục cha:',
+                'edit_item'         => 'Sửa Danh mục',
                 'update_item'       => 'Cập nhật',
-                'add_new_item'      => 'Thêm Phân loại mới',
-                'new_item_name'     => 'Tên Phân loại mới',
-                'menu_name'         => 'Phân loại SP',
+                'add_new_item'      => 'Thêm Danh mục mới',
+                'new_item_name'     => 'Tên Danh mục mới',
+                'menu_name'         => 'Danh mục SP',
             ],
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => ['slug' => 'phan-loai', 'with_front' => false], // Trang danh mục riêng biệt
-            'show_in_rest'      => true,
-        ]);
-
-        // 2. DANH MỤC CON (Sub-category)
-        register_taxonomy('product_subcat', ['tava_product'], [
-            'hierarchical'      => true,
-            'labels'            => [
-                'name'              => 'Danh mục con',
-                'singular_name'     => 'Danh mục con',
-                'search_items'      => 'Tìm Danh mục con',
-                'all_items'         => 'Tất cả Danh mục con',
-                'edit_item'         => 'Sửa Danh mục con',
-                'update_item'       => 'Cập nhật',
-                'add_new_item'      => 'Thêm Danh mục con mới',
-                'new_item_name'     => 'Tên Danh mục con mới',
-                'menu_name'         => 'Danh mục con',
-            ],
-            'show_ui'           => true,
-            'show_admin_column' => true,
-            'query_var'         => true,
+            'rewrite'           => ['slug' => 'danh-muc', 'with_front' => false],
             'show_in_rest'      => true,
         ]);
 
@@ -132,42 +89,5 @@ class ProductSetupController {
             'query_var'         => true,
         ]);
 
-        // 4. THÔNG SỐ (Spec)
-        register_taxonomy('product_spec', ['tava_product'], [
-            'hierarchical'      => false,
-            'labels'            => [
-                'name'              => 'Thông số kỹ thuật (P1.5, 500W...)',
-                'singular_name'     => 'Thông số kỹ thuật',
-                'search_items'      => 'Tìm Thông số',
-                'all_items'         => 'Tất cả Thông số',
-                'edit_item'         => 'Sửa Thông số',
-                'update_item'       => 'Cập nhật',
-                'add_new_item'      => 'Thêm Thông số mới',
-                'new_item_name'     => 'Tên Thông số mới',
-                'menu_name'         => 'Thông số (Pixel Pitch...)',
-            ],
-            'show_ui'           => true,
-            'show_admin_column' => true,
-            'query_var'         => true,
-        ]);
-        
-        // 5. HUY HIỆU (Badge - Hot, New, Sale)
-        register_taxonomy('product_badge', ['tava_product'], [
-            'hierarchical'      => false,
-            'labels'            => [
-                'name'              => 'Huy hiệu (Badge)',
-                'singular_name'     => 'Huy hiệu',
-                'search_items'      => 'Tìm Huy hiệu',
-                'all_items'         => 'Tất cả Huy hiệu',
-                'edit_item'         => 'Sửa Huy hiệu',
-                'update_item'       => 'Cập nhật',
-                'add_new_item'      => 'Thêm Huy hiệu mới',
-                'new_item_name'     => 'Tên Huy hiệu',
-                'menu_name'         => 'Huy hiệu',
-            ],
-            'show_ui'           => true,
-            'show_admin_column' => true,
-            'query_var'         => true,
-        ]);
     }
 }

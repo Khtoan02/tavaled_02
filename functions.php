@@ -171,7 +171,7 @@ if (class_exists('RankMath')) {
  * Biến URL từ /danh-muc/man-hinh-led thành /man-hinh-led
  */
 add_filter('term_link', function ($url, $term, $taxonomy) {
-    if (in_array($taxonomy, ['product_industry', 'product_cat', 'product_subcat'])) {
+    if ($taxonomy === 'product_cat') {
         return home_url('/' . $term->slug . '/');
     }
     return $url;
@@ -180,7 +180,7 @@ add_filter('term_link', function ($url, $term, $taxonomy) {
 add_filter('generate_rewrite_rules', function ($wp_rewrite) {
     $rules = [];
     $terms = get_terms([
-        'taxonomy' => ['product_industry', 'product_cat', 'product_subcat'],
+        'taxonomy' => ['product_cat'],
         'hide_empty' => false,
     ]);
 
@@ -192,7 +192,7 @@ add_filter('generate_rewrite_rules', function ($wp_rewrite) {
 
             // Quy tắc cho trang chi tiết sản phẩm nằm trong danh mục (chỉ áp dụng cho Ngành hàng hoặc Danh mục cấp 1 để URL không quá sâu)
             // Ví dụ: /man-hinh-led/ten-san-pham/
-            if ($term->taxonomy === 'product_industry' || $term->taxonomy === 'product_cat') {
+            if ($term->taxonomy === 'product_cat') {
                 $rules['^' . $term->slug . '/([^/]+)/?$'] = 'index.php?post_type=tava_product&name=$matches[1]';
             }
         }
@@ -200,16 +200,10 @@ add_filter('generate_rewrite_rules', function ($wp_rewrite) {
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 });
 
-// Tự động Flush Rewrite Rules khi người dùng thêm/sửa/xoá Ngành hàng/Danh mục để tránh lỗi 404
-add_action('created_product_industry', 'flush_rewrite_rules');
-add_action('edited_product_industry', 'flush_rewrite_rules');
-add_action('delete_product_industry', 'flush_rewrite_rules');
+// Tự động Flush Rewrite Rules khi người dùng thêm/sửa/xoá Danh mục để tránh lỗi 404
 add_action('created_product_cat', 'flush_rewrite_rules');
 add_action('edited_product_cat', 'flush_rewrite_rules');
 add_action('delete_product_cat', 'flush_rewrite_rules');
-add_action('created_product_subcat', 'flush_rewrite_rules');
-add_action('edited_product_subcat', 'flush_rewrite_rules');
-add_action('delete_product_subcat', 'flush_rewrite_rules');
 
 /**
  * Replace /san-pham/ tag with the actual term slug in product URLs
@@ -217,11 +211,6 @@ add_action('delete_product_subcat', 'flush_rewrite_rules');
  */
 add_filter('post_type_link', function ($post_link, $post) {
     if (is_object($post) && $post->post_type == 'tava_product') {
-        $terms = wp_get_object_terms($post->ID, 'product_industry');
-        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) {
-            return str_replace('/san-pham/', '/' . $terms[0]->slug . '/', $post_link);
-        }
-        // Fallback to product_cat if no industry is selected
         $cat_terms = wp_get_object_terms($post->ID, 'product_cat');
         if (!is_wp_error($cat_terms) && !empty($cat_terms) && is_object($cat_terms[0])) {
             return str_replace('/san-pham/', '/' . $cat_terms[0]->slug . '/', $post_link);
@@ -407,3 +396,110 @@ function tavaled_add_taxonomies_to_pages()
 }
 add_action('init', 'tavaled_add_taxonomies_to_pages');
 
+/**
+ * Thêm trình soạn thảo (Rich Text Editor chuẩn như phần viết bài) cho mô tả danh mục product_cat
+ */
+add_action('admin_enqueue_scripts', function($hook) {
+    if ($hook === 'edit-tags.php' || $hook === 'term.php') {
+        $screen = get_current_screen();
+        if ($screen && $screen->id === 'edit-product_cat') {
+            wp_enqueue_media();
+            wp_enqueue_editor();
+        }
+    }
+});
+
+// Ẩn textarea mặc định của WordPress để thay bằng wp_editor
+add_action('admin_head', function() {
+    $screen = get_current_screen();
+    if ($screen && $screen->id === 'edit-product_cat') {
+        echo '<style>.term-description-wrap { display:none !important; }</style>';
+    }
+});
+
+// Giao diện Thêm mới (Add New)
+add_action('product_cat_add_form_fields', function() {
+    ?>
+    <div class="form-field">
+        <label for="cat_description">Mô tả chi tiết (Chuẩn SEO)</label>
+        <?php
+        wp_editor('', 'cat_description', array(
+            'textarea_name' => 'description', // Giữ nguyên name để WP tự lưu
+            'textarea_rows' => 10,
+            'media_buttons' => true,
+            'tinymce' => true,
+            'quicktags' => true
+        ));
+        ?>
+    </div>
+    <script>
+    jQuery(document).ready(function($) {
+        // Cập nhật nội dung TinyMCE vào textarea trước khi submit AJAX
+        $('#addtag').on('submit', function() {
+            if (typeof tinyMCE !== 'undefined') {
+                tinyMCE.triggerSave();
+            }
+        });
+
+        // Xoá nội dung Editor sau khi Thêm mới thành công
+        $(document).ajaxComplete(function(event, xhr, settings) {
+            if (settings.data && settings.data.includes('action=add-tag') && settings.data.includes('taxonomy=product_cat')) {
+                if (typeof tinyMCE !== 'undefined' && tinyMCE.get('cat_description')) {
+                    tinyMCE.get('cat_description').setContent('');
+                }
+            }
+        });
+    });
+    </script>
+    <?php
+});
+
+// Giao diện Chỉnh sửa (Edit)
+add_action('product_cat_edit_form_fields', function($term) {
+    ?>
+    <tr class="form-field">
+        <th scope="row"><label for="cat_description">Mô tả chi tiết (Chuẩn SEO)</label></th>
+        <td>
+            <?php
+            wp_editor(htmlspecialchars_decode($term->description), 'cat_description', array(
+                'textarea_name' => 'description',
+                'textarea_rows' => 15,
+                'media_buttons' => true,
+                'tinymce' => true,
+                'quicktags' => true
+            ));
+            ?>
+            <script>
+            jQuery(document).ready(function($) {
+                // Tích hợp dữ liệu vào bộ phân tích của Rank Math thông qua Hook chuẩn
+                if (typeof wp !== 'undefined' && wp.hooks) {
+                    wp.hooks.addFilter('rank_math_content', 'tavaled_cat_seo', function(content) {
+                        if (typeof tinyMCE !== 'undefined' && tinyMCE.get('cat_description')) {
+                            // Ghi đè content bằng nội dung của TinyMCE
+                            return tinyMCE.get('cat_description').getContent();
+                        }
+                        return content;
+                    });
+                }
+
+                // Đồng thời vẫn đồng bộ nội dung về textarea gốc mỗi giây
+                function syncToHiddenDesc() {
+                    if (typeof tinyMCE !== 'undefined' && tinyMCE.get('cat_description')) {
+                        var content = tinyMCE.get('cat_description').getContent();
+                        var hiddenDesc = $('textarea#description.large-text');
+                        if(hiddenDesc.length) {
+                            hiddenDesc.val(content).trigger('input').trigger('change');
+                        }
+                    }
+                }
+                setInterval(syncToHiddenDesc, 1000);
+            });
+            </script>
+        </td>
+    </tr>
+    <?php
+});
+
+// Cho phép lưu HTML/Rich Text vào term description
+remove_filter('pre_term_description', 'wp_filter_kses');
+remove_filter('term_description', 'wp_kses_data');

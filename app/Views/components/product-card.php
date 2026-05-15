@@ -28,24 +28,29 @@ $permalink = get_permalink($post->ID);
 $model      = get_post_meta($post->ID, '_product_model', true);
 $short_desc = get_post_meta($post->ID, '_product_short_desc', true);
 
-$terms_sub  = wp_get_post_terms($post->ID, 'product_subcat');
-$subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : '';
-
 $terms_brand = wp_get_post_terms($post->ID, 'product_brand');
-$brand_name  = !empty($terms_brand) ? $terms_brand[0]->name : '';
+$brand_name  = (!is_wp_error($terms_brand) && !empty($terms_brand)) ? $terms_brand[0]->name : '';
 
 $terms_cat   = wp_get_post_terms($post->ID, 'product_cat');
-$cat_name    = !empty($terms_cat) ? $terms_cat[0]->name : '';
+$cat_name    = '';
+$subcat_name = '';
+if (!is_wp_error($terms_cat) && !empty($terms_cat)) {
+    // Find parent and child
+    foreach($terms_cat as $t) {
+        if ($t->parent == 0) {
+            $cat_name = $t->name;
+        } else {
+            $subcat_name = $t->name;
+        }
+    }
+    // Fallbacks
+    if (!$cat_name) $cat_name = $terms_cat[0]->name;
+}
 
 // ── Badge ─────────────────────────────────────────────────
-$terms_badge = wp_get_post_terms($post->ID, 'product_badge');
-$badge_slug  = !empty($terms_badge) ? $terms_badge[0]->slug : '';
 $badge_label = '';
 $badge_color = '#f05a25';
-if ($badge_slug === 'new')  { $badge_label = 'Mới';  $badge_color = '#10b981'; }
-elseif ($badge_slug === 'hot')  { $badge_label = 'Hot';  $badge_color = '#ef4444'; }
-elseif ($badge_slug === 'sale') { $badge_label = 'Sale'; $badge_color = '#f59e0b'; }
-elseif (!empty($badge_slug))    { $badge_label = $terms_badge[0]->name; }
+// (Đã xóa taxonomy product_badge theo yêu cầu)
 
 // ── Meta display: model + subcat ─────────────────────────
 $meta_parts = array_filter([$model, $subcat_name]);

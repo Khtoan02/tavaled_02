@@ -8,8 +8,17 @@ get_header(); ?>
 // Helper function to pull dynamic SEO content from WP Pages
 function get_dynamic_seo_data($default_title, $default_content, $slugs) {
   foreach ($slugs as $slug) {
+    // 1. Ưu tiên lấy trực tiếp từ Taxonomy product_cat
+    $term = get_term_by('slug', $slug, 'product_cat');
+    if ($term && !empty($term->description)) {
+      return [
+        'seo_title' => $term->name,
+        'seo_content' => apply_filters('the_content', $term->description)
+      ];
+    }
+    // 2. Fallback: Nếu không có mô tả trong danh mục, lấy từ Page (lịch sử)
     $page = get_page_by_path($slug);
-    if ($page) {
+    if ($page && !empty($page->post_content)) {
       return [
         'seo_title' => $page->post_title,
         'seo_content' => apply_filters('the_content', $page->post_content)
@@ -89,8 +98,8 @@ $cat_definitions = [
 ];
 
 // 2. Fetch all actual terms from DB and inject any new ones!
-$all_terms = get_terms(['taxonomy' => 'product_industry', 'hide_empty' => false, 'parent' => 0]);
-$existing_slugs = ['man-hinh-led', 'am-thanh', 'anh-sang'];
+$all_terms = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => false, 'parent' => 0]);
+$existing_slugs = ['man-hinh-led', 'am-thanh', 'anh-sang', 'thiet-bi-am-thanh', 'thiet-bi-anh-sang'];
 
 if (!is_wp_error($all_terms) && !empty($all_terms)) {
   foreach ($all_terms as $term) {
@@ -1393,18 +1402,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
         </div>
       </div>
 
-      <!-- Specs filter -->
-      <div class="sidebar-section open" id="sec-spec">
-        <div class="sidebar-section__head" onclick="toggleSection('sec-spec')">
-          <span class="sidebar-section__title" id="spec-title">Thông số kỹ thuật</span>
-          <svg class="sidebar-section__arrow" viewBox="0 0 24 24">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </div>
-        <div class="sidebar-section__body">
-          <ul class="sub-list" id="spec-list"></ul>
-        </div>
-      </div>
+
 
     </aside>
 
@@ -1706,6 +1704,16 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
 
     // Query bằng slug — ổn định hơn name (không bị lỗi tiếng Việt hay cache)
     $cat_slugs = $def['cat_slugs'] ?? [sanitize_title($def['db_name'])];
+    
+    $parent_term = get_term_by('slug', $cat_slugs[0], 'product_cat');
+    $child_terms = [];
+    if ($parent_term) {
+        $child_terms = get_terms([
+            'taxonomy' => 'product_cat',
+            'parent' => $parent_term->term_id,
+            'hide_empty' => false,
+        ]);
+    }
 
     // Fetch products
     $args = [
@@ -1714,10 +1722,11 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
       'orderby' => ['menu_order' => 'ASC', 'date' => 'DESC'],
       'tax_query' => [
         [
-          'taxonomy' => 'product_industry',
+          'taxonomy' => 'product_cat',
           'field' => 'slug',
           'terms' => $cat_slugs,
           'operator' => 'IN',
+          'include_children' => true,
         ]
       ]
     ];
@@ -1745,10 +1754,14 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
           $img = $fallback_img;
 
         $terms_sub = wp_get_post_terms($post_id, 'product_cat');
-        $subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : '';
+        $subcat_name = '';
+        if (!empty($terms_sub)) {
+          foreach($terms_sub as $ts) {
+            if ($ts->parent != 0) { $subcat_name = $ts->name; break; }
+          }
+        }
         if ($subcat_name) {
-          if (!isset($subcats_raw[$subcat_name]))
-            $subcats_raw[$subcat_name] = 0;
+          if (!isset($subcats_raw[$subcat_name])) $subcats_raw[$subcat_name] = 0;
           $subcats_raw[$subcat_name]++;
         }
 
@@ -1757,8 +1770,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
         if ($brand_name)
           $brands_raw[$brand_name] = true;
 
-        $terms_badge = wp_get_post_terms($post_id, 'product_badge');
-        $badge_name = !empty($terms_badge) ? $terms_badge[0]->name : '';
+        $badge_name = ''; // Đã bỏ taxonomy product_badge
 
         ob_start();
         $GLOBALS['post'] = get_post($post_id);
@@ -1794,10 +1806,24 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     $built_subcats = [
       ['label' => 'Tất cả', 'count' => $total_count, 'active' => true]
     ];
-    foreach ($subcats_raw as $sc_name => $sc_count) {
-      $built_subcats[] = ['label' => $sc_name, 'count' => $sc_count];
+    
+    $dynamic_pills = ['Tất cả'];
+
+    if (!empty($child_terms) && !is_wp_error($child_terms)) {
+        foreach ($child_terms as $ct) {
+            $count = $subcats_raw[$ct->name] ?? 0;
+            $built_subcats[] = ['label' => $ct->name, 'count' => $count];
+            $dynamic_pills[] = $ct->name;
+        }
+    } else {
+        foreach ($subcats_raw as $sc_name => $sc_count) {
+          $built_subcats[] = ['label' => $sc_name, 'count' => $sc_count];
+        }
+        $dynamic_pills = $def['pills'] ?? ['Tất cả'];
     }
+    
     $dynamic_data[$cat_slug]['subcats'] = $built_subcats;
+    $dynamic_data[$cat_slug]['pills'] = $dynamic_pills;
   }
   ?>
   const DATA = <?php echo json_encode($dynamic_data, JSON_UNESCAPED_UNICODE); ?>;
@@ -1831,26 +1857,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     </li>`
     ).join('');
 
-    document.getElementById('spec-title').textContent = d.specTitle;
-    const specList = document.getElementById('spec-list');
-    if (d.specTitle === 'Pixel Pitch') {
-      specList.outerHTML = `<div class="spec-pill-grid" id="spec-list">${d.specs.map(s =>
-        `<button class="spec-pill-btn" data-val="${s.label}" data-cats='${JSON.stringify(s.cats)}' onclick="handleSpecPillExclusive(this); applyFilters()">
-          <span class="spec-pill-btn__val">${s.label}</span>
-        </button>`
-      ).join('')
-        }</div>`;
-    } else {
-      specList.outerHTML = `<ul class="sub-list" id="spec-list">${d.specs.map(s =>
-        `<li class="sub-item">
-          <label>
-            <input type="checkbox" value="${s.label}" onchange="handleCheckboxExclusive(this, 'spec-list'); applyFilters()">
-            ${s.label}
-          </label>
-        </li>`
-      ).join('')
-        }</ul>`;
-    }
+    // Đã xoá phần hiển thị thông số kỹ thuật (Pixel Pitch) theo yêu cầu
 
     const pills = document.getElementById('sub-pills');
     pills.innerHTML = d.pills.map((p, i) =>
@@ -1933,11 +1940,37 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   }
 
   function switchCat(catKey) {
-    let newPath = '/san-pham/';
-    if (catKey === 'led') newPath = '/man-hinh-led/';
-    else newPath = '/' + catKey + '/';
-    window.location.href = newPath;
+    let newPath = '/';
+    if (DATA[catKey] && DATA[catKey].cat_slugs && DATA[catKey].cat_slugs.length > 0) {
+        newPath = '/' + DATA[catKey].cat_slugs[0] + '/';
+    } else {
+        if (catKey === 'led') newPath = '/man-hinh-led/';
+        else newPath = '/' + catKey + '/';
+    }
+    
+    // Đổi URL mà KHÔNG reload trang (Load trong trang luôn theo yêu cầu)
+    window.history.pushState({cat: catKey}, '', newPath);
+    
+    // Đổi Active class cho các nút Tab
+    document.querySelectorAll('.cat-switch-btn').forEach(b => b.classList.remove('active'));
+    const activeTab = document.querySelector(`.cat-switch-btn[onclick*="'${catKey}'"]`);
+    if (activeTab) activeTab.classList.add('active');
+
+    // Chuyển Data và Render ngay lập tức
+    currentCat = catKey;
+    renderAll(catKey);
   }
+  
+  // Lắng nghe sự kiện Back/Forward của trình duyệt để render lại đúng tab
+  window.addEventListener('popstate', (e) => {
+    if (e.state && e.state.cat) {
+      document.querySelectorAll('.cat-switch-btn').forEach(b => b.classList.remove('active'));
+      const activeTab = document.querySelector(`.cat-switch-btn[onclick*="'${e.state.cat}'"]`);
+      if (activeTab) activeTab.classList.add('active');
+      currentCat = e.state.cat;
+      renderAll(currentCat);
+    }
+  });
 
   function toggleBrand(btn, brand) {
     btn.classList.toggle('active');
@@ -2174,10 +2207,13 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     const lastSegment = pathParts[pathParts.length - 1] || '';
 
     if (lastSegment === 'man-hinh-led') loadedCat = 'led';
+    else if (lastSegment === 'thiet-bi-am-thanh') loadedCat = 'am-thanh';
+    else if (lastSegment === 'thiet-bi-anh-sang') loadedCat = 'anh-sang';
     else if (DATA[lastSegment]) loadedCat = lastSegment;
     else {
       // Fallback fuzzy match
       for (let key in DATA) {
+        if (DATA[key].cat_slugs && DATA[key].cat_slugs.includes(lastSegment)) { loadedCat = key; break; }
         if (lastSegment.includes(key)) { loadedCat = key; break; }
       }
     }
