@@ -16,7 +16,12 @@ $thumbnail_url = has_post_thumbnail($post_id) ? get_the_post_thumbnail_url($post
 
 // Dynamic Meta for bulk import
 $gallery_raw = get_post_meta($post_id, '_product_gallery', true);
-$gallery_imgs = !empty($gallery_raw) ? array_map('trim', explode('|', $gallery_raw)) : [];
+$gallery_imgs = [];
+if (is_array($gallery_raw)) {
+    $gallery_imgs = $gallery_raw;
+} elseif (!empty($gallery_raw) && is_string($gallery_raw)) {
+    $gallery_imgs = array_map('trim', explode('|', $gallery_raw));
+}
 $overview = get_post_meta($post_id, '_product_overview', true) ?: get_post_meta($post_id, 'tong_quan', true);
 $specs = get_post_meta($post_id, '_product_specs', true) ?: get_post_meta($post_id, 'thong_so_ky_thuat', true);
 $install_info = get_post_meta($post_id, '_product_install_info', true) ?: get_post_meta($post_id, 'thong_tin_lap_dat', true);
@@ -24,17 +29,18 @@ $faq = get_post_meta($post_id, '_product_faq', true);
 
 // Phân loại
 $terms_cat = wp_get_post_terms($post_id, 'product_cat');
-$cat_name = !empty($terms_cat) ? $terms_cat[0]->name : 'Danh mục chung';
-$cat_url = !empty($terms_cat) && !is_wp_error($terms_cat[0]) ? get_term_link($terms_cat[0]) : home_url('/tat-ca-san-pham');
+$cat_name = (!is_wp_error($terms_cat) && !empty($terms_cat)) ? $terms_cat[0]->name : 'Danh mục chung';
+$cat_url_raw = (!is_wp_error($terms_cat) && !empty($terms_cat)) ? get_term_link($terms_cat[0]) : '';
+$cat_url = (!is_wp_error($cat_url_raw) && !empty($cat_url_raw)) ? $cat_url_raw : home_url('/tat-ca-san-pham');
 
 $terms_sub = wp_get_post_terms($post_id, 'product_subcat');
-$subcat_name = !empty($terms_sub) ? $terms_sub[0]->name : $cat_name;
+$subcat_name = (!is_wp_error($terms_sub) && !empty($terms_sub)) ? $terms_sub[0]->name : $cat_name;
 
 $terms_spec = wp_get_post_terms($post_id, 'product_spec');
-$spec_name = !empty($terms_spec) ? $terms_spec[0]->name : 'Tiêu chuẩn';
+$spec_name = (!is_wp_error($terms_spec) && !empty($terms_spec)) ? $terms_spec[0]->name : 'Tiêu chuẩn';
 
 $terms_brand = wp_get_post_terms($post_id, 'product_brand');
-$brand_name = !empty($terms_brand) ? $terms_brand[0]->name : 'TavaLLS';
+$brand_name = (!is_wp_error($terms_brand) && !empty($terms_brand)) ? $terms_brand[0]->name : 'TavaLLS';
 
 ?>
 
