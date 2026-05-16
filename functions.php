@@ -113,6 +113,10 @@ if (is_admin()) {
 
     $product_import_admin = new \App\Controllers\Admin\ProductImportController();
     $product_import_admin->register();
+
+    // Đăng ký Meta Box cho Sản phẩm
+    $product_meta_box = new \App\Controllers\Admin\ProductMetaBoxController();
+    $product_meta_box->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')
