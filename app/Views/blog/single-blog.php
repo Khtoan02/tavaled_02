@@ -300,25 +300,75 @@ $tags          = get_the_tags();
 .sb-prose table td{padding:.65em 1em;border:1px solid #e5e7eb}
 .sb-prose table tr:nth-child(even) td{background:#f9fafb}
 .sb-prose hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
-/* IMAGES — hiển thị đầy đủ, không cắt xén */
-.sb-prose img{
-  display:block !important;
-  max-width:100% !important;
-  width:100% !important;
-  height:auto !important;
-  border-radius:10px;
-  margin:1.75em 0;
-  cursor:zoom-in;
-  box-shadow:0 2px 14px rgba(0,0,0,.06);
-  transition:transform .3s ease,box-shadow .3s ease;
+/* ─── IMAGES: pattern from hieucon theme ─── */
+.sb-prose img {
+  display: block;
+  width: 100%;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 2rem auto;
+  cursor: zoom-in;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,.15);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.sb-prose img:hover{transform:scale(1.015);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-/* Figure wrapper */
-.sb-prose figure{margin:1.75em 0;border-radius:10px;overflow:hidden}
-.sb-prose figure img{margin:0 !important;border-radius:0;box-shadow:none;width:100% !important;height:auto !important;max-width:100% !important}
-.sb-prose figcaption{font-size:.78rem;color:#9ca3af;padding:.5em 1em .75em;font-style:italic;text-align:center}
-/* Lightbox: hiển thị ảnh đầy đủ */
-#sb-lightbox img{object-fit:contain !important;max-width:90vw !important;max-height:90vh !important;width:auto !important;height:auto !important;border-radius:8px;box-shadow:0 25px 50px rgba(0,0,0,.5)}
+.sb-prose img:hover { transform: scale(1.015); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+
+/* Aligned / floated images — giữ tỷ lệ gốc, không ép 16:9 */
+.sb-prose img.alignleft  { float: left;  margin-right: 1.5rem; margin-bottom: 1rem; width: 50%; aspect-ratio: auto; border-radius: 8px; }
+.sb-prose img.alignright { float: right; margin-left:  1.5rem; margin-bottom: 1rem; width: 50%; aspect-ratio: auto; border-radius: 8px; }
+.sb-prose img.aligncenter{ display: block; margin-left: auto; margin-right: auto; aspect-ratio: auto; }
+.sb-prose img.size-thumbnail,
+.sb-prose img.size-medium { width: auto; max-width: 100%; aspect-ratio: auto; }
+
+/* Figure wrapper — position relative để caption overlay */
+.sb-prose figure {
+  position: relative;
+  margin: 2rem auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.sb-prose figure img { margin: 0; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 0; box-shadow: none; cursor: zoom-in; }
+
+/* Figcaption: glassmorphism pill overlay */
+.sb-prose figcaption,
+.sb-prose .wp-caption-text {
+  position: absolute;
+  bottom: 1rem; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.70);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.8);
+  color: #111827;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: .4rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  text-align: center;
+  max-width: 85%;
+  z-index: 5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Lightbox: hiển thị ảnh đầy đủ không crop */
+#sb-lightbox img {
+  object-fit: contain !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  width: auto !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.5);
+}
 /* Sidebar scroll */
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:3px}
