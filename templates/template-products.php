@@ -1546,7 +1546,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
     <div style="display: flex; flex-wrap: wrap; gap: 50px;">
       <!-- Left: SEO Article -->
-      <div style="flex: 1; min-width: 0;">
+      <div id="seo-left-col" style="flex: 1; min-width: 0;">
         <h2 id="seo-title"
           style="font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--ink); margin: 0 0 24px; line-height: 1.2; letter-spacing: -0.02em;">
         </h2>
@@ -1572,19 +1572,19 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
       </div>
 
       <!-- Right: Widget Sidebar -->
-      <div
+      <div id="seo-right-col"
         style="width: 100%; max-width: 340px; flex-shrink: 0; padding-left: 30px; border-left: 1px solid var(--border-lt); position: sticky; top: 160px; align-self: flex-start; z-index: 10;">
         <!-- DỰ ÁN NỔI BẬT -->
         <h3
           style="margin-top:0; margin-bottom: 20px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
           <svg style="width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
           Dự án nổi bật</h3>
-        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px;">
           <?php
           $duan_query = new WP_Query([
             'post_type' => 'post',
             'category_name' => 'du-an',
-            'posts_per_page' => 4,
+            'posts_per_page' => 3,
             'orderby' => 'date',
             'order' => 'DESC'
           ]);
@@ -1597,17 +1597,13 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
                 style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 10px; border-radius: 12px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); border: 1px solid transparent;"
                 onmouseover="this.style.background='var(--white)'; this.style.borderColor='rgba(0,0,0,0.05)'; this.style.boxShadow='0 4px 16px rgba(17,24,39,0.04)'; this.querySelector('h4').style.color='var(--orange)'"
                 onmouseout="this.style.background='transparent'; this.style.borderColor='transparent'; this.style.boxShadow='none'; this.querySelector('h4').style.color='var(--ink)'">
-                <div
-                  style="width: 72px; height: 72px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-                  <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;" src="<?php echo esc_url($news_img); ?>"
-                    alt="<?php the_title_attribute(); ?>" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="width: 64px; height: 64px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>" alt="<?php the_title_attribute(); ?>">
                 </div>
-                <div style="flex: 1;">
-                  <h4
-                    style="margin: 0 0 6px; font-size: 13.5px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
+                <div style="flex: 1; min-width: 0;">
+                  <h4 style="margin: 0 0 4px; font-size: 13px; line-height: 1.4; font-weight: 700; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
                     <?php echo get_the_title(); ?></h4>
-                  <div style="font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.03em;">
-                    <?php echo get_the_date('d/m/Y'); ?></div>
+                  <div style="font-size: 11px; color: var(--muted);"><?php echo get_the_date('d/m/Y'); ?></div>
                 </div>
               </a>
               <?php
@@ -1617,53 +1613,77 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
           ?>
         </div>
 
-        <!-- TIN TỨC & KIẾN THỨC -->
-        <h3
-          style="margin-top:0; margin-bottom: 20px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
-          <svg style="width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          Tin tức & Kiến thức</h3>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <?php
-          $du_an_cat_id = get_cat_ID('du-an');
-          $tin_query = new WP_Query([
-            'post_type' => 'post',
-            'category__not_in' => $du_an_cat_id ? [$du_an_cat_id] : [],
-            'posts_per_page' => 4,
-            'orderby' => 'date',
-            'order' => 'DESC'
+        <!-- BÀI VIẾT THEO DANH MỤC (2 bài/danh mục, tất cả danh mục) -->
+        <?php
+        // Lấy tất cả danh mục bài viết (không rỗng, không có parent)
+        $all_post_cats = get_categories(['hide_empty' => true, 'orderby' => 'name', 'order' => 'ASC']);
+        foreach ($all_post_cats as $pcat) :
+          $cat_posts = get_posts([
+            'post_type'      => 'post',
+            'cat'            => $pcat->term_id,
+            'posts_per_page' => 2,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
           ]);
-          if ($tin_query->have_posts()) {
-            while ($tin_query->have_posts()) {
-              $tin_query->the_post();
-              $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Press';
-              ?>
-              <a href="<?php echo get_permalink(); ?>"
-                style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 10px; border-radius: 12px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); border: 1px solid transparent;"
-                onmouseover="this.style.background='var(--white)'; this.style.borderColor='rgba(0,0,0,0.05)'; this.style.boxShadow='0 4px 16px rgba(17,24,39,0.04)'; this.querySelector('h4').style.color='var(--orange)'"
-                onmouseout="this.style.background='transparent'; this.style.borderColor='transparent'; this.style.boxShadow='none'; this.querySelector('h4').style.color='var(--ink)'">
-                <div
-                  style="width: 72px; height: 72px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-                  <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;" src="<?php echo esc_url($news_img); ?>"
-                    alt="<?php the_title_attribute(); ?>" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-                <div style="flex: 1;">
-                  <h4
-                    style="margin: 0 0 6px; font-size: 13.5px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
-                    <?php echo get_the_title(); ?></h4>
-                  <div style="font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.03em;">
-                    <?php echo get_the_date('d/m/Y'); ?></div>
-                </div>
-              </a>
-              <?php
-            }
-            wp_reset_postdata();
-          }
-          ?>
+          if (empty($cat_posts)) continue;
+        ?>
+        <div style="margin-bottom: 28px;">
+          <h3 style="margin: 0 0 14px; border-bottom: 2px solid var(--orange); padding-bottom: 10px; font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <svg style="width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <?php echo esc_html($pcat->name); ?>
+          </h3>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <?php foreach ($cat_posts as $cp) :
+              $cp_img = get_the_post_thumbnail_url($cp->ID, 'medium') ?: 'https://placehold.co/400x400/fff8f6/f05a25?text=Post';
+            ?>
+            <a href="<?php echo get_permalink($cp->ID); ?>"
+              style="display: flex; gap: 12px; align-items: center; text-decoration: none; padding: 8px; border-radius: 10px; transition: all 0.2s; border: 1px solid transparent;"
+              onmouseover="this.style.background='var(--white)'; this.style.borderColor='rgba(0,0,0,0.05)'; this.style.boxShadow='0 3px 12px rgba(17,24,39,0.04)'; this.querySelector('h4').style.color='var(--orange)'"
+              onmouseout="this.style.background='transparent'; this.style.borderColor='transparent'; this.style.boxShadow='none'; this.querySelector('h4').style.color='var(--ink)'">
+              <div style="width: 60px; height: 60px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
+                <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($cp_img); ?>" alt="<?php echo esc_attr($cp->post_title); ?>" loading="lazy">
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <h4 style="margin: 0 0 3px; font-size: 12.5px; line-height: 1.4; font-weight: 700; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
+                  <?php echo esc_html($cp->post_title); ?></h4>
+                <div style="font-size: 11px; color: var(--muted);"><?php echo get_the_date('d/m/Y', $cp->ID); ?></div>
+              </div>
+            </a>
+            <?php endforeach; ?>
+          </div>
+          <a href="<?php echo esc_url(get_category_link($pcat->term_id)); ?>" style="display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 11.5px; font-weight: 700; color: var(--orange); text-decoration: none; letter-spacing: 0.03em;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+            Xem tất cả →
+          </a>
         </div>
+        <?php endforeach; ?>
+
       </div>
     </div>
   </div>
 </section>
+
+<script>
+/* Sync: ẩn nội dung trái bằng chiều cao widget phải */
+(function(){
+  function syncSeoHeight(){
+    var left = document.getElementById('seo-content-wrapper');
+    var right = document.getElementById('seo-right-col');
+    if(!left || !right) return;
+    var rh = right.offsetHeight;
+    if(rh > 100) {
+      left.style.maxHeight = rh + 'px';
+    }
+  }
+  /* Chạy sau khi JS tab render xong */
+  setTimeout(syncSeoHeight, 600);
+  window.addEventListener('resize', syncSeoHeight);
+  /* Chạy lại khi tab category đổi */
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.cat-tab')) setTimeout(syncSeoHeight, 400);
+  });
+})();
+</script>
 
 <!-- ================= SECTION: THƯ VIỆN DỰ ÁN ================= -->
 <section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
