@@ -300,34 +300,24 @@ $tags          = get_the_tags();
 .sb-prose table td{padding:.65em 1em;border:1px solid #e5e7eb}
 .sb-prose table tr:nth-child(even) td{background:#f9fafb}
 .sb-prose hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
-/* IMAGES — natural size, max-height cap, zoom-in cursor */
+/* IMAGES — hiển thị tự nhiên, không ép tỷ lệ */
 .sb-prose img{
   display:block;
   width:100%;
   height:auto;
-  max-height:520px;
-  object-fit:cover;
-  object-position:center top;
   border-radius:10px;
   margin:1.75em 0;
   cursor:zoom-in;
   box-shadow:0 2px 14px rgba(0,0,0,.06);
   transition:transform .3s ease,box-shadow .3s ease;
 }
-/* Small/inline images: don't stretch, show naturally */
-.sb-prose img[width]{
-  width:auto !important;
-  max-width:100%;
-  height:auto !important;
-  max-height:520px;
-  object-fit:contain;
-}
 .sb-prose img:hover{transform:scale(1.015);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-.sb-prose figure{margin:1.75em 0;background:#f9fafb;border-radius:10px;overflow:hidden}
-.sb-prose figure img{margin:0;border-radius:0;box-shadow:none;max-height:560px}
-.sb-prose figcaption{text-align:center;font-size:.78rem;color:#9ca3af;padding:.6em 1em .8em;font-style:italic}
-/* Lightbox img: always show full image, no cropping */
-#sb-lightbox img{object-fit:contain}
+/* Figure wrapper: căn giữa, có caption */
+.sb-prose figure{margin:1.75em 0;background:#f9fafb;border-radius:10px;overflow:hidden;text-align:center}
+.sb-prose figure img{margin:0;border-radius:0;box-shadow:none;width:100%;height:auto}
+.sb-prose figcaption{font-size:.78rem;color:#9ca3af;padding:.5em 1em .75em;font-style:italic}
+/* Lightbox luôn show full ảnh không crop */
+#sb-lightbox img{object-fit:contain;max-width:90vw;max-height:90vh;width:auto;height:auto}
 /* Sidebar scroll */
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:3px}
