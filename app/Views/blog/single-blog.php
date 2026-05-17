@@ -306,6 +306,9 @@ $tags          = get_the_tags();
   max-width:100% !important;
   width:100% !important;
   height:auto !important;
+  max-height:560px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
   border-radius:10px;
   margin:1.75em 0;
   cursor:zoom-in;
@@ -315,7 +318,7 @@ $tags          = get_the_tags();
 .sb-prose img:hover{transform:scale(1.015);box-shadow:0 8px 28px rgba(0,0,0,.1)}
 /* Figure wrapper */
 .sb-prose figure{margin:1.75em 0;background:#f9fafb;border-radius:10px;overflow:hidden;text-align:center}
-.sb-prose figure img{margin:0 !important;border-radius:0;box-shadow:none;width:100% !important;height:auto !important;max-width:100% !important}
+.sb-prose figure img{margin:0 !important;border-radius:0;box-shadow:none;width:100% !important;height:auto !important;max-width:100% !important;max-height:560px !important;object-fit:cover !important}
 .sb-prose figcaption{font-size:.78rem;color:#9ca3af;padding:.5em 1em .75em;font-style:italic}
 /* Lightbox: show full image, no crop */
 #sb-lightbox img{object-fit:contain !important;max-width:90vw !important;max-height:90vh !important;width:auto !important;height:auto !important;border-radius:8px;box-shadow:0 25px 50px rgba(0,0,0,.5)}
