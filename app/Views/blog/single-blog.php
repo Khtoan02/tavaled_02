@@ -141,14 +141,14 @@ $tags          = get_the_tags();
     $cta_first = $cta_cskh_data[0];
     $cta_first_tel = preg_replace('/[^0-9+]/', '', $cta_first['phone']);
     ?>
-    <div class="mt-10 rounded-2xl bg-gradient-to-br from-brand-dark to-brand-navy overflow-hidden relative p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-lg">
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-brand-dark to-brand-navy relative p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-lg" style="isolation:isolate">
       <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-brand-orange/25 blur-3xl pointer-events-none"></div>
       <div class="flex-1 text-center md:text-left relative">
         <p class="text-[11px] font-bold uppercase tracking-widest text-brand-orange mb-2">Tư vấn miễn phí</p>
         <h3 class="text-xl md:text-2xl font-extrabold text-white leading-snug mb-2">Cần tư vấn giải pháp màn hình LED?</h3>
         <p class="text-white/60 text-sm">Chuyên gia TavaLED hỗ trợ 24/7 — báo giá miễn phí, nhanh chóng.</p>
       </div>
-      <div class="flex flex-col sm:flex-row gap-3 relative">
+      <div class="flex flex-col sm:flex-row gap-3 relative" style="overflow:visible">
         <!-- CSKH Hover Dropdown Button -->
         <div class="relative group/cta">
           <a href="tel:<?php echo esc_attr($cta_first_tel); ?>"
@@ -160,10 +160,10 @@ $tags          = get_the_tags();
             <?php endif; ?>
           </a>
           <?php if (count($cta_cskh_data) > 0): ?>
-          <!-- Dropdown list -->
-          <div class="absolute bottom-full mb-2 left-0 min-w-[240px] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
-                      opacity-0 invisible translate-y-2 group-hover/cta:opacity-100 group-hover/cta:visible group-hover/cta:translate-y-0
-                      transition-all duration-200 z-50">
+          <!-- Dropdown list: xuất hiện phía TRÊN nút -->
+          <div class="absolute bottom-full left-0 mb-3 min-w-[240px] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
+                      opacity-0 invisible -translate-y-2 group-hover/cta:opacity-100 group-hover/cta:visible group-hover/cta:translate-y-0
+                      transition-all duration-200" style="z-index:9999">
             <div class="px-4 py-3 border-b border-gray-50">
               <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Đội ngũ CSKH</p>
             </div>
