@@ -60,7 +60,7 @@ $tags          = get_the_tags();
   <main class="w-full min-w-0 flex-1">
 
     <!-- Article card -->
-    <div class="bg-white rounded-2xl border border-gray-100 shadow-[0_2px_16px_rgba(0,0,0,0.04)] p-6 md:p-10">
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-[0_2px_16px_rgba(0,0,0,0.04)] p-6 md:p-10" style="overflow:hidden">
       <div class="sb-prose">
         <?php the_content(); ?>
       </div>
@@ -300,11 +300,12 @@ $tags          = get_the_tags();
 .sb-prose table td{padding:.65em 1em;border:1px solid #e5e7eb}
 .sb-prose table tr:nth-child(even) td{background:#f9fafb}
 .sb-prose hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
-/* IMAGES — hiển thị tự nhiên, không ép tỷ lệ */
+/* IMAGES — WordPress có inline width/height attr, phải dùng !important */
 .sb-prose img{
-  display:block;
-  width:100%;
-  height:auto;
+  display:block !important;
+  max-width:100% !important;
+  width:100% !important;
+  height:auto !important;
   border-radius:10px;
   margin:1.75em 0;
   cursor:zoom-in;
@@ -312,12 +313,12 @@ $tags          = get_the_tags();
   transition:transform .3s ease,box-shadow .3s ease;
 }
 .sb-prose img:hover{transform:scale(1.015);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-/* Figure wrapper: căn giữa, có caption */
+/* Figure wrapper */
 .sb-prose figure{margin:1.75em 0;background:#f9fafb;border-radius:10px;overflow:hidden;text-align:center}
-.sb-prose figure img{margin:0;border-radius:0;box-shadow:none;width:100%;height:auto}
+.sb-prose figure img{margin:0 !important;border-radius:0;box-shadow:none;width:100% !important;height:auto !important;max-width:100% !important}
 .sb-prose figcaption{font-size:.78rem;color:#9ca3af;padding:.5em 1em .75em;font-style:italic}
-/* Lightbox luôn show full ảnh không crop */
-#sb-lightbox img{object-fit:contain;max-width:90vw;max-height:90vh;width:auto;height:auto}
+/* Lightbox: show full image, no crop */
+#sb-lightbox img{object-fit:contain !important;max-width:90vw !important;max-height:90vh !important;width:auto !important;height:auto !important;border-radius:8px;box-shadow:0 25px 50px rgba(0,0,0,.5)}
 /* Sidebar scroll */
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:3px}
