@@ -300,62 +300,87 @@ $tags          = get_the_tags();
 .sb-prose table td{padding:.65em 1em;border:1px solid #e5e7eb}
 .sb-prose table tr:nth-child(even) td{background:#f9fafb}
 .sb-prose hr{border:none;border-top:1px solid #e5e7eb;margin:2em 0}
-/* ─── IMAGES: pattern from hieucon theme ─── */
+/* ─── IMAGES: ghi đè hoàn toàn WordPress default CSS ─── */
 .sb-prose img {
-  display: block;
-  width: 100%;
-  max-width: 100% !important;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 10px;
-  margin: 2rem auto;
-  cursor: zoom-in;
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,.15);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-.sb-prose img:hover { transform: scale(1.015); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
-
-/* Aligned / floated images — giữ tỷ lệ gốc, không ép 16:9 */
-.sb-prose img.alignleft  { float: left;  margin-right: 1.5rem; margin-bottom: 1rem; width: 50%; aspect-ratio: auto; border-radius: 8px; }
-.sb-prose img.alignright { float: right; margin-left:  1.5rem; margin-bottom: 1rem; width: 50%; aspect-ratio: auto; border-radius: 8px; }
-.sb-prose img.aligncenter{ display: block; margin-left: auto; margin-right: auto; aspect-ratio: auto; }
-.sb-prose img.size-thumbnail,
-.sb-prose img.size-medium { width: auto; max-width: 100%; aspect-ratio: auto; }
-
-/* Figure wrapper — position relative để caption overlay */
-.sb-prose figure {
-  position: relative;
-  margin: 2rem auto;
+  display: block !important;
   width: 100% !important;
   max-width: 100% !important;
-  height: auto;
-  border-radius: 10px;
-  overflow: hidden;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 10px !important;
+  margin: 2rem auto !important;
+  cursor: zoom-in !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,.15) !important;
+  transition: transform .3s ease, box-shadow .3s ease !important;
+  float: none !important;
 }
-.sb-prose figure img { margin: 0; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 0; box-shadow: none; cursor: zoom-in; }
+.sb-prose img:hover { transform: scale(1.015) !important; box-shadow: 0 8px 28px rgba(0,0,0,.12) !important; }
+
+/* Aligned / floated images — giữ tỷ lệ gốc, không ép 16:9 */
+.sb-prose img.alignleft  { float: left !important;  margin-right: 1.5rem !important; margin-bottom: 1rem !important; margin-left: 0 !important; width: 50% !important; aspect-ratio: auto !important; border-radius: 8px !important; }
+.sb-prose img.alignright { float: right !important; margin-left:  1.5rem !important; margin-bottom: 1rem !important; margin-right: 0 !important; width: 50% !important; aspect-ratio: auto !important; border-radius: 8px !important; }
+.sb-prose img.aligncenter { display: block !important; margin-left: auto !important; margin-right: auto !important; float: none !important; aspect-ratio: auto !important; }
+.sb-prose img.alignnone  { aspect-ratio: auto !important; width: auto !important; max-width: 100% !important; }
+.sb-prose img.size-thumbnail,
+.sb-prose img.size-medium { width: auto !important; max-width: 100% !important; aspect-ratio: auto !important; height: auto !important; }
+
+/* WordPress block editor image wrappers */
+.sb-prose .wp-block-image img,
+.sb-prose .wp-block-image figure img { aspect-ratio: 16/9 !important; object-fit: cover !important; width: 100% !important; height: auto !important; }
+.sb-prose .wp-block-image.alignleft img,
+.sb-prose .wp-block-image.alignright img { aspect-ratio: auto !important; }
+
+/* Figure wrapper */
+.sb-prose figure,
+.sb-prose .wp-caption {
+  position: relative !important;
+  margin: 2rem auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+.sb-prose figure img,
+.sb-prose .wp-caption img {
+  margin: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16/9 !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  cursor: zoom-in !important;
+}
 
 /* Figcaption: glassmorphism pill overlay */
 .sb-prose figcaption,
 .sb-prose .wp-caption-text {
-  position: absolute;
-  bottom: 1rem; left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,.70);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,.8);
-  color: #111827;
-  font-size: .8rem;
-  font-weight: 600;
-  padding: .4rem 1.25rem;
-  border-radius: 999px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.1);
-  text-align: center;
-  max-width: 85%;
-  z-index: 5;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  position: absolute !important;
+  bottom: 1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: rgba(255,255,255,.70) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255,255,255,.8) !important;
+  color: #111827 !important;
+  font-size: .8rem !important;
+  font-weight: 600 !important;
+  padding: .4rem 1.25rem !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1) !important;
+  text-align: center !important;
+  max-width: 85% !important;
+  z-index: 5 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+  width: auto !important;
 }
 
 /* Lightbox: hiển thị ảnh đầy đủ không crop */
@@ -366,8 +391,8 @@ $tags          = get_the_tags();
   width: auto !important;
   height: auto !important;
   aspect-ratio: auto !important;
-  border-radius: 8px;
-  box-shadow: 0 25px 50px rgba(0,0,0,.5);
+  border-radius: 8px !important;
+  box-shadow: 0 25px 50px rgba(0,0,0,.5) !important;
 }
 /* Sidebar scroll */
 .sb-scroll::-webkit-scrollbar{width:3px}
