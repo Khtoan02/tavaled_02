@@ -177,8 +177,88 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   .desc-content h5 { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); margin: 20px 0 10px; line-height: 1.4; }
   
   .desc-content p { margin-bottom: 16px; }
-  .desc-content img, .desc-content figure img { display: block; width: 100% !important; max-width: 100% !important; aspect-ratio: 16 / 9; border-radius: 10px; margin: 24px auto !important; box-shadow: 0 4px 20px rgba(0,0,0,0.06); object-fit: cover; object-position: center; }
-  .desc-content figure { max-width: 100% !important; margin: 24px 0; overflow: hidden; }
+
+  /* ─── IMAGES: same pattern as single-blog.php ─── */
+  .desc-content img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 10px !important;
+    margin: 24px auto !important;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,.15) !important;
+    transition: transform .3s ease, box-shadow .3s ease !important;
+    float: none !important;
+  }
+  .desc-content img:hover { transform: scale(1.015) !important; box-shadow: 0 8px 28px rgba(0,0,0,.12) !important; }
+
+  /* Aligned images — giữ tỷ lệ gốc */
+  .desc-content img.alignleft  { float: left !important;  margin-right: 1.5rem !important; margin-bottom: 1rem !important; margin-left: 0 !important; width: 50% !important; aspect-ratio: auto !important; border-radius: 8px !important; }
+  .desc-content img.alignright { float: right !important; margin-left:  1.5rem !important; margin-bottom: 1rem !important; margin-right: 0 !important; width: 50% !important; aspect-ratio: auto !important; border-radius: 8px !important; }
+  .desc-content img.aligncenter { display: block !important; margin-left: auto !important; margin-right: auto !important; float: none !important; aspect-ratio: auto !important; }
+  .desc-content img.alignnone  { aspect-ratio: auto !important; width: auto !important; max-width: 100% !important; }
+  .desc-content img.size-thumbnail,
+  .desc-content img.size-medium { width: auto !important; max-width: 100% !important; aspect-ratio: auto !important; height: auto !important; }
+
+  /* WordPress block editor */
+  .desc-content .wp-block-image img,
+  .desc-content .wp-block-image figure img { aspect-ratio: 16/9 !important; object-fit: cover !important; width: 100% !important; height: auto !important; }
+  .desc-content .wp-block-image.alignleft img,
+  .desc-content .wp-block-image.alignright img { aspect-ratio: auto !important; }
+
+  /* Figure wrapper */
+  .desc-content figure,
+  .desc-content .wp-caption {
+    position: relative !important;
+    margin: 24px auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+  .desc-content figure img,
+  .desc-content .wp-caption img {
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    object-fit: cover !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Figcaption: glassmorphism pill overlay */
+  .desc-content figcaption,
+  .desc-content .wp-caption-text {
+    position: absolute !important;
+    bottom: 1rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(255,255,255,.70) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255,255,255,.8) !important;
+    color: #111827 !important;
+    font-size: .8rem !important;
+    font-weight: 600 !important;
+    padding: .4rem 1.25rem !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1) !important;
+    text-align: center !important;
+    max-width: 85% !important;
+    z-index: 5 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+
   .desc-content iframe, .desc-content video { width: 100% !important; max-width: 100% !important; aspect-ratio: 16 / 9; border-radius: 10px; margin: 24px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
   .desc-content ul { list-style: none; margin-bottom: 16px; padding:0;}
   .desc-content ul li { padding: 6px 0 6px 22px; position: relative; line-height: 1.6; border-bottom: 1px solid var(--border-lt); }
