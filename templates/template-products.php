@@ -127,7 +127,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   /* ══════════════════
    RESET & VARIABLES FOR PRODUCT PAGE
 ══════════════════ */
-  .products-wrapper {
+  :root {
     --orange: #f05a25;
     --orange-dk: #c8451a;
     --orange-lt: #fde8df;
@@ -141,7 +141,9 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     --border: #e8ddd6;
     --border-lt: #f0e8e2;
     --sidebar-w: 256px;
-
+  }
+  
+  .products-wrapper {
     font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
@@ -150,10 +152,40 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     -webkit-font-smoothing: antialiased;
   }
 
-
-  .page-template-template-products-php .products-wrapper * {
+  .products-wrapper *, .desc-content * {
     box-sizing: border-box;
   }
+
+  /* ══════════════════
+   MARKDOWN DESC CONTENT (Optimized Article Layout)
+  ══════════════════ */
+  .desc-content { font-size: 15.5px; color: var(--mid); line-height: 1.75; }
+  .desc-content table { width: 100% !important; border-collapse: collapse; border: 1px solid #e5e7eb; margin: 24px 0; background: var(--white); display: block; overflow-x: auto; border-radius: 8px; }
+  .desc-content table th, .desc-content table td { padding: 12px 16px; font-size: 14px; color: var(--ink); border: 1px solid #e5e7eb; text-align: left; vertical-align: top; line-height: 1.5; min-width: 120px; }
+  .desc-content table th { background: #f9fafb; font-weight: 700; text-transform: uppercase; font-size: 12.5px; color: #4b5563; }
+  .desc-content table tbody td:first-child { width: 30%; font-weight: 600; background: #fcfcfd; color: #374151; }
+  .desc-content table tbody td:nth-child(2) { color: #4b5563; font-weight: 500; }
+  .desc-content table tbody tr:hover td { background: #f9fafb; }
+  
+  .desc-content h2 { font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem; color: var(--ink); margin: 36px 0 16px; position: relative; padding-left: 16px; letter-spacing: -0.01em; line-height: 1.4; }
+  .desc-content h2::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 4px; background: var(--orange); border-radius: 4px; }
+  
+  .desc-content h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin: 28px 0 14px; position: relative; padding-left: 14px; line-height: 1.4; }
+  .desc-content h3::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px; background: var(--orange); border-radius: 3px; opacity: 0.85; }
+  
+  .desc-content h4 { font-family: var(--font-heading); font-weight: 600; font-size: 1.15rem; color: var(--ink); margin: 24px 0 12px; line-height: 1.4; }
+  .desc-content h5 { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: var(--ink); margin: 20px 0 10px; line-height: 1.4; }
+  
+  .desc-content p { margin-bottom: 16px; }
+  .desc-content img, .desc-content figure img { display: block; width: 100% !important; max-width: 100% !important; aspect-ratio: 16 / 9; border-radius: 10px; margin: 24px auto !important; box-shadow: 0 4px 20px rgba(0,0,0,0.06); object-fit: cover; object-position: center; }
+  .desc-content figure { max-width: 100% !important; margin: 24px 0; overflow: hidden; }
+  .desc-content iframe, .desc-content video { width: 100% !important; max-width: 100% !important; aspect-ratio: 16 / 9; border-radius: 10px; margin: 24px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .desc-content ul { list-style: none; margin-bottom: 16px; padding:0;}
+  .desc-content ul li { padding: 6px 0 6px 22px; position: relative; line-height: 1.6; border-bottom: 1px solid var(--border-lt); }
+  .desc-content ul li:last-child { border-bottom: none; }
+  .desc-content ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); opacity: .7; }
+  .desc-content a { color: var(--orange); text-decoration: none; font-weight: 600; transition: color 0.2s; border-bottom: 1px solid transparent; }
+  .desc-content a:hover { color: var(--orange-dk); border-color: var(--orange-dk); }
 
 
   /* ══════════════════
@@ -259,11 +291,11 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
 ══════════════════ */
   .products-wrapper .sidebar {
     position: sticky;
-    top: calc(60px + 48px + 20px);
+    top: 160px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    max-height: calc(100vh - 160px);
+    gap: 12px; /* Tối ưu gap giữa các widget */
+    max-height: calc(100vh - 180px);
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
@@ -281,24 +313,36 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   /* Brand filter */
   .sidebar-section {
     background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(17,24,39,0.03);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  
+  .sidebar-section:hover {
+    box-shadow: 0 8px 24px rgba(17,24,39,0.06);
+    border-color: rgba(240,90,37,0.15);
   }
 
   .sidebar-section__head {
-    padding: 12px 14px;
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
     user-select: none;
+    transition: background 0.2s;
+  }
+  
+  .sidebar-section__head:hover {
+    background: #fafafb;
   }
 
   .sidebar-section__title {
     font-size: 11.5px;
     font-weight: 700;
-    letter-spacing: .1em;
+    letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--ink);
     display: flex;
@@ -329,7 +373,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   }
 
   .sidebar-section__body {
-    padding: 4px 0 8px;
+    padding: 6px 0 10px;
     border-top: 1px solid var(--border-lt);
     display: none;
   }
@@ -341,45 +385,47 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   /* Sub-category list */
   .sub-list {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   .sub-item {
     display: flex;
     align-items: center;
-    gap: 0;
   }
 
   .sub-item label {
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 7px 14px;
+    gap: 10px;
+    padding: 8px 16px;
     width: 100%;
-    font-size: 13px;
+    font-size: 13.5px;
     color: var(--mid);
     cursor: pointer;
-    transition: color .15s, background .15s;
-    border-radius: 0;
+    transition: all .2s;
     margin: 0;
   }
 
   .sub-item label:hover {
     color: var(--orange);
-    background: var(--orange-xlt);
+    background: #fafafb;
   }
 
   .sub-item input[type=checkbox] {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
     accent-color: var(--orange);
     cursor: pointer;
     margin: 0;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
   }
 
   .sub-item__count {
     margin-left: auto;
-    font-size: 10.5px;
+    font-size: 11px;
     color: var(--light);
     font-weight: 600;
   }
@@ -389,7 +435,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 10px 14px;
   }
 
   .brand-btn {
@@ -397,15 +443,16 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     align-items: center;
     justify-content: space-between;
     padding: 10px 14px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
+    background: var(--white);
+    border: 1px solid var(--border-lt);
+    border-radius: 8px;
     cursor: pointer;
     font-size: 13px;
-    font-weight: 700;
-    color: var(--muted);
+    font-weight: 600;
+    color: var(--mid);
     transition: all .2s;
     text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.01);
   }
 
   .brand-btn::after {
@@ -424,7 +471,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   .brand-btn:hover {
     border-color: var(--orange);
     color: var(--orange);
-    background: var(--orange-xlt);
+    box-shadow: 0 4px 12px rgba(240,90,37,0.08);
   }
 
   .brand-btn.active {
@@ -437,8 +484,8 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   .spec-pill-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 6px;
-    padding: 8px 10px;
+    gap: 8px;
+    padding: 10px 14px;
   }
 
   .spec-pill-btn {
@@ -446,19 +493,20 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 7px 4px 6px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 7px;
+    padding: 8px 6px;
+    background: var(--white);
+    border: 1px solid var(--border-lt);
+    border-radius: 8px;
     cursor: pointer;
-    transition: border-color .2s, background .2s, color .2s;
-    min-height: 44px;
+    transition: all .2s;
+    min-height: 48px;
     gap: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.01);
   }
 
   .spec-pill-btn:hover {
     border-color: var(--orange);
-    background: var(--orange-xlt);
+    box-shadow: 0 4px 12px rgba(240,90,37,0.08);
   }
 
   .spec-pill-btn.active {
@@ -467,11 +515,12 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   }
 
   .spec-pill-btn__val {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     color: var(--ink);
-    line-height: 1;
+    line-height: 1.2;
     transition: color .2s;
+    text-align: center;
   }
 
   .spec-pill-btn.active .spec-pill-btn__val,
@@ -480,7 +529,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   }
 
   .spec-pill-btn__count {
-    font-size: 9.5px;
+    font-size: 10px;
     color: var(--light);
     font-weight: 600;
     transition: color .2s;
@@ -1263,7 +1312,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
 
     .products-wrapper {
       max-width: 100vw;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
   }
 
@@ -1524,12 +1573,13 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
 
       <!-- Right: Widget Sidebar -->
       <div
-        style="width: 100%; max-width: 340px; flex-shrink: 0; padding-left: 30px; border-left: 1px solid var(--border-lt);">
+        style="width: 100%; max-width: 340px; flex-shrink: 0; padding-left: 30px; border-left: 1px solid var(--border-lt); position: sticky; top: 160px; align-self: flex-start; z-index: 10;">
         <!-- DỰ ÁN NỔI BẬT -->
         <h3
-          style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">
+          style="margin-top:0; margin-bottom: 20px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+          <svg style="width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
           Dự án nổi bật</h3>
-        <div style="display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px;">
           <?php
           $duan_query = new WP_Query([
             'post_type' => 'post',
@@ -1544,19 +1594,19 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
               $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Du+An';
               ?>
               <a href="<?php echo get_permalink(); ?>"
-                style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;"
-                onmouseover="this.querySelector('h4').style.color='var(--orange)'"
-                onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 10px; border-radius: 12px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); border: 1px solid transparent;"
+                onmouseover="this.style.background='var(--white)'; this.style.borderColor='rgba(0,0,0,0.05)'; this.style.boxShadow='0 4px 16px rgba(17,24,39,0.04)'; this.querySelector('h4').style.color='var(--orange)'"
+                onmouseout="this.style.background='transparent'; this.style.borderColor='transparent'; this.style.boxShadow='none'; this.querySelector('h4').style.color='var(--ink)'">
                 <div
-                  style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
-                  <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>"
-                    alt="<?php the_title_attribute(); ?>">
+                  style="width: 72px; height: 72px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                  <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;" src="<?php echo esc_url($news_img); ?>"
+                    alt="<?php the_title_attribute(); ?>" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
                 <div style="flex: 1;">
                   <h4
-                    style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
+                    style="margin: 0 0 6px; font-size: 13.5px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
                     <?php echo get_the_title(); ?></h4>
-                  <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;">
+                  <div style="font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.03em;">
                     <?php echo get_the_date('d/m/Y'); ?></div>
                 </div>
               </a>
@@ -1569,9 +1619,10 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
 
         <!-- TIN TỨC & KIẾN THỨC -->
         <h3
-          style="margin-top:0; margin-bottom: 24px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 15px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.05em;">
+          style="margin-top:0; margin-bottom: 20px; border-bottom: 2px solid var(--orange); padding-bottom: 12px; font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--ink); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+          <svg style="width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
           Tin tức & Kiến thức</h3>
-        <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
           <?php
           $du_an_cat_id = get_cat_ID('du-an');
           $tin_query = new WP_Query([
@@ -1587,19 +1638,19 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
               $news_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium') : 'https://placehold.co/400x400/fff8f6/f05a25?text=Press';
               ?>
               <a href="<?php echo get_permalink(); ?>"
-                style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;"
-                onmouseover="this.querySelector('h4').style.color='var(--orange)'"
-                onmouseout="this.querySelector('h4').style.color='var(--ink)'">
+                style="display: flex; gap: 14px; align-items: center; text-decoration: none; padding: 10px; border-radius: 12px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); border: 1px solid transparent;"
+                onmouseover="this.style.background='var(--white)'; this.style.borderColor='rgba(0,0,0,0.05)'; this.style.boxShadow='0 4px 16px rgba(17,24,39,0.04)'; this.querySelector('h4').style.color='var(--orange)'"
+                onmouseout="this.style.background='transparent'; this.style.borderColor='transparent'; this.style.boxShadow='none'; this.querySelector('h4').style.color='var(--ink)'">
                 <div
-                  style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1;">
-                  <img style="width: 100%; height: 100%; object-fit: cover;" src="<?php echo esc_url($news_img); ?>"
-                    alt="<?php the_title_attribute(); ?>">
+                  style="width: 72px; height: 72px; border-radius: 8px; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border-lt); aspect-ratio: 1/1; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                  <img style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;" src="<?php echo esc_url($news_img); ?>"
+                    alt="<?php the_title_attribute(); ?>" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
                 <div style="flex: 1;">
                   <h4
-                    style="margin: 0 0 6px; font-size: 13px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
+                    style="margin: 0 0 6px; font-size: 13.5px; line-height: 1.45; font-weight: 700; color: var(--ink); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; transition: color 0.2s;">
                     <?php echo get_the_title(); ?></h4>
-                  <div style="font-size: 11px; color: var(--muted); font-weight: 500; font-family: monospace;">
+                  <div style="font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.03em;">
                     <?php echo get_the_date('d/m/Y'); ?></div>
                 </div>
               </a>
