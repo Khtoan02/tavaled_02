@@ -49,54 +49,86 @@ get_header(); ?>
 
             <!-- Image slider -->
             <div class="hero-slider" id="heroSlider">
-                <div class="hero-slide hero-slide--active">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110034.jpg"
-                        alt="Sân khấu sự kiện LED TavaLED" loading="eager">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035-TavaLED.jpg"
-                        alt="Màn hình LED hội trường TavaLED" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035.jpg"
-                        alt="Hệ thống LED âm thanh ánh sáng" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-1-TavaLED.jpg"
-                        alt="Thi công màn hình LED chuyên nghiệp" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-TavaLED.jpg"
-                        alt="LED sân khấu ca nhạc TavaLED" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-1-TavaLED.jpg"
-                        alt="Lắp đặt màn hình LED toàn quốc" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-TavaLED.jpg"
-                        alt="Giải pháp LED âm thanh ánh sáng TavaLED" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/04/Man-hinh-LED-la-thiet-bi-hien-thi-khong-vien-kich-thuoc-lon-TavaLED.jpg"
-                        alt="Màn hình LED chuyên nghiệp TavaLED" loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://tdclassic.vn/wp-content/uploads/2026/01/tdclassic_cover-scaled.webp"
-                        alt="Hệ thống âm thanh ánh sáng sân khấu" loading="lazy">
-                </div>
+                <?php
+                $hero_ids_str = get_option('tavaled_home_hero_slides');
+                $hero_ids = !empty($hero_ids_str) ? explode(',', $hero_ids_str) : [];
+                $has_hero_slides = !empty($hero_ids);
+
+                if ($has_hero_slides) {
+                    $is_first = true;
+                    foreach ($hero_ids as $id) {
+                        $img_src = wp_get_attachment_image_url($id, 'full');
+                        if (!$img_src) continue;
+                        $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: get_the_title($id);
+                        ?>
+                        <div class="hero-slide<?php echo $is_first ? ' hero-slide--active' : ''; ?>">
+                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($alt); ?>" <?php echo $is_first ? 'loading="eager"' : 'loading="lazy"'; ?>>
+                        </div>
+                        <?php
+                        $is_first = false;
+                    }
+                } else {
+                    // Demo fallback content
+                    ?>
+                    <div class="hero-slide hero-slide--active">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110034.jpg"
+                            alt="Sân khấu sự kiện LED TavaLED" loading="eager">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035-TavaLED.jpg"
+                            alt="Màn hình LED hội trường TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035.jpg"
+                            alt="Hệ thống LED âm thanh ánh sáng" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-1-TavaLED.jpg"
+                            alt="Thi công màn hình LED chuyên nghiệp" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-TavaLED.jpg"
+                            alt="LED sân khấu ca nhạc TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-1-TavaLED.jpg"
+                            alt="Lắp đặt màn hình LED toàn quốc" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-TavaLED.jpg"
+                            alt="Giải pháp LED âm thanh ánh sáng TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Man-hinh-LED-la-thiet-bi-hien-thi-khong-vien-kich-thuoc-lon-TavaLED.jpg"
+                            alt="Màn hình LED chuyên nghiệp TavaLED" loading="lazy">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="https://tdclassic.vn/wp-content/uploads/2026/01/tdclassic_cover-scaled.webp"
+                            alt="Hệ thống âm thanh ánh sáng sân khấu" loading="lazy">
+                    </div>
+                <?php } ?>
 
                 <!-- Dot navigation -->
                 <div class="hero-slider__dots" id="heroSliderDots">
-                    <button class="hero-slider__dot hero-slider__dot--active" aria-label="Ảnh 1"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 2"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 3"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 4"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 5"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 6"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 7"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 8"></button>
-                    <button class="hero-slider__dot" aria-label="Ảnh 9"></button>
+                    <?php
+                    if ($has_hero_slides) {
+                        $count = count($hero_ids);
+                        for ($i = 0; $i < $count; $i++) {
+                            $active_class = ($i === 0) ? ' hero-slider__dot--active' : '';
+                            echo '<button class="hero-slider__dot' . $active_class . '" aria-label="Ảnh ' . ($i + 1) . '"></button>';
+                        }
+                    } else {
+                        ?>
+                        <button class="hero-slider__dot hero-slider__dot--active" aria-label="Ảnh 1"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 2"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 3"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 4"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 5"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 6"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 7"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 8"></button>
+                        <button class="hero-slider__dot" aria-label="Ảnh 9"></button>
+                    <?php } ?>
                 </div>
             </div>
 

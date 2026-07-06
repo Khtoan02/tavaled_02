@@ -276,20 +276,20 @@
                                 <?php
                                 $prod_url = home_url('/san-pham/');
 
-                                // Cấu hình ngành hàng chính → sub-categories động từ database
+                                // Cấu hình ngành hàng chính → sub-categories động từ database (Sử dụng slug để tránh lỗi Unicode/NFD khác nhau của tiếng Việt)
                                 $mega_cat_map = [
-                                    'mega-led' => ['db_name' => 'Màn hình LED', 'old_names' => [], 'url_slug' => 'led', 'default_title' => 'Màn hình LED', 'default_desc' => 'Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.'],
-                                    'mega-audio' => ['db_name' => 'Thiết bị âm thanh', 'old_names' => ['Âm thanh'], 'url_slug' => 'am-thanh', 'default_title' => 'Thiết bị Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
-                                    'mega-light' => ['db_name' => 'Thiết bị ánh sáng', 'old_names' => ['Ánh sáng'], 'url_slug' => 'anh-sang', 'default_title' => 'Thiết bị Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
+                                    'mega-led' => ['db_slug' => 'man-hinh-led', 'db_name' => 'Màn hình LED', 'old_slugs' => [], 'url_slug' => 'led', 'default_title' => 'Màn hình LED', 'default_desc' => 'Giải pháp hiển thị chuyên nghiệp độ phân giải siêu cao cho sự kiện, hội trường và phòng họp cấp cao.'],
+                                    'mega-audio' => ['db_slug' => 'thiet-bi-am-thanh', 'db_name' => 'Thiết bị âm thanh', 'old_slugs' => ['am-thanh'], 'url_slug' => 'am-thanh', 'default_title' => 'Thiết bị Âm thanh', 'default_desc' => 'Trải nghiệm âm thanh uy lực, phát thanh trung thực phủ sóng hoàn hảo mọi không gian sự kiện đặc trưng.'],
+                                    'mega-light' => ['db_slug' => 'thiet-bi-anh-sang', 'db_name' => 'Thiết bị ánh sáng', 'old_slugs' => ['anh-sang'], 'url_slug' => 'anh-sang', 'default_title' => 'Thiết bị Ánh sáng', 'default_desc' => 'Kiến tạo không gian nghệ thuật với các loại đèn và công nghệ chiếu sáng rực rỡ chuyên dụng cho sân khấu.'],
                                 ];
 
-                                // Lấy sub-categories động từ database cho từng ngành hàng
+                                // Lấy sub-categories động từ database cho từng ngành hàng bằng slug
                                 $mega_subcats = [];
                                 foreach ($mega_cat_map as $panel_id => $cat_def) {
-                                    $all_cat_names = array_merge([$cat_def['db_name']], $cat_def['old_names'] ?? []);
+                                    $all_cat_slugs = array_merge([$cat_def['db_slug']], $cat_def['old_slugs'] ?? []);
                                     $parent_term = null;
-                                    foreach ($all_cat_names as $cname) {
-                                        $t = get_term_by('name', $cname, 'product_cat');
+                                    foreach ($all_cat_slugs as $cslug) {
+                                        $t = get_term_by('slug', $cslug, 'product_cat');
                                         if ($t) { $parent_term = $t; break; }
                                     }
                                     
@@ -309,11 +309,10 @@
 
                                 // Ghi đè default_desc bằng description của term nếu admin đã điền
                                 foreach ($mega_cat_map as $panel_id => $cat_def) {
-                                    // Thử tên mới trước, sau đó tên cũ nếu không tìm thấy
-                                    $term = get_term_by('name', $cat_def['db_name'], 'product_cat');
-                                    if (!$term && !empty($cat_def['old_names'])) {
-                                        foreach ($cat_def['old_names'] as $old_name) {
-                                            $term = get_term_by('name', $old_name, 'product_cat');
+                                    $term = get_term_by('slug', $cat_def['db_slug'], 'product_cat');
+                                    if (!$term && !empty($cat_def['old_slugs'])) {
+                                        foreach ($cat_def['old_slugs'] as $old_slug) {
+                                            $term = get_term_by('slug', $old_slug, 'product_cat');
                                             if ($term)
                                                 break;
                                         }
@@ -469,8 +468,8 @@
                                                                 'tax_query' => array(
                                                                     array(
                                                                         'taxonomy' => 'product_cat',
-                                                                        'field' => 'name',
-                                                                        'terms' => 'Màn hình LED'
+                                                                        'field' => 'slug',
+                                                                        'terms' => 'man-hinh-led'
                                                                     )
                                                                 )
                                                             ));
@@ -551,8 +550,8 @@
                                                                 'tax_query' => array(
                                                                     array(
                                                                         'taxonomy' => 'product_cat',
-                                                                        'field' => 'name',
-                                                                        'terms' => 'Thiết bị âm thanh'
+                                                                        'field' => 'slug',
+                                                                         'terms' => 'thiet-bi-am-thanh'
                                                                     )
                                                                 )
                                                             ));
@@ -633,8 +632,8 @@
                                                                 'tax_query' => array(
                                                                     array(
                                                                         'taxonomy' => 'product_cat',
-                                                                        'field' => 'name',
-                                                                        'terms' => 'Thiết bị ánh sáng'
+                                                                        'field' => 'slug',
+                                                                         'terms' => 'thiet-bi-anh-sang'
                                                                     )
                                                                 )
                                                             ));

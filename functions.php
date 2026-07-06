@@ -117,6 +117,10 @@ if (is_admin()) {
     // Đăng ký Meta Box cho Sản phẩm
     $product_meta_box = new \App\Controllers\Admin\ProductMetaBoxController();
     $product_meta_box->register();
+
+    // Đăng ký quản lý Slide Hero Trang chủ
+    $hero_slider_admin = new \App\Controllers\Admin\HeroSliderController();
+    $hero_slider_admin->register();
 }
 
 // Gọi đăng ký Custom Post Type 'sản phẩm' (sẽ chạy hook 'init')
