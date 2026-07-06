@@ -380,11 +380,18 @@ add_filter('posts_orderby', 'tavaled_custom_product_order', 10, 2);
 function tavaled_reverse_admin_product_order($query)
 {
     if (is_admin() && $query->is_main_query() && $query->get('post_type') === 'tava_product') {
-        $order = $query->get('order') ?: 'DESC';
-        $new_order = (strtoupper($order) === 'ASC') ? 'DESC' : 'ASC';
-
-        $query->set('orderby', 'date');
-        $query->set('order', $new_order);
+        // Chỉ đặt sắp xếp mặc định khi admin không click cột sắp xếp cụ thể
+        if (empty($_GET['orderby'])) {
+            $query->set('orderby', 'date');
+            $query->set('order', 'DESC');
+        } else {
+            // Hỗ trợ sắp xếp theo model nếu click cột Mã Model
+            $orderby = $query->get('orderby');
+            if ($orderby === 'model') {
+                $query->set('meta_key', '_product_model');
+                $query->set('orderby', 'meta_value');
+            }
+        }
     }
 }
 add_action('pre_get_posts', 'tavaled_reverse_admin_product_order');

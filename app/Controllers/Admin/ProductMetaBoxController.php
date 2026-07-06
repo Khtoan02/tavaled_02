@@ -18,8 +18,8 @@ class ProductMetaBoxController {
                     .tava-meta-box-tabs { margin-bottom: 15px; border-bottom: 1px solid #ccd0d4; }
                     .tava-meta-box-tabs a { text-decoration: none; display: inline-block; padding: 10px 15px; border: 1px solid transparent; border-bottom: none; margin-bottom: -1px; background: #f1f1f1; color: #555; }
                     .tava-meta-box-tabs a.active { background: #fff; border-color: #ccd0d4; border-bottom-color: #fff; color: #2271b1; font-weight: bold; }
-                    .tava-tab-content { display: none; padding: 15px 0; }
-                    .tava-tab-content.active { display: block; }
+                    .tava-tab-content { position: absolute; left: -99999px; top: -99999px; height: 0; overflow: hidden; padding: 0; }
+                    .tava-tab-content.active { position: static; left: auto; top: auto; height: auto; overflow: visible; padding: 15px 0; }
                     .tava-form-group { margin-bottom: 20px; }
                     .tava-form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
                     .tava-form-group input[type="text"], .tava-form-group textarea { width: 100%; max-width: 100%; }
@@ -119,6 +119,8 @@ class ProductMetaBoxController {
                 $(this).addClass('active');
                 $('.tava-tab-content').removeClass('active');
                 $($(this).attr('href')).addClass('active');
+                // Trigger window resize to refresh editor layout
+                window.dispatchEvent(new Event('resize'));
             });
 
             // Khởi tạo WP Media Frame cho Gallery

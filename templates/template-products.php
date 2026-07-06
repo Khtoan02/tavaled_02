@@ -1770,7 +1770,7 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
   <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
     <div class="main-tava-heading main-tava-heading--light">
       <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
-      <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLLS</em></h3>
+      <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLED</em></h3>
       <p class="main-tava-heading__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi định nghĩa
         lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
     </div>
@@ -1787,23 +1787,32 @@ if (!is_wp_error($all_terms) && !empty($all_terms)) {
           $img_src = wp_get_attachment_image_url($id, 'full');
           if (!$img_src)
             continue;
+
+          $width = 800;
+          $height = 600;
+          $img_meta = wp_get_attachment_metadata($id);
+          if (!empty($img_meta) && isset($img_meta['width'], $img_meta['height'])) {
+            $width = intval($img_meta['width']);
+            $height = intval($img_meta['height']);
+          }
+          $aspect_ratio = $height > 0 ? ($width / $height) : 1.5;
           ?>
-          <div class="g-item">
+          <div class="g-item" style="--aspect: <?php echo $aspect_ratio; ?>;">
             <img src="<?php echo esc_url($img_src); ?>" alt="" loading="lazy">
           </div>
         <?php
         }
       } else {
         ?>
-        <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg" alt="EDM">
+        <div class="g-item" style="--aspect: 1.6;"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg" alt="EDM">
         </div>
-        <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg" alt="Club">
+        <div class="g-item" style="--aspect: 1.2;"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg" alt="Club">
         </div>
-        <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg"
+        <div class="g-item" style="--aspect: 1.5;"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg"
             alt="Laser"></div>
-        <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg"
+        <div class="g-item" style="--aspect: 1.8;"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg"
             alt="Concert"></div>
-        <div class="g-item"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0028_TavaLED_Hinh_Anh.jpg"
+        <div class="g-item" style="--aspect: 1.4;"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0028_TavaLED_Hinh_Anh.jpg"
             alt="Stage"></div>
       <?php } ?>
     </div>

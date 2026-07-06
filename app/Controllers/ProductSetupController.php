@@ -6,6 +6,12 @@ class ProductSetupController {
     public function register() {
         add_action('init', [$this, 'registerCustomPostType'], 0);
         add_action('init', [$this, 'registerTaxonomies'], 0);
+
+        if (is_admin()) {
+            add_filter('manage_tava_product_posts_columns', [$this, 'setCustomColumns']);
+            add_action('manage_tava_product_posts_custom_column', [$this, 'renderCustomColumns'], 10, 2);
+            add_filter('manage_edit-tava_product_sortable_columns', [$this, 'setSortableColumns']);
+        }
     }
 
     public function registerCustomPostType() {
@@ -89,5 +95,46 @@ class ProductSetupController {
             'query_var'         => true,
         ]);
 
+    }
+
+    public function setCustomColumns($columns) {
+        $new_columns = [];
+        $new_columns['cb'] = $columns['cb'];
+        $new_columns['thumbnail'] = 'Ảnh';
+        $new_columns['title'] = $columns['title'];
+        $new_columns['model'] = 'Mã Model';
+        $new_columns['taxonomy-product_cat'] = 'Danh mục';
+        $new_columns['taxonomy-product_brand'] = 'Nhãn hàng';
+        $new_columns['menu_order'] = 'Thứ tự';
+        $new_columns['date'] = $columns['date'];
+        return $new_columns;
+    }
+
+    public function renderCustomColumns($column, $post_id) {
+        switch ($column) {
+            case 'thumbnail':
+                $product_img = get_post_meta($post_id, '_product_img', true);
+                $thumbnail_url = has_post_thumbnail($post_id) ? get_the_post_thumbnail_url($post_id, [50, 50]) : (!empty($product_img) ? $product_img : '');
+                if ($thumbnail_url) {
+                    echo '<img src="' . esc_url($thumbnail_url) . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;" />';
+                } else {
+                    echo '<span style="color: #999; font-size: 11px;">Không có</span>';
+                }
+                break;
+            case 'model':
+                $model = get_post_meta($post_id, '_product_model', true);
+                echo esc_html($model ?: '—');
+                break;
+            case 'menu_order':
+                $post = get_post($post_id);
+                echo intval($post->menu_order);
+                break;
+        }
+    }
+
+    public function setSortableColumns($columns) {
+        $columns['model'] = 'model';
+        $columns['menu_order'] = 'menu_order';
+        return $columns;
     }
 }
