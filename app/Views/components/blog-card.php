@@ -31,7 +31,7 @@ $thumbnail_url = '';
 if (has_post_thumbnail($post_id)) {
     $thumbnail_url = get_the_post_thumbnail_url($post_id, 'medium');
 }
-if (empty($thumbnail_url) || strpos($thumbnail_url, 'tavaled.vn') !== false || strpos($thumbnail_url, 'Chưa có dữ liệu') !== false) {
+if (empty($thumbnail_url) || strpos($thumbnail_url, 'Chưa có dữ liệu') !== false) {
     $thumbnail_url = $fallback_img;
 }
 

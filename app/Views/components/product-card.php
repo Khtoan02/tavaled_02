@@ -19,13 +19,13 @@ if (has_post_thumbnail($post->ID)) {
     $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'medium');
 }
 
-// Kiểm tra xem URL ảnh hiện tại có bị lỗi / rỗng / trỏ sang tên miền cũ không
+// Kiểm tra xem URL ảnh hiện tại có bị lỗi / rỗng không
 $is_broken_url = false;
-if (empty($thumbnail_url) || strpos($thumbnail_url, 'tavaled.vn') !== false || strpos($thumbnail_url, 'Chưa') !== false || strpos($thumbnail_url, 'dữ') !== false || strpos($thumbnail_url, 'liệu') !== false || (substr($thumbnail_url, 0, 4) !== 'http' && substr($thumbnail_url, 0, 1) !== '/')) {
+if (empty($thumbnail_url) || strpos($thumbnail_url, 'Chưa') !== false || strpos($thumbnail_url, 'dữ') !== false || strpos($thumbnail_url, 'liệu') !== false || (substr($thumbnail_url, 0, 4) !== 'http' && substr($thumbnail_url, 0, 1) !== '/')) {
     $is_broken_url = true;
 }
 
-$is_meta_valid = !empty($product_img_meta) && strpos($product_img_meta, 'tavaled.vn') === false && strpos($product_img_meta, 'Chưa') === false && strpos($product_img_meta, 'dữ') === false && strpos($product_img_meta, 'liệu') === false && (substr($product_img_meta, 0, 4) === 'http' || substr($product_img_meta, 0, 1) === '/');
+$is_meta_valid = !empty($product_img_meta) && strpos($product_img_meta, 'Chưa') === false && strpos($product_img_meta, 'dữ') === false && strpos($product_img_meta, 'liệu') === false && (substr($product_img_meta, 0, 4) === 'http' || substr($product_img_meta, 0, 1) === '/');
 
 if ($is_broken_url && $is_meta_valid) {
     $meta_attach_id = attachment_url_to_postid($product_img_meta);
