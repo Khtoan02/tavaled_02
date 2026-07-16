@@ -614,9 +614,8 @@
 <style>
 .tava-share-widget {
     position: fixed;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 24px;
+    bottom: 32px;
     display: flex;
     flex-direction: column;
     gap: 12px;
