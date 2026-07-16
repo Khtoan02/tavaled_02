@@ -1367,7 +1367,7 @@ get_header(); ?>
           tất cả →</a>
       </div>
       <div class="cases rv d1">
-        <a href="#" class="case case--main"><img
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case case--main"><img
             src="https://tavaled.vn/wp-content/uploads/2026/03/0050_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1377,7 +1377,7 @@ get_header(); ?>
                 class="spec">CMS tập trung</span><span class="spec">12 tỉnh</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0051_TavaLED_Hinh_Anh.jpg"
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0051_TavaLED_Hinh_Anh.jpg"
             alt="" loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1386,7 +1386,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">P2.5 Indoor</span><span class="spec">120 màn hình</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0052_TavaLED_Hinh_Anh.jpg"
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0052_TavaLED_Hinh_Anh.jpg"
             alt="" loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">

@@ -16,7 +16,7 @@ if ( ! $post ) {
 // 2. KHỞI TẠO BIẾN & LẤY DỮ LIỆU WORDPRESS
 $variant        = $args['variant']        ?? 'sm';
 $category_label = $args['category_label'] ?? '';
-$fallback_img   = $args['fallback_img']   ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0020_TavaLED_Hinh_Anh.jpg';
+$fallback_img   = $args['fallback_img']   ?? 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80';
 $cta_text       = $args['cta_text']       ?? 'Đọc chi tiết';
 $date_format    = $args['date_format']    ?? 'd/m/Y';
 $theme          = $args['theme']          ?? 'dark';
@@ -26,6 +26,21 @@ $title     = get_the_title( $post_id );
 $permalink = get_permalink( $post_id );
 $date      = get_the_date( $date_format, $post_id );
 $excerpt   = get_the_excerpt( $post_id );
+
+$thumbnail_url = '';
+if (has_post_thumbnail($post_id)) {
+    $thumbnail_url = get_the_post_thumbnail_url($post_id, 'medium');
+}
+if (empty($thumbnail_url) || strpos($thumbnail_url, 'tavaled.vn') !== false || strpos($thumbnail_url, 'Chưa có dữ liệu') !== false) {
+    $thumbnail_url = $fallback_img;
+}
+
+global $tava_blog_card_counter;
+if (!isset($tava_blog_card_counter)) {
+    $tava_blog_card_counter = 0;
+}
+$tava_blog_card_counter++;
+$alt_text = 'Tin tức ' . $title . ' - Bài viết TavaLLS số ' . $tava_blog_card_counter;
 
 // Tự động lấy danh mục nếu không truyền tay
 if ( empty( $category_label ) ) {
@@ -72,9 +87,8 @@ switch ( $variant ) {
 
 <?php
 // ── In CSS một lần duy nhất per-page (tránh duplicate khi render nhiều card) ──
-static $tava_card_css_printed = false;
-if ( ! $tava_card_css_printed ) :
-    $tava_card_css_printed = true;
+if ( ! defined('TAVA_BLOG_CARD_CSS_PRINTED') ) :
+    define('TAVA_BLOG_CARD_CSS_PRINTED', true);
 ?>
 <style id="tava-blog-card-css">
 /* ==========================================================================
@@ -279,11 +293,8 @@ if ( ! $tava_card_css_printed ) :
         <a href="<?php echo esc_url($permalink); ?>" class="tava-global-overlay" aria-label="<?php echo esc_attr($title); ?>"></a>
 
         <div class="tava-3d-img-box">
-            <?php if ( has_post_thumbnail( $post_id ) ) : 
-                echo get_the_post_thumbnail( $post_id, ($variant === 'big') ? 'large' : 'medium', ['class' => 'w-full h-full object-cover'] );
-            else : ?>
-                <img src="<?php echo esc_url($fallback_img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy">
-            <?php endif; ?>
+            <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr($alt_text); ?>"
+                class="w-full h-full object-cover" loading="lazy">
             
             <div class="tava-tech-node">
                 <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -312,6 +323,7 @@ if ( ! $tava_card_css_printed ) :
                 <div class="flex items-center gap-3">
                     <button class="tava-card-btn tava-btn-interactive w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 shadow-sm" aria-label="Yêu thích">
                         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Yêu thích bài viết</span>
                     </button>
                     <span class="tava-card-date text-[12px] font-semibold tracking-wider"><?php echo esc_html($date); ?></span>
                 </div>

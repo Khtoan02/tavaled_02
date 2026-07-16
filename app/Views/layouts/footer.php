@@ -31,96 +31,92 @@
             <!-- Cột 1: LED Trong nhà & Ghép -->
             <div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Màn hình LED trong nhà</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P0.9 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.25 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.53 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.8 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2.5 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3 trong nhà</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3.0 trong nhà</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Màn hình ghép</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép BOE</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép Orion</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép Vestel</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
+ 
             <!-- Cột 2: LED Ngoài trời & Ứng dụng -->
             <div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Màn hình LED ngoài trời</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2.5 ngoài trời</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3 ngoài trời</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P4 ngoài trời</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P5 ngoài trời</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P10 ngoài trời</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Giải pháp trọn gói</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
                             <li><a href="/giao-duc"
@@ -149,69 +145,66 @@
             <!-- Cột 3: Âm thanh 1 -->
             <div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Bàn trộn âm thanh</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer
                                     Analog</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer
                                     Digital (Kỹ thuật số)</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer liền
                                     công suất</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Loa chuyên nghiệp</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Full (Toàn dải)</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Sub (Siêu trầm)</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Array (Treo sân khấu)</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Monitor (Kiểm âm)</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Thiết bị khuếch đại</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
                                     đẩy công suất 2 kênh</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
                                     đẩy công suất 4 kênh</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Amply
                                     Karaoke / Nghe nhạc</a></li>
                         </ul>
@@ -222,75 +215,72 @@
             <!-- Cột 4: Âm thanh 2 -->
             <div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Bộ xử lý tín hiệu</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Vang số /
                                     Vang cơ (DSP)</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Crossover
                                     (Phân tần)</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Equalizer
                                     (Lọc xì)</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Compressor
                                     (Nén âm)</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Microphone</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro không
                                     dây</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro có
                                     dây</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro cổ
                                     ngỗng (Hội thảo)</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-8">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Phụ kiện & Nguồn</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Bộ
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Bộ
                                     quản lý nguồn điện</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dây
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dây
                                     cáp, Jack cắm (Neutrik...)</a></li>
-                            <li><a href="#" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tủ
+                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tủ
                                     máy thiết bị (Tủ Rack)</a></li>
-                            <li><a href="#"
+                            <li><a href="/am-thanh/"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chân loa,
                                     giá treo</a></li>
                         </ul>
@@ -300,17 +290,16 @@
 
             <!-- Cột 5: Dự án & Chính sách -->
             <div>
-                <!-- Về TavaLED -->
+                <!-- Về TavaLLS -->
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
-                        <span>Về TavaLED</span>
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                        <span>Về TavaLLS</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
                             <li><a href="/ve-chung-toi"
@@ -324,7 +313,7 @@
                                     lực</a></li>
                             <li><a href="/chuyen-gia"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chuyên gia
-                                    TavaLED</a></li>
+                                    TavaLLS</a></li>
                             <li><a href="/tuyen-dung"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cơ hội nghề
                                     nghiệp</a></li>
@@ -337,15 +326,14 @@
 
                 <!-- Chính sách -->
                 <div class="border-b border-slate-700/50 lg:border-none pb-3 lg:pb-0 mb-3 lg:mb-10 lg:mt-6">
-                    <h4
-                        class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
+                    <div role="heading" aria-level="4" class="footer-heading flex justify-between items-center cursor-pointer lg:cursor-default text-white font-bold uppercase text-sm tracking-wider mb-1 lg:mb-5 border-l-2 border-brand-orange pl-3">
                         <span>Chính sách & Quy định</span>
                         <svg class="w-5 h-5 lg:hidden transform transition-transform duration-300 chevron-icon text-slate-500"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
-                    </h4>
+                    </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
                             <li><a href="<?php echo home_url('/chinh-sach-bao-hanh'); ?>"
@@ -360,6 +348,10 @@
                             <li><a href="<?php echo home_url('/chinh-sach-thanh-toan'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách
                                     thanh toán</a></li>
+                            <li><a href="<?php echo home_url('/chinh-sach-kiem-duyet'); ?>"
+                                    class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách kiểm duyệt thông tin</a></li>
+                            <li><a href="<?php echo home_url('/chung-chi-nang-luc'); ?>"
+                                    class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chứng chỉ năng lực chuyên môn</a></li>
                         </ul>
                     </div>
                 </div>
@@ -371,8 +363,8 @@
                         <img src="https://images.dmca.com/Badges/DMCA_badge_grn_60w.png?ID=b0b7c935-c097-42d6-993d-fc94ddf78bf2"
                             alt="DMCA.com Protection Status" style="height: 70px; width: auto;">
                     </a>
-                    <a href="#" class="hover:opacity-80 transition-opacity shrink-0" title="Cam kết 100% Chính hãng">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/05/Noi-khong-voi-hang-gia.png"
+                    <a href="<?php echo home_url('/chinh-sach-bao-hanh'); ?>" class="hover:opacity-80 transition-opacity shrink-0" title="Cam kết 100% Chính hãng">
+                        <img src="<?php echo esc_url(TAVALED_URI . '/assets/images/noi-khong-voi-hang-gia.png'); ?>"
                             alt="Nói không với hàng giả" style="height: 70px; width: auto;">
                     </a>
                 </div>
@@ -389,12 +381,12 @@
 
                 <!-- LEFT: Thông tin liên hệ (3/5) -->
                 <div class="lg:col-span-3 p-6 lg:p-8 flex flex-col justify-center">
-                    <h3 class="text-white font-bold text-[15px] uppercase tracking-wider mb-6 flex items-center gap-2.5">
+                    <div role="heading" aria-level="3" class="text-white font-bold text-[15px] uppercase tracking-wider mb-6 flex items-center gap-2.5">
                         <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(240,90,37,0.15); border: 1px solid rgba(240,90,37,0.25);">
                             <i class="ph-fill ph-buildings text-brand-orange text-sm"></i>
                         </div>
                         Trụ sở & Liên hệ
-                    </h3>
+                    </div>
 
                     <!-- Info Items — clean inline style -->
                     <div class="space-y-5">
@@ -475,7 +467,7 @@
                         <i class="ph-fill ph-headset text-brand-orange text-lg"></i>
                     </div>
                     <div>
-                        <h3 class="text-white font-bold text-[15px] uppercase tracking-wider leading-tight">Hỗ trợ khách hàng & Kinh doanh</h3>
+                        <div role="heading" aria-level="3" class="text-white font-bold text-[15px] uppercase tracking-wider leading-tight">Hỗ trợ khách hàng & Kinh doanh</div>
                         <p class="text-slate-500 text-[11px] font-medium mt-0.5">Liên hệ trực tiếp đội ngũ tư vấn</p>
                     </div>
                     <span class="ml-auto text-[11px] text-slate-500 font-medium hidden sm:block"><?php echo count($cskh_data); ?> nhân sự</span>
@@ -485,12 +477,12 @@
                     <?php foreach ($cskh_data as $cskh_item):
                         $cskh_clean = preg_replace('/[^0-9]/', '', $cskh_item['phone']);
                     ?>
-                    <div class="rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" onmouseenter="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(240,90,37,0.3)';this.style.boxShadow='0 8px 30px rgba(240,90,37,0.08)'" onmouseleave="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.06)';this.style.boxShadow='none'">
+                    <div class="footer-cskh-card rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
                         <div class="p-4">
                             <!-- Avatar + Info -->
                             <div class="flex items-center gap-3 mb-3.5">
                                 <?php if (!empty($cskh_item['avatar'])): ?>
-                                    <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?>" class="w-12 h-12 rounded-full object-cover shrink-0 shadow-lg" style="ring: 2px solid rgba(255,255,255,0.1);">
+                                    <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?> - Chuyên viên TavaLLS" class="w-12 h-12 rounded-full object-cover shrink-0 shadow-lg" style="ring: 2px solid rgba(255,255,255,0.1);">
                                 <?php else: ?>
                                     <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-lg" style="background: linear-gradient(135deg, rgba(251,146,60,0.4), rgba(249,115,22,0.6)); border: 1px solid rgba(251,146,60,0.3);">
                                         <i class="ph-fill ph-user text-xl text-white/80"></i>
@@ -510,7 +502,7 @@
                                     <?php echo esc_html($cskh_item['phone']); ?>
                                 </a>
                                 <?php if (!empty($cskh_item['email'])): ?>
-                                    <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="text-slate-500 hover:text-slate-300 text-[11px] transition-colors flex items-center gap-2 truncate">
+                                    <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="text-slate-300 hover:text-slate-300 text-[11px] transition-colors flex items-center gap-2 truncate">
                                         <i class="ph-fill ph-envelope-simple text-slate-600 text-[13px]"></i>
                                         <span class="truncate"><?php echo esc_html($cskh_item['email']); ?></span>
                                     </a>
@@ -518,14 +510,14 @@
                             </div>
                             <!-- Action Buttons -->
                             <div class="mt-3 pt-3 flex items-center gap-2" style="border-top: 1px solid rgba(255,255,255,0.04);">
-                                <a href="tel:<?php echo esc_attr($cskh_clean); ?>" class="flex-1 flex items-center justify-center gap-1.5 h-[32px] text-slate-300 text-[11px] font-bold rounded-lg transition-all hover:text-white" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);" onmouseenter="this.style.background='#f05a25';this.style.borderColor='#f05a25';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='#cbd5e1'">
-                                    <i class="ph-fill ph-phone-call text-[12px]"></i> Gọi
+                                <a href="tel:<?php echo esc_attr($cskh_clean); ?>" class="footer-cskh-call flex-1 flex items-center justify-center gap-1.5 h-[32px] text-slate-300 text-[11px] font-bold rounded-lg transition-all hover:text-white" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                                    <i class="ph-fill ph-phone-call text-[12px]"></i> Gọi<span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"> <?php echo esc_html($cskh_item['name']); ?></span>
                                 </a>
-                                <a href="https://zalo.me/<?php echo esc_attr($cskh_clean); ?>" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 h-[32px] text-[#4d9fff] text-[11px] font-bold rounded-lg transition-all" style="background: rgba(0,104,255,0.1); border: 1px solid rgba(0,104,255,0.2);" onmouseenter="this.style.background='#0068ff';this.style.borderColor='#0068ff';this.style.color='#fff'" onmouseleave="this.style.background='rgba(0,104,255,0.1)';this.style.borderColor='rgba(0,104,255,0.2)';this.style.color='#4d9fff'">
-                                    ZALO
+                                <a href="https://zalo.me/<?php echo esc_attr($cskh_clean); ?>" target="_blank" class="footer-cskh-zalo flex-1 flex items-center justify-center gap-1.5 h-[32px] text-[#4d9fff] text-[11px] font-bold rounded-lg transition-all" style="background: rgba(0,104,255,0.1); border: 1px solid rgba(0,104,255,0.2);">
+                                    ZALO<span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"> <?php echo esc_html($cskh_item['name']); ?></span>
                                 </a>
                                 <?php if (!empty($cskh_item['email'])): ?>
-                                <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="flex items-center justify-center w-[32px] h-[32px] text-slate-500 rounded-lg transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);" onmouseenter="this.style.background='rgba(255,255,255,0.15)';this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(255,255,255,0.05)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='#64748b'" title="<?php echo esc_attr($cskh_item['email']); ?>">
+                                <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="footer-cskh-email flex items-center justify-center w-[32px] h-[32px] text-slate-500 rounded-lg transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);" title="<?php echo esc_attr($cskh_item['email']); ?>">
                                     <i class="ph-fill ph-envelope-simple text-[13px]"></i>
                                 </a>
                                 <?php endif; ?>
@@ -552,6 +544,8 @@
                 <!-- Icon Zalo (thường đường dẫn là zalo.me/SĐT) -->
                 <?php
                 $main_phone = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
+                $facebook_url = \App\Helpers\ThemeHelper::getOption('facebook_link') ?: 'https://www.facebook.com/tavalls.official';
+                $youtube_url = \App\Helpers\ThemeHelper::getOption('youtube_link') ?: '#';
                 ?>
                 <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $main_phone)); ?>"
                     target="_blank"
@@ -563,7 +557,9 @@
                         </path>
                     </svg>
                 </a>
-                <a href="#"
+                <a href="<?php echo esc_url($facebook_url); ?>"
+                    target="_blank"
+                    rel="noopener"
                     class="w-10 h-10 bg-white/5 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300"
                     title="Facebook">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -571,7 +567,9 @@
                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                 </a>
-                <a href="#"
+                <a href="<?php echo esc_url($youtube_url); ?>"
+                    target="_blank"
+                    rel="noopener"
                     class="w-10 h-10 bg-white/5 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300"
                     title="Youtube">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -611,6 +609,90 @@
         });
     });
 </script>
+
+<!-- Social Share Floating Buttons Widget -->
+<style>
+.tava-share-widget {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+.tava-share-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.tava-share-btn:hover {
+    transform: scale(1.18);
+}
+.tava-share-facebook { background: #1877f2; }
+.tava-share-twitter { background: #000000; }
+.tava-share-zalo { background: #0068ff; }
+
+@media (max-width: 1024px) {
+    .tava-share-widget {
+        display: none; /* Ẩn trên mobile để tối ưu diện tích hiển thị */
+    }
+}
+
+/* CSKH Card Hover Styles - Clean CSS replacements for inline event handlers */
+.footer-cskh-card {
+    transition: all 0.3s ease;
+}
+.footer-cskh-card:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(240, 90, 37, 0.3) !important;
+    box-shadow: 0 8px 30px rgba(240, 90, 37, 0.08) !important;
+}
+.footer-cskh-call {
+    transition: all 0.2s ease;
+}
+.footer-cskh-call:hover {
+    background: #f05a25 !important;
+    border-color: #f05a25 !important;
+    color: #fff !important;
+}
+.footer-cskh-zalo {
+    transition: all 0.2s ease;
+}
+.footer-cskh-zalo:hover {
+    background: #0068ff !important;
+    border-color: #0068ff !important;
+    color: #fff !important;
+}
+.footer-cskh-email {
+    transition: all 0.2s ease;
+}
+.footer-cskh-email:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+</style>
+<div class="tava-share-widget" aria-label="Chia sẻ mạng xã hội">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(home_url('/')); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-facebook" aria-label="Chia sẻ Facebook">
+        <i class="ph-fill ph-facebook-logo" style="font-size: 22px;"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode(home_url('/')); ?>&text=<?php echo urlencode('TavaLLS - Thi công trọn gói màn hình trình chiếu, âm thanh & ánh sáng'); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-twitter" aria-label="Chia sẻ Twitter">
+        <i class="ph-bold ph-twitter-logo" style="font-size: 20px;"></i>
+    </a>
+    <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', \App\Helpers\ThemeHelper::getOption('phone', '0934298181'))); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-zalo" aria-label="Liên hệ Zalo">
+        <i class="ph-fill ph-chat-circle-dots" style="font-size: 22px;"></i>
+    </a>
+</div>
+
 </div><!-- /.site-wrapper -->
 
 <?php wp_footer(); ?>

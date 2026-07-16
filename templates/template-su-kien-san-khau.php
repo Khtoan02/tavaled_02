@@ -1471,7 +1471,7 @@ get_header(); ?>
         tất cả →</a>
     </div>
     <div class="cases-dark rv d1">
-      <a href="#" class="cased cased--main"><img
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="cased cased--main"><img
           src="https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy">
         <div class="cased__over"></div>
         <div class="cased__body">
@@ -1482,7 +1482,7 @@ get_header(); ?>
               class="spec">120 Moving Head</span><span class="spec">3 ngày setup</span></div>
         </div>
       </a>
-      <a href="#" class="cased"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg"
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="cased"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg"
           alt="" loading="lazy">
         <div class="cased__over"></div>
         <div class="cased__body">
@@ -1492,7 +1492,7 @@ get_header(); ?>
           </div>
         </div>
       </a>
-      <a href="#" class="cased"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg"
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="cased"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg"
           alt="" loading="lazy">
         <div class="cased__over"></div>
         <div class="cased__body">

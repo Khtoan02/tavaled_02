@@ -4,8 +4,44 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <?php
+    if (!defined('WPSEO_VERSION') && !defined('RANK_MATH_VERSION')):
+        $meta_desc = 'TavaLLS - Chuyên thi công trọn gói màn hình trình chiếu cỡ lớn, hệ thống âm thanh & ánh sáng chuyên nghiệp toàn quốc.';
+        $page_title = wp_get_document_title();
+        ?>
+        <meta name="description" content="<?php echo esc_attr($meta_desc); ?>">
+        <!-- Open Graph -->
+        <meta property="og:title" content="<?php echo esc_attr($page_title); ?>">
+        <meta property="og:description" content="<?php echo esc_attr($meta_desc); ?>">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="<?php echo esc_url(home_url(add_query_arg([], $GLOBALS['wp']->request ?? ''))); ?>">
+        <meta property="og:image" content="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<?php echo esc_attr($page_title); ?>">
+        <meta name="twitter:description" content="<?php echo esc_attr($meta_desc); ?>">
+        <meta name="twitter:image" content="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80">
+        <?php
+    endif;
+    ?>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr(wp_get_document_title()); ?>">
+    <meta name="twitter:description" content="TavaLLS - Chuyên thi công trọn gói màn hình trình chiếu cỡ lớn, hệ thống âm thanh &amp; ánh sáng chuyên nghiệp toàn quốc.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src * data: blob:; style-src * 'unsafe-inline'; font-src * data:; frame-src *;">
     <!-- Phosphor Icons: defer — đảm bảo icon luôn render đúng sau khi HTML parse xong -->
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <style>
+    .header-cskh-item {
+        transition: all 0.2s ease;
+    }
+    .header-cskh-item:hover {
+        background: rgba(255,255,255,0.95) !important;
+        border-color: rgba(240,90,37,0.25) !important;
+        box-shadow: 0 4px 20px rgba(240,90,37,0.08) !important;
+    }
+    </style>
     <?php wp_head(); ?>
 </head>
 
@@ -83,6 +119,7 @@
                                 if ($logo):
                                     ?>
                                     <img src="<?php echo esc_url($logo); ?>" alt="<?php bloginfo('name'); ?>"
+                                        loading="eager" fetchpriority="high"
                                         class="h-8 md:h-10 lg:h-12 w-auto transition-transform group-hover:scale-105 duration-300">
                                 <?php else: ?>
                                     <div
@@ -116,9 +153,7 @@
 
                                         <!-- Left side: Menu Links -->
                                         <div class="w-2/3">
-                                            <h3
-                                                class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">
-                                                Khám phá tổ chức</h3>
+                                            <div role="heading" aria-level="3" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">Khám phá tổ chức</div>
                                             <ul class="grid grid-cols-3 gap-4">
                                                 <li>
                                                     <a href="/ve-chung-toi"
@@ -252,8 +287,7 @@
                                                 <!-- Nội dung Text đè lên Banner -->
                                                 <div
                                                     class="absolute bottom-0 left-0 p-8 w-full transform translate-y-3 group-hover/banner:translate-y-0 transition-transform duration-300">
-                                                    <h4 class="text-white text-2xl font-bold mb-2">Câu chuyện TavaLLS
-                                                    </h4>
+                                                    <div role="heading" aria-level="4" class="text-white text-2xl font-bold mb-2">Câu chuyện TavaLLS</div>
                                                     <p
                                                         class="text-brand-orange text-sm font-medium flex items-center gap-2 opacity-0 group-hover/banner:opacity-100 transition-opacity duration-300 delay-75">
                                                         Khám phá ngay <svg
@@ -337,9 +371,7 @@
                                         <!-- Danh mục -->
                                         <div
                                             class="w-[300px] xl:w-[320px] shrink-0 bg-gray-50/50 p-8 border-r border-gray-100 flex flex-col">
-                                            <h3
-                                                class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-6">
-                                                Hệ sinh thái</h3>
+                                            <div role="heading" aria-level="3" class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em] mb-6">Hệ sinh thái</div>
                                             <ul class="space-y-3 mb-6">
                                                 <li>
                                                     <button
@@ -402,7 +434,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-6 pt-6 border-t border-gray-200/60">
-                                                <a href="#"
+                                                <a href="/lien-he/"
                                                     class="w-full flex justify-center items-center gap-2 py-3.5 bg-[#1d2857] text-white rounded-xl font-bold hover:bg-brand-orange transition-all shadow-lg shadow-navy-900/10 text-sm tracking-widest uppercase">
                                                     <i class="ph-bold ph-download-simple text-lg"></i> Tải Catalog
                                                     <?php echo date('Y'); ?>
@@ -420,9 +452,7 @@
                                                 data-default-desc="<?php echo esc_attr($mega_cat_map['mega-led']['default_desc']); ?>">
 
                                                 <div class="flex justify-between items-center mb-2">
-                                                    <h3 id="mega-led-title"
-                                                        class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">
-                                                        Màn hình LED</h3>
+                                                    <div id="mega-led-title" role="heading" aria-level="3" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Màn hình LED</div>
                                                     <a href="<?php echo esc_url(home_url('/man-hinh-led/')); ?>"
                                                         class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem
                                                         tất cả <i
@@ -452,11 +482,9 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="relative slider-container flex-1 mt-2">
-                                                    <button
-                                                        class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang trái" class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-left text-xl"></i></button>
-                                                    <button
-                                                        class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang phải" class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-right text-xl"></i></button>
                                                     <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                         <div
@@ -502,9 +530,7 @@
                                                 data-default-desc="<?php echo esc_attr($mega_cat_map['mega-audio']['default_desc']); ?>">
 
                                                 <div class="flex justify-between items-center mb-2">
-                                                    <h3 id="mega-audio-title"
-                                                        class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">
-                                                        Thiết bị Âm thanh</h3>
+                                                    <div id="mega-audio-title" role="heading" aria-level="3" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Âm thanh</div>
                                                     <a href="<?php echo esc_url(home_url('/am-thanh/')); ?>"
                                                         class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem
                                                         tất cả <i
@@ -534,11 +560,9 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="relative slider-container flex-1 mt-2">
-                                                    <button
-                                                        class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang trái" class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-left text-xl"></i></button>
-                                                    <button
-                                                        class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang phải" class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-right text-xl"></i></button>
                                                     <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                         <div
@@ -584,9 +608,7 @@
                                                 data-default-desc="<?php echo esc_attr($mega_cat_map['mega-light']['default_desc']); ?>">
 
                                                 <div class="flex justify-between items-center mb-2">
-                                                    <h3 id="mega-light-title"
-                                                        class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">
-                                                        Thiết bị Ánh sáng</h3>
+                                                    <div id="mega-light-title" role="heading" aria-level="3" class="text-[28px] xl:text-3xl font-black text-[#1d2857] tracking-tight italic uppercase">Thiết bị Ánh sáng</div>
                                                     <a href="<?php echo esc_url(home_url('/anh-sang/')); ?>"
                                                         class="text-brand-orange text-[14px] font-black uppercase tracking-wider hover:text-[#1d2857] transition-colors flex items-center gap-1 group/link">Xem
                                                         tất cả <i
@@ -616,11 +638,9 @@
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="relative slider-container flex-1 mt-2">
-                                                    <button
-                                                        class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang trái" class="slider-prev absolute -left-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-left text-xl"></i></button>
-                                                    <button
-                                                        class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
+                                                    <button aria-label="Cuộn sang phải" class="slider-next absolute -right-4 top-[40%] -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-xl shadow-lg text-gray-500 hover:text-brand-orange hover:border-brand-orange flex items-center justify-center z-10 transition-all focus:outline-none"><i
                                                             class="ph-bold ph-caret-right text-xl"></i></button>
                                                     <div class="overflow-hidden w-full h-full p-2 group/slider">
                                                         <div
@@ -682,8 +702,7 @@
                                         <!-- Tiêu đề & Nút Xem tất cả -->
                                         <div
                                             class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
-                                            <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Các
-                                                Lĩnh Vực Cốt Lõi</h3>
+                                            <div role="heading" aria-level="3" class="text-xs font-bold text-gray-400 uppercase tracking-widest">Các Lĩnh Vực Cốt Lõi</div>
                                             <a href="/giai-phap"
                                                 class="flex items-center gap-1.5 text-brand-orange hover:text-[#1d2857] font-black text-sm transition-all hover:translate-x-1 uppercase tracking-widest">
                                                 <span>Xem tất cả</span>
@@ -719,6 +738,10 @@
                                                     // Handle both object and array safely
                                                     $is_obj = is_object($item);
                                                     $image = $is_obj ? ($item->image ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg') : ($item['image'] ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg');
+                                                    if (strpos($image, 'images.unsplash.com') !== false) {
+                                                        $parts = explode('?', $image);
+                                                        $image = $parts[0] . '?w=600';
+                                                    }
                                                     $slug = $is_obj ? ($item->url ?? ($item->slug ?? '#')) : ($item['slug'] ?? '#');
                                                     $title = $is_obj ? ($item->title ?? '') : ($item['title'] ?? '');
                                                     $is_hot = $is_obj ? (isset($item->is_hot) && $item->is_hot == '1') : (isset($item['is_hot']) && $item['is_hot'] == '1');
@@ -733,7 +756,7 @@
                                                                 class="sol-card__img">
                                                             <div class="sol-card__overlay"></div>
                                                             <div class="sol-card__body">
-                                                                <h4 class="sol-card__title"><?php echo esc_html($title); ?></h4>
+                                                                <div role="heading" aria-level="4" class="sol-card__title"><?php echo esc_html($title); ?></div>
                                                                 <div class="sol-card__line"></div>
                                                             </div>
                                                         </div>
@@ -879,11 +902,11 @@
                                                     <?php foreach ($cskh_data as $cskh_item):
                                                         $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
                                                     ?>
-                                                    <li class="rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); transition: all 0.2s;" onmouseenter="this.style.background='rgba(255,255,255,0.95)';this.style.borderColor='rgba(240,90,37,0.25)';this.style.boxShadow='0 4px 20px rgba(240,90,37,0.08)'" onmouseleave="this.style.background='rgba(255,255,255,0.6)';this.style.borderColor='rgba(0,0,0,0.05)';this.style.boxShadow='none'">
+                                                    <li class="header-cskh-item rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);">
                                                         <div class="p-3.5">
                                                             <div class="flex items-center gap-3">
                                                                 <?php if (!empty($cskh_item['avatar'])): ?>
-                                                                    <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?>" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
+                                                                    <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?> - Hỗ trợ TavaLLS" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
                                                                 <?php else: ?>
                                                                     <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-md text-white" style="background: linear-gradient(135deg, #fdba74, #f97316);">
                                                                         <i class="ph-fill ph-user text-xl"></i>
@@ -898,10 +921,10 @@
                                                             </div>
                                                             <div class="mt-3 pt-2.5 flex items-center gap-2" style="border-top: 1px dashed rgba(0,0,0,0.07);">
                                                                 <a href="tel:<?php echo esc_attr($c_tel); ?>" class="flex-1 flex items-center justify-center gap-1.5 h-[34px] text-gray-600 text-[12px] font-bold rounded-lg transition-all hover:bg-brand-orange hover:text-white hover:border-brand-orange" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);">
-                                                                    <i class="ph-fill ph-phone-call text-[13px]"></i> Gọi điện
+                                                                    <i class="ph-fill ph-phone-call text-[13px]"></i> Gọi điện<span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"> <?php echo esc_html($cskh_item['name']); ?></span>
                                                                 </a>
                                                                 <a href="https://zalo.me/<?php echo esc_attr($c_tel); ?>" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 h-[34px] text-[#0068ff] text-[12px] font-bold rounded-lg transition-all hover:bg-[#0068ff] hover:text-white hover:border-[#0068ff]" style="background: rgba(0,104,255,0.05); border: 1px solid rgba(0,104,255,0.1);">
-                                                                    ZALO
+                                                                    ZALO<span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"> <?php echo esc_html($cskh_item['name']); ?></span>
                                                                 </a>
                                                                 <?php if (!empty($cskh_item['email'])): ?>
                                                                 <a href="mailto:<?php echo esc_attr($cskh_item['email']); ?>" class="flex items-center justify-center w-[34px] h-[34px] text-gray-400 rounded-lg transition-all hover:bg-gray-700 hover:text-white hover:border-gray-700" style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06);" title="<?php echo esc_attr($cskh_item['email']); ?>">
@@ -921,8 +944,7 @@
                             </div>
 
                             <!-- Mobile Menu Trigger -->
-                            <button id="mobileMenuBtn"
-                                class="xl:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-xl shrink-0 transition-colors">
+                            <button id="mobileMenuBtn" aria-label="Mở menu" class="xl:hidden text-gray-700 hover:text-brand-orange p-1.5 md:p-2 bg-gray-50 rounded-xl shrink-0 transition-colors">
                                 <i class="ph-bold ph-list text-2xl md:text-3xl"></i>
                             </button>
                         </div>
@@ -1043,7 +1065,7 @@
 
                         <!-- Accordion: Sản phẩm -->
                         <div class="mobile-nav-accordion">
-                            <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileProducts')">
+                            <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileProducts')" aria-label="Mở rộng danh mục sản phẩm">
                                 <span class="flex items-center gap-3">
                                     <i class="ph ph-monitor-play text-[#f05a25] text-[16px]"></i>
                                     <span style="color:#f05a25;font-weight:700;">Hệ sinh thái thiết bị</span>
@@ -1136,7 +1158,7 @@
 
                         <!-- Accordion: Giải pháp -->
                         <div class="mobile-nav-accordion">
-                            <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileSolutions')">
+                            <button class="mobile-nav-accordion-btn" onclick="toggleAccordion('mobileSolutions')" aria-label="Mở rộng giải pháp">
                                 <span class="flex items-center gap-3">
                                     <i class="ph ph-rows text-[#f05a25] text-[16px]"></i>
                                     <span>Giải pháp trọn gói</span>
@@ -1192,11 +1214,11 @@
                         <div class="mx-4 my-2 border-t border-dashed border-gray-200"></div>
 
                         <!-- Tiện ích -->
-                        <a href="#" onclick="toggleSearch(); window.closeMobileMenu(); return false;"
-                            class="mobile-nav-link text-gray-500">
+                        <button onclick="toggleSearch(); window.closeMobileMenu();"
+                            class="mobile-nav-link text-gray-500 w-full text-left border-none bg-transparent font-sans cursor-pointer">
                             <i class="ph ph-magnifying-glass text-[#f05a25] text-[16px]"></i> Tìm kiếm thiết bị
-                        </a>
-                        <a href="#" class="mobile-nav-link text-gray-500">
+                        </button>
+                        <a href="/lien-he/" class="mobile-nav-link text-gray-500">
                             <i class="ph ph-receipt text-[#f05a25] text-[16px]"></i> Gửi yêu cầu Báo giá
                         </a>
 
@@ -1219,29 +1241,27 @@
         <div id="searchPopup"
             class="fixed inset-0 z-50 bg-white/95 backdrop-blur-md flex items-start justify-center pt-20 lg:pt-32 opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] [&.active]:opacity-100 [&.active]:pointer-events-auto">
             <div class="container mx-auto px-4 max-w-4xl relative search-content w-full">
-                <button onclick="toggleSearch()"
-                    class="absolute -top-10 right-4 lg:right-0 text-gray-500 hover:text-brand-orange transition-colors">
+                <button onclick="toggleSearch()" aria-label="Đóng tìm kiếm" class="absolute -top-10 right-4 lg:right-0 text-gray-500 hover:text-brand-orange transition-colors">
                     <i class="ph ph-x-circle text-4xl"></i>
                 </button>
 
                 <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="relative w-full">
                     <input type="text" name="s" value="<?php echo get_search_query(); ?>"
                         placeholder="Nhập tên sản phẩm, mã thiết bị (SKU)..."
+                        aria-label="Tìm kiếm sản phẩm"
                         class="w-full text-xl md:text-3xl text-gray-900 border-b-2 border-gray-300 py-4 pr-12 bg-transparent focus:outline-none focus:border-brand-orange transition-colors placeholder-gray-400">
-                    <button type="submit"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 text-brand-orange bg-transparent border-none">
+                    <button type="submit" aria-label="Tìm kiếm" class="absolute right-2 top-1/2 -translate-y-1/2 text-brand-orange bg-transparent border-none">
                         <i class="ph ph-magnifying-glass text-3xl"></i>
                     </button>
                 </form>
 
                 <div class="mt-8">
-                    <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Gợi ý tìm kiếm phổ
-                        biến</h4>
+                    <div role="heading" aria-level="4" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Gợi ý tìm kiếm phổ biến</div>
                     <div class="flex flex-wrap gap-2">
-                        <a href="#"
+                        <a href="/man-hinh-led/"
                             class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Màn
                             hình LED P2.5 Indoor</a>
-                        <a href="#"
+                        <a href="/am-thanh/"
                             class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Loa
                             Line Array JBL</a>
                     </div>

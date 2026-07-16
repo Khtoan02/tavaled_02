@@ -38,7 +38,7 @@ html { scroll-behavior: smooth; }
     min-height: 560px;
     max-height: 860px;
     display: grid;
-    grid-template-columns: 30fr 70fr;
+    grid-template-columns: 34fr 66fr;
     align-items: center;
     overflow: hidden;
     background: var(--hero-navy);
@@ -119,18 +119,19 @@ html { scroll-behavior: smooth; }
 /* Line 1: brand name — white, large */
 .h1-line1 {
     display: block;
-    font-size: clamp(28px, 4.7vw, 64px);
+    font-size: clamp(22px, 3.8vw, 52px);
     color: #ffffff;
     font-weight: 900;
-    line-height: 1;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 /* Line 2: service line — white, same size, always on ONE line */
 .h1-line2 {
     display: block;
-    font-size: clamp(18px, 4.7vw, 64px);
+    font-size: clamp(16px, 3.8vw, 52px);
     color: #ffffff;
     font-weight: 900;
-    line-height: 1;
+    line-height: 1.1;
     white-space: nowrap;   /* Không cho phép xuống dòng */
     overflow: visible;     /* Cho phép tràn ra - container sẽ co giãn */
 }
@@ -314,16 +315,112 @@ html { scroll-behavior: smooth; }
 }
 .spec-tag__val em { color: var(--hero-orange); font-style: normal; }
 
-/* Badge positions */
-.spec-tag--1 { top: 12%; left: 28px;  animation: heroFloatTagLeft 1s 0.9s  cubic-bezier(0.16,1,0.3,1) both; }
-.spec-tag--2 { top: 12%; right: 16px; animation: heroFloatTag     1s 1.05s cubic-bezier(0.16,1,0.3,1) both; }
-.spec-tag--3 {
-    bottom: 52px;
-    left: 50%; transform: translateX(-50%);
-    animation: heroFloatTagUp 1s 1.15s cubic-bezier(0.16,1,0.3,1) both;
-    min-width: 180px; text-align: center;
+/* Badge positions & TavaLLS Core Philosophy Cards */
+.lls-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 880px;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: heroFloatTagUp 1.2s 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.spec-tag--3 .spec-tag__icon-row { justify-content: center; }
+.lls-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 16, 32, 0.45);
+    border: 1px solid rgba(255, 95, 0, 0.2);
+    border-radius: 6px;
+    padding: 8px 16px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    align-self: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.lls-header__icon {
+    font-size: 14px;
+    animation: pulseIcon 2s infinite ease-in-out;
+    display: inline-block;
+}
+.lls-header__tagline {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+}
+.lls-header__tagline strong {
+    color: var(--hero-orange);
+    font-weight: 700;
+}
+.lls-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+.lls-card-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    display: flex !important;
+    gap: 16px;
+    padding: 18px 20px !important;
+    background: rgba(10, 16, 32, 0.42) !important;
+    border: 1px solid rgba(255, 95, 0, 0.25) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    min-width: auto !important;
+    animation: none !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+.lls-letter {
+    font-family: var(--font-heading, -apple-system, BlinkMacSystemFont, sans-serif);
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--hero-orange);
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(255, 95, 0, 0.5);
+    align-self: center;
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lls-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.lls-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+.lls-desc {
+    font-size: 10px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@media (max-width: 760px) {
+    .lls-container {
+        display: none !important;
+    }
+}
 
 @keyframes heroFloatTag {
     from { opacity: 0; transform: translateX(18px); }
@@ -545,26 +642,7 @@ html { scroll-behavior: smooth; }
 }
 .spec-tag__val em { color: var(--hero-orange); font-style: normal; }
 
-/* Badge 1: top-LEFT — slide in from left */
-.spec-tag--1 {
-    top: 12%; left: -8px;
-    animation: heroFloatTagLeft 1s 0.9s cubic-bezier(0.16,1,0.3,1) both;
-}
-/* Badge 2: top-RIGHT — slide in from right */
-.spec-tag--2 {
-    top: 12%; right: -8px;
-    animation: heroFloatTag 1s 1.05s cubic-bezier(0.16,1,0.3,1) both;
-}
-/* Badge 3: bottom-CENTER — slide in from below */
-.spec-tag--3 {
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: heroFloatTagUp 1s 1.15s cubic-bezier(0.16,1,0.3,1) both;
-    min-width: 180px;
-    text-align: center;
-}
-.spec-tag--3 .spec-tag__icon-row { justify-content: center; }
+
 
 @keyframes heroFloatTag {
     from { opacity: 0; transform: translateX(18px); }
@@ -941,4 +1019,38 @@ html { scroll-behavior: smooth; }
     .main-tava-heading__eyebrow::before, .main-tava-heading__eyebrow::after { width: 20px; }
     .main-tava-heading__title { font-size: 2.2rem !important; }
     .main-tava-heading__desc { font-size: 0.9rem !important; line-height: 1.5; }
+}
+
+/* Override LLS cards inside left column */
+.hero-v2__left .lls-container {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 4px !important;
+    margin-bottom: 24px !important;
+    animation: none !important;
+}
+.hero-v2__left .lls-cards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 12px !important;
+}
+.hero-v2__left .lls-card-item {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 95, 0, 0.18) !important;
+    border-radius: 8px !important;
+    padding: 12px 14px !important;
+    align-items: center !important;
+    gap: 10px !important;
+    min-height: 90px !important;
+}
+
+@media (max-width: 1024px) {
+    .hero-v2__left .lls-cards {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
 }

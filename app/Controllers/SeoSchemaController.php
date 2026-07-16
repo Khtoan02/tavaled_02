@@ -7,24 +7,56 @@ class SeoSchemaController {
     }
 
     public function render_schema() {
-        // Chỉ xuất Schema nếu không dùng Rank Math hoặc Yoast (vì các plugin này đã có sẵn)
-        if (class_exists('RankMath') || defined('WPSEO_VERSION')) {
+        // Chỉ xuất Schema nếu không dùng Rank Math hoặc Yoast (hoặc xuất Organization duy nhất trên trang chủ để có sameAs)
+        $has_seo_plugin = class_exists('RankMath') || defined('WPSEO_VERSION');
+        if ($has_seo_plugin && !is_front_page()) {
             return;
         }
 
         $schemas = [];
 
-        // 1. WebSite / Organization Schema (luôn xuất hiện)
         $company_name = \App\Helpers\ThemeHelper::getOption('company_name', get_bloginfo('name'));
         $logo = \App\Helpers\ThemeHelper::getOption('logo', '');
+        if (empty($logo)) {
+            $logo = get_stylesheet_directory_uri() . '/assets/images/logo.png';
+        }
+
+        $same_as = [];
+        $facebook_link = \App\Helpers\ThemeHelper::getOption('facebook_link', '');
+        $youtube_link = \App\Helpers\ThemeHelper::getOption('youtube_link', '');
+        $phone_option = \App\Helpers\ThemeHelper::getOption('phone', '');
         
-        $schemas[] = [
+        if ($facebook_link) {
+            $same_as[] = esc_url($facebook_link);
+        }
+        if ($youtube_link) {
+            $same_as[] = esc_url($youtube_link);
+        }
+        if ($phone_option) {
+            $clean_phone = preg_replace('/[^0-9]/', '', $phone_option);
+            if ($clean_phone) {
+                $same_as[] = 'https://zalo.me/' . $clean_phone;
+            }
+        }
+
+        $org_schema = [
             '@context' => 'https://schema.org',
             '@type' => 'Organization',
             'name' => $company_name,
             'url' => home_url('/'),
             'logo' => $logo,
         ];
+        if (!empty($same_as)) {
+            $org_schema['sameAs'] = $same_as;
+        }
+        
+        $schemas[] = $org_schema;
+
+        if ($has_seo_plugin) {
+            // Nếu đã có plugin SEO, ta chỉ in Organization rồi return để tránh trùng lặp các schema khác
+            $this->print_json_ld($schemas);
+            return;
+        }
 
         $schemas[] = [
             '@context' => 'https://schema.org',
@@ -106,6 +138,10 @@ class SeoSchemaController {
         }
 
         // In ra mã JSON-LD
+        $this->print_json_ld($schemas);
+    }
+
+    private function print_json_ld($schemas) {
         if (!empty($schemas)) {
             echo "\n<!-- TAVA SEO SCHEMA MARKUP -->\n";
             echo "<script type=\"application/ld+json\">\n";

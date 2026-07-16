@@ -29,7 +29,9 @@ class SettingsController {
             'tavaled_phone_cskh',
             'tavaled_email',
             'tavaled_slogan',
-            'tavaled_address'
+            'tavaled_address',
+            'tavaled_facebook_link',
+            'tavaled_youtube_link'
         ];
 
         foreach ($fields as $field) {

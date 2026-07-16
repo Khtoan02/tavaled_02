@@ -1393,7 +1393,7 @@ get_header(); ?>
     </div>
     <div class="ptab-panel active" id="pt-screen">
       <div class="prod-grid rv d1">
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1402,7 +1402,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">P2.0mm</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1411,7 +1411,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">P2.5mm</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1420,7 +1420,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">P3.0mm</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0016_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1433,7 +1433,7 @@ get_header(); ?>
     </div>
     <div class="ptab-panel" id="pt-audio">
       <div class="prod-grid">
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0017_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1442,7 +1442,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">8Ω</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0018_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1452,7 +1452,7 @@ get_header(); ?>
             </div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0019_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1461,7 +1461,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">64x64</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0020_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1474,7 +1474,7 @@ get_header(); ?>
     </div>
     <div class="ptab-panel" id="pt-control">
       <div class="prod-grid">
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0021_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1483,7 +1483,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">4K60</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0022_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1492,7 +1492,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">10.1" HD</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0023_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1501,7 +1501,7 @@ get_header(); ?>
             <div class="pcard__foot"><span class="pcard__spec">Wireless</span><span class="pcard__cta">Xem</span></div>
           </div>
         </a>
-        <a href="#" class="pcard">
+        <a href="<?php echo home_url('/san-pham/'); ?>" class="pcard">
           <div class="pcard__img"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0024_TavaLED_Hinh_Anh.jpg"
               alt="" loading="lazy"></div>
           <div class="pcard__body">
@@ -1527,7 +1527,7 @@ get_header(); ?>
         tất cả →</a>
     </div>
     <div class="cases rv d1">
-      <a href="#" class="case case--main"><img
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="case case--main"><img
           src="https://tavaled.vn/wp-content/uploads/2026/03/0025_TavaLED_Hinh_Anh.jpg" alt="" loading="lazy">
         <div class="case__over"></div>
         <div class="case__body">
@@ -1537,7 +1537,7 @@ get_header(); ?>
               Control</span><span class="spec">Shure MXA910</span><span class="spec">3 ngày lắp đặt</span></div>
         </div>
       </a>
-      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg" alt=""
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0026_TavaLED_Hinh_Anh.jpg" alt=""
           loading="lazy">
         <div class="case__over"></div>
         <div class="case__body">
@@ -1546,7 +1546,7 @@ get_header(); ?>
           <div class="case__specs"><span class="spec">P2.5mm</span><span class="spec">JBL Line Array</span></div>
         </div>
       </a>
-      <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg" alt=""
+      <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/0027_TavaLED_Hinh_Anh.jpg" alt=""
           loading="lazy">
         <div class="case__over"></div>
         <div class="case__body">

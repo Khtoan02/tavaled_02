@@ -133,11 +133,11 @@ if (!class_exists('RankMath') && !defined('WPSEO_VERSION')) {
     // Đăng ký Custom XML Sitemaps nội bộ
     $sitemap_setup = new \App\Controllers\SitemapController();
     $sitemap_setup->register();
-
-    // Đăng ký Cấu trúc chuẩn Google Schema JSON-LD
-    $seo_schema_setup = new \App\Controllers\SeoSchemaController();
-    $seo_schema_setup->register();
 }
+
+// Đăng ký Cấu trúc chuẩn Google Schema JSON-LD (có kiểm tra bên trong controller)
+$seo_schema_setup = new \App\Controllers\SeoSchemaController();
+$seo_schema_setup->register();
 
 /**
  * Xoá bộ nhớ đệm (Cache) của Rank Math để ép nhận diện và làm mới Sitemap Index
@@ -307,11 +307,11 @@ function tavaled_floating_contacts()
                         <?php foreach ($cskh_data as $cskh_item):
                             $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
                         ?>
-                        <li class="rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); transition: all 0.2s;" onmouseenter="this.style.background='rgba(255,255,255,0.95)';this.style.borderColor='rgba(240,90,37,0.25)';this.style.boxShadow='0 4px 20px rgba(240,90,37,0.08)'" onmouseleave="this.style.background='rgba(255,255,255,0.6)';this.style.borderColor='rgba(0,0,0,0.05)';this.style.boxShadow='none'">
+                        <li class="header-cskh-item rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);">
                             <div class="p-3.5">
                                 <div class="flex items-center gap-3">
                                     <?php if (!empty($cskh_item['avatar'])): ?>
-                                        <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?>" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
+                                        <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?> - Tư vấn viên TavaLLS" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
                                     <?php else: ?>
                                         <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-md text-white" style="background: linear-gradient(135deg, #fdba74, #f97316);">
                                             <i class="ph-fill ph-user text-xl"></i>
@@ -518,3 +518,59 @@ add_action('product_cat_edit_form_fields', function($term) {
 // Cho phép lưu HTML/Rich Text vào term description
 remove_filter('pre_term_description', 'wp_filter_kses');
 remove_filter('term_description', 'wp_kses_data');
+
+// Force Meta Description for Yoast SEO & Rank Math on homepage
+add_filter('rank_math/frontend/description', function($desc) {
+    if (is_front_page() || is_home()) {
+        return 'TavaLLS - Chuyên thi công trọn gói màn hình trình chiếu cỡ lớn, hệ thống âm thanh & ánh sáng chuyên nghiệp toàn quốc.';
+    }
+    return $desc;
+});
+
+add_filter('wpseo_metadesc', function($desc) {
+    if (is_front_page() || is_home()) {
+        return 'TavaLLS - Chuyên thi công trọn gói màn hình trình chiếu cỡ lớn, hệ thống âm thanh & ánh sáng chuyên nghiệp toàn quốc.';
+    }
+    return $desc;
+});
+
+// Inject sameAs social profiles into Rank Math schema
+add_filter('rank_math/json_ld', function($data, $jsonld) {
+    if (isset($data['publisher'])) {
+        $facebook = \App\Helpers\ThemeHelper::getOption('facebook_link');
+        $youtube = \App\Helpers\ThemeHelper::getOption('youtube_link');
+        $phone = \App\Helpers\ThemeHelper::getOption('phone');
+        $same_as = [];
+        if ($facebook) $same_as[] = esc_url($facebook);
+        if ($youtube) $same_as[] = esc_url($youtube);
+        if ($phone) {
+            $clean_phone = preg_replace('/[^0-9]/', '', $phone);
+            if ($clean_phone) $same_as[] = 'https://zalo.me/' . $clean_phone;
+        }
+        if (!empty($same_as)) {
+            $data['publisher']['sameAs'] = $same_as;
+        }
+    }
+    return $data;
+}, 99, 2);
+
+// Inject sameAs social profiles into Yoast SEO schema
+add_filter('wpseo_schema_organization', function($data) {
+    $facebook = \App\Helpers\ThemeHelper::getOption('facebook_link');
+    $youtube = \App\Helpers\ThemeHelper::getOption('youtube_link');
+    $phone = \App\Helpers\ThemeHelper::getOption('phone');
+    $same_as = [];
+    if ($facebook) $same_as[] = esc_url($facebook);
+    if ($youtube) $same_as[] = esc_url($youtube);
+    if ($phone) {
+        $clean_phone = preg_replace('/[^0-9]/', '', $phone);
+        if ($clean_phone) $same_as[] = 'https://zalo.me/' . $clean_phone;
+    }
+    if (!empty($same_as)) {
+        if (!isset($data['sameAs'])) {
+            $data['sameAs'] = [];
+        }
+        $data['sameAs'] = array_unique(array_merge($data['sameAs'], $same_as));
+    }
+    return $data;
+}, 99);

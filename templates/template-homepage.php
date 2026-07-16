@@ -6,7 +6,7 @@ get_header(); ?>
 <main>
 
     <!-- ================= SECTION 1: HERO VIDEO BACKGROUND ================= -->
-    <section class="hero-v2" id="hero" aria-label="Hero TavaLED">
+    <section class="hero-v2" id="hero" aria-label="Giới thiệu Tava">
         <!-- Background particle canvas -->
         <canvas class="hero-v2__bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
         <div class="hero-v2__depth" aria-hidden="true"></div>
@@ -21,15 +21,54 @@ get_header(); ?>
             </div>
 
             <h1 class="hero-v2__h1">
-                <span class="h1-line1">TAVALED:</span>
-                <span class="h1-line2">THI CÔNG TRỌN GÓI</span>
-                <span class="h1-line3">Màn Hình LED, Âm Thanh &amp; Ánh Sáng</span>
+                <span class="h1-line1">TAVA - THI CÔNG MÀN HÌNH LED</span>
+                <span class="h1-line2">&amp; ÂM THANH TRỌN GÓI</span>
             </h1>
 
-            <h2 class="hero-v2__desc">
-                Cung cấp giải pháp thiết bị sân khấu, sự kiện và không gian thương mại.
-                Tư vấn thiết kế và lắp đặt chuyên nghiệp, phủ sóng toàn quốc.
-            </h2>
+
+
+            <!-- Giới thiệu doanh nghiệp & Triết lý hoạt động (Tối ưu AI Search / GEO) -->
+            <div class="hero-v2__tldr" style="
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                padding: 18px;
+                margin-top: 20px;
+                margin-bottom: 24px;
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            ">
+                <p style="font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.65; margin: 0;">
+                    <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết thiết bị chính hãng và bảo hành dài hạn.
+                </p>
+            </div>
+
+            <!-- Floating badge: TavaLLS Core Values (Split Cards) -->
+            <div class="lls-container">
+                <div class="lls-cards">
+                    <div class="spec-tag lls-card-item">
+                        <span class="lls-letter">L</span>
+                        <div class="lls-content">
+                            <strong class="lls-title">Listen (Lắng nghe)</strong>
+                            <p class="lls-desc">Không áp đặt sản phẩm. Chúng tôi luôn lắng nghe thật kỹ mong muốn, ngân sách và nỗi lo của khách hàng.</p>
+                        </div>
+                    </div>
+                    <div class="spec-tag lls-card-item">
+                        <span class="lls-letter">L</span>
+                        <div class="lls-content">
+                            <strong class="lls-title">Learn (Thấu hiểu)</strong>
+                            <p class="lls-desc">Khảo sát thực địa và nghiên cứu kỹ lưỡng không gian kiến trúc. Từ đó tìm ra phương án tối ưu cho đặc thù ngành nghề.</p>
+                        </div>
+                    </div>
+                    <div class="spec-tag lls-card-item">
+                        <span class="lls-letter">S</span>
+                        <div class="lls-content">
+                            <strong class="lls-title">Solve (Giải quyết)</strong>
+                            <p class="lls-desc">Đưa ra giải pháp giải quyết triệt để vấn đề. Thi công gọn gàng, xử lý mọi sự cố phát sinh với tốc độ nhanh nhất.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="hero-v2__ctas">
                 <a href="#products" class="hero-v2-btn hero-v2-btn--primary interactive">
@@ -57,54 +96,54 @@ get_header(); ?>
                 if ($has_hero_slides) {
                     $is_first = true;
                     foreach ($hero_ids as $id) {
-                        $img_src = wp_get_attachment_image_url($id, 'full');
+                        $img_src = wp_get_attachment_image_url($id, 'large');
                         if (!$img_src) continue;
                         $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: get_the_title($id);
                         ?>
                         <div class="hero-slide<?php echo $is_first ? ' hero-slide--active' : ''; ?>">
-                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($alt); ?>" <?php echo $is_first ? 'loading="eager"' : 'loading="lazy"'; ?>>
+                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($alt); ?>" <?php echo $is_first ? 'loading=\"eager\" fetchpriority=\"high\"' : ''; ?>>
                         </div>
                         <?php
                         $is_first = false;
                     }
                 } else {
-                    // Demo fallback content
+                    // Demo fallback content with high quality, lightweight Unsplash images
                     ?>
                     <div class="hero-slide hero-slide--active">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110034.jpg"
-                            alt="Sân khấu sự kiện LED TavaLED" loading="eager">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200"
+                            alt="Hệ thống màn hình trình chiếu sân khấu sự kiện Tava" loading="eager" fetchpriority="high">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035-TavaLED.jpg"
-                            alt="Màn hình LED hội trường TavaLED" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=1200"
+                            alt="Màn hình hiển thị hội trường hội thảo chuyên nghiệp">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/A_professional_wide-angle_202604110035.jpg"
-                            alt="Hệ thống LED âm thanh ánh sáng" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200"
+                            alt="Hệ thống nghe nhìn âm thanh ánh sáng hội trường">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-1-TavaLED.jpg"
-                            alt="Thi công màn hình LED chuyên nghiệp" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200"
+                            alt="Thi công màn hình hiển thị quảng cáo ngoài trời">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110046-TavaLED.jpg"
-                            alt="LED sân khấu ca nhạc TavaLED" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200"
+                            alt="Hệ thống âm thanh sân khấu ca nhạc hội nghị">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-1-TavaLED.jpg"
-                            alt="Lắp đặt màn hình LED toàn quốc" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200"
+                            alt="Lắp đặt màn hình hiển thị trong nhà cao cấp">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Mot_buc_anh_202604110047-TavaLED.jpg"
-                            alt="Giải pháp LED âm thanh ánh sáng TavaLED" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200"
+                            alt="Giải pháp nghe nhìn cho không gian doanh nghiệp">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/04/Man-hinh-LED-la-thiet-bi-hien-thi-khong-vien-kich-thuoc-lon-TavaLED.jpg"
-                            alt="Màn hình LED chuyên nghiệp TavaLED" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200"
+                            alt="Thiết bị trình chiếu chuyên nghiệp Tava">
                     </div>
                     <div class="hero-slide">
-                        <img src="https://tdclassic.vn/wp-content/uploads/2026/01/tdclassic_cover-scaled.webp"
-                            alt="Hệ thống âm thanh ánh sáng sân khấu" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200"
+                            alt="Hệ thống âm thanh ánh sáng sân khấu">
                     </div>
                 <?php } ?>
 
@@ -131,38 +170,6 @@ get_header(); ?>
                     <?php } ?>
                 </div>
             </div>
-
-            <!-- Floating badges -->
-            <div class="spec-tag spec-tag--1">
-                <div class="spec-tag__icon-row">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" />
-                        <path d="M8 21h8M12 17v4" />
-                    </svg>
-                    <div class="spec-tag__label">Độ phân giải cao</div>
-                </div>
-                <div class="spec-tag__val">P<em>2.5</em> – P<em>10</em></div>
-            </div>
-            <div class="spec-tag spec-tag--2">
-                <div class="spec-tag__icon-row">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                    </svg>
-                    <div class="spec-tag__label">Âm thanh</div>
-                </div>
-                <div class="spec-tag__val">Chuẩn <em>Quốc tế</em></div>
-            </div>
-            <div class="spec-tag spec-tag--3">
-                <div class="spec-tag__icon-row">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                    <div class="spec-tag__label">Bảo hành chính hãng</div>
-                </div>
-                <div class="spec-tag__val"><em>3</em> năm</div>
-            </div>
         </div>
 
         <!-- Scroll indicator -->
@@ -177,7 +184,7 @@ get_header(); ?>
         <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
             <div class="main-tava-heading reveal-up">
                 <div class="main-tava-heading__eyebrow">Catalogue Toàn Diện</div>
-                <h3 class="main-tava-heading__title">Thiết Bị Cốt Lõi</h3>
+                <h3 class="main-tava-heading__title">Hệ Sinh Thái Thiết Bị</h3>
                 <p class="main-tava-heading__desc">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần
                     cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
             </div>
@@ -188,10 +195,10 @@ get_header(); ?>
                 <div class="tava-heading">
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Hiển Thị Đỉnh Cao</div>
-                        <h3 class="tava-heading__title">Màn Hình LED &amp; Xử Lý</h3>
+                        <h3 class="tava-heading__title">Hệ Thống Trình Chiếu &amp; Xử Lý</h3>
                     </div>
                     <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
-                        <span class="tava-heading__link-text">Xem toàn bộ kho LED</span>
+                        <span class="tava-heading__link-text">Xem kho thiết bị trình chiếu</span>
                         <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
                 </div>
@@ -347,7 +354,7 @@ get_header(); ?>
         <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
             <div class="main-tava-heading main-tava-heading--light">
                 <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
-                <h3 class="main-tava-heading__title">Dấu Ấn <em>TavaLED</em></h3>
+                <h3 class="main-tava-heading__title">Dấu Ấn <em>Tava</em></h3>
                 <p class="main-tava-heading__desc">Không gì chứng minh năng lực tốt hơn những dự án thực tế. Chúng tôi
                     định nghĩa lại không gian bằng ánh sáng và âm thanh đỉnh cao.</p>
             </div>
@@ -362,7 +369,7 @@ get_header(); ?>
 
                 if (!empty($project_ids)) {
                     foreach ($project_ids as $id) {
-                        $img_src = wp_get_attachment_image_url($id, 'full');
+                        $img_src = wp_get_attachment_image_url($id, 'medium');
 
                         // Lấy thông tin từ bộ quản lý gallery custom thay vì title/caption mặc định
                         $title = get_post_meta($id, '_tavaled_project_name', true) ?: get_the_title($id);
@@ -384,7 +391,7 @@ get_header(); ?>
                         $aspect_ratio = $height > 0 ? ($width / $height) : 1.5;
                         ?>
                         <div class="g-item" style="--aspect: <?php echo $aspect_ratio; ?>;">
-                            <img src="<?php echo esc_url($img_src); ?>" alt="" loading="lazy">
+                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($title ?: 'Dự án trình chiếu Tava'); ?>" loading="lazy">
                         </div>
                     <?php
                     }
@@ -392,19 +399,19 @@ get_header(); ?>
                     // Demo content nếu admin chưa setup
                     ?>
                     <div class="g-item" style="--aspect: 1.6;">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0031_TavaLED_Hinh_Anh.jpg" alt="EDM">
+                        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600" alt="Âm thanh ánh sáng lễ hội âm nhạc EDM">
                     </div>
                     <div class="g-item" style="--aspect: 1.2;">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0032_TavaLED_Hinh_Anh.jpg" alt="Club">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600" alt="Trình chiếu màn hình lớn quán bar vũ trường club">
                     </div>
                     <div class="g-item" style="--aspect: 1.5;">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0033_TavaLED_Hinh_Anh.jpg" alt="Laser">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600" alt="Hiệu ứng ánh sáng laser sân khấu chuyên nghiệp">
                     </div>
                     <div class="g-item" style="--aspect: 1.8;">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0034_TavaLED_Hinh_Anh.jpg" alt="Concert">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600" alt="Không gian sự kiện đại nhạc hội trực tiếp">
                     </div>
                     <div class="g-item" style="--aspect: 1.4;">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0035_TavaLED_Hinh_Anh.jpg" alt="Stage">
+                        <img src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=600" alt="Hệ thống trình chiếu sân khấu nghệ thuật">
                     </div>
                 <?php } ?>
             </div>
@@ -449,13 +456,12 @@ get_header(); ?>
                     <h2 class="font-serif font-black text-4xl md:text-5xl text-white mb-6 leading-tight">Giải Đáp<br>Mọi
                         Thắc Mắc</h2>
                     <p class="text-white/50 text-base leading-relaxed mb-8">TavaLLS luôn sẵn sàng đồng hành cùng bạn.
-                        Dưới đây là những câu hỏi thường gặp nhất trong quá trình tư vấn và triển khai các dự án công
-                        nghệ Nghe - Nhìn quy mô lớn.</p>
+                        Dưới đây là những câu hỏi thường gặp nhất. Chúng giúp bạn hiểu rõ quá trình tư vấn và triển khai các dự án Nghe - Nhìn quy mô lớn.</p>
 
                     <!-- Tech Image Support -->
                     <div class="relative overflow-hidden mb-8 aspect-video border border-white/10 group interactive">
-                        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0036_TavaLED_Hinh_Anh.jpg"
-                            alt="Hỗ trợ kỹ thuật"
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600"
+                            alt="Đội ngũ hỗ trợ kỹ thuật khách hàng Tava"
                             class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
                         <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#1c2857] to-transparent p-6">
                             <p class="text-white font-bold tracking-wide uppercase text-sm">Trung Tâm Hỗ Trợ Kỹ Thuật
@@ -473,26 +479,22 @@ get_header(); ?>
                     <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                         <button
                             class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
-                            <div class="flex items-center gap-6 pr-4">
+                            <span class="flex items-center gap-6 pr-4">
                                 <span
                                     class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">01</span>
                                 <span
                                     class="text-lg font-medium text-white group-hover:text-brand-orange transition-colors">TavaLLS
                                     có nhận thi công dự án tại các tỉnh thành xa không?</span>
-                            </div>
-                            <div
-                                class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
+                            </span>
+                            <span class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
                                 <i
                                     class="ph-bold ph-plus text-white group-hover:text-brand-orange transition-colors"></i>
-                            </div>
+                            </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
                                 <div class="pb-8 text-white/60 text-base leading-relaxed pl-14 pr-4">
-                                    Có. TavaLLS tự hào với hệ thống Logistics mạnh mẽ và đội ngũ kỹ thuật tinh nhuệ,
-                                    chúng tôi nhận tư vấn, thi công, lắp đặt và bảo hành các dự án Màn hình LED, Âm
-                                    thanh, Ánh sáng trên toàn bộ 64 tỉnh thành tại Việt Nam với tiến độ cực kỳ nhanh
-                                    chóng.
+                                    Có. TavaLLS sở hữu hệ thống vận chuyển Logistics mạnh mẽ. Đội ngũ kỹ thuật của chúng tôi tinh nhuệ và tận tâm. Chúng tôi thi công và bảo hành trọn gói trên 64 tỉnh thành. Tiến độ cam kết nhanh nhất.
                                 </div>
                             </div>
                         </div>
@@ -501,26 +503,22 @@ get_header(); ?>
                     <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                         <button
                             class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
-                            <div class="flex items-center gap-6 pr-4">
+                            <span class="flex items-center gap-6 pr-4">
                                 <span
                                     class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">02</span>
                                 <span
                                     class="text-lg font-medium text-white group-hover:text-brand-orange transition-colors">Chính
                                     sách bảo hành và hỗ trợ kỹ thuật như thế nào?</span>
-                            </div>
-                            <div
-                                class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
+                            </span>
+                            <span class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
                                 <i
                                     class="ph-bold ph-plus text-white group-hover:text-brand-orange transition-colors"></i>
-                            </div>
+                            </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
                                 <div class="pb-8 text-white/60 text-base leading-relaxed pl-14 pr-4">
-                                    Toàn bộ thiết bị do TavaLLS phân phối đều là hàng chính hãng 100%, bảo hành từ 12
-                                    đến 36 tháng tùy theo quy định của nhà sản xuất. Hỗ trợ kỹ thuật trực tuyến 24/7.
-                                    Chúng tôi cam kết có mặt xử lý sự cố tận nơi trong 4 giờ (tại HN/HCM) và tối đa 24
-                                    giờ (tại các tỉnh khác).
+                                    Thiết bị do TavaLLS phân phối cam kết chính hãng 100%. Thời gian bảo hành từ 12 đến 36 tháng. Đội ngũ hỗ trợ kỹ thuật trực tuyến hoạt động 24/7. Chúng tôi xử lý sự cố tận nơi trong 4 giờ ở Hà Nội, TP.HCM. Tại các tỉnh khác, thời gian xử lý tối đa là 24 giờ.
                                 </div>
                             </div>
                         </div>
@@ -529,26 +527,22 @@ get_header(); ?>
                     <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                         <button
                             class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
-                            <div class="flex items-center gap-6 pr-4">
+                            <span class="flex items-center gap-6 pr-4">
                                 <span
                                     class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">03</span>
                                 <span
                                     class="text-lg font-medium text-white group-hover:text-brand-orange transition-colors">Quy
                                     trình tư vấn thiết kế cho dự án mới ra sao?</span>
-                            </div>
-                            <div
-                                class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
+                            </span>
+                            <span class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
                                 <i
                                     class="ph-bold ph-plus text-white group-hover:text-brand-orange transition-colors"></i>
-                            </div>
+                            </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
                                 <div class="pb-8 text-white/60 text-base leading-relaxed pl-14 pr-4">
-                                    Quy trình chuẩn gồm 5 bước: (1) Khảo sát thực tế & Lắng nghe ý tưởng -> (2) Lên bản
-                                    vẽ thiết kế 3D Visual & Báo giá chi tiết -> (3) Ký kết hợp đồng -> (4) Tiến hành thi
-                                    công lắp đặt -> (5) Bàn giao nghiệm thu, hướng dẫn vận hành kỹ lưỡng cho nhân sự của
-                                    khách hàng.
+                                    Quy trình gồm 5 bước chuẩn. Bước 1: Khảo sát thực tế, lắng nghe ý tưởng. Bước 2: Thiết kế bản vẽ 3D Visual, báo giá chi tiết. Bước 3: Ký kết hợp đồng. Bước 4: Tiến hành thi công lắp đặt. Bước 5: Bàn giao nghiệm thu, hướng dẫn vận hành kỹ lưỡng.
                                 </div>
                             </div>
                         </div>
@@ -557,26 +551,22 @@ get_header(); ?>
                     <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                         <button
                             class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
-                            <div class="flex items-center gap-6 pr-4">
+                            <span class="flex items-center gap-6 pr-4">
                                 <span
                                     class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">04</span>
                                 <span
                                     class="text-lg font-medium text-white group-hover:text-brand-orange transition-colors">Chi
-                                    phí đầu tư dự kiến cho Màn hình LED là bao nhiêu?</span>
-                            </div>
-                            <div
-                                class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
+                                    phí đầu tư dự kiến cho màn hình trình chiếu cỡ lớn là bao nhiêu?</span>
+                            </span>
+                            <span class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
                                 <i
                                     class="ph-bold ph-plus text-white group-hover:text-brand-orange transition-colors"></i>
-                            </div>
+                            </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
                                 <div class="pb-8 text-white/60 text-base leading-relaxed pl-14 pr-4">
-                                    Chi phí đầu tư Màn hình LED phụ thuộc vào 3 yếu tố chính: Độ phân giải (Pixel Pitch
-                                    - P2, P3, P4...), Tổng diện tích lắp đặt, và Vị trí (Trong nhà hay Ngoài trời). Để
-                                    có một bảng báo giá chính xác và tối ưu nhất, chuyên gia của chúng tôi sẽ khảo sát
-                                    thực tế và đưa ra nhiều Options cấu hình phù hợp với ngân sách của bạn.
+                                    Chi phí đầu tư màn hình phụ thuộc vào 3 yếu tố chính. Đó là độ phân giải, tổng diện tích lắp đặt và vị trí lắp trong nhà hay ngoài trời. Để nhận báo giá chính xác nhất, chuyên gia của chúng tôi sẽ khảo sát thực tế. Chúng tôi sẽ đề xuất nhiều phương án phù hợp ngân sách của bạn.
                                 </div>
                             </div>
                         </div>
@@ -585,26 +575,22 @@ get_header(); ?>
                     <div class="faq-item border-b border-white/10 bg-[#1c2857] group">
                         <button
                             class="faq-btn w-full text-left py-8 flex justify-between items-center focus:outline-none interactive">
-                            <div class="flex items-center gap-6 pr-4">
+                            <span class="flex items-center gap-6 pr-4">
                                 <span
                                     class="font-mono text-xl text-white/20 font-bold group-hover:text-brand-orange transition-colors">05</span>
                                 <span
                                     class="text-lg font-medium text-white group-hover:text-brand-orange transition-colors">TavaLLS
                                     có cung cấp dịch vụ cho thuê thiết bị sự kiện không?</span>
-                            </div>
-                            <div
-                                class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
+                            </span>
+                            <span class="faq-icon w-10 h-10 border border-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange/10">
                                 <i
                                     class="ph-bold ph-plus text-white group-hover:text-brand-orange transition-colors"></i>
-                            </div>
+                            </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
                                 <div class="pb-8 text-white/60 text-base leading-relaxed pl-14 pr-4">
-                                    Chắc chắn rồi. Bên cạnh việc phân phối và thi công trọn gói vĩnh viễn, TavaLLS sở
-                                    hữu kho thiết bị Rental khổng lồ (Cabin LED nhôm đúc, Loa Line Array, Đèn Moving
-                                    Head) luôn sẵn sàng phục vụ cho các đại nhạc hội, triển lãm, lễ ra mắt sản phẩm với
-                                    thời gian thuê linh hoạt và đội ngũ vận hành chuyên nghiệp đi kèm.
+                                    Chắc chắn rồi. Bên cạnh thi công trọn gói, TavaLLS sở hữu kho thiết bị Rental khổng lồ. Thiết bị luôn sẵn sàng phục vụ đại nhạc hội, triển lãm, lễ ra mắt. Thời gian thuê linh hoạt cùng đội vận hành chuyên nghiệp đi kèm.
                                 </div>
                             </div>
                         </div>
@@ -618,7 +604,7 @@ get_header(); ?>
     <!-- ================= SECTION 7: CTA ================= -->
     <section
         class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
-        <img src="https://tavaled.vn/wp-content/uploads/2026/03/0037_TavaLED_Hinh_Anh.jpg" alt="Background"
+        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600" alt="Không gian sự kiện ánh sáng Tava"
             class="absolute inset-0 w-full h-full object-cover" loading="lazy">
         <div
             class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]">

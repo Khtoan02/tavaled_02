@@ -112,6 +112,22 @@
                     <textarea name="tavaled_address" rows="3" class="large-text"><?php echo esc_textarea(get_option('tavaled_address')); ?></textarea>
                 </td>
             </tr>
+
+            <tr valign="top">
+                <th scope="row">Link Facebook</th>
+                <td>
+                    <input type="text" name="tavaled_facebook_link" value="<?php echo esc_attr(get_option('tavaled_facebook_link')); ?>" class="regular-text" />
+                    <p class="description">Đường dẫn trang Facebook của doanh nghiệp (ví dụ: https://www.facebook.com/tavalls.official).</p>
+                </td>
+            </tr>
+
+            <tr valign="top">
+                <th scope="row">Link Youtube</th>
+                <td>
+                    <input type="text" name="tavaled_youtube_link" value="<?php echo esc_attr(get_option('tavaled_youtube_link')); ?>" class="regular-text" />
+                    <p class="description">Đường dẫn kênh Youtube của doanh nghiệp.</p>
+                </td>
+            </tr>
         </table>
         
         <?php submit_button('Lưu thiết lập'); ?>

@@ -77,6 +77,25 @@ $tags          = get_the_tags();
       </div>
       <?php endif; ?>
 
+      <!-- Share buttons -->
+      <div class="mt-6 pt-6 border-t border-gray-100 flex items-center gap-3">
+        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Chia sẻ:</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(get_permalink()); ?>" 
+           target="_blank" 
+           rel="noopener"
+           class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-[#1877f2] hover:text-white transition-all"
+           title="Chia sẻ Facebook">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://sp.zalo.me/share_button?url=<?php echo urlencode(get_permalink()); ?>" 
+           target="_blank" 
+           rel="noopener"
+           class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-[#0068ff] hover:text-white transition-all text-[9px] font-extrabold"
+           title="Chia sẻ Zalo">
+          Zalo
+        </a>
+      </div>
+
       <!-- Author mini -->
       <div class="mt-10 pt-6 border-t border-gray-100 flex items-center gap-4">
         <?php echo get_avatar(get_the_author_meta('ID'), 52, '', '', ['class' => 'w-12 h-12 rounded-full object-cover border-2 border-gray-100 flex-shrink-0']); ?>

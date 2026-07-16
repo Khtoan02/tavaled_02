@@ -16,9 +16,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-$_fb = 'https://tavaled.vn/wp-content/uploads/2026/03/'; // Base URL ảnh fallback
 $global_theme = $args['theme'] ?? 'dark';
-
 $sections = [
 
     // ── 01: DỰ ÁN ───────────────────────────────────────────────────────────
@@ -31,7 +29,7 @@ $sections = [
         'ghost_text' => 'Dự Án',
         'view_all_text' => 'Xem tất cả dự án',
         'category_label' => 'Dự Án',
-        'fallback_img' => $_fb . '0021_TavaLED_Hinh_Anh.jpg',
+        'fallback_img' => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600',
         'cta_text' => 'Xem dự án',
         'excerpt_words' => 40,
         'is_first' => false,
@@ -48,7 +46,7 @@ $sections = [
         'ghost_text' => 'Kinh Nghiệm',
         'view_all_text' => 'Xem tất cả',
         'category_label' => 'Kinh Nghiệm',
-        'fallback_img' => $_fb . '0025_TavaLED_Hinh_Anh.jpg',
+        'fallback_img' => 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600',
         'cta_text' => 'Đọc ngay',
         'excerpt_words' => 40,
         'is_first' => false,
@@ -65,7 +63,7 @@ $sections = [
         'ghost_text' => 'Dịch Vụ',
         'view_all_text' => 'Xem tất cả',
         'category_label' => 'Dịch Vụ',
-        'fallback_img' => $_fb . '0027_TavaLED_Hinh_Anh.jpg',
+        'fallback_img' => 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600',
         'cta_text' => 'Chi tiết',
         'excerpt_words' => 40,
         'is_first' => false,
@@ -82,7 +80,7 @@ $sections = [
         'ghost_text' => 'Tin Tức',
         'view_all_text' => 'Xem tất cả',
         'category_label' => 'Tin Tức',
-        'fallback_img' => $_fb . '0029_TavaLED_Hinh_Anh.jpg',
+        'fallback_img' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600',
         'cta_text' => 'Đọc chi tiết',
         'excerpt_words' => 40,
         'is_first' => false,

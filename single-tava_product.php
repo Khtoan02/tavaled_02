@@ -1728,12 +1728,12 @@ $brand_name = (!is_wp_error($terms_brand) && !empty($terms_brand)) ? $terms_bran
             <!-- Share row -->
             <div class="prod-share">
                 <span class="prod-share__label">Chia sẻ:</span>
-                <a href="#" class="share-btn" title="Facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(get_permalink()); ?>" target="_blank" rel="noopener" class="share-btn" title="Facebook">
                     <svg viewBox="0 0 24 24">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                     </svg>
                 </a>
-                <a href="#" class="share-btn" title="Zalo">
+                <a href="https://sp.zalo.me/share_button?url=<?php echo urlencode(get_permalink()); ?>" target="_blank" rel="noopener" class="share-btn" title="Zalo">
                     <svg viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                     </svg>

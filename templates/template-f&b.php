@@ -1254,7 +1254,7 @@ get_header(); ?>
           tất cả →</a>
       </div>
       <div class="cases rv d1">
-        <a href="#" class="case case--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Pandora.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case case--main"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Pandora.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1264,7 +1264,7 @@ get_header(); ?>
                 class="spec">Màn hình LED</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://thegioiclub.com/Uploads/files/01-2025/bnew/garden2-15.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://thegioiclub.com/Uploads/files/01-2025/bnew/garden2-15.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1273,7 +1273,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">Âm thanh sôi động</span><span class="spec">Ánh sáng</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-amakongNhan-su.jpg"
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-amakongNhan-su.jpg"
             alt="" loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1282,7 +1282,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">Chiếu sáng Decor</span><span class="spec">BGM Audio</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-de-79.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-de-79.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1291,7 +1291,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">Chiếu sáng không gian</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-huu-hanh.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/nha-hang-huu-hanh.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1300,7 +1300,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">Hệ thống âm thanh</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Ngoi-Do-1.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Ngoi-Do-1.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
@@ -1309,7 +1309,7 @@ get_header(); ?>
             <div class="case__specs"><span class="spec">Trực quan ánh sáng</span></div>
           </div>
         </a>
-        <a href="#" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Phu-Quy-3.jpg" alt=""
+        <a href="<?php echo home_url('/lien-he/'); ?>" class="case"><img src="https://tavaled.vn/wp-content/uploads/2026/03/Nha-hang-Phu-Quy-3.jpg" alt=""
             loading="lazy">
           <div class="case__over"></div>
           <div class="case__body">
