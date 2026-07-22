@@ -68,19 +68,21 @@ get_header(); ?>
             <!-- Eyebrow Tagline Badge -->
             <div class="hero-v2__eyebrow">
                 <span class="hero-v2__eyebrow-dot"></span>
-                NHÀ THẦU THI CÔNG MÀN HÌNH LED &amp; ÂM THANH TRỌN GÓI
+                GIẢI PHÁP HÌNH ẢNH &amp; ÂM THANH TOÀN DIỆN
             </div>
 
             <!-- Headline H1 -->
             <h1 class="hero-v2__h1">
-                <span class="h1-main">TAVA — THI CÔNG MÀN HÌNH LED</span>
-                <span class="h1-accent">&amp; ÂM THANH CHUYÊN NGHIỆP</span>
+                <span class="h1-main">TAVA - THI CÔNG MÀN HÌNH LED</span>
+                <span class="h1-accent">&amp; ÂM THANH TRỌN GÓI</span>
             </h1>
 
-            <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR) -->
-            <p class="hero-v2__subtitle">
-                <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết 100% thiết bị chính hãng và bảo hành dài hạn.
-            </p>
+            <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR Box) -->
+            <div class="hero-v2__tldr-box">
+                <p>
+                    <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết thiết bị chính hãng và bảo hành dài hạn.
+                </p>
+            </div>
 
             <!-- Call to Action Buttons -->
             <div class="hero-v2__ctas">
