@@ -63,72 +63,75 @@ get_header(); ?>
         <!-- ── CINEMATIC OVERLAY GRADIENT ── -->
         <div class="hero-v2__overlay" aria-hidden="true"></div>
 
-        <!-- ── HERO MAIN CONTENT ── -->
-        <div class="hero-v2__main">
-            <!-- Eyebrow Tagline Badge -->
-            <div class="hero-v2__eyebrow">
-                <span class="hero-v2__eyebrow-dot"></span>
-                GIẢI PHÁP HÌNH ẢNH &amp; ÂM THANH TOÀN DIỆN
-            </div>
+        <!-- ── HERO CONTENT WRAPPER (Flexbox Flow - No Overlap) ── -->
+        <div class="hero-v2__content-wrap">
+            <!-- ── HERO MAIN CONTENT ── -->
+            <div class="hero-v2__main">
+                <!-- Eyebrow Tagline Badge -->
+                <div class="hero-v2__eyebrow">
+                    <span class="hero-v2__eyebrow-dot"></span>
+                    GIẢI PHÁP HÌNH ẢNH &amp; ÂM THANH TOÀN DIỆN
+                </div>
 
-            <!-- Headline H1 -->
-            <h1 class="hero-v2__h1">
-                <span class="h1-main">TAVA - THI CÔNG MÀN HÌNH LED</span>
-                <span class="h1-accent">&amp; ÂM THANH TRỌN GÓI</span>
-            </h1>
+                <!-- Headline H1 -->
+                <h1 class="hero-v2__h1">
+                    <span class="h1-main">TAVA - THI CÔNG MÀN HÌNH LED</span>
+                    <span class="h1-accent">&amp; ÂM THANH TRỌN GÓI</span>
+                </h1>
 
-            <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR Box) -->
-            <div class="hero-v2__tldr-box">
-                <p>
-                    <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết thiết bị chính hãng và bảo hành dài hạn.
-                </p>
-            </div>
+                <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR Box) -->
+                <div class="hero-v2__tldr-box">
+                    <p>
+                        <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết thiết bị chính hãng và bảo hành dài hạn.
+                    </p>
+                </div>
 
-            <!-- Call to Action Buttons -->
-            <div class="hero-v2__ctas">
-                <a href="#products" class="hero-v2-btn hero-v2-btn--primary interactive">
-                    <span>Nhận báo giá miễn phí</span>
-                    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 ml-2">
-                        <path d="M2 12L12 2M12 2H6M12 2v6" />
-                    </svg>
-                </a>
-                <a href="#projects" class="hero-v2-btn hero-v2-btn--ghost interactive">
-                    <i class="ph-fill ph-play-circle text-lg mr-2"></i>
-                    <span>Xem dự án thực tế</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- ── FLOATING CORE VALUES & CAPABILITY BAR ── -->
-        <div class="hero-v2__bar">
-            <div class="hero-v2__bar-item">
-                <div class="bar-badge">L</div>
-                <div class="bar-info">
-                    <strong class="bar-title">Listen (Lắng nghe)</strong>
-                    <span class="bar-desc">Lắng nghe nhu cầu &amp; tư vấn ngân sách tối ưu</span>
+                <!-- Call to Action Buttons -->
+                <div class="hero-v2__ctas">
+                    <a href="#products" class="hero-v2-btn hero-v2-btn--primary interactive">
+                        <span>Nhận báo giá miễn phí</span>
+                        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 ml-2">
+                            <path d="M2 12L12 2M12 2H6M12 2v6" />
+                        </svg>
+                    </a>
+                    <a href="#projects" class="hero-v2-btn hero-v2-btn--ghost interactive">
+                        <i class="ph-fill ph-play-circle text-lg mr-2"></i>
+                        <span>Xem dự án thực tế</span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-v2__bar-item">
-                <div class="bar-badge">L</div>
-                <div class="bar-info">
-                    <strong class="bar-title">Learn (Thấu hiểu)</strong>
-                    <span class="bar-desc">Khảo sát thực địa &amp; nghiên cứu kiến trúc</span>
+
+            <!-- ── FLOATING CORE VALUES & CAPABILITY BAR ── -->
+            <div class="hero-v2__bar">
+                <div class="hero-v2__bar-item">
+                    <div class="bar-badge">L</div>
+                    <div class="bar-info">
+                        <strong class="bar-title">Listen (Lắng nghe)</strong>
+                        <span class="bar-desc">Lắng nghe nhu cầu &amp; tư vấn ngân sách tối ưu</span>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-v2__bar-item">
-                <div class="bar-badge bar-badge--orange">S</div>
-                <div class="bar-info">
-                    <strong class="bar-title">Solve (Giải quyết)</strong>
-                    <span class="bar-desc">Thi công trọn gói &amp; hỗ trợ kỹ thuật 24/7</span>
+                <div class="hero-v2__bar-item">
+                    <div class="bar-badge">L</div>
+                    <div class="bar-info">
+                        <strong class="bar-title">Learn (Thấu hiểu)</strong>
+                        <span class="bar-desc">Khảo sát thực địa &amp; nghiên cứu kiến trúc</span>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-v2__bar-item bar-item--highlight">
-                <div class="bar-badge bar-badge--gold">
-                    <i class="ph-fill ph-shield-check text-lg"></i>
+                <div class="hero-v2__bar-item">
+                    <div class="bar-badge bar-badge--orange">S</div>
+                    <div class="bar-info">
+                        <strong class="bar-title">Solve (Giải quyết)</strong>
+                        <span class="bar-desc">Thi công trọn gói &amp; hỗ trợ kỹ thuật 24/7</span>
+                    </div>
                 </div>
-                <div class="bar-info">
-                    <strong class="bar-title">100% Chính Hãng</strong>
-                    <span class="bar-desc">Cung cấp CO/CQ &amp; bảo hành 24 – 36 tháng</span>
+                <div class="hero-v2__bar-item bar-item--highlight">
+                    <div class="bar-badge bar-badge--gold">
+                        <i class="ph-fill ph-shield-check text-lg"></i>
+                    </div>
+                    <div class="bar-info">
+                        <strong class="bar-title">100% Chính Hãng</strong>
+                        <span class="bar-desc">Cung cấp CO/CQ &amp; bảo hành 24 – 36 tháng</span>
+                    </div>
                 </div>
             </div>
         </div>
