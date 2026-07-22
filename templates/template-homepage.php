@@ -136,18 +136,6 @@ get_header(); ?>
             <div class="scroll-line"></div>
             <span>Cuộn xuống</span>
         </div>
-    </section>/button>
-                        <button class="hero-slider__dot" aria-label="Ảnh 9"></button>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll indicator -->
-        <div class="hero-v2__scroll" aria-hidden="true">
-            <div class="scroll-line"></div>
-            <span>Cuộn xuống</span>
-        </div>
     </section>
 
     <!-- ================= SECTION 3: SẢN PHẨM ================= -->
