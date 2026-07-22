@@ -42,7 +42,8 @@ html { scroll-behavior: smooth; }
     max-height: 940px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: clamp(90px, 12vh, 140px);
     overflow: hidden;
     background: #04080f;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -101,10 +102,11 @@ html { scroll-behavior: smooth; }
 .hero-v2__main {
     position: relative;
     z-index: 10;
-    max-width: 900px;
+    max-width: 860px;
     padding-left: clamp(24px, 6vw, 100px);
     padding-right: 24px;
-    margin-top: -40px;
+    margin-top: 0;
+    padding-bottom: 110px;
 }
 
 /* Eyebrow Tagline Badge */
@@ -123,7 +125,7 @@ html { scroll-behavior: smooth; }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .hero-v2__eyebrow-dot {
@@ -142,14 +144,14 @@ html { scroll-behavior: smooth; }
 
 /* Headline Typography */
 .hero-v2__h1 {
-    margin: 0 0 20px 0;
-    line-height: 1.15;
+    margin: 0 0 16px 0;
+    line-height: 1.12;
     display: flex;
     flex-direction: column;
 }
 
 .hero-v2__h1 .h1-main {
-    font-size: clamp(32px, 4.5vw, 62px);
+    font-size: clamp(28px, 3.8vw, 54px);
     font-weight: 900;
     color: #ffffff;
     letter-spacing: -0.02em;
@@ -157,7 +159,7 @@ html { scroll-behavior: smooth; }
 }
 
 .hero-v2__h1 .h1-accent {
-    font-size: clamp(26px, 3.8vw, 52px);
+    font-size: clamp(22px, 3vw, 44px);
     font-weight: 800;
     background: linear-gradient(135deg, #ff7a24 0%, #f05a25 50%, #ffaa55 100%);
     -webkit-background-clip: text;
