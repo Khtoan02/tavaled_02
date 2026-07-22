@@ -35,13 +35,12 @@ html { scroll-behavior: smooth; }
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 560px;
-    max-height: 860px;
-    display: grid;
-    grid-template-columns: 34fr 66fr;
+    min-height: 600px;
+    max-height: 880px;
+    display: flex;
     align-items: center;
     overflow: hidden;
-    background: var(--hero-navy);
+    background: #04080f;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
@@ -63,24 +62,29 @@ html { scroll-behavior: smooth; }
 }
 
 /* ═══════════════════════
-   LEFT — CONTENT COLUMN
+   LEFT — CONTENT COLUMN (Glassmorphic Container, ~36% width)
 ═══════════════════════ */
 .hero-v2__left {
     position: relative;
     z-index: 20;
-    padding: clamp(32px, 5vw, 80px) clamp(24px, 4vw, 64px);
+    width: 38%;
+    min-width: 440px;
+    max-width: 560px;
+    margin-left: clamp(20px, 4vw, 60px);
+    padding: clamp(24px, 2.5vw, 36px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0;
+    background: rgba(4, 8, 15, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .hero-v2__left::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(4,8,15,1) 60%, rgba(4,8,15,0) 100%);
-    pointer-events: none;
-    z-index: -1;
+    display: none;
 }
 
 /* ── Eyebrow tagline ── */
@@ -209,20 +213,23 @@ html { scroll-behavior: smooth; }
 }
 
 /* ═══════════════════════
-   RIGHT — FULL-HEIGHT IMAGE SLIDER
+   RIGHT — FULL-HEIGHT IMAGE SLIDER (Occupies 68% of Hero Section)
 ═══════════════════════ */
 .hero-v2__right {
-    position: relative;
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 68%;
     height: 100%;
     overflow: hidden;
+    z-index: 2;
 }
-/* Soft fade on the left edge — blends slider into left content */
+/* Soft subtle fade on the left edge */
 .hero-v2__right::before {
     content: '';
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    width: 22%;
-    background: linear-gradient(to right, var(--hero-navy), transparent);
+    width: 14%;
+    background: linear-gradient(to right, #04080f, transparent);
     z-index: 10;
     pointer-events: none;
 }
@@ -692,18 +699,22 @@ html { scroll-behavior: smooth; }
 /* ── Responsive: mobile single column ── */
 @media (max-width: 760px) {
     .hero-v2 {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         height: auto;
         min-height: 100svh;
         max-height: none;
+        padding: 80px 16px 40px;
     }
     /* Right column: absolute, fills entire section as bg */
     .hero-v2__right {
         display: block;
         position: absolute;
         inset: 0;
-        z-index: 0;
+        width: 100%;
         height: 100%;
+        z-index: 0;
         overflow: hidden;
     }
     /* Fade the left edge wider to cover full width on mobile */
@@ -720,12 +731,20 @@ html { scroll-behavior: smooth; }
     .spec-tag { display: none; }
     .hero-slider__dots { display: none; }
     /* Left column sits on top of slider bg */
-    .hero-v2__left { position: relative; z-index: 20; padding: 40px 24px 80px; }
+    .hero-v2__left {
+        position: relative;
+        z-index: 20;
+        width: 100%;
+        min-width: auto;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 24px 20px;
+    }
     .hero-v2__left::before { background: transparent; }
     .hero-v2__depth { z-index: 0; }
     /* Cân đối font H1/H2 trên mobile — h1-line2 dùng clamp viewport để luôn 1 hàng */
-    .h1-line1      { font-size: clamp(28px, 8.5vw, 48px); white-space: nowrap; }
-    .h1-line2      { font-size: clamp(18px, 7.2vw, 48px); white-space: nowrap; }
+    .h1-line1      { font-size: clamp(24px, 7vw, 40px); white-space: normal; }
+    .h1-line2      { font-size: clamp(16px, 5.5vw, 36px); white-space: normal; }
     .h1-line3      { font-size: 14px; letter-spacing: 0.03em; margin-top: 8px; white-space: normal; }
     .hero-v2__desc { font-size: 13px; line-height: 1.65; }
 }
