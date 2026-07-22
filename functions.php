@@ -140,39 +140,40 @@ $seo_schema_setup = new \App\Controllers\SeoSchemaController();
 $seo_schema_setup->register();
 
 /**
- * Xoá bộ nhớ đệm (Cache) của Rank Math để ép nhận diện và làm mới Sitemap Index
+ * Tự động bật cấu hình Sitemap của Rank Math & xoá cache sitemap
  */
-delete_transient('rank_math_accessible_post_types');
-delete_transient('rank_math_accessible_taxonomies');
-global $wpdb;
-$wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_rank_math_sitemap_%'");
-$wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_rank_math_sitemap_%'");
+add_action('init', function () {
+    if (class_exists('RankMath')) {
+        delete_transient('rank_math_accessible_post_types');
+        delete_transient('rank_math_accessible_taxonomies');
+        global $wpdb;
+        if (isset($wpdb) && is_object($wpdb) && !empty($wpdb->options)) {
+            $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_rank_math_sitemap_%'");
+            $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_rank_math_sitemap_%'");
+        }
 
-/**
- * Tự động bật cấu hình Sitemap của Rank Math cho tava_product và product_cat
- */
-if (class_exists('RankMath')) {
-    $rm_sitemap_opts = get_option('rank-math-options-sitemap');
-    $needs_update = false;
+        $rm_sitemap_opts = get_option('rank-math-options-sitemap');
+        $needs_update = false;
 
-    if (is_array($rm_sitemap_opts)) {
-        if (empty($rm_sitemap_opts['pt_tava_product_sitemap']) || $rm_sitemap_opts['pt_tava_product_sitemap'] !== 'on') {
-            $rm_sitemap_opts['pt_tava_product_sitemap'] = 'on';
-            $needs_update = true;
-        }
-        if (empty($rm_sitemap_opts['tax_product_cat_sitemap']) || $rm_sitemap_opts['tax_product_cat_sitemap'] !== 'on') {
-            $rm_sitemap_opts['tax_product_cat_sitemap'] = 'on';
-            $needs_update = true;
-        }
-        if (empty($rm_sitemap_opts['tax_product_industry_sitemap']) || $rm_sitemap_opts['tax_product_industry_sitemap'] !== 'on') {
-            $rm_sitemap_opts['tax_product_industry_sitemap'] = 'on';
-            $needs_update = true;
-        }
-        if ($needs_update) {
-            update_option('rank-math-options-sitemap', $rm_sitemap_opts);
+        if (is_array($rm_sitemap_opts)) {
+            if (empty($rm_sitemap_opts['pt_tava_product_sitemap']) || $rm_sitemap_opts['pt_tava_product_sitemap'] !== 'on') {
+                $rm_sitemap_opts['pt_tava_product_sitemap'] = 'on';
+                $needs_update = true;
+            }
+            if (empty($rm_sitemap_opts['tax_product_cat_sitemap']) || $rm_sitemap_opts['tax_product_cat_sitemap'] !== 'on') {
+                $rm_sitemap_opts['tax_product_cat_sitemap'] = 'on';
+                $needs_update = true;
+            }
+            if (empty($rm_sitemap_opts['tax_product_industry_sitemap']) || $rm_sitemap_opts['tax_product_industry_sitemap'] !== 'on') {
+                $rm_sitemap_opts['tax_product_industry_sitemap'] = 'on';
+                $needs_update = true;
+            }
+            if ($needs_update) {
+                update_option('rank-math-options-sitemap', $rm_sitemap_opts);
+            }
         }
     }
-}
+});
 
 /**
  * Xoá bỏ tiền tố (base slug) cho taxonomy product_cat và product_subcat
@@ -578,3 +579,11 @@ add_filter('wpseo_schema_organization', function($data) {
     }
     return $data;
 }, 99);
+
+/**
+ * Ép WordPress dùng thư viện GD thay vì Imagick khi xử lý resize ảnh
+ * Khắc phục lỗi "Máy chủ không thể xử lý hình ảnh" khi tải ảnh có độ phân giải lớn (> 2560px)
+ */
+add_filter('wp_image_editors', function($editors) {
+    return ['WP_Image_Editor_GD', 'WP_Image_Editor_Imagick'];
+});
