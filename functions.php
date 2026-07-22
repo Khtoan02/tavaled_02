@@ -179,7 +179,7 @@ if (class_exists('RankMath')) {
  * Biến URL từ /danh-muc/man-hinh-led thành /man-hinh-led
  */
 add_filter('term_link', function ($url, $term, $taxonomy) {
-    if ($taxonomy === 'product_cat') {
+    if ($taxonomy === 'product_cat' && is_object($term) && isset($term->slug)) {
         return home_url('/' . $term->slug . '/');
     }
     return $url;
@@ -192,8 +192,9 @@ add_filter('generate_rewrite_rules', function ($wp_rewrite) {
         'hide_empty' => false,
     ]);
 
-    if (!is_wp_error($terms) && !empty($terms)) {
+    if (!is_wp_error($terms) && !empty($terms) && is_array($terms)) {
         foreach ($terms as $term) {
+            if (!is_object($term) || empty($term->slug)) continue;
             // Quy tắc cho trang danh mục
             $rules['^' . $term->slug . '/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug;
             $rules['^' . $term->slug . '/page/?([0-9]{1,})/?$'] = 'index.php?' . $term->taxonomy . '=' . $term->slug . '&paged=$matches[1]';
@@ -218,9 +219,9 @@ add_action('delete_product_cat', 'flush_rewrite_rules');
  * Converts /san-pham/ten-sp/ to /man-hinh-led/ten-sp/
  */
 add_filter('post_type_link', function ($post_link, $post) {
-    if (is_object($post) && $post->post_type == 'tava_product') {
+    if (is_object($post) && isset($post->post_type) && $post->post_type == 'tava_product') {
         $cat_terms = wp_get_object_terms($post->ID, 'product_cat');
-        if (!is_wp_error($cat_terms) && !empty($cat_terms) && is_object($cat_terms[0])) {
+        if (!is_wp_error($cat_terms) && !empty($cat_terms) && is_array($cat_terms) && is_object($cat_terms[0]) && !empty($cat_terms[0]->slug)) {
             return str_replace('/san-pham/', '/' . $cat_terms[0]->slug . '/', $post_link);
         }
     }
@@ -246,8 +247,8 @@ add_action('wp_head', 'tavaled_add_favicon');
  */
 function tavaled_floating_contacts()
 {
-    $main_phone = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
-    $cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+    $main_phone = (string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
+    $cskh_val = (string)\App\Helpers\ThemeHelper::getOption('phone_cskh', '');
     $cskh_data = json_decode($cskh_val, true);
     if (!is_array($cskh_data)) {
         $cskh_data = [];
@@ -256,14 +257,14 @@ function tavaled_floating_contacts()
             $cskh_data[] = ['name' => 'CSKH', 'role' => '', 'phone' => $p, 'email' => ''];
         }
     }
-    $first_cskh = !empty($cskh_data) ? $cskh_data[0]['phone'] : null;
+    $first_cskh = (!empty($cskh_data) && isset($cskh_data[0]['phone'])) ? (string)$cskh_data[0]['phone'] : '';
 
     if (!$main_phone && !$first_cskh)
         return;
     ?>
     <div class="floating-contact-wrapper fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
         <?php if ($main_phone): ?>
-            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $main_phone)); ?>"
+            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', (string)$main_phone)); ?>"
                 class="floating-btn phone-kd-btn group relative flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition duration-300">
                 <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"
                     style="animation-duration: 1.5s;"></span>
@@ -287,7 +288,7 @@ function tavaled_floating_contacts()
                 }
             </style>
             <div class="relative tav-float-wrap flex items-center">
-                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $first_cskh)); ?>"
+                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', (string)$first_cskh)); ?>"
                     class="floating-btn phone-cskh-btn relative flex items-center justify-center w-14 h-14 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 hover:scale-110 transition duration-300">
                     <span class="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping"
                         style="animation-duration: 1.5s; animation-delay: 0.5s;"></span>
@@ -305,20 +306,20 @@ function tavaled_floating_contacts()
                     </div>
                     <ul class="max-h-[480px] overflow-y-auto p-3 space-y-2" style="scrollbar-width: thin;">
                         <?php foreach ($cskh_data as $cskh_item):
-                            $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
+                            $c_tel = preg_replace('/[^0-9+]/', '', (string)($cskh_item['phone'] ?? ''));
                         ?>
                         <li class="header-cskh-item rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);">
                             <div class="p-3.5">
                                 <div class="flex items-center gap-3">
                                     <?php if (!empty($cskh_item['avatar'])): ?>
-                                        <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name']); ?> - Tư vấn viên TavaLLS" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
+                                        <img src="<?php echo esc_url($cskh_item['avatar']); ?>" alt="<?php echo esc_attr($cskh_item['name'] ?? ''); ?> - Tư vấn viên TavaLLS" class="w-11 h-11 rounded-full object-cover shrink-0 ring-2 ring-white shadow-md">
                                     <?php else: ?>
                                         <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 shadow-md text-white" style="background: linear-gradient(135deg, #fdba74, #f97316);">
                                             <i class="ph-fill ph-user text-xl"></i>
                                         </div>
                                     <?php endif; ?>
                                     <div class="flex-1 min-w-0">
-                                        <div class="font-bold text-gray-900 text-[14px] leading-tight truncate"><?php echo esc_html($cskh_item['name'] ?: 'Nhân viên'); ?></div>
+                                        <div class="font-bold text-gray-900 text-[14px] leading-tight truncate"><?php echo esc_html(!empty($cskh_item['name']) ? $cskh_item['name'] : 'Nhân viên'); ?></div>
                                         <?php if (!empty($cskh_item['role'])): ?>
                                             <div class="text-[10px] font-semibold text-brand-orange uppercase tracking-wider mt-0.5 truncate"><?php echo esc_html($cskh_item['role']); ?></div>
                                         <?php endif; ?>
@@ -346,7 +347,7 @@ function tavaled_floating_contacts()
         <?php endif; ?>
 
         <?php if ($main_phone): ?>
-            <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $main_phone)); ?>" target="_blank"
+            <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', (string)$main_phone)); ?>" target="_blank"
                 class="floating-btn zalo-btn group relative flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg hover:bg-gray-50 hover:scale-110 transition duration-300">
                 <span class="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping"
                     style="animation-duration: 1.5s; animation-delay: 1s;"></span>
@@ -476,7 +477,7 @@ add_action('product_cat_edit_form_fields', function($term) {
         <th scope="row"><label for="cat_description">Mô tả chi tiết (Chuẩn SEO)</label></th>
         <td>
             <?php
-            wp_editor(htmlspecialchars_decode($term->description), 'cat_description', array(
+            wp_editor(htmlspecialchars_decode((string)($term->description ?? '')), 'cat_description', array(
                 'textarea_name' => 'description',
                 'textarea_rows' => 15,
                 'media_buttons' => true,
@@ -536,15 +537,15 @@ add_filter('wpseo_metadesc', function($desc) {
 
 // Inject sameAs social profiles into Rank Math schema
 add_filter('rank_math/json_ld', function($data, $jsonld) {
-    if (isset($data['publisher'])) {
+    if (is_array($data) && isset($data['publisher'])) {
         $facebook = \App\Helpers\ThemeHelper::getOption('facebook_link');
         $youtube = \App\Helpers\ThemeHelper::getOption('youtube_link');
         $phone = \App\Helpers\ThemeHelper::getOption('phone');
         $same_as = [];
-        if ($facebook) $same_as[] = esc_url($facebook);
-        if ($youtube) $same_as[] = esc_url($youtube);
+        if ($facebook) $same_as[] = esc_url((string)$facebook);
+        if ($youtube) $same_as[] = esc_url((string)$youtube);
         if ($phone) {
-            $clean_phone = preg_replace('/[^0-9]/', '', $phone);
+            $clean_phone = preg_replace('/[^0-9]/', '', (string)$phone);
             if ($clean_phone) $same_as[] = 'https://zalo.me/' . $clean_phone;
         }
         if (!empty($same_as)) {
@@ -556,18 +557,21 @@ add_filter('rank_math/json_ld', function($data, $jsonld) {
 
 // Inject sameAs social profiles into Yoast SEO schema
 add_filter('wpseo_schema_organization', function($data) {
+    if (!is_array($data)) {
+        $data = [];
+    }
     $facebook = \App\Helpers\ThemeHelper::getOption('facebook_link');
     $youtube = \App\Helpers\ThemeHelper::getOption('youtube_link');
     $phone = \App\Helpers\ThemeHelper::getOption('phone');
     $same_as = [];
-    if ($facebook) $same_as[] = esc_url($facebook);
-    if ($youtube) $same_as[] = esc_url($youtube);
+    if ($facebook) $same_as[] = esc_url((string)$facebook);
+    if ($youtube) $same_as[] = esc_url((string)$youtube);
     if ($phone) {
-        $clean_phone = preg_replace('/[^0-9]/', '', $phone);
+        $clean_phone = preg_replace('/[^0-9]/', '', (string)$phone);
         if ($clean_phone) $same_as[] = 'https://zalo.me/' . $clean_phone;
     }
     if (!empty($same_as)) {
-        if (!isset($data['sameAs'])) {
+        if (!isset($data['sameAs']) || !is_array($data['sameAs'])) {
             $data['sameAs'] = [];
         }
         $data['sameAs'] = array_unique(array_merge($data['sameAs'], $same_as));

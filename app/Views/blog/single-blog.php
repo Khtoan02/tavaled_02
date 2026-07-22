@@ -145,7 +145,7 @@ $tags          = get_the_tags();
 
     <!-- ── CTA banner cuối bài (CSKH dynamic) ── -->
     <?php
-    $cta_cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+    $cta_cskh_val = (string)\App\Helpers\ThemeHelper::getOption('phone_cskh', '');
     $cta_cskh_data = json_decode($cta_cskh_val, true);
     if (!is_array($cta_cskh_data) || empty($cta_cskh_data)) {
         $cta_cskh_data = [];
@@ -157,8 +157,8 @@ $tags          = get_the_tags();
     if (empty($cta_cskh_data)) {
         $cta_cskh_data = [['name' => 'Hotline', 'role' => 'KD & Hỗ trợ', 'phone' => '0934 29 8181', 'email' => '']];
     }
-    $cta_first = $cta_cskh_data[0];
-    $cta_first_tel = preg_replace('/[^0-9+]/', '', $cta_first['phone']);
+    $cta_first = is_array($cta_cskh_data[0]) ? $cta_cskh_data[0] : ['name' => 'Hotline', 'role' => 'KD & Hỗ trợ', 'phone' => '0934 29 8181', 'email' => ''];
+    $cta_first_tel = preg_replace('/[^0-9+]/', '', (string)($cta_first['phone'] ?? ''));
     ?>
     <div class="mt-10 rounded-2xl bg-gradient-to-br from-brand-dark to-brand-navy relative p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-lg" style="isolation:isolate">
       <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-brand-orange/25 blur-3xl pointer-events-none"></div>
@@ -173,12 +173,12 @@ $tags          = get_the_tags();
           <a href="tel:<?php echo esc_attr($cta_first_tel); ?>"
              class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orangedark text-white font-bold px-6 py-3.5 rounded-xl transition-colors shadow-lg shadow-brand-orange/30 whitespace-nowrap">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            <?php echo esc_html($cta_first['phone']); ?>
-            <?php if (count($cta_cskh_data) > 1): ?>
+            <?php echo esc_html($cta_first['phone'] ?? ''); ?>
+            <?php if (is_array($cta_cskh_data) && count($cta_cskh_data) > 1): ?>
             <svg class="w-4 h-4 opacity-70 group-hover/cta:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             <?php endif; ?>
           </a>
-          <?php if (count($cta_cskh_data) > 0): ?>
+          <?php if (is_array($cta_cskh_data) && count($cta_cskh_data) > 0): ?>
           <!-- Dropdown list: xuất hiện phía TRÊN nút -->
           <div class="absolute bottom-full left-0 mb-3 min-w-[240px] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
                       opacity-0 invisible -translate-y-2 group-hover/cta:opacity-100 group-hover/cta:visible group-hover/cta:translate-y-0
@@ -188,7 +188,7 @@ $tags          = get_the_tags();
             </div>
             <ul>
               <?php foreach ($cta_cskh_data as $ci):
-                $ci_tel = preg_replace('/[^0-9+]/', '', $ci['phone']);
+                $ci_tel = preg_replace('/[^0-9+]/', '', (string)($ci['phone'] ?? ''));
               ?>
               <li class="border-b border-gray-50 last:border-0">
                 <a href="tel:<?php echo esc_attr($ci_tel); ?>"
@@ -197,15 +197,15 @@ $tags          = get_the_tags();
                     <svg class="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                   </div>
                   <div class="min-w-0">
-                    <p class="font-bold text-gray-900 text-[13px] leading-tight"><?php echo esc_html($ci['name'] ?: 'Nhân viên'); ?><?php if (!empty($ci['role'])) echo ' <span class="font-normal text-gray-400">— ' . esc_html($ci['role']) . '</span>'; ?></p>
-                    <p class="text-brand-orange font-bold text-[13px]"><?php echo esc_html($ci['phone']); ?></p>
+                    <p class="font-bold text-gray-900 text-[13px] leading-tight"><?php echo esc_html(!empty($ci['name']) ? $ci['name'] : 'Nhân viên'); ?><?php if (!empty($ci['role'])) echo ' <span class="font-normal text-gray-400">— ' . esc_html($ci['role']) . '</span>'; ?></p>
+                    <p class="text-brand-orange font-bold text-[13px]"><?php echo esc_html($ci['phone'] ?? ''); ?></p>
                   </div>
                 </a>
               </li>
               <?php endforeach; ?>
             </ul>
             <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-              <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $cta_first['phone'])); ?>" target="_blank"
+              <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9+]/', '', (string)($cta_first['phone'] ?? ''))); ?>" target="_blank"
                  class="flex items-center justify-center gap-2 text-[#0068ff] text-[13px] font-bold hover:underline">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.23 5.12 3.19 6.79L4.5 21l3.37-1.49A10.1 10.1 0 0012 20c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
                 Nhắn Zalo ngay

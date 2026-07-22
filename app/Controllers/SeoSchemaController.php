@@ -27,13 +27,13 @@ class SeoSchemaController {
         $phone_option = \App\Helpers\ThemeHelper::getOption('phone', '');
         
         if ($facebook_link) {
-            $same_as[] = esc_url($facebook_link);
+            $same_as[] = esc_url((string)$facebook_link);
         }
         if ($youtube_link) {
-            $same_as[] = esc_url($youtube_link);
+            $same_as[] = esc_url((string)$youtube_link);
         }
         if ($phone_option) {
-            $clean_phone = preg_replace('/[^0-9]/', '', $phone_option);
+            $clean_phone = preg_replace('/[^0-9]/', '', (string)$phone_option);
             if ($clean_phone) {
                 $same_as[] = 'https://zalo.me/' . $clean_phone;
             }

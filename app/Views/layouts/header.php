@@ -787,7 +787,7 @@
 
                             <!-- HOTLINE BLOCK -->
                             <?php
-                            $cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+                            $cskh_val = (string)\App\Helpers\ThemeHelper::getOption('phone_cskh', '');
                             $cskh_data = json_decode($cskh_val, true);
                             if (!is_array($cskh_data)) {
                                 $cskh_data = [];
@@ -796,9 +796,9 @@
                                     $cskh_data[] = ['name' => 'CSKH', 'role' => '', 'phone' => $p, 'email' => ''];
                                 }
                             }
-                            $first_cskh = !empty($cskh_data) ? $cskh_data[0] : ['name' => 'CSKH', 'role' => '', 'phone' => '0934 29 8181', 'email' => ''];
-                            $hotline_cskh = $first_cskh['phone'];
-                            $hotline_kd = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181'); // Hotline chính
+                            $first_cskh = (!empty($cskh_data) && is_array($cskh_data[0])) ? $cskh_data[0] : ['name' => 'CSKH', 'role' => '', 'phone' => '0934 29 8181', 'email' => ''];
+                            $hotline_cskh = (string)($first_cskh['phone'] ?? '');
+                            $hotline_kd = (string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181'); // Hotline chính
                             $hotline_cskh_tel = preg_replace('/[^0-9+]/', '', $hotline_cskh);
                             $hotline_kd_tel = preg_replace('/[^0-9+]/', '', $hotline_kd);
                             ?>
@@ -819,13 +819,13 @@
                                                 class="font-bold text-brand-orange text-[13px] md:text-[14px] leading-tight mt-0.5 whitespace-nowrap"><?php echo esc_html($hotline_kd); ?></span>
                                         </div>
                                     </a>
-                                    <?php if (count($cskh_data) > 0): ?>
+                                    <?php if (is_array($cskh_data) && count($cskh_data) > 0): ?>
                                         <!-- Dropdown cho Mobile/Tablet -->
                                         <div class="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 hidden z-50 overflow-hidden"
                                             id="mobileCskhDropdown">
                                             <ul class="max-h-60 overflow-y-auto">
                                                 <?php foreach ($cskh_data as $cskh_item):
-                                                    $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
+                                                    $c_tel = preg_replace('/[^0-9+]/', '', (string)($cskh_item['phone'] ?? ''));
                                                     ?>
                                                     <li class="border-b border-gray-50 last:border-0">
                                                         <a href="tel:<?php echo esc_attr($c_tel); ?>"
@@ -887,7 +887,7 @@
                                             <i class="ph-bold ph-caret-down text-gray-400 text-[11px] 2xl:hidden ml-0.5"></i>
                                         </div>
 
-                                        <?php if (count($cskh_data) > 0): ?>
+                                        <?php if (is_array($cskh_data) && count($cskh_data) > 0): ?>
                                             <!-- Dropdown CSKH list on Desktop Hover -->
                                             <div class="tav-cskh-dropdown absolute right-0 top-full w-[380px] rounded-2xl opacity-0 invisible transition-all duration-300 z-50 overflow-hidden transform translate-y-2"
                                                 style="margin-top:-5px; pointer-events: auto; background: rgba(255,255,255,0.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 20px 60px -15px rgba(0,0,0,0.25);">
@@ -900,7 +900,7 @@
                                                 </div>
                                                 <ul class="max-h-[480px] overflow-y-auto p-3 space-y-2" style="scrollbar-width: thin;">
                                                     <?php foreach ($cskh_data as $cskh_item):
-                                                        $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
+                                                        $c_tel = preg_replace('/[^0-9+]/', '', (string)($cskh_item['phone'] ?? ''));
                                                     ?>
                                                     <li class="header-cskh-item rounded-xl overflow-hidden" style="background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05);">
                                                         <div class="p-3.5">
@@ -984,7 +984,7 @@
 
                 <!-- HOTLINE STRIP -->
                 <?php
-                $cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+                $cskh_val = (string)\App\Helpers\ThemeHelper::getOption('phone_cskh', '');
                 $cskh_data = json_decode($cskh_val, true);
                 if (!is_array($cskh_data)) {
                     $cskh_data = [];
@@ -993,9 +993,9 @@
                         $cskh_data[] = ['name' => 'CSKH', 'role' => '', 'phone' => $p, 'email' => ''];
                     }
                 }
-                $first_cskh = !empty($cskh_data) ? $cskh_data[0] : ['name' => 'CSKH', 'role' => '', 'phone' => '0934 29 8181', 'email' => ''];
-                $hotline_cskh = $first_cskh['phone'];
-                $hotline_kd = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
+                $first_cskh = (!empty($cskh_data) && is_array($cskh_data[0])) ? $cskh_data[0] : ['name' => 'CSKH', 'role' => '', 'phone' => '0934 29 8181', 'email' => ''];
+                $hotline_cskh = (string)($first_cskh['phone'] ?? '');
+                $hotline_kd = (string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
                 $hotline_cskh_tel = preg_replace('/[^0-9+]/', '', $hotline_cskh);
                 $hotline_kd_tel = preg_replace('/[^0-9+]/', '', $hotline_kd);
                 ?>
@@ -1028,12 +1028,12 @@
                         </a>
                     </div>
                     <!-- Hiển thị thêm list CSKH trên mobile -->
-                    <?php if (count($cskh_data) > 1): ?>
+                    <?php if (is_array($cskh_data) && count($cskh_data) > 1): ?>
                         <div class="px-4 py-2 bg-gray-50 border-t border-gray-100">
                             <div class="text-[11px] text-gray-500 font-bold mb-2 uppercase">Danh sách nhân sự CSKH</div>
                             <div class="space-y-2">
                                 <?php foreach (array_slice($cskh_data, 1) as $cskh_item):
-                                    $c_tel = preg_replace('/[^0-9+]/', '', $cskh_item['phone']);
+                                    $c_tel = preg_replace('/[^0-9+]/', '', (string)($cskh_item['phone'] ?? ''));
                                     ?>
                                     <a href="tel:<?php echo esc_attr($c_tel); ?>"
                                         class="flex items-center justify-between py-1 hover:text-brand-orange transition-colors">

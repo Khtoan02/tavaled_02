@@ -53,7 +53,7 @@ class ProductMetaBoxController {
         $faq = get_post_meta($post->ID, '_product_faq', true);
         
         $gallery_raw = get_post_meta($post->ID, '_product_gallery', true);
-        $gallery_str = is_array($gallery_raw) ? implode("\n", $gallery_raw) : str_replace('|', "\n", $gallery_raw);
+        $gallery_str = is_array($gallery_raw) ? implode("\n", $gallery_raw) : str_replace('|', "\n", (string)$gallery_raw);
 
         ?>
         <div class="tava-meta-box-tabs">
@@ -177,7 +177,7 @@ class ProductMetaBoxController {
 
         // Lưu Gallery (chuyển dòng mới thành dấu |)
         if (isset($_POST['_product_gallery'])) {
-            $urls = array_filter(array_map('trim', explode("\n", $_POST['_product_gallery'])));
+            $urls = array_filter(array_map('trim', explode("\n", (string)$_POST['_product_gallery'])));
             update_post_meta($post_id, '_product_gallery', implode('|', $urls));
         }
 

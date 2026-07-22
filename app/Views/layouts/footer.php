@@ -404,20 +404,20 @@
 
                         <!-- Hotline + Email — inline row -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181'))); ?>"
+                            <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', (string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181'))); ?>"
                                 class="flex items-center gap-3 group">
                                 <i class="ph-fill ph-phone-call text-brand-orange text-base shrink-0"></i>
                                 <div>
                                     <span class="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-0.5">Hotline</span>
-                                    <span class="text-white font-bold text-[17px] tracking-wider group-hover:text-brand-orange transition-colors"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181')); ?></span>
+                                    <span class="text-white font-bold text-[17px] tracking-wider group-hover:text-brand-orange transition-colors"><?php echo esc_html((string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181')); ?></span>
                                 </div>
                             </a>
-                            <a href="mailto:<?php echo esc_attr(\App\Helpers\ThemeHelper::getOption('email', 'tuyen.tavaco@gmail.com')); ?>"
+                            <a href="mailto:<?php echo esc_attr((string)\App\Helpers\ThemeHelper::getOption('email', 'tuyen.tavaco@gmail.com')); ?>"
                                 class="flex items-center gap-3 group">
                                 <i class="ph-fill ph-envelope-simple text-brand-orange text-base shrink-0"></i>
                                 <div>
                                     <span class="block text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-0.5">Email</span>
-                                    <span class="text-slate-200 font-medium text-[14px] tracking-wide group-hover:text-brand-orange transition-colors"><?php echo esc_html(\App\Helpers\ThemeHelper::getOption('email', 'tuyen.tavaco@gmail.com')); ?></span>
+                                    <span class="text-slate-200 font-medium text-[14px] tracking-wide group-hover:text-brand-orange transition-colors"><?php echo esc_html((string)\App\Helpers\ThemeHelper::getOption('email', 'tuyen.tavaco@gmail.com')); ?></span>
                                 </div>
                             </a>
                         </div>
@@ -448,7 +448,7 @@
         </div>
 
         <?php
-        $cskh_val = \App\Helpers\ThemeHelper::getOption('phone_cskh', '');
+        $cskh_val = (string)\App\Helpers\ThemeHelper::getOption('phone_cskh', '');
         $cskh_data = json_decode($cskh_val, true);
         if (!is_array($cskh_data)) {
             $cskh_data = [];
@@ -457,7 +457,7 @@
                 $cskh_data[] = ['name' => 'CSKH', 'role' => '', 'phone' => $p, 'email' => ''];
             }
         }
-        if (!empty($cskh_data)):
+        if (is_array($cskh_data) && !empty($cskh_data)):
             ?>
             <!-- CSKH RIBBON -->
             <div class="pt-10 pb-8" style="border-top: 1px solid rgba(255,255,255,0.06);">
@@ -475,7 +475,7 @@
                 <!-- Grid cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                     <?php foreach ($cskh_data as $cskh_item):
-                        $cskh_clean = preg_replace('/[^0-9]/', '', $cskh_item['phone']);
+                        $cskh_clean = preg_replace('/[^0-9]/', '', (string)($cskh_item['phone'] ?? ''));
                     ?>
                     <div class="footer-cskh-card rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
                         <div class="p-4">
@@ -543,11 +543,11 @@
             <div class="flex gap-4">
                 <!-- Icon Zalo (thường đường dẫn là zalo.me/SĐT) -->
                 <?php
-                $main_phone = \App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
-                $facebook_url = \App\Helpers\ThemeHelper::getOption('facebook_link') ?: 'https://www.facebook.com/tavalls.official';
-                $youtube_url = \App\Helpers\ThemeHelper::getOption('youtube_link') ?: '#';
+                $main_phone = (string)\App\Helpers\ThemeHelper::getOption('phone', '0934 29 8181');
+                $facebook_url = (string)(\App\Helpers\ThemeHelper::getOption('facebook_link') ?: 'https://www.facebook.com/tavalls.official');
+                $youtube_url = (string)(\App\Helpers\ThemeHelper::getOption('youtube_link') ?: '#');
                 ?>
-                <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', $main_phone)); ?>"
+                <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', (string)$main_phone)); ?>"
                     target="_blank"
                     class="w-10 h-10 bg-white/5 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0068ff] hover:border-[#0068ff] transition-all duration-300"
                     title="Zalo">
@@ -687,7 +687,7 @@
     <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode(home_url('/')); ?>&text=<?php echo urlencode('TavaLLS - Thi công trọn gói màn hình trình chiếu, âm thanh & ánh sáng'); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-twitter" aria-label="Chia sẻ Twitter">
         <i class="ph-bold ph-twitter-logo" style="font-size: 20px;"></i>
     </a>
-    <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', \App\Helpers\ThemeHelper::getOption('phone', '0934298181'))); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-zalo" aria-label="Liên hệ Zalo">
+    <a href="https://zalo.me/<?php echo esc_attr(preg_replace('/[^0-9]/', '', (string)\App\Helpers\ThemeHelper::getOption('phone', '0934298181'))); ?>" target="_blank" rel="noopener" class="tava-share-btn tava-share-zalo" aria-label="Liên hệ Zalo">
         <i class="ph-fill ph-chat-circle-dots" style="font-size: 22px;"></i>
     </a>
 </div>

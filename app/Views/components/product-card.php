@@ -21,11 +21,13 @@ if (has_post_thumbnail($post->ID)) {
 
 // Kiểm tra xem URL ảnh hiện tại có bị lỗi / rỗng không
 $is_broken_url = false;
-if (empty($thumbnail_url) || strpos($thumbnail_url, 'Chưa') !== false || strpos($thumbnail_url, 'dữ') !== false || strpos($thumbnail_url, 'liệu') !== false || (substr($thumbnail_url, 0, 4) !== 'http' && substr($thumbnail_url, 0, 1) !== '/')) {
+$thumb_str = (string)$thumbnail_url;
+if (empty($thumb_str) || strpos($thumb_str, 'Chưa') !== false || strpos($thumb_str, 'dữ') !== false || strpos($thumb_str, 'liệu') !== false || (substr($thumb_str, 0, 4) !== 'http' && substr($thumb_str, 0, 1) !== '/')) {
     $is_broken_url = true;
 }
 
-$is_meta_valid = !empty($product_img_meta) && strpos($product_img_meta, 'Chưa') === false && strpos($product_img_meta, 'dữ') === false && strpos($product_img_meta, 'liệu') === false && (substr($product_img_meta, 0, 4) === 'http' || substr($product_img_meta, 0, 1) === '/');
+$meta_str = (string)$product_img_meta;
+$is_meta_valid = !empty($meta_str) && strpos($meta_str, 'Chưa') === false && strpos($meta_str, 'dữ') === false && strpos($meta_str, 'liệu') === false && (substr($meta_str, 0, 4) === 'http' || substr($meta_str, 0, 1) === '/');
 
 if ($is_broken_url && $is_meta_valid) {
     $meta_attach_id = attachment_url_to_postid($product_img_meta);
