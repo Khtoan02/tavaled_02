@@ -77,9 +77,9 @@ get_header(); ?>
                 <span class="h1-accent">&amp; ÂM THANH CHUYÊN NGHIỆP</span>
             </h1>
 
-            <!-- Subheadline text -->
+            <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR) -->
             <p class="hero-v2__subtitle">
-                Chuyên thi công trọn gói màn hình trình chiếu LED cỡ lớn, hệ thống âm thanh &amp; ánh sáng sân khấu, hội trường toàn quốc. Cam kết 100% thiết bị chính hãng, khảo sát thực địa tận nơi và bảo hành dài hạn.
+                <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết 100% thiết bị chính hãng và bảo hành dài hạn.
             </p>
 
             <!-- Call to Action Buttons -->
