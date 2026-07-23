@@ -231,14 +231,20 @@ add_filter('post_type_link', function ($post_link, $post) {
 
 
 /**
- * Add Favicon from Theme Settings
+ * Add Favicon from WordPress Site Icon or Theme Settings
  */
 function tavaled_add_favicon()
 {
-    $logo = \App\Helpers\ThemeHelper::getOption('logo');
-    if ($logo) {
-        echo '<link rel="icon" href="' . esc_url($logo) . '" sizes="32x32" />' . "\n";
-        echo '<link rel="apple-touch-icon" href="' . esc_url($logo) . '" />' . "\n";
+    // Nếu đã cài Site Icon trong WP Admin (Tùy biến -> Nhận dạng site), ưu tiên dùng Site Icon chuẩn của WordPress
+    if (function_exists('has_site_icon') && has_site_icon()) {
+        return;
+    }
+
+    // Nếu không, kiểm tra tùy chọn favicon riêng (tuyệt đối không lấy logo chữ nhật làm favicon)
+    $favicon = \App\Helpers\ThemeHelper::getOption('favicon');
+    if ($favicon) {
+        echo '<link rel="icon" href="' . esc_url($favicon) . '" sizes="32x32" />' . "\n";
+        echo '<link rel="apple-touch-icon" href="' . esc_url($favicon) . '" />' . "\n";
     }
 }
 add_action('wp_head', 'tavaled_add_favicon');
