@@ -456,118 +456,118 @@ get_header(); ?>
                     </a>
                 </div>
 
-                <!-- Right Column: Premium Glassmorphism Accordion -->
+                <!-- Right Column: Minimalist Orange Accordion -->
                 <div class="lg:col-span-7 space-y-4 reveal-up delay-1 mt-8 lg:mt-0">
 
-                    <div class="faq-item rounded-2xl border border-white/15 bg-[#141d40] backdrop-blur-xl transition-all duration-300 hover:border-brand-orange/60 hover:bg-[#18234d] overflow-hidden group shadow-lg">
+                    <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
                         <button
-                            class="faq-btn w-full text-left p-6 md:p-7 flex justify-between items-center focus:outline-none interactive">
-                            <span class="flex items-center gap-5 pr-4">
+                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                            <span class="flex items-center gap-4 md:gap-5 pr-4">
                                 <span
-                                    class="font-mono text-xl text-brand-orange font-black">01</span>
+                                    class="font-mono text-lg md:text-xl text-white font-black">01</span>
                                 <span
-                                    class="text-base md:text-lg font-bold text-brand-orange transition-colors">TavaLLS có nhận thi công dự án tại các tỉnh thành xa không?</span>
+                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có nhận thi công dự án tại các tỉnh thành xa không?</span>
                             </span>
-                            <span class="faq-icon w-10 h-10 border border-brand-orange/40 bg-brand-orange/15 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange">
+                            <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
                                 <i
-                                    class="ph-bold ph-plus text-brand-orange group-hover:text-white transition-colors"></i>
+                                    class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
-                                <div class="px-6 md:px-7 pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
+                                <div class="px-5 md:px-6 pb-6 text-white/95 text-sm md:text-base leading-relaxed border-t border-white/20 pt-4">
                                     Có. TavaLLS sở hữu hệ thống vận chuyển Logistics mạnh mẽ cùng đội ngũ kỹ thuật tinh nhuệ. Chúng tôi thi công và bảo hành trọn gói trên 64 tỉnh thành với tiến độ cam kết nhanh nhất.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="faq-item rounded-2xl border border-white/15 bg-[#141d40] backdrop-blur-xl transition-all duration-300 hover:border-brand-orange/60 hover:bg-[#18234d] overflow-hidden group shadow-lg">
+                    <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
                         <button
-                            class="faq-btn w-full text-left p-6 md:p-7 flex justify-between items-center focus:outline-none interactive">
-                            <span class="flex items-center gap-5 pr-4">
+                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                            <span class="flex items-center gap-4 md:gap-5 pr-4">
                                 <span
-                                    class="font-mono text-xl text-brand-orange font-black">02</span>
+                                    class="font-mono text-lg md:text-xl text-white font-black">02</span>
                                 <span
-                                    class="text-base md:text-lg font-bold text-brand-orange transition-colors">Chính sách bảo hành và hỗ trợ kỹ thuật như thế nào?</span>
+                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chính sách bảo hành và hỗ trợ kỹ thuật như thế nào?</span>
                             </span>
-                            <span class="faq-icon w-10 h-10 border border-brand-orange/40 bg-brand-orange/15 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange">
+                            <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
                                 <i
-                                    class="ph-bold ph-plus text-brand-orange group-hover:text-white transition-colors"></i>
+                                    class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
-                                <div class="px-6 md:px-7 pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
+                                <div class="px-5 md:px-6 pb-6 text-white/95 text-sm md:text-base leading-relaxed border-t border-white/20 pt-4">
                                     Thiết bị do TavaLLS phân phối cam kết chính hãng 100%. Thời gian bảo hành từ 12 đến 36 tháng. Đội ngũ hỗ trợ kỹ thuật trực tuyến 24/7, xử lý sự cố tận nơi trong 4 giờ ở Hà Nội, TP.HCM và tối đa 24 giờ tại các tỉnh khác.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="faq-item rounded-2xl border border-white/15 bg-[#141d40] backdrop-blur-xl transition-all duration-300 hover:border-brand-orange/60 hover:bg-[#18234d] overflow-hidden group shadow-lg">
+                    <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
                         <button
-                            class="faq-btn w-full text-left p-6 md:p-7 flex justify-between items-center focus:outline-none interactive">
-                            <span class="flex items-center gap-5 pr-4">
+                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                            <span class="flex items-center gap-4 md:gap-5 pr-4">
                                 <span
-                                    class="font-mono text-xl text-brand-orange font-black">03</span>
+                                    class="font-mono text-lg md:text-xl text-white font-black">03</span>
                                 <span
-                                    class="text-base md:text-lg font-bold text-brand-orange transition-colors">Quy trình tư vấn thiết kế cho dự án mới ra sao?</span>
+                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Quy trình tư vấn thiết kế cho dự án mới ra sao?</span>
                             </span>
-                            <span class="faq-icon w-10 h-10 border border-brand-orange/40 bg-brand-orange/15 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange">
+                            <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
                                 <i
-                                    class="ph-bold ph-plus text-brand-orange group-hover:text-white transition-colors"></i>
+                                    class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
-                                <div class="px-6 md:px-7 pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
+                                <div class="px-5 md:px-6 pb-6 text-white/95 text-sm md:text-base leading-relaxed border-t border-white/20 pt-4">
                                     Quy trình gồm 5 bước chuẩn: 1. Khảo sát thực tế → 2. Thiết kế bản vẽ 3D Visual & báo giá → 3. Ký kết hợp đồng → 4. Thi công lắp đặt → 5. Bàn giao nghiệm thu và hướng dẫn vận hành.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="faq-item rounded-2xl border border-white/15 bg-[#141d40] backdrop-blur-xl transition-all duration-300 hover:border-brand-orange/60 hover:bg-[#18234d] overflow-hidden group shadow-lg">
+                    <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
                         <button
-                            class="faq-btn w-full text-left p-6 md:p-7 flex justify-between items-center focus:outline-none interactive">
-                            <span class="flex items-center gap-5 pr-4">
+                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                            <span class="flex items-center gap-4 md:gap-5 pr-4">
                                 <span
-                                    class="font-mono text-xl text-brand-orange font-black">04</span>
+                                    class="font-mono text-lg md:text-xl text-white font-black">04</span>
                                 <span
-                                    class="text-base md:text-lg font-bold text-brand-orange transition-colors">Chi phí đầu tư dự kiến cho màn hình trình chiếu cỡ lớn là bao nhiêu?</span>
+                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chi phí đầu tư dự kiến cho màn hình trình chiếu cỡ lớn là bao nhiêu?</span>
                             </span>
-                            <span class="faq-icon w-10 h-10 border border-brand-orange/40 bg-brand-orange/15 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange">
+                            <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
                                 <i
-                                    class="ph-bold ph-plus text-brand-orange group-hover:text-white transition-colors"></i>
+                                    class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
-                                <div class="px-6 md:px-7 pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
+                                <div class="px-5 md:px-6 pb-6 text-white/95 text-sm md:text-base leading-relaxed border-t border-white/20 pt-4">
                                     Chi phí phụ thuộc vào độ phân giải, tổng diện tích và môi trường lắp đặt (trong nhà hay ngoài trời). Kỹ sư TavaLLS sẽ khảo sát và lập báo giá chi tiết tối ưu nhất cho ngân sách của bạn.
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="faq-item rounded-2xl border border-white/15 bg-[#141d40] backdrop-blur-xl transition-all duration-300 hover:border-brand-orange/60 hover:bg-[#18234d] overflow-hidden group shadow-lg">
+                    <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
                         <button
-                            class="faq-btn w-full text-left p-6 md:p-7 flex justify-between items-center focus:outline-none interactive">
-                            <span class="flex items-center gap-5 pr-4">
+                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                            <span class="flex items-center gap-4 md:gap-5 pr-4">
                                 <span
-                                    class="font-mono text-xl text-brand-orange font-black">05</span>
+                                    class="font-mono text-lg md:text-xl text-white font-black">05</span>
                                 <span
-                                    class="text-base md:text-lg font-bold text-brand-orange transition-colors">TavaLLS có cung cấp dịch vụ cho thuê thiết bị sự kiện không?</span>
+                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có cung cấp dịch vụ cho thuê thiết bị sự kiện không?</span>
                             </span>
-                            <span class="faq-icon w-10 h-10 border border-brand-orange/40 bg-brand-orange/15 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:border-brand-orange group-hover:bg-brand-orange">
+                            <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
                                 <i
-                                    class="ph-bold ph-plus text-brand-orange group-hover:text-white transition-colors"></i>
+                                    class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-inner">
-                                <div class="px-6 md:px-7 pb-6 text-white/80 text-sm md:text-base leading-relaxed border-t border-white/10 pt-4">
+                                <div class="px-5 md:px-6 pb-6 text-white/95 text-sm md:text-base leading-relaxed border-t border-white/20 pt-4">
                                     Chắc chắn rồi! TavaLLS sở hữu kho thiết bị Rental khổng lồ sẵn sàng phục vụ đại nhạc hội, triển lãm, lễ ra mắt với thời gian thuê linh hoạt và đội ngũ vận hành chuyên nghiệp đi kèm.
                                 </div>
                             </div>
@@ -575,9 +575,6 @@ get_header(); ?>
                     </div>
 
                 </div>
-            </div>
-        </div>
-    </section>
             </div>
         </div>
     </section>

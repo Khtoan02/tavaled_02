@@ -265,13 +265,13 @@ html { scroll-behavior: smooth; }
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    background: rgba(4, 8, 15, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 12px;
-    padding: 8px 14px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 16px;
+    padding: 12px 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
     margin-top: auto;
 }
 
@@ -310,10 +310,10 @@ html { scroll-behavior: smooth; }
 }
 
 .bar-badge--gold {
-    background: linear-gradient(105deg, #ff6a24 0%, #ff9a5c 52%, #ffd2b8 100%);
-    border-color: #ff6a24;
-    color: #0c122b !important;
-    box-shadow: 0 0 12px rgba(255, 106, 36, 0.4);
+    background: linear-gradient(135deg, #ff5f00 0%, #f05a25 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(240, 90, 37, 0.4);
 }
 
 .bar-info {
@@ -1405,23 +1405,25 @@ html { scroll-behavior: smooth; }
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
     margin-top: 0;
-    padding: 14px 18px;
-    border: 1px solid rgba(255, 106, 36, 0.28);
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(28, 40, 87, 0.85) 0%, rgba(18, 25, 58, 0.9) 100%);
-    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35), 0 0 25px rgba(255, 106, 36, 0.12);
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 .hero-v2__bar-item {
-    gap: 11px;
+    gap: 12px;
     min-width: 0;
     padding: 0 18px;
-    border-right-color: rgba(255, 106, 36, 0.15);
+    border-right-color: rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease;
 }
 
 .hero-v2__bar-item:hover {
-    background: rgba(255, 106, 36, 0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .hero-v2__bar-item:first-child {

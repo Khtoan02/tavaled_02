@@ -221,20 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Close all
             document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-            document.querySelectorAll('.faq-icon i').forEach(i => { i.classList.remove('ph-minus'); i.classList.add('ph-plus'); });
-            document.querySelectorAll('.faq-icon').forEach(ic => { ic.classList.remove('border-brand-orange', 'bg-brand-orange/10'); ic.classList.add('border-white/20'); });
-            document.querySelectorAll('.faq-btn .font-mono').forEach(n => n.classList.remove('text-brand-orange'));
-            document.querySelectorAll('.faq-btn .font-medium').forEach(t => t.classList.remove('text-brand-orange'));
+            document.querySelectorAll('.faq-icon i').forEach(i => { i.classList.remove('ph-minus', 'text-[#f05a25]'); i.classList.add('ph-plus', 'text-white'); });
+            document.querySelectorAll('.faq-icon').forEach(ic => { ic.classList.remove('bg-white'); ic.classList.add('bg-white/20'); });
 
             // Open target if not already open
             if(!isOpen) {
                 answer.classList.add('open');
-                icon.classList.remove('ph-plus');
-                icon.classList.add('ph-minus');
-                iconContainer.classList.remove('border-white/20');
-                iconContainer.classList.add('border-brand-orange', 'bg-brand-orange/10');
-                num.classList.add('text-brand-orange');
-                text.classList.add('text-brand-orange');
+                icon.classList.remove('ph-plus', 'text-white');
+                icon.classList.add('ph-minus', 'text-[#f05a25]');
+                iconContainer.classList.remove('bg-white/20');
+                iconContainer.classList.add('bg-white');
             }
         });
     });
