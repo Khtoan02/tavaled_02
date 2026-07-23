@@ -164,9 +164,9 @@ get_header(); ?>
 
     <!-- ================= SECTION 3: SẢN PHẨM ================= -->
     <section id="products" class="py-24 bg-[#f8fafc]">
-        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
+        <div class="tava-container">
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
-            <div id="product-led" class="w-full pt-8 pb-24 scroll-mt-24">
+            <div id="product-led" class="w-full scroll-mt-24">
                 <!-- Sub-section header: LED -->
                 <div class="tava-heading tava-heading--dark">
                     <span class="tava-heading__ghost" aria-hidden="true">Màn Hình LED</span>
@@ -220,9 +220,9 @@ get_header(); ?>
 
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio"
-                class="w-full mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+                class="w-full pt-16 lg:pt-24 mt-8 lg:mt-12 scroll-mt-24">
                 <!-- Sub-section header: Âm Thanh -->
-                <div class="tava-heading tava-heading--dark border-t border-slate-200 pt-16 mt-8">
+                <div class="tava-heading tava-heading--dark">
                     <span class="tava-heading__ghost" aria-hidden="true">Âm Thanh</span>
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Âm Thanh Sân Khấu</div>
@@ -273,9 +273,9 @@ get_header(); ?>
 
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light"
-                class="w-full mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+                class="w-full pt-16 lg:pt-24 mt-8 lg:mt-12 scroll-mt-24">
                 <!-- Sub-section header: Ánh Sáng -->
-                <div class="tava-heading tava-heading--dark border-t border-slate-200 pt-16 mt-8">
+                <div class="tava-heading tava-heading--dark">
                     <span class="tava-heading__ghost" aria-hidden="true">Ánh Sáng</span>
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Hiệu Ứng Nghệ Thuật</div>
@@ -330,7 +330,7 @@ get_header(); ?>
 
     <!-- ================= SECTION 4: THƯ VIỆN DỰ ÁN (FULL WIDTH - ĐỒ SỘ NHẤT) ================= -->
     <section id="projects" class="py-24 md:py-32 bg-brand-navy reveal-up">
-        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
+        <div class="tava-container">
             <div class="main-tava-heading main-tava-heading--light">
                 <div class="main-tava-heading__eyebrow">Visual Portfolio</div>
                 <h3 class="main-tava-heading__title">Dấu Ấn <em>Tava</em></h3>
@@ -409,7 +409,7 @@ get_header(); ?>
     <!-- ================= SECTION 5: BLOG (EDITORIAL STYLE) ================= -->
     <section id="editorial" class="py-32 bg-[#1c2857] border-t border-white/5">
 
-        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
+        <div class="tava-container">
 
             <?php get_template_part('template-parts/blog-sections'); ?>
 
@@ -423,7 +423,7 @@ get_header(); ?>
             class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 filter blur-[120px] rounded-full pointer-events-none">
         </div>
 
-        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px] relative z-10">
+        <div class="tava-container relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
                 <!-- Left Column: Sticky Intro -->
@@ -589,7 +589,7 @@ get_header(); ?>
             class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]">
         </div>
 
-        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px] relative z-10 text-center reveal-up">
+        <div class="tava-container relative z-10 text-center reveal-up">
             <h2 class="font-serif font-black text-5xl md:text-7xl text-white mb-6 tracking-tight">
                 Bắt đầu dự án của bạn<br><em class="text-brand-orange italic font-light">— ngay hôm nay</em>
             </h2>
