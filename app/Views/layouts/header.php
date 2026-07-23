@@ -5,6 +5,11 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Lexend Deca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
     <?php
     if (!defined('WPSEO_VERSION') && !defined('RANK_MATH_VERSION')):
         $meta_desc = 'TavaLLS - Chuyên thi công trọn gói màn hình trình chiếu cỡ lớn, hệ thống âm thanh & ánh sáng chuyên nghiệp toàn quốc.';

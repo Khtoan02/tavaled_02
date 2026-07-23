@@ -4,77 +4,8 @@
  */
 
 /* =========================================================================
-   LEXEND DECA FONTS CONFIGURATION
+   FONTS CONFIGURATION (Plus Jakarta Sans & Lexend Deca)
    ========================================================================= */
-
-/* Mapping weights 100, 200, 300, 400 to Lexend Deca 200 (ExtraLight) */
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 100;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-200.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 200;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-200.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-200.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-200.woff2') format('woff2');
-}
-
-/* Mapping weights 500, 600 to Lexend Deca 600 (SemiBold) */
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-600.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-600.woff2') format('woff2');
-}
-
-/* Mapping weights 700, 800, 900 to Lexend Deca 900 (Black) */
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-900.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-900.woff2') format('woff2');
-}
-@font-face {
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-    src: url('../fonts/lexend-deca/lexend-deca-v25-vietnamese-900.woff2') format('woff2');
-}
 
 :root {
     /* 1. MÀU SẮC (Colors) */
@@ -90,9 +21,9 @@
     
     --border-color: #f3e5e1;       /* Màu đường viền / border */
 
-    /* Sử dụng font Lexend Deca */
-    --font-heading: 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --font-body: 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    /* Sử dụng font Plus Jakarta Sans & Lexend Deca */
+    --font-heading: 'Plus Jakarta Sans', 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     /* 3. VISUALS CƠ BẢN (Spacing, Radius, Shadow) */
