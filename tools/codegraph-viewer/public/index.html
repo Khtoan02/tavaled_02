@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeGraph 3D/2D Visualizer - TavaLED</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+    <!-- Syntax Highlighter -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+    <!-- Graph Libraries -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/3d-force-graph@1.77.2/dist/3d-force-graph.min.js"></script>
+    <script src="https://unpkg.com/force-graph@1.45.2/dist/force-graph.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-accent: rgba(56, 189, 248, 0.4);
+            --accent-cyan: #38bdf8;
+            --accent-purple: #c084fc;
+            --accent-indigo: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ── Top Header ── */
+        .header {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            height: 60px;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header__logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .header__title {
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header__subtitle {
+            font-size: 11px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Search input */
+        .search-box {
+            position: relative;
+            width: 280px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(2, 6, 23, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px 8px 36px;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+        }
+
+        /* Control groups */
+        .btn-group {
+            display: flex;
+            background: rgba(2, 6, 23, 0.6);
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            gap: 4px;
+        }
+
+        .btn-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-toggle:hover {
+            color: #fff;
+        }
+
+        .btn-toggle.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(192, 132, 252, 0.2));
+            border: 1px solid var(--border-accent);
+            color: var(--accent-cyan);
+        }
+
+        .stats-badge {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(2, 6, 23, 0.6);
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stats-badge span {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        /* ── Main Canvas ── */
+        #graphContainer {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* ── Left Sidebar (Legend & Filter) ── */
+        .sidebar-left {
+            position: absolute;
+            top: 92px;
+            left: 16px;
+            width: 260px;
+            max-height: calc(100vh - 110px);
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar-left::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-left::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.15);
+            border-radius: 4px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+        }
+
+        .legend-item:hover {
+            border-color: var(--border-color);
+            background: rgba(30, 41, 59, 0.6);
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .legend-label {
+            display: flex;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .legend-count {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* ── Right Inspector Drawer ── */
+        .drawer-right {
+            position: absolute;
+            top: 92px;
+            right: 16px;
+            width: 420px;
+            height: calc(100vh - 110px);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-accent);
+            border-radius: 14px;
+            padding: 20px;
+            z-index: 95;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transform: translateX(450px);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .drawer-right.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .drawer-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            word-break: break-all;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .type-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-close {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-close:hover {
+            background: rgba(244, 63, 94, 0.2);
+            color: #f43f5e;
+            border-color: #f43f5e;
+        }
+
+        .drawer-body {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-right: 4px;
+        }
+
+        .drawer-body::-webkit-scrollbar {
+            width: 4px;
+        }
+        .drawer-body::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.15);
+            border-radius: 4px;
+        }
+
+        .info-card {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .info-val {
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            word-break: break-all;
+        }
+
+        /* Linked Node Lists */
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .link-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+        }
+
+        .link-item:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateX(-2px);
+        }
+
+        .link-name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .link-file {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .link-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Code box */
+        .code-box {
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            line-height: 1.5;
+            max-height: 250px;
+            overflow: auto;
+            color: #e6edf3;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* ── Tooltip ── */
+        .custom-tooltip {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <header class="header">
+        <div class="header__logo">
+            <div class="header__logo-icon">
+                <i class="ph-bold ph-graph"></i>
+            </div>
+            <div>
+                <h1 class="header__title">CodeGraph 3D/2D</h1>
+                <div class="header__subtitle">TavaLED Architecture Visualizer</div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <i class="ph-bold ph-magnifying-glass"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm file, class, hàm...">
+        </div>
+
+        <!-- Mode & Granularity Switches -->
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <!-- Mode 3D/2D -->
+            <div class="btn-group">
+                <button id="btn3D" class="btn-toggle active"><i class="ph-bold ph-cube"></i> 3D Mode</button>
+                <button id="btn2D" class="btn-toggle"><i class="ph-bold ph-square"></i> 2D Mode</button>
+            </div>
+
+            <!-- Level Symbol/File -->
+            <div class="btn-group">
+                <button id="btnSymbolLevel" class="btn-toggle active"><i class="ph-bold ph-tree-structure"></i> Symbols</button>
+                <button id="btnFileLevel" class="btn-toggle"><i class="ph-bold ph-files"></i> Files</button>
+            </div>
+
+            <!-- Auto Rotate -->
+            <button id="btnAutoRotate" class="btn-toggle" style="background: rgba(2, 6, 23, 0.6); border: 1px solid var(--border-color);">
+                <i class="ph-bold ph-arrows-clockwise"></i> Rotate
+            </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-badge">
+            <div>Nodes: <span id="statNodes">0</span></div>
+            <div>Links: <span id="statLinks">0</span></div>
+            <div>Files: <span id="statFiles">0</span></div>
+        </div>
+    </header>
+
+    <!-- Sidebar Left: Legend & Categories -->
+    <aside class="sidebar-left">
+        <div class="section-title">
+            <span>Danh mục Mô-đun</span>
+            <i class="ph-bold ph-funnel"></i>
+        </div>
+        <div class="legend-list" id="legendList">
+            <!-- Dynamically populated -->
+        </div>
+
+        <div class="section-title" style="margin-top: 8px;">
+            <span>Danh sách kết nối nhanh</span>
+        </div>
+        <div class="legend-list" id="quickList">
+            <!-- Hot functions / key files -->
+        </div>
+    </aside>
+
+    <!-- Main Graph Canvas -->
+    <main id="graphContainer"></main>
+
+    <!-- Right Drawer: Inspector -->
+    <aside class="drawer-right" id="drawerRight">
+        <div class="drawer-header">
+            <div>
+                <div id="drawerTypePill" class="type-pill">Method</div>
+                <h2 id="drawerTitle" class="drawer-title">FunctionName</h2>
+            </div>
+            <button class="btn-close" id="btnCloseDrawer"><i class="ph-bold ph-x"></i></button>
+        </div>
+
+        <div class="drawer-body">
+            <!-- Meta details -->
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="info-label">File:</span>
+                    <span class="info-val" id="drawerFilePath">app/Controllers/HomeController.php</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Lines:</span>
+                    <span class="info-val" id="drawerLines">L7 - L16</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Language:</span>
+                    <span class="info-val" id="drawerLang">PHP</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Signature:</span>
+                    <span class="info-val" id="drawerSig">public function index()</span>
+                </div>
+            </div>
+
+            <!-- Incoming calls -->
+            <div>
+                <div class="section-title" style="margin-bottom: 8px;">
+                    <span>Được gọi bởi (Incoming Callers)</span>
+                    <span id="incomingCount" class="type-pill" style="background: rgba(74, 222, 128, 0.15); color: #4ade80; border-color: rgba(74, 222, 128, 0.3);">0</span>
+                </div>
+                <div class="links-group" id="incomingList"></div>
+            </div>
+
+            <!-- Outgoing calls -->
+            <div>
+                <div class="section-title" style="margin-bottom: 8px;">
+                    <span>Gọi tới (Outgoing Calls)</span>
+                    <span id="outgoingCount" class="type-pill" style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border-color: rgba(192, 132, 252, 0.3);">0</span>
+                </div>
+                <div class="links-group" id="outgoingList"></div>
+            </div>
+
+            <!-- Code snippet -->
+            <div>
+                <div class="section-title" style="margin-bottom: 8px;">
+                    <span>Mã nguồn Snippet</span>
+                </div>
+                <pre class="code-box"><code id="drawerCode">Loading code snippet...</code></pre>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Custom Tooltip -->
+    <div id="tooltip" class="custom-tooltip"></div>
+
+    <script>
+        // State
+        let rawData = null;
+        let is3D = true;
+        let isSymbolLevel = true;
+        let isAutoRotate = false;
+        let graphInstance = null;
+        let activeNode = null;
+        let highlightNodes = new Set();
+        let highlightLinks = new Set();
+
+        const container = document.getElementById('graphContainer');
+
+        // Fetch graph data from Node server
+        async function loadData() {
+            try {
+                const res = await fetch('/api/graph');
+                rawData = await res.json();
+
+                document.getElementById('statNodes').innerText = rawData.stats.totalNodes;
+                document.getElementById('statLinks').innerText = rawData.stats.totalLinks;
+                document.getElementById('statFiles').innerText = rawData.stats.totalFiles;
+
+                renderLegend();
+                renderGraph();
+            } catch (err) {
+                console.error("Failed to load graph data", err);
+            }
+        }
+
+        function getCurrentGraphData() {
+            if (!rawData) return { nodes: [], links: [] };
+            const base = isSymbolLevel ? rawData.symbols : rawData.files;
+            return {
+                nodes: JSON.parse(JSON.stringify(base.nodes)),
+                links: JSON.parse(JSON.stringify(base.links))
+            };
+        }
+
+        function renderLegend() {
+            const legendList = document.getElementById('legendList');
+            legendList.innerHTML = '';
+
+            const categories = {};
+            const baseNodes = isSymbolLevel ? rawData.symbols.nodes : rawData.files.nodes;
+            baseNodes.forEach(n => {
+                if (!categories[n.category]) {
+                    categories[n.category] = { color: n.color, count: 0 };
+                }
+                categories[n.category].count++;
+            });
+
+            Object.entries(categories).forEach(([catName, info]) => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <div class="legend-label">
+                        <span class="legend-color" style="background:${info.color}; color:${info.color};"></span>
+                        <span>${catName}</span>
+                    </div>
+                    <span class="legend-count">${info.count}</span>
+                `;
+                legendList.appendChild(item);
+            });
+        }
+
+        function renderGraph() {
+            container.innerHTML = '';
+            const data = getCurrentGraphData();
+
+            if (is3D) {
+                graphInstance = ForceGraph3D()(container)
+                    .graphData(data)
+                    .backgroundColor('#090d16')
+                    .nodeLabel(n => `${n.name} (${n.type}) [${n.filePath}]`)
+                    .nodeColor(n => highlightNodes.has(n.id) ? '#38bdf8' : (highlightNodes.size > 0 ? '#334155' : n.color))
+                    .nodeVal(n => n.val || 5)
+                    .nodeRelSize(4)
+                    .linkColor(l => highlightLinks.has(l.id) ? '#38bdf8' : 'rgba(255,255,255,0.15)')
+                    .linkWidth(l => highlightLinks.has(l.id) ? 2.5 : 1)
+                    .linkDirectionalParticles(l => highlightLinks.has(l.id) ? 4 : 1)
+                    .linkDirectionalParticleWidth(2.5)
+                    .linkDirectionalParticleSpeed(0.006)
+                    .onNodeClick(handleNodeClick);
+
+                graphInstance.controls().autoRotate = isAutoRotate;
+                graphInstance.controls().autoRotateSpeed = 0.8;
+            } else {
+                graphInstance = ForceGraph()(container)
+                    .graphData(data)
+                    .backgroundColor('#090d16')
+                    .nodeLabel(n => `${n.name} (${n.type}) [${n.filePath}]`)
+                    .nodeColor(n => highlightNodes.has(n.id) ? '#38bdf8' : (highlightNodes.size > 0 ? '#334155' : n.color))
+                    .nodeVal(n => n.val || 5)
+                    .linkColor(l => highlightLinks.has(l.id) ? '#38bdf8' : 'rgba(255,255,255,0.15)')
+                    .linkWidth(l => highlightLinks.has(l.id) ? 2.5 : 1)
+                    .linkDirectionalParticles(l => highlightLinks.has(l.id) ? 4 : 1)
+                    .onNodeClick(handleNodeClick);
+            }
+        }
+
+        async function handleNodeClick(node) {
+            activeNode = node;
+            highlightNodes.clear();
+            highlightLinks.clear();
+
+            if (node) {
+                highlightNodes.add(node.id);
+                const currentData = getCurrentGraphData();
+
+                currentData.links.forEach(link => {
+                    const srcId = typeof link.source === 'object' ? link.source.id : link.source;
+                    const tgtId = typeof link.target === 'object' ? link.target.id : link.target;
+                    if (srcId === node.id || tgtId === node.id) {
+                        highlightLinks.add(link.id);
+                        highlightNodes.add(srcId);
+                        highlightNodes.add(tgtId);
+                    }
+                });
+
+                // Camera transition
+                if (is3D && graphInstance) {
+                    const distance = 120;
+                    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+                    graphInstance.cameraPosition(
+                        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+                        node,
+                        1500
+                    );
+                }
+
+                // Open Drawer Details
+                openDrawer(node);
+            } else {
+                closeDrawer();
+            }
+
+            // Refresh graph styling
+            if (is3D) {
+                graphInstance.nodeColor(graphInstance.nodeColor());
+                graphInstance.linkColor(graphInstance.linkColor());
+            }
+        }
+
+        async function openDrawer(node) {
+            const drawer = document.getElementById('drawerRight');
+            drawer.classList.add('open');
+
+            document.getElementById('drawerTitle').innerText = node.name;
+            document.getElementById('drawerTypePill').innerText = node.type;
+            document.getElementById('drawerFilePath').innerText = node.filePath;
+            document.getElementById('drawerLines').innerText = node.startLine ? `L${node.startLine} - L${node.endLine}` : 'Full File';
+            document.getElementById('drawerLang').innerText = (node.language || 'PHP').toUpperCase();
+            document.getElementById('drawerSig').innerText = node.signature || node.name;
+
+            // Fetch details from backend
+            if (node.dbId) {
+                try {
+                    const res = await fetch(`/api/node/${node.dbId}`);
+                    const details = await res.json();
+
+                    // Render incoming
+                    const incList = document.getElementById('incomingList');
+                    document.getElementById('incomingCount').innerText = details.incoming.length;
+                    incList.innerHTML = details.incoming.length ? details.incoming.map(i => `
+                        <div class="link-item" onclick="focusNodeById('${i.id}')">
+                            <div>
+                                <div class="link-name">${i.name}</div>
+                                <div class="link-file">${i.file_path}</div>
+                            </div>
+                            <span class="link-badge">${i.relation}</span>
+                        </div>
+                    `).join('') : '<div style="font-size:11px; color:#64748b;">Không có caller</div>';
+
+                    // Render outgoing
+                    const outList = document.getElementById('outgoingList');
+                    document.getElementById('outgoingCount').innerText = details.outgoing.length;
+                    outList.innerHTML = details.outgoing.length ? details.outgoing.map(o => `
+                        <div class="link-item" onclick="focusNodeById('${o.id}')">
+                            <div>
+                                <div class="link-name">${o.name}</div>
+                                <div class="link-file">${o.file_path}</div>
+                            </div>
+                            <span class="link-badge">${o.relation}</span>
+                        </div>
+                    `).join('') : '<div style="font-size:11px; color:#64748b;">Không có outgoing call</div>';
+
+                    // Code snippet
+                    document.getElementById('drawerCode').innerText = details.code_content || `// ${details.name}\n// ${details.file_path}`;
+                } catch (err) {
+                    console.error(err);
+                }
+            } else {
+                document.getElementById('drawerCode').innerText = `// File: ${node.filePath}`;
+            }
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawerRight').classList.remove('open');
+            highlightNodes.clear();
+            highlightLinks.clear();
+            if (is3D && graphInstance) {
+                graphInstance.nodeColor(graphInstance.nodeColor());
+            }
+        }
+
+        function focusNodeById(nodeId) {
+            const data = getCurrentGraphData();
+            const target = data.nodes.find(n => n.id === nodeId);
+            if (target) {
+                handleNodeClick(target);
+            }
+        }
+
+        // Search feature
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) {
+                highlightNodes.clear();
+                return;
+            }
+
+            const data = getCurrentGraphData();
+            const matches = data.nodes.filter(n => n.name.toLowerCase().includes(query) || n.filePath.toLowerCase().includes(query));
+            if (matches.length > 0) {
+                handleNodeClick(matches[0]);
+            }
+        });
+
+        // Event listeners
+        document.getElementById('btnCloseDrawer').addEventListener('click', closeDrawer);
+
+        document.getElementById('btn3D').addEventListener('click', () => {
+            if (is3D) return;
+            is3D = true;
+            document.getElementById('btn3D').classList.add('active');
+            document.getElementById('btn2D').classList.remove('active');
+            renderGraph();
+        });
+
+        document.getElementById('btn2D').addEventListener('click', () => {
+            if (!is3D) return;
+            is3D = false;
+            document.getElementById('btn2D').classList.add('active');
+            document.getElementById('btn3D').classList.remove('active');
+            renderGraph();
+        });
+
+        document.getElementById('btnSymbolLevel').addEventListener('click', () => {
+            if (isSymbolLevel) return;
+            isSymbolLevel = true;
+            document.getElementById('btnSymbolLevel').classList.add('active');
+            document.getElementById('btnFileLevel').classList.remove('active');
+            renderLegend();
+            renderGraph();
+        });
+
+        document.getElementById('btnFileLevel').addEventListener('click', () => {
+            if (!isSymbolLevel) return;
+            isSymbolLevel = false;
+            document.getElementById('btnFileLevel').classList.add('active');
+            document.getElementById('btnSymbolLevel').classList.remove('active');
+            renderLegend();
+            renderGraph();
+        });
+
+        document.getElementById('btnAutoRotate').addEventListener('click', () => {
+            isAutoRotate = !isAutoRotate;
+            document.getElementById('btnAutoRotate').classList.toggle('active', isAutoRotate);
+            if (is3D && graphInstance) {
+                graphInstance.controls().autoRotate = isAutoRotate;
+            }
+        });
+
+        // Init
+        loadData();
+    </script>
+</body>
+</html>

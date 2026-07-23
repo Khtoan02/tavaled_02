@@ -11,49 +11,58 @@ get_header(); ?>
         <div class="hero-v2__depth" aria-hidden="true"></div>
 
         <!-- ── FULL-BLEED BACKGROUND IMAGE SLIDER ── -->
-        <div class="hero-v2__right" aria-hidden="true">
-            <div class="hero-slider" id="heroSlider">
+        <div class="hero-v2__right">
+            <div class="hero-slider" id="heroSlider" role="region" aria-roledescription="carousel" aria-label="Dự án tiêu biểu của TavaLLS">
                 <?php
                 $hero_ids_str = get_option('tavaled_home_hero_slides');
                 $hero_ids = !empty($hero_ids_str) ? explode(',', $hero_ids_str) : [];
-                $has_hero_slides = !empty($hero_ids);
+                $hero_slides = [];
 
-                if ($has_hero_slides) {
-                    $is_first = true;
+                if (!empty($hero_ids)) {
                     foreach ($hero_ids as $id) {
                         $img_src = wp_get_attachment_image_url($id, 'full');
                         if (!$img_src) continue;
                         $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: get_the_title($id);
-                        ?>
-                        <div class="hero-slide<?php echo $is_first ? ' hero-slide--active' : ''; ?>">
-                            <img src="<?php echo esc_url($img_src); ?>" alt="<?php echo esc_attr($alt); ?>" <?php echo $is_first ? 'loading="eager" fetchpriority="high"' : ''; ?>>
-                        </div>
-                        <?php
-                        $is_first = false;
+                        $hero_slides[] = [
+                            'src' => $img_src,
+                            'alt' => $alt,
+                        ];
                     }
-                } else {
+                }
+
+                if (empty($hero_slides)) {
+                    $hero_slides = [
+                        ['src' => 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920', 'alt' => 'Màn hình LED thi công TavaLLS'],
+                        ['src' => 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=1920', 'alt' => 'Màn hình LED hội trường TavaLLS'],
+                        ['src' => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920', 'alt' => 'Thi công màn hình LED ngoài trời'],
+                        ['src' => 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920', 'alt' => 'Hệ thống âm thanh ánh sáng hội trường'],
+                    ];
+                }
+
+                foreach ($hero_slides as $index => $slide) {
+                    $is_first = $index === 0;
                     ?>
-                    <div class="hero-slide hero-slide--active">
-                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600" alt="Màn hình LED thi công TavaLLS" loading="eager" fetchpriority="high">
+                    <div class="hero-slide<?php echo $is_first ? ' hero-slide--active' : ''; ?>"
+                        role="group"
+                        aria-roledescription="slide"
+                        aria-label="<?php echo esc_attr(($index + 1) . ' / ' . count($hero_slides)); ?>"
+                        aria-hidden="<?php echo $is_first ? 'false' : 'true'; ?>">
+                        <img src="<?php echo esc_url($slide['src']); ?>"
+                            alt="<?php echo esc_attr($slide['alt']); ?>"
+                            <?php echo $is_first ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'; ?>>
                     </div>
-                    <div class="hero-slide">
-                        <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=1600" alt="Màn hình LED hội trường TavaLLS">
-                    </div>
-                    <div class="hero-slide">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600" alt="Thi công màn hình LED ngoài trời">
-                    </div>
-                    <div class="hero-slide">
-                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1600" alt="Hệ thống âm thanh ánh sáng hội trường">
-                    </div>
-                <?php } ?>
+                    <?php
+                }
+                ?>
 
                 <!-- Dot navigation -->
                 <div class="hero-slider__dots" id="heroSliderDots">
                     <?php
-                    $count = $has_hero_slides ? count($hero_ids) : 4;
+                    $count = count($hero_slides);
                     for ($i = 0; $i < $count; $i++) {
                         $active_class = ($i === 0) ? ' hero-slider__dot--active' : '';
-                        echo '<button class="hero-slider__dot' . $active_class . '" aria-label="Slide ' . ($i + 1) . '"></button>';
+                        $aria_current = ($i === 0) ? ' aria-current="true"' : '';
+                        echo '<button type="button" class="hero-slider__dot' . $active_class . '" aria-label="Xem slide ' . ($i + 1) . '"' . $aria_current . '></button>';
                     }
                     ?>
                 </div>
@@ -70,26 +79,31 @@ get_header(); ?>
                 <!-- Eyebrow Tagline Badge -->
                 <div class="hero-v2__eyebrow">
                     <span class="hero-v2__eyebrow-dot"></span>
-                    GIẢI PHÁP HÌNH ẢNH &amp; ÂM THANH TOÀN DIỆN
+                    CÔNG NGHỆ TRẢI NGHIỆM KHÔNG GIAN TOÀN DIỆN
                 </div>
 
                 <!-- Headline H1 -->
                 <h1 class="hero-v2__h1">
-                    <span class="h1-main">TAVA - THI CÔNG MÀN HÌNH LED</span>
-                    <span class="h1-accent">&amp; ÂM THANH TRỌN GÓI</span>
+                    <span class="h1-main">
+                        <strong class="hero-v2__brand">TavaLED</strong>
+                        <span class="hero-v2__dash" aria-hidden="true">—</span>
+                        <span class="hero-v2__ecosystem">Hệ sinh thái</span>
+                    </span>
+                    <span class="h1-accent">Màn hình LED trọn gói</span>
+                    <span class="h1-detail">Âm thanh &amp; Ánh sáng</span>
                 </h1>
 
                 <!-- Subheadline / Giới thiệu Doanh nghiệp & Triết lý hoạt động (TLDR Box) -->
                 <div class="hero-v2__tldr-box">
                     <p>
-                        <strong>TavaLLS</strong> là nhà thầu thi công trọn gói màn hình LED, âm thanh và ánh sáng chuyên nghiệp toàn quốc. Với triết lý <strong>"Lắng nghe mong muốn, Thấu hiểu không gian, Giải pháp trọn vẹn"</strong>, chúng tôi mang đến trải nghiệm trình chiếu và âm thanh đỉnh cao, cam kết thiết bị chính hãng và bảo hành dài hạn.
+                        <strong>TavaLED</strong> kết nối công nghệ hiển thị, kiến trúc ánh sáng và hệ thống âm thanh thành một trải nghiệm đồng bộ — từ khảo sát, thiết kế đến thi công và vận hành.
                     </p>
                 </div>
 
                 <!-- Call to Action Buttons -->
                 <div class="hero-v2__ctas">
-                    <a href="#products" class="hero-v2-btn hero-v2-btn--primary interactive">
-                        <span>Nhận báo giá miễn phí</span>
+                    <a href="tel:0934298181" class="hero-v2-btn hero-v2-btn--primary interactive">
+                        <span>Tư vấn dự án miễn phí</span>
                         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5 ml-2">
                             <path d="M2 12L12 2M12 2H6M12 2v6" />
                         </svg>
@@ -106,22 +120,22 @@ get_header(); ?>
                 <div class="hero-v2__bar-item">
                     <div class="bar-badge">L</div>
                     <div class="bar-info">
-                        <strong class="bar-title">Listen (Lắng nghe)</strong>
-                        <span class="bar-desc">Lắng nghe nhu cầu &amp; tư vấn ngân sách tối ưu</span>
+                        <strong class="bar-title">Lắng nghe</strong>
+                        <span class="bar-desc">Nhu cầu &amp; ngân sách thực tế</span>
                     </div>
                 </div>
                 <div class="hero-v2__bar-item">
                     <div class="bar-badge">L</div>
                     <div class="bar-info">
-                        <strong class="bar-title">Learn (Thấu hiểu)</strong>
-                        <span class="bar-desc">Khảo sát thực địa &amp; nghiên cứu kiến trúc</span>
+                        <strong class="bar-title">Thấu hiểu</strong>
+                        <span class="bar-desc">Khảo sát kỹ từng không gian</span>
                     </div>
                 </div>
                 <div class="hero-v2__bar-item">
                     <div class="bar-badge bar-badge--orange">S</div>
                     <div class="bar-info">
-                        <strong class="bar-title">Solve (Giải quyết)</strong>
-                        <span class="bar-desc">Thi công trọn gói &amp; hỗ trợ kỹ thuật 24/7</span>
+                        <strong class="bar-title">Giải pháp trọn vẹn</strong>
+                        <span class="bar-desc">Thiết kế, thi công, vận hành</span>
                     </div>
                 </div>
                 <div class="hero-v2__bar-item bar-item--highlight">
@@ -129,8 +143,8 @@ get_header(); ?>
                         <i class="ph-fill ph-shield-check text-lg"></i>
                     </div>
                     <div class="bar-info">
-                        <strong class="bar-title">100% Chính Hãng</strong>
-                        <span class="bar-desc">Cung cấp CO/CQ &amp; bảo hành 24 – 36 tháng</span>
+                        <strong class="bar-title">Thiết bị chính hãng</strong>
+                        <span class="bar-desc">CO/CQ • Bảo hành 24–36 tháng</span>
                     </div>
                 </div>
             </div>

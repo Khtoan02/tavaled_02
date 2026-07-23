@@ -65,27 +65,35 @@
 
 /* ── HERO IMAGE SLIDER ── */
 (function () {
-    var slides   = document.querySelectorAll('.hero-slide');
-    var dots     = document.querySelectorAll('.hero-slider__dot');
     var slider   = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    var slides   = slider.querySelectorAll('.hero-slide');
+    var dots     = slider.querySelectorAll('.hero-slider__dot');
     if (!slides.length) return;
 
     var current  = 0;
     var total    = slides.length;
     var interval = null;
-    var DELAY    = 4500; // ms between slides
+    var DELAY    = 6000;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function goTo(idx) {
         slides[current].classList.remove('hero-slide--active');
+        slides[current].setAttribute('aria-hidden', 'true');
         if (dots[current]) dots[current].classList.remove('hero-slider__dot--active');
+        if (dots[current]) dots[current].removeAttribute('aria-current');
         current = ((idx % total) + total) % total;
         slides[current].classList.add('hero-slide--active');
+        slides[current].setAttribute('aria-hidden', 'false');
         if (dots[current]) dots[current].classList.add('hero-slider__dot--active');
+        if (dots[current]) dots[current].setAttribute('aria-current', 'true');
     }
 
     function next() { goTo(current + 1); }
 
     function startAuto() {
+        if (reduceMotion || total < 2 || document.hidden) return;
         if (interval) clearInterval(interval);
         interval = setInterval(next, DELAY);
     }
@@ -108,13 +116,19 @@
     if (slider) {
         slider.addEventListener('mouseenter', stopAuto);
         slider.addEventListener('mouseleave', startAuto);
+        slider.addEventListener('focusin', stopAuto);
+        slider.addEventListener('focusout', startAuto);
     }
 
-    // Keyboard: left/right arrows
-    document.addEventListener('keydown', function (e) {
-        if (!document.getElementById('heroSlider')) return;
+    // Keyboard controls only while the carousel is focused.
+    slider.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
         if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+    });
+
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stopAuto();
+        else startAuto();
     });
 
     startAuto();
