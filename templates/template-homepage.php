@@ -10,6 +10,11 @@ get_header(); ?>
         <canvas class="hero-v2__bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
         <div class="hero-v2__depth" aria-hidden="true"></div>
 
+        <!-- ── EARTH BACKGROUND SVG ── -->
+        <div class="hero-v2__earth" aria-hidden="true">
+            <img src="<?php echo esc_url(TAVALED_URI); ?>/assets/images/earth.svg" alt="Earth Globe Map">
+        </div>
+
         <!-- ── FULL-BLEED BACKGROUND IMAGE SLIDER ── -->
         <div class="hero-v2__right">
             <div class="hero-slider" id="heroSlider" role="region" aria-roledescription="carousel" aria-label="Dự án tiêu biểu của TavaLLS">
@@ -160,22 +165,16 @@ get_header(); ?>
     <!-- ================= SECTION 3: SẢN PHẨM ================= -->
     <section id="products" class="py-24 bg-[#f8fafc]">
         <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
-            <div class="main-tava-heading reveal-up">
-                <div class="main-tava-heading__eyebrow">Catalogue Toàn Diện</div>
-                <h3 class="main-tava-heading__title">Hệ Sinh Thái Thiết Bị</h3>
-                <p class="main-tava-heading__desc">TavaLLS tự hào là nhà phân phối chiến lược của các thương hiệu phần
-                    cứng hiển thị và âm thanh ánh sáng hàng đầu thế giới.</p>
-            </div>
-
             <!-- SECTION: MÀN HÌNH LED (scroll-mt-24 để cuộn không bị lấp bởi header) -->
-            <div id="product-led" class="container mx-auto px-6 lg:px-12 max-w-[1600px] pt-8 pb-24 scroll-mt-24">
+            <div id="product-led" class="w-full pt-8 pb-24 scroll-mt-24">
                 <!-- Sub-section header: LED -->
-                <div class="tava-heading">
+                <div class="tava-heading tava-heading--dark">
+                    <span class="tava-heading__ghost" aria-hidden="true">Màn Hình LED</span>
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Hiển Thị Đỉnh Cao</div>
-                        <h3 class="tava-heading__title">Hệ Thống Trình Chiếu &amp; Xử Lý</h3>
+                        <h2 class="tava-heading__title">Hệ Thống <em>Màn Hình LED</em></h2>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link relative z-20">
                         <span class="tava-heading__link-text">Xem kho thiết bị trình chiếu</span>
                         <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
@@ -221,14 +220,15 @@ get_header(); ?>
 
             <!-- SECTION: ÂM THANH -->
             <div id="product-audio"
-                class="container mx-auto px-6 lg:px-12 max-w-[1600px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+                class="w-full mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Âm Thanh -->
-                <div class="tava-heading">
+                <div class="tava-heading tava-heading--dark border-t border-slate-200 pt-16 mt-8">
+                    <span class="tava-heading__ghost" aria-hidden="true">Âm Thanh</span>
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Âm Thanh Sân Khấu</div>
-                        <h3 class="tava-heading__title">Hệ Thống Âm Thanh</h3>
+                        <h2 class="tava-heading__title">Hệ Thống <em>Âm Thanh</em></h2>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link relative z-20">
                         <span class="tava-heading__link-text">Kho thiết bị âm thanh</span>
                         <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
@@ -273,14 +273,15 @@ get_header(); ?>
 
             <!-- SECTION: ÁNH SÁNG -->
             <div id="product-light"
-                class="container mx-auto px-6 lg:px-12 max-w-[1600px] mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
+                class="w-full mt-24 pt-16 lg:mt-32 lg:pt-24 pb-24 scroll-mt-24">
                 <!-- Sub-section header: Ánh Sáng -->
-                <div class="tava-heading">
+                <div class="tava-heading tava-heading--dark border-t border-slate-200 pt-16 mt-8">
+                    <span class="tava-heading__ghost" aria-hidden="true">Ánh Sáng</span>
                     <div class="tava-heading__left">
                         <div class="tava-heading__eyebrow">Hiệu Ứng Nghệ Thuật</div>
-                        <h3 class="tava-heading__title">Hệ Thống Ánh Sáng</h3>
+                        <h2 class="tava-heading__title">Hệ Thống <em>Ánh Sáng</em></h2>
                     </div>
-                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link">
+                    <a href="<?php echo home_url('/tat-ca-san-pham/'); ?>" class="tava-heading__link relative z-20">
                         <span class="tava-heading__link-text">Kho thiết bị ánh sáng</span>
                         <span class="tava-heading__link-icon"><i class="ph-bold ph-arrow-right"></i></span>
                     </a>
@@ -408,7 +409,7 @@ get_header(); ?>
     <!-- ================= SECTION 5: BLOG (EDITORIAL STYLE) ================= -->
     <section id="editorial" class="py-32 bg-[#1c2857] border-t border-white/5">
 
-        <div class="container mx-auto px-6 lg:px-16 max-w-[1600px]">
+        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px]">
 
             <?php get_template_part('template-parts/blog-sections'); ?>
 
@@ -588,7 +589,7 @@ get_header(); ?>
             class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]">
         </div>
 
-        <div class="container mx-auto px-4 relative z-10 text-center reveal-up">
+        <div class="container mx-auto px-6 lg:px-12 max-w-[1600px] relative z-10 text-center reveal-up">
             <h2 class="font-serif font-black text-5xl md:text-7xl text-white mb-6 tracking-tight">
                 Bắt đầu dự án của bạn<br><em class="text-brand-orange italic font-light">— ngay hôm nay</em>
             </h2>

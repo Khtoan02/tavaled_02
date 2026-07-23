@@ -69,7 +69,7 @@
             <!-- TOP BAR -->
             <div class="bg-[#1d2857] text-gray-200 text-sm py-2 hidden lg:block">
                 <div
-                    class="w-full max-w-[1600px] mx-auto px-4 lg:px-8 flex flex-wrap justify-center md:justify-between items-center gap-y-2">
+                    class="w-full max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-wrap justify-center md:justify-between items-center gap-y-2">
                     <div class="flex items-center gap-4 md:gap-6">
                         <?php
                         $phone = \App\Helpers\ThemeHelper::getOption('tavaled_phone') ?: '0934 29 8181';
@@ -106,7 +106,7 @@
 
             <!-- MAIN HEADER -->
             <header id="mainHeader" class="w-full bg-white border-b border-gray-100 shadow-sm">
-                <div class="w-full max-w-[1600px] mx-auto px-4 lg:px-8 relative">
+                <div class="w-full max-w-[1600px] mx-auto px-6 lg:px-12 relative">
                     <div
                         class="flex justify-between items-center h-16 md:h-20 xl:h-24 gap-2 md:gap-4 xl:gap-4 2xl:gap-8">
 
