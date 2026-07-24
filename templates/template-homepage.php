@@ -539,60 +539,87 @@ get_header(); ?>
             </div>
             
             <div class="home-segments__grid">
-                <a href="<?php echo home_url('/giao-duc'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg" alt="Giáo Dục & Tương Tác" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Interactive Classroom</div>
-                        <h3 class="home-segment-card__title">Giáo Dục & Tương Tác</h3>
-                        <p class="home-segment-card__desc">Hệ thống lớp học tương tác thông minh, màn hình LED hiển thị và âm thanh cho giảng đường đại học, hội trường học đường.</p>
-                    </div>
-                </a>
-                <a href="<?php echo home_url('/hoi-hop-doanh-nghiep'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg" alt="Hội Họp Doanh Nghiệp" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Corporate Meeting</div>
-                        <h3 class="home-segment-card__title">Hội Họp Doanh Nghiệp</h3>
-                        <p class="home-segment-card__desc">Hệ thống họp trực tuyến hội nghị truyền hình, màn hình LED phòng họp không dây cao cấp và âm thanh hội thảo đồng bộ.</p>
-                    </div>
-                </a>
-                <a href="<?php echo home_url('/su-kien-san-khau'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg" alt="Sự Kiện & Sân Khấu" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Pro Stage & Concert</div>
-                        <h3 class="home-segment-card__title">Sự Kiện & Sân Khấu</h3>
-                        <p class="home-segment-card__desc">Hệ thống trình diễn sân khấu lớn, màn hình LED Rental độ nét cao, âm thanh Line Array công suất khủng và ánh sáng kỹ xảo.</p>
-                    </div>
-                </a>
-                <a href="<?php echo home_url('/quang-cao-thuong-hieu'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg" alt="Quảng Cáo Thương Hiệu" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Digital Out-of-Home</div>
-                        <h3 class="home-segment-card__title">Quảng Cáo Thương Hiệu</h3>
-                        <p class="home-segment-card__desc">Màn hình LED quảng cáo ngoài trời (DOOH), màn hình LED ghép tinh tế cho TTTM, showroom bán lẻ cao cấp, tòa nhà.</p>
-                    </div>
-                </a>
-                <a href="<?php echo home_url('/fnb-giai-tri'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg" alt="F&B & Giải Trí Đêm" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Nightlife & Restaurant</div>
-                        <h3 class="home-segment-card__title">F&B & Giải Trí Đêm</h3>
-                        <p class="home-segment-card__desc">Kiến tạo bầu không khí sống động cho nhà hàng, quán bar, vũ trường với màn hình LED sáng tạo, âm thanh nhạc mạnh và hệ thống ánh sáng lập trình.</p>
-                    </div>
-                </a>
-                <a href="<?php echo home_url('/giai-tri-tai-nha'); ?>" class="home-segment-card">
-                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" alt="Giải Trí Tại Gia" class="home-segment-card__img" loading="lazy">
-                    <div class="home-segment-card__overlay"></div>
-                    <div class="home-segment-card__content">
-                        <div class="home-segment-card__eyebrow">Home Entertainment</div>
-                        <h3 class="home-segment-card__title">Giải Trí Tại Gia</h3>
-                        <p class="home-segment-card__desc">Rạp chiếu phim gia đình cao cấp, phòng nghe nhạc Hi-End chuyên nghiệp và phòng hát giải trí tích hợp thông minh.</p>
-                    </div>
-                </a>
+                <?php
+                $mega_custom_data = get_option('tavaled_hardcoded_mega_menu');
+                $sol_items = $mega_custom_data['solutions'] ?? [];
+                
+                $default_solutions = [
+                    [
+                        'title' => 'Giáo Dục & Tương Tác',
+                        'slug' => '/giao-duc',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Interactive Classroom',
+                        'desc' => 'Hệ thống lớp học tương tác thông minh, màn hình LED hiển thị và âm thanh cho giảng đường đại học, hội trường học đường.'
+                    ],
+                    [
+                        'title' => 'Hội Họp Doanh Nghiệp',
+                        'slug' => '/hoi-hop-doanh-nghiep',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Corporate Meeting',
+                        'desc' => 'Hệ thống họp trực tuyến hội nghị truyền hình, màn hình LED phòng họp không dây cao cấp và âm thanh hội thảo đồng bộ.'
+                    ],
+                    [
+                        'title' => 'Sự Kiện & Sân Khấu',
+                        'slug' => '/su-kien-san-khau',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Pro Stage & Concert',
+                        'desc' => 'Hệ thống trình diễn sân khấu lớn, màn hình LED Rental độ nét cao, âm thanh Line Array công suất khủng và ánh sáng kỹ xảo.'
+                    ],
+                    [
+                        'title' => 'Quảng Cáo Thương Hiệu',
+                        'slug' => '/quang-cao-thuong-hieu',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Digital Out-of-Home',
+                        'desc' => 'Màn hình LED quảng cáo ngoài trời (DOOH), màn hình LED ghép tinh tế cho TTTM, showroom bán lẻ cao cấp, tòa nhà.'
+                    ],
+                    [
+                        'title' => 'F&B & Giải Trí Đêm',
+                        'slug' => '/fnb-giai-tri',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Nightlife & Restaurant',
+                        'desc' => 'Kiến tạo bầu không khí sống động cho nhà hàng, quán bar, vũ trường với màn hình LED sáng tạo, âm thanh nhạc mạnh và hệ thống ánh sáng lập trình.'
+                    ],
+                    [
+                        'title' => 'Giải Trí Tại Gia',
+                        'slug' => '/giai-tri-tai-nha',
+                        'image' => 'https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg',
+                        'eyebrow' => 'Home Entertainment',
+                        'desc' => 'Rạp chiếu phim gia đình cao cấp, phòng nghe nhạc Hi-End chuyên nghiệp và phòng hát giải trí tích hợp thông minh.'
+                    ]
+                ];
+
+                $index = 0;
+                $loop_items = !empty($sol_items) ? $sol_items : $default_solutions;
+
+                foreach ($loop_items as $item):
+                    $is_obj = is_object($item);
+                    $title = $is_obj ? ($item->title ?? '') : ($item['title'] ?? '');
+                    $slug = $is_obj ? ($item->url ?? ($item->slug ?? '#')) : ($item['slug'] ?? '#');
+                    $image = $is_obj ? ($item->image ?? '') : ($item['image'] ?? '');
+                    
+                    if (empty($image)) {
+                        $image = $default_solutions[$index]['image'] ?? 'https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg';
+                    }
+                    if (strpos($image, 'images.unsplash.com') !== false) {
+                        $parts = explode('?', $image);
+                        $image = $parts[0] . '?w=600';
+                    }
+                    $eyebrow = $is_obj ? ($item->eyebrow ?? ($default_solutions[$index]['eyebrow'] ?? '')) : ($item['eyebrow'] ?? ($default_solutions[$index]['eyebrow'] ?? ''));
+                    $desc = $is_obj ? ($item->desc ?? ($default_descs[$index] ?? ($default_solutions[$index]['desc'] ?? ''))) : ($item['desc'] ?? ($default_solutions[$index]['desc'] ?? ''));
+                    ?>
+                    <a href="<?php echo esc_url($slug); ?>" class="home-segment-card">
+                        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="home-segment-card__img" loading="lazy">
+                        <div class="home-segment-card__overlay"></div>
+                        <div class="home-segment-card__content">
+                            <div class="home-segment-card__eyebrow"><?php echo esc_html($eyebrow); ?></div>
+                            <h3 class="home-segment-card__title"><?php echo esc_html($title); ?></h3>
+                            <p class="home-segment-card__desc"><?php echo esc_html($desc); ?></p>
+                        </div>
+                    </a>
+                    <?php
+                    $index++;
+                endforeach;
+                ?>
             </div>
         </div>
     </section>
