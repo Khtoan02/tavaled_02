@@ -46,6 +46,21 @@
         border-color: rgba(240,90,37,0.25) !important;
         box-shadow: 0 4px 20px rgba(240,90,37,0.08) !important;
     }
+    
+    /* Mega Menu absolute visibility override */
+    .mega-menu {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        visibility: hidden !important;
+        transform: translateY(16px) !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .group:hover .mega-menu {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
     </style>
     <?php wp_head(); ?>
 </head>
