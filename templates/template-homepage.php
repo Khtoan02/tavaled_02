@@ -402,26 +402,299 @@ get_header(); ?>
                 </button>
             </div>
         </div>
-
-
     </section>
 
-    <!-- ================= SECTION 5: BLOG (EDITORIAL STYLE) ================= -->
-    <section id="editorial" class="py-32 bg-[#1c2857] border-t border-white/5">
+    <!-- ================= BRAND PROFILE CLUSTER (VỀ TAVALED + THỐNG KÊ + ĐỐI TÁC) ================= -->
+    <section class="home-brand-block animate-brand-block" id="about">
+        <!-- ── EARTH BACKGROUND SVG (ON THE RIGHT) ── -->
+        <div class="home-brand-block__earth" aria-hidden="true">
+            <img src="<?php echo esc_url(TAVALED_URI); ?>/assets/images/earth.svg" alt="Earth Globe Map">
+        </div>
+        
+        <div class="tava-container relative z-10">
+            <!-- Part 1: Về TavaLED -->
+            <div class="home-who__grid reveal-up">
+                <div>
+                    <div class="tava-heading tava-heading--light mb-6">
+                        <span class="tava-heading__ghost" aria-hidden="true">TavaLED</span>
+                        <div class="tava-heading__left">
+                            <div class="tava-heading__eyebrow">Câu Chuyện & Tầm Nhìn</div>
+                            <h2 class="tava-heading__title">Về <em>TavaLED</em></h2>
+                        </div>
+                    </div>
+                    <div class="home-who__slogan mb-6">
+                        Kiến tạo kiệt tác <br>từ <span class="text-brand-orange italic font-light">Ánh sáng</span> &amp; <br><span class="text-white/55">Không gian.</span>
+                    </div>
+                </div>
+                <div class="home-who__pillars">
+                    <div class="home-who__pillar">
+                        <div class="home-who__pillar-icon">
+                            <i class="ph-fill ph-eye"></i>
+                        </div>
+                        <div>
+                            <h3 class="home-who__pillar-title">Tầm Nhìn Chiến Lược</h3>
+                            <p class="home-who__pillar-desc">Trở thành biểu tượng uy tín hàng đầu khu vực trong việc định hình công nghệ trải nghiệm không gian Nghe - Nhìn tích hợp, dẫn dắt xu hướng ứng dụng màn hình LED thông minh và kiến trúc ánh sáng nghệ thuật.</p>
+                        </div>
+                    </div>
+                    <div class="home-who__pillar">
+                        <div class="home-who__pillar-icon">
+                            <i class="ph-fill ph-rocket-launch"></i>
+                        </div>
+                        <div>
+                            <h3 class="home-who__pillar-title">Sứ Mệnh Tiên Phong</h3>
+                            <p class="home-who__pillar-desc">Đồng hành cùng đối tác chuyển hóa không gian vật lý thông thường thành những trải nghiệm nghe nhìn nghệ thuật sống động và đẳng cấp, mang lại hiệu quả khai thác thương mại tối ưu cho chủ đầu tư.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Giá trị cốt lõi (Core Values) Grid - 4 điểm chính hãng từ Hero Bar -->
+            <div class="home-core-values-section reveal-up">
+                <h3 class="text-center font-serif text-2xl text-white mb-10 uppercase tracking-widest font-black">Giá trị cốt lõi</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="home-core-value-card">
+                        <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2.5"><i class="ph-fill ph-ear text-brand-orange text-xl"></i> Lắng nghe</h4>
+                        <p class="text-white/60 text-sm leading-relaxed">Luôn tiếp nhận nhu cầu thực tiễn và bài toán ngân sách thực tế của khách hàng để đưa ra các phương án phù hợp nhất.</p>
+                    </div>
+                    <div class="home-core-value-card">
+                        <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2.5"><i class="ph-fill ph-magnifying-glass text-brand-orange text-xl"></i> Thấu hiểu</h4>
+                        <p class="text-white/60 text-sm leading-relaxed">Tiến hành khảo sát tỉ mỉ, đo đạc trực quan từng không gian lắp đặt để đưa ra các thông số kỹ thuật tối ưu nhất.</p>
+                    </div>
+                    <div class="home-core-value-card">
+                        <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2.5"><i class="ph-fill ph-briefcase-metal text-brand-orange text-xl"></i> Giải pháp trọn vẹn</h4>
+                        <p class="text-white/60 text-sm leading-relaxed">Đảm nhận từ đầu tới cuối quy trình từ tư vấn thiết kế mô phỏng 3D, thi công lắp đặt và đồng hành vận hành hậu mãi.</p>
+                    </div>
+                    <div class="home-core-value-card">
+                        <h4 class="text-white font-bold text-lg mb-3 flex items-center gap-2.5"><i class="ph-fill ph-shield-check text-brand-orange text-xl"></i> Thiết bị chính hãng</h4>
+                        <p class="text-white/60 text-sm leading-relaxed">Cam kết thiết bị nhập khẩu chính hãng đầy đủ giấy tờ CO/CQ và áp dụng bảo hành điện tử chính quy 24-36 tháng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: Logo đối tác (Partners) -->
+            <div class="home-partners-cluster reveal-up">
+                <div class="tava-heading tava-heading--light mb-6">
+                    <span class="tava-heading__ghost" aria-hidden="true">PARTNERS</span>
+                    <div class="tava-heading__left">
+                        <div class="tava-heading__eyebrow">Thương Hiệu Đồng Hành</div>
+                        <h2 class="tava-heading__title">Đối Tác <em>Đồng Hành</em></h2>
+                    </div>
+                </div>
+                
+                <div class="home-partners__grid">
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🖥️</span>
+                        <span class="home-partner-cell__name">Absen</span>
+                        <span class="home-partner-cell__desc">LED Display</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">📺</span>
+                        <span class="home-partner-cell__name">Novastar</span>
+                        <span class="home-partner-cell__desc">LED Controller</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🖥️</span>
+                        <span class="home-partner-cell__name">Leyard</span>
+                        <span class="home-partner-cell__desc">LED Display</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🔊</span>
+                        <span class="home-partner-cell__name">JBL</span>
+                        <span class="home-partner-cell__desc">Pro Audio</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🎛️</span>
+                        <span class="home-partner-cell__name">Yamaha</span>
+                        <span class="home-partner-cell__desc">Console Mixer</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🎤</span>
+                        <span class="home-partner-cell__name">Shure</span>
+                        <span class="home-partner-cell__desc">Microphones</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">💡</span>
+                        <span class="home-partner-cell__name">Robe</span>
+                        <span class="home-partner-cell__desc">Stage Lights</span>
+                    </div>
+                    <div class="home-partner-cell">
+                        <span class="home-partner-cell__logo">🌟</span>
+                        <span class="home-partner-cell__name">Martin</span>
+                        <span class="home-partner-cell__desc">Stage Lights</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 7: LĨNH VỰC / GIẢI PHÁP (SEGMENT) ================= -->
+    <section id="solutions" class="home-sec home-sec--light reveal-up">
         <div class="tava-container">
-
-            <?php get_template_part('template-parts/blog-sections'); ?>
-
+            <div class="tava-heading tava-heading--dark mb-12">
+                <span class="tava-heading__ghost" aria-hidden="true">LĨNH VỰC</span>
+                <div class="tava-heading__left">
+                    <div class="tava-heading__eyebrow">Giải Pháp Toàn Diện</div>
+                    <h2 class="tava-heading__title">Lĩnh Vực <em>Phục Vụ</em></h2>
+                </div>
+            </div>
+            
+            <div class="home-segments__grid">
+                <a href="<?php echo home_url('/giao-duc'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0010_TavaLED_Hinh_Anh.jpg" alt="Giáo Dục & Tương Tác" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Interactive Classroom</div>
+                        <h3 class="home-segment-card__title">Giáo Dục & Tương Tác</h3>
+                        <p class="home-segment-card__desc">Hệ thống lớp học tương tác thông minh, màn hình LED hiển thị và âm thanh cho giảng đường đại học, hội trường học đường.</p>
+                    </div>
+                </a>
+                <a href="<?php echo home_url('/hoi-hop-doanh-nghiep'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0011_TavaLED_Hinh_Anh.jpg" alt="Hội Họp Doanh Nghiệp" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Corporate Meeting</div>
+                        <h3 class="home-segment-card__title">Hội Họp Doanh Nghiệp</h3>
+                        <p class="home-segment-card__desc">Hệ thống họp trực tuyến hội nghị truyền hình, màn hình LED phòng họp không dây cao cấp và âm thanh hội thảo đồng bộ.</p>
+                    </div>
+                </a>
+                <a href="<?php echo home_url('/su-kien-san-khau'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0012_TavaLED_Hinh_Anh.jpg" alt="Sự Kiện & Sân Khấu" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Pro Stage & Concert</div>
+                        <h3 class="home-segment-card__title">Sự Kiện & Sân Khấu</h3>
+                        <p class="home-segment-card__desc">Hệ thống trình diễn sân khấu lớn, màn hình LED Rental độ nét cao, âm thanh Line Array công suất khủng và ánh sáng kỹ xảo.</p>
+                    </div>
+                </a>
+                <a href="<?php echo home_url('/quang-cao-thuong-hieu'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0013_TavaLED_Hinh_Anh.jpg" alt="Quảng Cáo Thương Hiệu" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Digital Out-of-Home</div>
+                        <h3 class="home-segment-card__title">Quảng Cáo Thương Hiệu</h3>
+                        <p class="home-segment-card__desc">Màn hình LED quảng cáo ngoài trời (DOOH), màn hình LED ghép tinh tế cho TTTM, showroom bán lẻ cao cấp, tòa nhà.</p>
+                    </div>
+                </a>
+                <a href="<?php echo home_url('/fnb-giai-tri'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0014_TavaLED_Hinh_Anh.jpg" alt="F&B & Giải Trí Đêm" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Nightlife & Restaurant</div>
+                        <h3 class="home-segment-card__title">F&B & Giải Trí Đêm</h3>
+                        <p class="home-segment-card__desc">Kiến tạo bầu không khí sống động cho nhà hàng, quán bar, vũ trường với màn hình LED sáng tạo, âm thanh nhạc mạnh và hệ thống ánh sáng lập trình.</p>
+                    </div>
+                </a>
+                <a href="<?php echo home_url('/giai-tri-tai-nha'); ?>" class="home-segment-card">
+                    <img src="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" alt="Giải Trí Tại Gia" class="home-segment-card__img" loading="lazy">
+                    <div class="home-segment-card__overlay"></div>
+                    <div class="home-segment-card__content">
+                        <div class="home-segment-card__eyebrow">Home Entertainment</div>
+                        <h3 class="home-segment-card__title">Giải Trí Tại Gia</h3>
+                        <p class="home-segment-card__desc">Rạp chiếu phim gia đình cao cấp, phòng nghe nhạc Hi-End chuyên nghiệp và phòng hát giải trí tích hợp thông minh.</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- ================= SECTION 6: FAQ (EDITORIAL SPLIT-SCREEN) ================= -->
-    <section id="faq" class="py-32 bg-[#1c2857] border-t border-white/5 relative overflow-hidden">
-        <!-- Glow background -->
-        <div
-            class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/10 filter blur-[120px] rounded-full pointer-events-none">
+    <!-- ================= SECTION 6: QUY TRÌNH 5 BƯỚC (HOW) ================= -->
+    <section id="process" class="home-sec home-sec--light reveal-up">
+        <div class="tava-container">
+            <div class="tava-heading tava-heading--dark mb-12">
+                <span class="tava-heading__ghost" aria-hidden="true">QUY TRÌNH</span>
+                <div class="tava-heading__left">
+                    <div class="tava-heading__eyebrow">Phương Thức Làm Việc</div>
+                    <h2 class="tava-heading__title">Quy Trình <em>5 Bước Chuẩn</em></h2>
+                </div>
+            </div>
+            
+            <div class="home-process__grid">
+                <div class="home-process__step">
+                    <div class="home-process__badge">01</div>
+                    <h3 class="home-process__title">Khảo Sát Hiện Trường</h3>
+                    <p class="home-process__desc">Đội ngũ kỹ sư trực tiếp đo đạc kích thước, kiểm tra kết cấu chịu lực, góc nhìn thực tế và đo đạc các thông số âm học, quang học môi trường hoàn toàn miễn phí.</p>
+                </div>
+                <div class="home-process__step">
+                    <div class="home-process__badge">02</div>
+                    <h3 class="home-process__title">Thiết Kế & Demo 3D</h3>
+                    <p class="home-process__desc">Dựng bản vẽ kỹ thuật chi tiết cùng mô phỏng 3D Visual trực quan giúp khách hàng dễ hình dung, lập bảng báo giá phân rã chi tiết để tối ưu hóa chi phí.</p>
+                </div>
+                <div class="home-process__step">
+                    <div class="home-process__badge">03</div>
+                    <h3 class="home-process__title">Kiểm Định & Chuẩn Bị</h3>
+                    <p class="home-process__desc">Tập kết vật tư chính hãng 100% (đầy đủ chứng chỉ CO/CQ). Tiến hành chạy thử liên tục 72 giờ tại kho để đảm bảo thiết bị hoạt động hoàn hảo trước khi giao.</p>
+                </div>
+                <div class="home-process__step">
+                    <div class="home-process__badge">04</div>
+                    <h3 class="home-process__title">Thi Công Kỷ Luật</h3>
+                    <p class="home-process__desc">Kỹ sư cơ khí và điện tử lắp dựng hệ thống khung gia cố, đấu nối dây tín hiệu an toàn và tiến hành căn chỉnh pixel, cân bằng âm thanh theo tiêu chuẩn kỹ thuật nghiêm ngặt.</p>
+                </div>
+                <div class="home-process__step">
+                    <div class="home-process__badge">05</div>
+                    <h3 class="home-process__title">Bàn Giao & Bảo Hành</h3>
+                    <p class="home-process__desc">Đo đạc kiểm tra chất lượng lần cuối, hướng dẫn vận hành cho kỹ thuật viên của chủ đầu tư, bàn giao nghiệm thu và kích hoạt chính sách bảo hành 24-36 tháng.</p>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- ================= SECTION 8: ĐÁNH GIÁ KHÁCH HÀNG (SOCIAL PROOF) ================= -->
+    <section id="reviews" class="home-sec home-sec--light reveal-up">
+        <div class="tava-container">
+            <div class="tava-heading tava-heading--dark mb-12">
+                <span class="tava-heading__ghost" aria-hidden="true">REVIEWS</span>
+                <div class="tava-heading__left">
+                    <div class="tava-heading__eyebrow">Khách Hàng Nói Gì</div>
+                    <h2 class="tava-heading__title">Ý Kiến <em>Khách Hàng</em></h2>
+                </div>
+            </div>
+            
+            <div class="home-testimonials__grid">
+                <div class="home-testimonial-card">
+                    <p class="home-testimonial-card__text">Màn hình LED và hệ thống ánh sáng của TavaLED giúp doanh thu của chúng tôi tăng 35% nhờ không gian trải nghiệm vô cùng độc đáo và thu hút.</p>
+                    <div class="home-testimonial-card__author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Nguyễn Văn Hùng" class="home-testimonial-card__avatar" loading="lazy">
+                        <div>
+                            <h4 class="home-testimonial-card__name">Ông Nguyễn Văn Hùng</h4>
+                            <p class="home-testimonial-card__role">Giám đốc vận hành chuỗi L'Amour</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-testimonial-card">
+                    <p class="home-testimonial-card__text">Quy trình làm việc chuyên nghiệp, thi công lắp đặt nhanh gọn đáp ứng đúng tiến độ khai giảng. Dịch vụ bảo hành hỗ trợ kỹ thuật rất hỏa tốc.</p>
+                    <div class="home-testimonial-card__author">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100" alt="Lê Thị Mai" class="home-testimonial-card__avatar" loading="lazy">
+                        <div>
+                            <h4 class="home-testimonial-card__name">Bà Lê Thị Mai</h4>
+                            <p class="home-testimonial-card__role">Phó Hiệu trưởng Trường THPT Star</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-testimonial-card">
+                    <p class="home-testimonial-card__text">Hệ thống âm thanh ánh sáng sân khấu hoạt động cực kỳ bền bỉ dưới cường độ sử dụng lớn tại vũ trường. Kỹ thuật viên rất có năng lực.</p>
+                    <div class="home-testimonial-card__author">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Trần Minh Tuấn" class="home-testimonial-card__avatar" loading="lazy">
+                        <div>
+                            <h4 class="home-testimonial-card__name">Ông Trần Minh Tuấn</h4>
+                            <p class="home-testimonial-card__role">Trưởng BQL dự án Club K-Light</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 10: BLOG (EDITORIAL STYLE) ================= -->
+    <section id="editorial" class="py-32 bg-[#1c2857]">
+        <div class="tava-container">
+            <?php get_template_part('template-parts/blog-sections'); ?>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 11: FAQ (EDITORIAL SPLIT-SCREEN) ================= -->
+    <section id="faq" class="py-32 bg-[#1c2857] relative overflow-hidden">
+        <!-- Glow background -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/10 filter blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="tava-container relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
@@ -440,9 +713,7 @@ get_header(); ?>
 
                     <!-- Tech Image Support Card -->
                     <div class="relative overflow-hidden mb-8 aspect-video rounded-2xl border border-white/15 group shadow-2xl bg-white/5 backdrop-blur-xl">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600"
-                            alt="Đội ngũ hỗ trợ kỹ thuật khách hàng Tava"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600" alt="Đội ngũ hỗ trợ kỹ thuật khách hàng Tava" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#1c2857]/90 via-[#1c2857]/20 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4 bg-[#1c2857]/80 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
                             <span class="text-white font-bold tracking-wider uppercase text-xs">Trung Tâm Kỹ Thuật 24/7</span>
@@ -460,17 +731,13 @@ get_header(); ?>
                 <div class="lg:col-span-7 space-y-4 reveal-up delay-1 mt-8 lg:mt-0">
 
                     <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
-                        <button
-                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                        <button class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
                             <span class="flex items-center gap-4 md:gap-5 pr-4">
-                                <span
-                                    class="font-mono text-lg md:text-xl text-white font-black">01</span>
-                                <span
-                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có nhận thi công dự án tại các tỉnh thành xa không?</span>
+                                <span class="font-mono text-lg md:text-xl text-white font-black">01</span>
+                                <span class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có nhận thi công dự án tại các tỉnh thành xa không?</span>
                             </span>
                             <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i
-                                    class="ph-bold ph-plus text-white text-base"></i>
+                                <i class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
@@ -483,17 +750,13 @@ get_header(); ?>
                     </div>
 
                     <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
-                        <button
-                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                        <button class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
                             <span class="flex items-center gap-4 md:gap-5 pr-4">
-                                <span
-                                    class="font-mono text-lg md:text-xl text-white font-black">02</span>
-                                <span
-                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chính sách bảo hành và hỗ trợ kỹ thuật như thế nào?</span>
+                                <span class="font-mono text-lg md:text-xl text-white font-black">02</span>
+                                <span class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chính sách bảo hành và hỗ trợ kỹ thuật như thế nào?</span>
                             </span>
                             <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i
-                                    class="ph-bold ph-plus text-white text-base"></i>
+                                <i class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
@@ -506,17 +769,13 @@ get_header(); ?>
                     </div>
 
                     <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
-                        <button
-                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                        <button class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
                             <span class="flex items-center gap-4 md:gap-5 pr-4">
-                                <span
-                                    class="font-mono text-lg md:text-xl text-white font-black">03</span>
-                                <span
-                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Quy trình tư vấn thiết kế cho dự án mới ra sao?</span>
+                                <span class="font-mono text-lg md:text-xl text-white font-black">03</span>
+                                <span class="font-medium text-base md:text-lg font-bold text-white transition-colors">Quy trình tư vấn thiết kế cho dự án mới ra sao?</span>
                             </span>
                             <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i
-                                    class="ph-bold ph-plus text-white text-base"></i>
+                                <i class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
@@ -529,17 +788,13 @@ get_header(); ?>
                     </div>
 
                     <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
-                        <button
-                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                        <button class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
                             <span class="flex items-center gap-4 md:gap-5 pr-4">
-                                <span
-                                    class="font-mono text-lg md:text-xl text-white font-black">04</span>
-                                <span
-                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chi phí đầu tư dự kiến cho màn hình trình chiếu cỡ lớn là bao nhiêu?</span>
+                                <span class="font-mono text-lg md:text-xl text-white font-black">04</span>
+                                <span class="font-medium text-base md:text-lg font-bold text-white transition-colors">Chi phí đầu tư dự kiến cho màn hình trình chiếu cỡ lớn là bao nhiêu?</span>
                             </span>
                             <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i
-                                    class="ph-bold ph-plus text-white text-base"></i>
+                                <i class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
@@ -552,17 +807,13 @@ get_header(); ?>
                     </div>
 
                     <div class="faq-item rounded-2xl bg-[#f05a25] text-white transition-all duration-300 hover:bg-[#ff642e] hover:shadow-xl overflow-hidden group shadow-lg">
-                        <button
-                            class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
+                        <button class="faq-btn w-full text-left p-5 md:p-6 flex justify-between items-center focus:outline-none interactive">
                             <span class="flex items-center gap-4 md:gap-5 pr-4">
-                                <span
-                                    class="font-mono text-lg md:text-xl text-white font-black">05</span>
-                                <span
-                                    class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có cung cấp dịch vụ cho thuê thiết bị sự kiện không?</span>
+                                <span class="font-mono text-lg md:text-xl text-white font-black">05</span>
+                                <span class="font-medium text-base md:text-lg font-bold text-white transition-colors">TavaLLS có cung cấp dịch vụ cho thuê thiết bị sự kiện không?</span>
                             </span>
                             <span class="faq-icon w-9 h-9 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i
-                                    class="ph-bold ph-plus text-white text-base"></i>
+                                <i class="ph-bold ph-plus text-white text-base"></i>
                             </span>
                         </button>
                         <div class="faq-answer">
@@ -579,29 +830,83 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- ================= SECTION 7: CTA ================= -->
-    <section
-        class="relative py-40 overflow-hidden bg-[#1c2857] flex items-center justify-center border-t border-brand-orange">
-        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600" alt="Không gian sự kiện ánh sáng Tava"
-            class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div
-            class="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_50%,rgba(240,90,37,0.15)_0%,rgba(2,6,23,0.9)_70%)]">
-        </div>
-
-        <div class="tava-container relative z-10 text-center reveal-up">
-            <h2 class="font-serif font-black text-5xl md:text-7xl text-white mb-6 tracking-tight">
-                Bắt đầu dự án của bạn<br><em class="text-brand-orange italic font-light">— ngay hôm nay</em>
-            </h2>
-            <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Liên hệ với chuyên gia của TavaLLS để nhận bản vẽ
-                giải pháp 3D và báo giá chi tiết hoàn toàn miễn phí.</p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="tel:0934 29 8181" class="btn-primary interactive">
-                    Gọi Hotline 0934 29 8181
-                </a>
-                <a href="mailto:tuyen.tavaco@gmail.com" class="btn-outline interactive">
-                    Liên hệ tư vấn
-                </a>
+    <!-- ================= SECTION 12: FORM BÁO GIÁ + CTA ================= -->
+    <section class="home-sec home-sec--navy" id="contact">
+        <div class="tava-container relative z-10 reveal-up">
+            <div class="home-cta-wrap">
+                <div>
+                    <h2 class="font-serif font-black text-4xl md:text-6xl text-white mb-6 tracking-tight">
+                        Khởi đầu dự án<br>của bạn <em class="text-brand-orange italic font-light">— ngay hôm nay</em>
+                    </h2>
+                    <p class="text-white/60 text-lg mb-8 leading-relaxed max-w-lg">
+                        Liên hệ với chuyên gia của TavaLED để nhận bản vẽ giải pháp mô phỏng 3D và báo giá chi tiết hoàn toàn miễn phí.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center"><i class="ph-fill ph-phone text-lg"></i></span>
+                            <div>
+                                <div class="text-xs text-white/40">Hotline tư vấn 24/7</div>
+                                <a href="tel:0934298181" class="text-white font-bold hover:text-brand-orange transition-colors">0934 29 8181</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center"><i class="ph-fill ph-envelope-simple text-lg"></i></span>
+                            <div>
+                                <div class="text-xs text-white/40">Email tiếp nhận dự án</div>
+                                <a href="mailto:tuyen.tavaco@gmail.com" class="text-white font-bold hover:text-brand-orange transition-colors">tuyen.tavaco@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quote form -->
+                <div class="home-quote-form" id="quoteFormContainer">
+                    <form id="homeQuoteForm" method="post" action="">
+                        <h3 class="home-quote-form__title">Yêu Cầu Báo Giá Nhanh</h3>
+                        <p class="home-quote-form__desc">Nhận phương án sơ bộ &amp; dự toán chi tiết trong 2 giờ.</p>
+                        
+                        <div class="home-quote-form__group">
+                            <label class="home-quote-form__label" for="quote_name">Họ và tên</label>
+                            <input class="home-quote-form__input" type="text" id="quote_name" name="fullname" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="home-quote-form__group">
+                                <label class="home-quote-form__label" for="quote_phone">Số điện thoại</label>
+                                <input class="home-quote-form__input" type="tel" id="quote_phone" name="phone" placeholder="0901234567" required>
+                            </div>
+                            <div class="home-quote-form__group">
+                                <label class="home-quote-form__label" for="quote_service">Dịch vụ quan tâm</label>
+                                <select class="home-quote-form__select" id="quote_service" name="service" required>
+                                    <option value="led">Màn hình LED</option>
+                                    <option value="audio">Hệ thống âm thanh</option>
+                                    <option value="lighting">Hệ thống ánh sáng</option>
+                                    <option value="all">Trọn gói LED, Âm thanh &amp; Ánh sáng</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="home-quote-form__group">
+                            <label class="home-quote-form__label" for="quote_message">Nhu cầu cụ thể</label>
+                            <textarea class="home-quote-form__textarea" id="quote_message" name="message" placeholder="Ví dụ: Màn hình LED hội trường 30m2..." required></textarea>
+                        </div>
+                        
+                        <button class="home-quote-form__submit" type="submit" id="submitQuoteBtn">
+                            <span>Gửi yêu cầu báo giá</span>
+                            <i class="ph-bold ph-paper-plane-tilt"></i>
+                        </button>
+                    </form>
+                    
+                    <div class="home-quote-form__success" id="quoteFormSuccess">
+                        <div class="home-quote-form__success-icon">
+                            <i class="ph-fill ph-check-circle"></i>
+                        </div>
+                        <h3 class="home-quote-form__success-title">Gửi thành công!</h3>
+                        <p class="home-quote-form__success-desc">
+                            Cảm ơn bạn đã quan tâm. Đội ngũ chuyên gia kỹ thuật của TavaLED đã tiếp nhận thông tin và sẽ liên hệ lại với bạn trong vòng 2 giờ làm việc để tư vấn giải pháp.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

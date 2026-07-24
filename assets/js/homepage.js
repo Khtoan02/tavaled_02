@@ -235,4 +235,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     if(faqBtns.length > 0) faqBtns[0].click();
+
+    // Stats Counter Animation
+    const counters = document.querySelectorAll('.home-counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                const duration = 1500; // 1.5 seconds
+                const start = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Ease out cubic
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentVal = Math.floor(easeProgress * target);
+                    
+                    entry.target.textContent = currentVal;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        entry.target.textContent = target;
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // Quote Form Submission
+    const quoteForm = document.getElementById('homeQuoteForm');
+    const quoteFormSuccess = document.getElementById('quoteFormSuccess');
+    if (quoteForm && quoteFormSuccess) {
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitQuoteBtn');
+            const submitBtnText = submitBtn.querySelector('span');
+            submitBtn.disabled = true;
+            submitBtnText.textContent = 'Đang gửi...';
+
+            const formData = new FormData(quoteForm);
+            
+            // Simulating AJAX submission success
+            setTimeout(() => {
+                quoteForm.style.display = 'none';
+                quoteFormSuccess.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtnText.textContent = 'Gửi yêu cầu báo giá';
+            }, 1000);
+        });
+    }
 });

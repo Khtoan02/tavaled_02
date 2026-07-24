@@ -1689,3 +1689,629 @@ html { scroll-behavior: smooth; }
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ==========================================================================
+   ADDITIONS FOR Restructuring 12 Sections
+   ========================================================================== */
+
+/* ── Section Headings & Layout ── */
+.home-sec {
+    padding: 80px 0; /* Reduced from 120px for tighter spacing */
+    position: relative;
+    overflow: hidden;
+    background: #1c2857; /* Standardized unified background */
+}
+.home-sec--dark {
+    background: #1c2857;
+}
+.home-sec--navy {
+    background: #1c2857;
+}
+.home-sec--deep {
+    background: #1c2857;
+}
+.home-sec--light {
+    background: #f8fafc;
+    color: #0f1835;
+}
+.home-sec--light .tava-heading__title {
+    color: #0f1835;
+}
+
+/* ── Section 4: Who We Are (Về TavaLED) ── */
+.home-who__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+.home-who__slogan {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+}
+.home-who__pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.home-who__pillar {
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(240, 90, 37, 0.3);
+    transition: border-color 0.3s;
+}
+.home-who__pillar:hover {
+    border-left-color: #f05a25;
+}
+.home-who__pillar-icon {
+    font-size: 28px;
+    color: #f05a25;
+    margin-top: 2px;
+}
+.home-who__pillar-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.home-who__pillar-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* ── Section 5: Stats Banner (Số liệu thống kê) ── */
+.home-stats {
+    background: #1c2857;
+    padding: 80px 0; /* Comfortable padding */
+}
+.home-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.home-stats__item {
+    text-align: center;
+}
+.home-stats__number {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.home-stats__number span {
+    color: #f05a25;
+}
+.home-stats__label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 12px;
+}
+
+/* ── Section 6: Process (Quy trình 5 bước) ── */
+.home-process__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    position: relative;
+    margin-top: 48px;
+}
+.home-process__grid::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(240, 90, 37, 0.4) 20%, rgba(240, 90, 37, 0.4) 80%, transparent);
+    z-index: 1;
+}
+.home-process__step {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.home-process__badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #111a3e;
+    border: 2px solid rgba(240, 90, 37, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+.home-process__step:hover .home-process__badge {
+    border-color: #f05a25;
+    background: #f05a25;
+    box-shadow: 0 0 20px rgba(240, 90, 37, 0.4);
+}
+.home-process__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.home-process__desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+}
+
+/* ── Section 7: Segments / Solutions (Lĩnh vực / Giải pháp) ── */
+.home-segments__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for 6 solutions */
+    gap: 32px;
+    margin-top: 40px;
+}
+.home-segment-card {
+    position: relative;
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.home-segment-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.home-segment-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 24, 53, 0.95) 0%, rgba(15, 24, 53, 0.4) 50%, transparent 100%);
+    z-index: 2;
+    transition: background 0.4s;
+}
+.home-segment-card:hover .home-segment-card__img {
+    transform: scale(1.06);
+}
+.home-segment-card:hover .home-segment-card__overlay {
+    background: linear-gradient(to top, rgba(240, 90, 37, 0.85) 0%, rgba(15, 24, 53, 0.6) 60%, transparent 100%);
+}
+.home-segment-card__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+.home-segment-card__eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #f05a25;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+.home-segment-card:hover .home-segment-card__eyebrow {
+    color: #ffffff;
+}
+.home-segment-card__title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+.home-segment-card__desc {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.home-segment-card:hover .home-segment-card__desc {
+    opacity: 1;
+    max-height: 100px;
+    margin-top: 8px;
+}
+
+/* ── Section 8: Testimonials (Đánh giá khách hàng) ── */
+.home-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+.home-testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.3s;
+}
+.home-testimonial-card::before {
+    content: '“';
+    position: absolute;
+    top: 20px;
+    right: 36px;
+    font-size: 80px;
+    font-weight: 900;
+    color: rgba(240, 90, 37, 0.15);
+    line-height: 1;
+}
+.home-testimonial-card:hover {
+    border-color: rgba(240, 90, 37, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-4px);
+}
+.home-testimonial-card__text {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-style: italic;
+}
+.home-testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.home-testimonial-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(240, 90, 37, 0.3);
+}
+.home-testimonial-card__name {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.home-testimonial-card__role {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 2px;
+}
+
+/* ── Section 9: Partners Wall (Logo đối tác) ── */
+.home-partners__grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+}
+.home-partner-cell {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    text-align: center;
+}
+.home-partner-cell:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(240, 90, 37, 0.3);
+}
+.home-partner-cell__logo {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.home-partner-cell__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.home-partner-cell__desc {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 4px;
+}
+
+/* ── Section 12: Contact Form (Form báo giá) ── */
+.home-cta-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr;
+    gap: 64px;
+    align-items: center;
+    text-align: left;
+}
+.home-quote-form {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+.home-quote-form__title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.home-quote-form__desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 28px;
+}
+.home-quote-form__group {
+    margin-bottom: 20px;
+}
+.home-quote-form__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 8px;
+}
+.home-quote-form__input,
+.home-quote-form__select,
+.home-quote-form__textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 14.5px;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+.home-quote-form__input:focus,
+.home-quote-form__select:focus,
+.home-quote-form__textarea:focus {
+    border-color: #f05a25;
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+    box-shadow: 0 0 12px rgba(240, 90, 37, 0.2);
+}
+.home-quote-form__select option {
+    background: #111a3e;
+    color: #ffffff;
+}
+.home-quote-form__textarea {
+    resize: none;
+    height: 100px;
+}
+.home-quote-form__submit {
+    width: 100%;
+    background: #f05a25;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.home-quote-form__submit:hover {
+    background: #ff642e;
+    box-shadow: 0 0 20px rgba(240, 90, 37, 0.4);
+}
+.home-quote-form__success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+}
+.home-quote-form__success-icon {
+    font-size: 48px;
+    color: #16a34a;
+    margin-bottom: 16px;
+}
+.home-quote-form__success-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+.home-quote-form__success-desc {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* ── Responsive styling for additions ── */
+@media (max-width: 1024px) {
+    .home-who__grid,
+    .home-cta-wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .home-process__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .home-process__grid::before {
+        display: none;
+    }
+    .home-segments__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .home-testimonials__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .home-partners__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .home-stats__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .home-process__grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .home-segments__grid {
+        grid-template-columns: 1fr;
+    }
+    .home-testimonials__grid {
+        grid-template-columns: 1fr;
+    }
+    .home-partners__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .home-quote-form {
+        padding: 24px;
+    }
+}
+
+/* ── Brand Profile Cluster (Gộp Về TavaLED + Thống kê + Đối tác) ── */
+.home-brand-block {
+    position: relative;
+    padding: 100px 0 60px 0; /* Reduced bottom padding to balance layout */
+    background: #1c2857;
+    overflow: hidden;
+}
+.home-brand-block__earth {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.10;
+    mix-blend-mode: color-dodge;
+    filter: drop-shadow(0 0 30px rgba(255, 106, 36, 0.12)) brightness(1.1);
+}
+.home-brand-block__earth img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom right;
+    display: block;
+}
+
+/* ── Light Section Styling for Process and Reviews ── */
+.home-sec--light .home-process__title {
+    color: #0f1835;
+}
+.home-sec--light .home-process__desc {
+    color: rgba(15, 24, 53, 0.7);
+}
+.home-sec--light .home-process__badge {
+    background: rgba(240, 90, 37, 0.1);
+    color: #f05a25;
+}
+
+.home-sec--light .home-testimonial-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 24, 53, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(15, 24, 53, 0.05);
+}
+.home-sec--light .home-testimonial-card:hover {
+    border-color: rgba(240, 90, 37, 0.3);
+    background: #ffffff;
+    box-shadow: 0 20px 40px -15px rgba(15, 24, 53, 0.1);
+    transform: translateY(-4px);
+}
+.home-sec--light .home-testimonial-card__text {
+    color: rgba(15, 24, 53, 0.8);
+}
+.home-sec--light .home-testimonial-card__name {
+    color: #0f1835;
+}
+.home-sec--light .home-testimonial-card__role {
+    color: rgba(15, 24, 53, 0.5);
+}
+
+/* ── Partners Cluster Gap ── */
+.home-partners-cluster {
+    margin-top: 90px;
+    padding-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .home-partners-cluster {
+        margin-top: 60px;
+        padding-top: 10px;
+    }
+}
+@media (max-width: 760px) {
+    .home-partners-cluster {
+        margin-top: 40px;
+        padding-top: 5px;
+    }
+}
+
+/* ── Stats Mini (in Brand left column) ── */
+.home-stats-mini .home-stats__number {
+    font-size: 20px !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.02em !important;
+}
+.home-stats-mini .home-stats__label {
+    font-size: 9px !important;
+    margin-top: 4px !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ── Glassmorphism Core Value Cards ── */
+.home-core-value-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 32px 24px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.home-core-value-card:hover {
+    border-color: rgba(240, 90, 37, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+}
+
+/* ── Spacing for Core Values Block ── */
+.home-core-values-section {
+    margin-top: 40px;
+}
+.home-core-values-section h3 {
+    margin-bottom: 32px;
+}
+@media (max-width: 1024px) {
+    .home-core-values-section {
+        margin-top: 30px;
+    }
+}
+@media (max-width: 760px) {
+    .home-core-values-section {
+        margin-top: 20px;
+    }
+}
+
