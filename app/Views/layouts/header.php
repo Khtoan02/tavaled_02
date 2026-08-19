@@ -38,6 +38,15 @@
     <!-- Phosphor Icons: defer — đảm bảo icon luôn render đúng sau khi HTML parse xong -->
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
     <style>
+    /* Unified Container Benchmark matching Hero Section */
+    .tava-container {
+        width: min(100%, 1600px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: clamp(24px, 3.5vw, 48px) !important;
+        padding-right: clamp(24px, 3.5vw, 48px) !important;
+    }
+
     .header-cskh-item {
         transition: all 0.2s ease;
     }
@@ -157,7 +166,7 @@
                             class="hidden xl:flex h-full items-center justify-center gap-3 2xl:gap-8 font-bold text-[13px] 2xl:text-[15px] text-gray-800 tracking-[0.05em] uppercase whitespace-nowrap">
                             <!-- Mega Menu Item: Về TavaLLS -->
                             <div class="group h-full flex items-center cursor-pointer hover-trigger static">
-                                <a href="/ve-chung-toi"
+                                <a href="<?php echo home_url('/ve-chung-toi'); ?>"
                                     class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
                                     Về chúng tôi
                                     <i
@@ -176,7 +185,7 @@
                                             <div role="heading" aria-level="3" class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 ml-3">Khám phá tổ chức</div>
                                             <ul class="grid grid-cols-3 gap-4">
                                                 <li>
-                                                    <a href="/ve-chung-toi"
+                                                    <a href="<?php echo home_url('/ve-chung-toi'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center h-full">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -194,7 +203,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="/tieu-chi-phat-trien"
+                                                    <a href="<?php echo home_url('/tieu-chi-phat-trien'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -212,7 +221,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="/tuyen-dung"
+                                                    <a href="<?php echo home_url('/tuyen-dung'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -230,7 +239,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="/chuyen-gia"
+                                                    <a href="<?php echo home_url('/chuyen-gia'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -248,7 +257,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="/minh-bach-nang-luc"
+                                                    <a href="<?php echo home_url('/minh-bach-nang-luc'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -269,7 +278,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="/blog"
+                                                    <a href="<?php echo home_url('/blog'); ?>"
                                                         class="flex flex-col items-center p-5 rounded-2xl bg-white border border-transparent hover:border-orange-200 hover:bg-orange-50/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group/item text-center">
                                                         <div
                                                             class="w-14 h-14 mb-4 bg-blue-50 text-[#1d2857] rounded-full flex items-center justify-center group-hover/item:bg-orange-100 group-hover/item:text-orange-600 transition-all duration-300">
@@ -292,7 +301,7 @@
                                         <!-- Right side: Banner -->
                                         <div
                                             class="w-1/3 flex items-center justify-center pl-8 border-l border-gray-100">
-                                            <a href="/ve-chung-toi"
+                                            <a href="<?php echo home_url('/ve-chung-toi'); ?>"
                                                 class="group/banner cursor-pointer relative block overflow-hidden rounded-3xl shadow-md w-full h-full min-h-[320px]">
                                                 <!-- Ảnh Banner -->
                                                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop"
@@ -454,7 +463,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-6 pt-6 border-t border-gray-200/60">
-                                                <a href="/lien-he/"
+                                                <a href="<?php echo home_url('/lien-he'); ?>"
                                                     class="w-full flex justify-center items-center gap-2 py-3.5 bg-[#1d2857] text-white rounded-xl font-bold hover:bg-brand-orange transition-all shadow-lg shadow-navy-900/10 text-sm tracking-widest uppercase">
                                                     <i class="ph-bold ph-download-simple text-lg"></i> Tải Catalog
                                                     <?php echo date('Y'); ?>
@@ -706,7 +715,7 @@
 
                             <!-- Giải pháp trọn gói -->
                             <div class="group h-full flex items-center cursor-pointer hover-trigger static">
-                                <a href="/giai-phap"
+                                <a href="javascript:void(0)"
                                     class="hover:text-brand-orange py-8 flex items-center gap-1.5 transition-colors group-hover:text-brand-orange relative group/link text-gray-800">
                                     Giải pháp trọn gói <i
                                         class="ph-bold ph-caret-down text-[12px] mt-0.5 text-gray-400 group-hover:text-brand-orange transition-transform duration-300 group-hover:rotate-180"></i>
@@ -723,7 +732,7 @@
                                         <div
                                             class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
                                             <div role="heading" aria-level="3" class="text-xs font-bold text-gray-400 uppercase tracking-widest">Các Lĩnh Vực Cốt Lõi</div>
-                                            <a href="/giai-phap"
+                                            <a href="javascript:void(0)"
                                                 class="flex items-center gap-1.5 text-brand-orange hover:text-[#1d2857] font-black text-sm transition-all hover:translate-x-1 uppercase tracking-widest">
                                                 <span>Xem tất cả</span>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -788,13 +797,13 @@
                                 </div>
                             </div>
 
-                            <a href="/du-an-tieu-bieu"
+                            <a href="<?php echo home_url('/du-an-tieu-bieu'); ?>"
                                 class="hover:text-brand-orange transition-colors py-8 relative group/link">
                                 Dự án tiêu biểu
                                 <span
                                     class="absolute bottom-[28px] left-0 w-max h-0.5 bg-brand-orange scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
                             </a>
-                            <a href="/lien-he"
+                            <a href="<?php echo home_url('/lien-he'); ?>"
                                 class="hover:text-brand-orange transition-colors py-8 relative group/link">
                                 Liên hệ
                                 <span
@@ -1078,7 +1087,7 @@
                         </a>
 
                         <!-- Về chúng tôi -->
-                        <a href="/ve-chung-toi" class="mobile-nav-link">
+                        <a href="<?php echo home_url('/ve-chung-toi'); ?>" class="mobile-nav-link">
                             <i class="ph ph-buildings text-[#f05a25] text-[16px]"></i>
                             Về <?php echo esc_html(\App\Helpers\ThemeHelper::getOption('company_name', 'TavaLLS')); ?>
                         </a>
@@ -1200,22 +1209,22 @@
                                             </a>
                                         </li>
                                     <?php endforeach; else: ?>
-                                    <li><a href="/giao-duc" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/giao-duc'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-graduation-cap text-[#f05a25] text-[14px]"></i> Giáo Dục &
                                             Tương Tác</a></li>
-                                    <li><a href="/hoi-hop-doanh-nghiep" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/hoi-hop-doanh-nghiep'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-presentation-chart text-[#f05a25] text-[14px]"></i> Hội
                                             Họp Doanh Nghiệp</a></li>
-                                    <li><a href="/su-kien-san-khau" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/su-kien-san-khau'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-microphone-stage text-[#f05a25] text-[14px]"></i> Sự Kiện
                                             & Sân Khấu</a></li>
-                                    <li><a href="/quang-cao-thuong-hieu" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/quang-cao-thuong-hieu'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-storefront text-[#f05a25] text-[14px]"></i> Quảng Cáo
                                             Thương Hiệu</a></li>
-                                    <li><a href="/fnb-giai-tri" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/fnb-giai-tri'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-martini text-[#f05a25] text-[14px]"></i> F&B & Giải Trí
                                             Đêm</a></li>
-                                    <li><a href="/giai-tri-tai-nha" class="mobile-subnav-link"><i
+                                    <li><a href="<?php echo home_url('/giai-tri-tai-nha'); ?>" class="mobile-subnav-link"><i
                                                 class="ph-fill ph-house-line text-[#f05a25] text-[14px]"></i> Giải Trí Tại
                                             Gia</a></li>
                                 <?php endif; ?>
@@ -1223,10 +1232,10 @@
                         </div>
 
                         <!-- Standalone links -->
-                        <a href="/du-an-tieu-bieu" class="mobile-nav-link">
+                        <a href="<?php echo home_url('/du-an-tieu-bieu'); ?>" class="mobile-nav-link">
                             <i class="ph ph-briefcase text-[#f05a25] text-[16px]"></i> Dự án tiêu biểu
                         </a>
-                        <a href="/lien-he" class="mobile-nav-link">
+                        <a href="<?php echo home_url('/lien-he'); ?>" class="mobile-nav-link">
                             <i class="ph ph-envelope text-[#f05a25] text-[16px]"></i> Liên hệ
                         </a>
 
@@ -1238,7 +1247,7 @@
                             class="mobile-nav-link text-gray-500 w-full text-left border-none bg-transparent font-sans cursor-pointer">
                             <i class="ph ph-magnifying-glass text-[#f05a25] text-[16px]"></i> Tìm kiếm thiết bị
                         </button>
-                        <a href="/lien-he/" class="mobile-nav-link text-gray-500">
+                        <a href="<?php echo home_url('/lien-he'); ?>" class="mobile-nav-link text-gray-500">
                             <i class="ph ph-receipt text-[#f05a25] text-[16px]"></i> Gửi yêu cầu Báo giá
                         </a>
 
@@ -1247,7 +1256,7 @@
 
                 <!-- DRAWER FOOTER CTA -->
                 <div class="px-4 py-4 shrink-0 border-t border-gray-100">
-                    <a href="/lien-he" class="block w-full text-center text-white font-bold py-3 transition-colors"
+                    <a href="<?php echo home_url('/lien-he'); ?>" class="block w-full text-center text-white font-bold py-3 transition-colors"
                         style="background-color:#f05a25;border-radius:6px;"
                         onmouseover="this.style.background='#d94e1f'" onmouseout="this.style.background='#f05a25'">
                         <i class="ph-bold ph-chat-teardrop-dots mr-1.5"></i> Liên hệ chuyên gia ngay
@@ -1278,10 +1287,10 @@
                 <div class="mt-8">
                     <div role="heading" aria-level="4" class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Gợi ý tìm kiếm phổ biến</div>
                     <div class="flex flex-wrap gap-2">
-                        <a href="/man-hinh-led/"
+                        <a href="<?php echo home_url('/man-hinh-led'); ?>"
                             class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Màn
                             hình LED P2.5 Indoor</a>
-                        <a href="/am-thanh/"
+                        <a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                             class="px-4 py-2 bg-gray-100 hover:bg-orange-50 hover:text-brand-orange rounded-xl text-sm text-gray-700 transition-colors">Loa
                             Line Array JBL</a>
                     </div>

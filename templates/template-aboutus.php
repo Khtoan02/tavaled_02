@@ -6,18 +6,16 @@
 get_header(); ?>
 
     
-    <link rel="preconnect" href="https://toan.host">
-    <link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://images.unsplash.com">
     <style>
         /* BASE & SCROLL */
-        body { font-family: var(--font-body); background-color: #fffcfb; margin: 0; overflow-x: hidden; color: #1e293b; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0f1a; }
-        ::-webkit-scrollbar-thumb { background: #f05a25; }
+        .tava-about-page { font-family: var(--font-body); background-color: #fffcfb; color: #1e293b; }
+        .tava-about-page ::-webkit-scrollbar { width: 8px; }
+        .tava-about-page ::-webkit-scrollbar-track { background: #0a0f1a; }
+        .tava-about-page ::-webkit-scrollbar-thumb { background: #f05a25; }
 
-
-        /* SẮC LẠNH - KHÔNG BO GÓC - Scoped to avoid breaking header/footer */
-        .page-template-template-aboutus-php *, .page-template-template-aboutus-php *::before, .page-template-template-aboutus-php *::after { border-radius: 0 !important; }
+        /* SẮC LẠNH - Scoped strictly to about-page content */
+        .tava-about-page img, .tava-about-page .card-sharp { border-radius: 4px; }
 
         /* HIỆU ỨNG TEXT NGHỆ THUẬT (WATERMARK) */
         .text-stroke-light { color: transparent; -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05); }
@@ -98,10 +96,8 @@ get_header(); ?>
         .story-content { padding: 16px 20px 20px; }
         .story-content p { color: #475569; font-size: 0.875rem; line-height: 1.6; border-left: 2px solid #f05a25; padding-left: 12px; font-style: italic; margin: 0; }
     </style>
-</head>
-<body class="relative">
-
-    <main>
+    
+    <main class="tava-main-content tava-about-page relative">
         
         <!-- 1. THE HOOK: Lời mở đầu -->
         <section class="relative pt-32 pb-40 overflow-hidden flex items-center bg-brand-light">
@@ -113,20 +109,27 @@ get_header(); ?>
             <div class="container mx-auto px-4 lg:px-16 max-w-[1600px] relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-5 reveal-up">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-[2px] bg-brand-orange"></div>
-                        <p class="font-mono text-brand-orange font-bold tracking-[0.2em] uppercase text-sm">Chương I: Kỷ Nguyên Số</p>
+                        <div class="w-12 h-1 bg-brand-orange"></div>
+                        <span class="text-brand-orange font-bold uppercase tracking-widest text-sm">Khát vọng TavaLLS</span>
                     </div>
-                    <h2 class="font-serif text-5xl md:text-7xl text-gray-900 leading-[1.1] mb-8">
-                        Kiến tạo kiệt tác <br>từ <span class="text-gradient italic">Ánh sáng</span> & <br><span class="text-gray-400">Không gian.</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-brand-dark tracking-tight leading-[1.15] mb-8">
+                        Định Chuẩn <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-red-500">Màn Hình Lớn</span><br>Tại Việt Nam
                     </h2>
-                    <p class="text-lg md:text-xl text-gray-600 font-light leading-relaxed max-w-2xl border-l-4 border-gray-200 pl-6">
-                        Tại TavaLLS, chúng tôi không đơn thuần cung cấp phần cứng vô tri. Chúng tôi mang đến "nhịp đập", đánh thức mọi giác quan và hiện thực hóa những tầm nhìn nghệ thuật khắt khe nhất.
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Không chỉ bán màn hình, chúng tôi định nghĩa lại cách con người thưởng thức hình ảnh, tương tác dữ liệu và tổ chức không gian hội họp quy mô lớn. 
                     </p>
+                    <div class="flex items-center gap-4 text-sm font-semibold tracking-wide uppercase text-gray-500">
+                        <span>#TiênPhong</span>
+                        <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
+                        <span>#ChấtLượngTuyệtĐối</span>
+                        <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div>
+                        <span>#HỗTrợToànQuốc</span>
+                    </div>
                 </div>
                 <div class="lg:col-span-7 relative reveal-up reveal-delay-1">
                     <div class="bg-gray-900 relative overflow-hidden group shadow-2xl rounded-sm">
                         <!-- Video hiển thị trực tiếp với preload và poster giúp tăng tốc load -->
- <video src="https://toan.host/wp-content/uploads/2026/03/14.mp4" preload="auto" poster="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" autoplay loop muted playsinline class="w-full h-auto block group-hover:scale-105 transition-all duration-1000"></video>
+                        <video src="https://tavaled.vn/wp-content/uploads/2026/03/14.mp4" preload="auto" poster="https://tavaled.vn/wp-content/uploads/2026/03/0015_TavaLED_Hinh_Anh.jpg" autoplay loop muted playsinline class="w-full h-auto block group-hover:scale-105 transition-all duration-1000"></video>
                         <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-brand-dark to-transparent pointer-events-none">
                             <i class="ph-fill ph-play-circle text-5xl text-brand-orange mb-4 hover:scale-110 transition-transform cursor-pointer pointer-events-auto"></i>
                             <p class="text-white font-mono text-sm tracking-widest uppercase">Trải Nghiệm Visual 2026</p>

@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <style>
-.page-template-template-tuyen-dung-php *, .page-template-template-tuyen-dung-php *::before, .page-template-template-tuyen-dung-php *::after{box-sizing:border-box;margin:0;padding:0}
+.tava-tuyen-dung-page * { box-sizing: border-box; }
 
 :root{
   --navy:#1c2857;--navy2:#162248;--navy3:#0f1835;
@@ -16,7 +16,7 @@ get_header(); ?>
   --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--ff);background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+.tava-tuyen-dung-page { font-family: var(--ff); background: var(--w); color: var(--ink); }
 
 #cur-d,#cur-r{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cur-d{width:7px;height:7px;background:var(--o)}
@@ -150,7 +150,8 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 
 @media(max-width:1100px){.hero__body,.why-grid{grid-template-columns:1fr}.culture-grid{grid-template-columns:repeat(2,1fr)}.cult-cell--wide{grid-column:span 1}.steps-row{grid-template-columns:repeat(2,1fr)}.steps-row::before{display:none}}
 @media(max-width:768px){.hero__body,.inner,.cta__inner{padding-left:20px;padding-right:20px}.why-grid{grid-template-columns:1fr}.culture-grid{grid-template-columns:1fr 1fr}.steps-row{grid-template-columns:1fr}.job-card{flex-wrap:wrap;gap:12px}}
-</style>
+
+<main class="tava-main-content tava-tuyen-dung-page">
 <div id="cur-d"></div>
 <div id="cur-r"></div>
 
@@ -459,4 +460,5 @@ function filterJobs(dept,btn){
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

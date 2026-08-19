@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <style>
-.page-template-template-nang-luc-php *, .page-template-template-nang-luc-php *::before, .page-template-template-nang-luc-php *::after{box-sizing:border-box;margin:0;padding:0}
+.tava-nang-luc-page * { box-sizing: border-box; }
 
 :root{
   --navy:#1c2857;--navy2:#162248;--navy3:#0f1835;
@@ -17,7 +17,7 @@ get_header(); ?>
   --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--ff);background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+.tava-nang-luc-page { font-family: var(--ff); background: var(--w); color: var(--ink); }
 #cd,#cr{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 #cd{width:7px;height:7px;background:var(--o)}
 #cr{width:36px;height:36px;border:1.5px solid rgba(240,90,37,.4);transition:width .3s,height .3s,border-color .3s}
@@ -141,7 +141,8 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 
 @media(max-width:1100px){.hero__inner{grid-template-columns:1fr}.hero__nums{max-width:480px}.proof-grid{grid-template-columns:1fr 1fr}.cap-layout{grid-template-columns:1fr}.partners-wall{grid-template-columns:repeat(3,1fr)}.regions{grid-template-columns:1fr}.finance-grid{grid-template-columns:repeat(2,1fr)}.verify-cta__inner{grid-template-columns:1fr;gap:40px}}
 @media(max-width:768px){.inner,.verify-cta__inner{padding-left:20px;padding-right:20px}.proof-grid{grid-template-columns:1fr}.partners-wall{grid-template-columns:repeat(2,1fr)}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}.hero__nums{grid-template-columns:1fr 1fr}.finance-grid{grid-template-columns:1fr 1fr}}
-</style>
+
+<main class="tava-main-content tava-nang-luc-page">
 <div id="cd"></div>
 <div id="cr"></div>
 
@@ -376,4 +377,5 @@ document.querySelectorAll('.hero,.proof-grid,.regions,.finance-grid').forEach(el
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

@@ -6,13 +6,7 @@
 get_header(); ?>
 
 <style>
-  .page-template-template-chuyen-gia-php *,
-  .page-template-template-chuyen-gia-php *::before,
-  .page-template-template-chuyen-gia-php *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
-  }
+  .tava-chuyen-gia-page * { box-sizing: border-box; }
 
   :root {
     --navy: #1c2857;
@@ -34,14 +28,7 @@ get_header(); ?>
     scroll-behavior: smooth
   }
 
-  body {
-    font-family: var(--ff);
-    background: var(--w);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    cursor: none
-  }
+  .tava-chuyen-gia-page { font-family: var(--ff); background: var(--w); color: var(--ink); }
 
   #cd,
   #cr {
@@ -712,7 +699,8 @@ get_header(); ?>
       padding: 3px 8px
     }
   }
-</style>
+
+<main class="tava-main-content tava-chuyen-gia-page">
 <div id="cd"></div>
 <div id="cr"></div>
 
@@ -956,4 +944,5 @@ get_header(); ?>
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

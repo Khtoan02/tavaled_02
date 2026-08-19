@@ -7,13 +7,7 @@ get_header(); ?>
 
 
 <style>
-  .page-template-template-f-b-php *,
-  .page-template-template-f-b-php *::before,
-  .page-template-template-f-b-php *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
-  }
+  .tava-fnb-page * { box-sizing: border-box; }
 
   :root {
     --navy: #1c2857;
@@ -37,14 +31,7 @@ get_header(); ?>
     scroll-behavior: smooth
   }
 
-  body {
-    font-family: var(--ff);
-    background: var(--warm);
-    color: var(--w);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    cursor: none
-  }
+  .tava-fnb-page { font-family: var(--ff); background: var(--warm); color: var(--w); -webkit-font-smoothing: antialiased; }
 
   #cd,
   #cr {
@@ -1095,9 +1082,7 @@ get_header(); ?>
     }
   }
 </style>
-</head>
-
-<body>
+<main class="tava-main-content tava-fnb-page">
   <div id="cd"></div>
   <div id="cr"></div>
 
@@ -1346,4 +1331,5 @@ get_header(); ?>
     document.querySelectorAll('.hero').forEach(el => co.observe(el));
     function switchTab(btn, id) { document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active')); document.querySelectorAll('.ptab-panel').forEach(p => p.classList.remove('active')); btn.classList.add('active'); document.getElementById(id).classList.add('active') }
   </script>
-  <?php get_footer(); ?>
+  </main>
+ ?>

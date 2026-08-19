@@ -3,17 +3,9 @@
  * Template Name: Du an truong sao mai
  */
 
-get_header(); ?><!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dự Án Mầm Non Sao Việt</title>
-    <!-- Script Tailwind này chỉ dùng để bạn xem trước, nếu theme WP của bạn đã có sẵn Tailwind CSS thì có thể bỏ dòng script này đi khi đưa vào template .php -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+get_header(); ?>
 
+<main class="tava-main-content tava-project-detail">
 <div class="bg-[#f8f9fa] font-sans text-[#17264a] selection:bg-[#f36428]/20">
       
   <!-- HERO SECTION - The Grand Stage -->
@@ -857,7 +849,6 @@ get_header(); ?><!DOCTYPE html>
   </script>
 
 </div>
+</main>
 
-</body>
 <?php get_footer(); ?>
-</html>

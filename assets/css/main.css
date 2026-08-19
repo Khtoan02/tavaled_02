@@ -38,11 +38,13 @@
 
 body {
     font-family: var(--font-body);
-    font-weight: 200; /* Content weight */
+    font-weight: 400;
     margin: 0;
     padding: 0;
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+
 /* KHÓA CUỘN NGANG: Đảm bảo không bị layout shift và tràn viền ngang trên Mobile */
 html, body {
     overflow-x: clip !important; /* Dùng clip thay vì hidden để không phá sticky */
@@ -51,7 +53,16 @@ html, body {
     position: relative;
     box-sizing: border-box;
     overflow-wrap: break-word; /* Ép bẻ từ đối với các đường link, text siêu dài gây tràn ngang */
-}}
+}
+
+/* Unified Container Benchmark matching Hero Section */
+.tava-container {
+    width: min(100%, 1600px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: clamp(24px, 3.5vw, 48px) !important;
+    padding-right: clamp(24px, 3.5vw, 48px) !important;
+}
 
 h1, .page-title, .entry-title, .page-default-title {
     font-family: var(--font-heading);

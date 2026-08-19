@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <style>
-.page-template-template-tieu-chi-php *, .page-template-template-tieu-chi-php *::before, .page-template-template-tieu-chi-php *::after{box-sizing:border-box;margin:0;padding:0}
+.tava-tieu-chi-page * { box-sizing: border-box; }
 
 :root{
   --navy:#1c2857;--navy2:#162248;--navy3:#0f1835;
@@ -16,7 +16,7 @@ get_header(); ?>
   --ff:var(--font-body);
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--ff);background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+.tava-tieu-chi-page { font-family: var(--ff); background: var(--w); color: var(--ink); }
 
 /* ── CURSOR ── */
 #cur-d,#cur-r{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
@@ -177,7 +177,8 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){.hero__inner{grid-template-columns:1fr;gap:40px}.score-grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(3,1fr)}.timeline::before{display:none}.partner-grid{grid-template-columns:1fr 1fr}.commit-strip{grid-template-columns:repeat(2,1fr)}.pillars{grid-template-columns:1fr}}
 @media(max-width:768px){.hero__inner,.inner,.statement__inner,.cta__inner{padding-left:20px;padding-right:20px}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}.criteria-layout{grid-template-columns:1fr}.partner-grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}.commit-strip{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}.statement__inner{grid-template-columns:1fr;gap:20px}}
-</style>
+
+<main class="tava-main-content tava-tieu-chi-page">
 
 
 <div id="cur-d"></div>
@@ -436,4 +437,5 @@ document.querySelectorAll('.score-grid').forEach(el=>co.observe(el));
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

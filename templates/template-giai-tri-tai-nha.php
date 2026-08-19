@@ -787,9 +787,7 @@ get_header(); ?>
     }
   }
 </style>
-</head>
-
-<body>
+<main class="tava-main-content tava-giai-tri-page">
   <div id="cd"></div>
   <div id="cr"></div>
 
@@ -927,4 +925,5 @@ get_header(); ?>
     document.querySelectorAll('.rv').forEach(el => obs.observe(el));
   </script>
 
-  <?php get_footer(); ?>
+  </main>
+ ?>

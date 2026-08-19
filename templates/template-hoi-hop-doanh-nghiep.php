@@ -6,13 +6,7 @@
 get_header(); ?>
 
 <style>
-  .page-template-template-hoi-hop-doanh-nghiep-php *,
-  .page-template-template-hoi-hop-doanh-nghiep-php *::before,
-  .page-template-template-hoi-hop-doanh-nghiep-php *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
-  }
+  .tava-hoi-hop-page * { box-sizing: border-box; }
 
   :root {
     --navy: #1c2857;
@@ -34,14 +28,7 @@ get_header(); ?>
     scroll-behavior: smooth
   }
 
-  body {
-    font-family: var(--ff);
-    background: var(--w);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    cursor: none
-  }
+  .tava-hoi-hop-page { font-family: var(--ff); background: var(--w); color: var(--ink); -webkit-font-smoothing: antialiased; }
 
   #cd,
   #cr {
@@ -1177,7 +1164,8 @@ get_header(); ?>
       margin-bottom: 32px
     }
   }
-</style>
+
+<main class="tava-main-content tava-hoi-hop-page">
 <div id="cd"></div>
 <div id="cr"></div>
 
@@ -1590,4 +1578,5 @@ get_header(); ?>
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

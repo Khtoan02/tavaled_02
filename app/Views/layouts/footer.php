@@ -41,21 +41,21 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P0.9 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.25 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.53 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P1.8 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2.5 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3 trong nhà</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3.0 trong nhà</a></li>
                         </ul>
                     </div>
@@ -71,11 +71,11 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép BOE</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép Orion</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình ghép Vestel</a></li>
                         </ul>
                     </div>
@@ -95,15 +95,15 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P2.5 ngoài trời</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P3 ngoài trời</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P4 ngoài trời</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P5 ngoài trời</a></li>
-                            <li><a href="/man-hinh-led/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
+                            <li><a href="<?php echo home_url('/man-hinh-led'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Màn
                                     hình LED P10 ngoài trời</a></li>
                         </ul>
                     </div>
@@ -119,22 +119,22 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/giao-duc"
+                            <li><a href="<?php echo home_url('/giao-duc'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Giáo dục &
                                     Tương tác</a></li>
-                            <li><a href="/hoi-hop-doanh-nghiep"
+                            <li><a href="<?php echo home_url('/hoi-hop-doanh-nghiep'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Hội họp
                                     doanh nghiệp</a></li>
-                            <li><a href="/su-kien-san-khau"
+                            <li><a href="<?php echo home_url('/su-kien-san-khau'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Sự kiện &
                                     Sân khấu</a></li>
-                            <li><a href="/quang-cao-thuong-hieu"
+                            <li><a href="<?php echo home_url('/quang-cao-thuong-hieu'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Quảng cáo
                                     thương hiệu</a></li>
-                            <li><a href="/fnb-giai-tri"
+                            <li><a href="<?php echo home_url('/fnb-giai-tri'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">F&B & Giải
                                     trí đêm</a></li>
-                            <li><a href="/giai-tri-tai-nha"
+                            <li><a href="<?php echo home_url('/giai-tri-tai-nha'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Giải trí
                                     tại gia</a></li>
                         </ul>
@@ -155,13 +155,13 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer
                                     Analog</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer
                                     Digital (Kỹ thuật số)</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Mixer liền
                                     công suất</a></li>
                         </ul>
@@ -178,13 +178,13 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Full (Toàn dải)</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Sub (Siêu trầm)</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Array (Treo sân khấu)</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Loa
                                     Monitor (Kiểm âm)</a></li>
                         </ul>
                     </div>
@@ -200,11 +200,11 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
                                     đẩy công suất 2 kênh</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cục
                                     đẩy công suất 4 kênh</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Amply
                                     Karaoke / Nghe nhạc</a></li>
                         </ul>
@@ -225,16 +225,16 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Vang số /
                                     Vang cơ (DSP)</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Crossover
                                     (Phân tần)</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Equalizer
                                     (Lọc xì)</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Compressor
                                     (Nén âm)</a></li>
                         </ul>
@@ -251,13 +251,13 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro không
                                     dây</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro có
                                     dây</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Micro cổ
                                     ngỗng (Hội thảo)</a></li>
                         </ul>
@@ -274,13 +274,13 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Bộ
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Bộ
                                     quản lý nguồn điện</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dây
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Dây
                                     cáp, Jack cắm (Neutrik...)</a></li>
-                            <li><a href="/am-thanh/" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tủ
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>" class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tủ
                                     máy thiết bị (Tủ Rack)</a></li>
-                            <li><a href="/am-thanh/"
+                            <li><a href="<?php echo home_url('/thiet-bi-am-thanh'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chân loa,
                                     giá treo</a></li>
                         </ul>
@@ -302,22 +302,22 @@
                     </div>
                     <div class="footer-content hidden lg:block pt-3 lg:pt-0">
                         <ul class="space-y-2.5 text-sm text-slate-400 pl-4 lg:pl-0">
-                            <li><a href="/ve-chung-toi"
+                            <li><a href="<?php echo home_url('/ve-chung-toi'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Câu chuyện
                                     thương hiệu</a></li>
-                            <li><a href="/tieu-chi-phat-trien"
+                            <li><a href="<?php echo home_url('/tieu-chi-phat-trien'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Tiêu chí
                                     phát triển</a></li>
-                            <li><a href="/minh-bach-nang-luc"
+                            <li><a href="<?php echo home_url('/minh-bach-nang-luc'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Hồ sơ năng
                                     lực</a></li>
-                            <li><a href="/chuyen-gia"
+                            <li><a href="<?php echo home_url('/chuyen-gia'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chuyên gia
                                     TavaLLS</a></li>
-                            <li><a href="/tuyen-dung"
+                            <li><a href="<?php echo home_url('/tuyen-dung'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Cơ hội nghề
                                     nghiệp</a></li>
-                            <li><a href="/du-an"
+                            <li><a href="<?php echo home_url('/du-an-tieu-bieu'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Công trình
                                     dự án</a></li>
                         </ul>
@@ -348,9 +348,9 @@
                             <li><a href="<?php echo home_url('/chinh-sach-thanh-toan'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách
                                     thanh toán</a></li>
-                            <li><a href="<?php echo home_url('/chinh-sach-kiem-duyet'); ?>"
+                            <li><a href="<?php echo home_url('/tieu-chi-phat-trien'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chính sách kiểm duyệt thông tin</a></li>
-                            <li><a href="<?php echo home_url('/chung-chi-nang-luc'); ?>"
+                            <li><a href="<?php echo home_url('/minh-bach-nang-luc'); ?>"
                                     class="block hover:text-brand-orange hover:translate-x-1 transition-all">Chứng chỉ năng lực chuyên môn</a></li>
                         </ul>
                     </div>

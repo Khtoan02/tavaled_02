@@ -7,10 +7,9 @@ get_header(); ?>
 
 
 <style>
-.page-template-template-giao-duc-php *, .page-template-template-giao-duc-php *::before, .page-template-template-giao-duc-php *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.tava-giao-duc-page * { box-sizing: border-box; }
 
-
-:root {
+.tava-giao-duc-page {
   --navy:   #1c2857;
   --navy2:  #162248;
   --navy3:  #0f1835;
@@ -24,15 +23,9 @@ get_header(); ?>
   --muted:  #6b7280;
   --light:  #f3f4f6;
   --border: #e5e7eb;
-}
-
-html { scroll-behavior: smooth; }
-body {
   font-family: var(--font-body);
   background: var(--w);
   color: var(--ink);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* ─── NAV ─── */
@@ -965,20 +958,7 @@ body {
   .steps{grid-template-columns:1fr}
 }
 </style>
-</head>
-<body>
-
-
-
-<!-- ─── NAV ─── -->
-<header class="nav" id="nav">
-  <a href="/" class="nav__back">
-    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    TavaLLS
-  </a>
-  <a href="/" class="nav__logo">TavaLLS<span class="nav__logo-dot"></span></a>
-  <a href="#cta-edu" class="nav__cta">Tư vấn miễn phí</a>
-</header>
+<main class="tava-main-content tava-giao-duc-page">
 
 <!-- ══════════════════
      ACT 1 — HERO
@@ -1503,17 +1483,7 @@ body {
   </div>
 </section>
 
-<!-- Footer mini -->
-<footer class="footer-mini" role="contentinfo">
-  <div class="footer-mini__brand">TavaLLS<span class="footer-mini__dot"></span></div>
-  <div class="footer-mini__links">
-    <a href="/">Trang chủ</a>
-    <a href="/san-pham">Sản phẩm</a>
-    <a href="/du-an">Dự án</a>
-    <a href="/lien-he">Liên hệ</a>
-  </div>
-  <div class="footer-mini__copy">© 2025 TavaLLS · <strong style="color:var(--o)">1900 xxxx</strong></div>
-</footer>
+</main>
 
 <script>
 

@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <style>
-.page-template-template-du-an-php *, .page-template-template-du-an-php *::before, .page-template-template-du-an-php *::after{box-sizing:border-box;margin:0;padding:0}
+.tava-du-an-page * { box-sizing: border-box; }
 
 
 :root {
@@ -21,13 +21,7 @@ get_header(); ?>
   --border-lt:  #f5e8e2;
 }
 
-body {
-  font-family: var(--font-body) !important;
-  background: var(--bg);
-  color: var(--navy);
-  font-size: 15px;
-  line-height: 1.6;
-}
+.tava-du-an-page { font-family: var(--font-body); background: var(--bg); color: var(--navy); }
 
 /* Nâng cấp độ đậm cho tất cả thẻ P và mô tả để dễ đọc với Spartan */
 p, .card__desc {
@@ -696,7 +690,8 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
   /* Fix height for small mobile cards */
   .project-row .card .card__thumb, .project-row3 .card .card__thumb, .grid-3 .card .card__thumb { height: 110px; }
 }
-</style>
+
+<main class="tava-main-content tava-du-an-page">
 
 
 <main><div class="wrap">

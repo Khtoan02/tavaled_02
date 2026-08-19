@@ -6,13 +6,7 @@
 get_header(); ?>
 
 <style>
-  .page-template-template-su-kien-san-khau-php *,
-  .page-template-template-su-kien-san-khau-php *::before,
-  .page-template-template-su-kien-san-khau-php *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
-  }
+  .tava-su-kien-page * { box-sizing: border-box; }
 
   :root {
     --navy: #1c2857;
@@ -34,14 +28,7 @@ get_header(); ?>
     scroll-behavior: smooth
   }
 
-  body {
-    font-family: var(--ff);
-    background: var(--ink);
-    color: var(--w);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    cursor: none
-  }
+  .tava-su-kien-page { font-family: var(--ff); background: var(--ink); color: var(--w); -webkit-font-smoothing: antialiased; }
 
   #cd,
   #cr {
@@ -1149,7 +1136,8 @@ get_header(); ?>
       margin-bottom: 32px
     }
   }
-</style>
+
+<main class="tava-main-content tava-su-kien-page">
 <div id="cd"></div>
 <div id="cr"></div>
 
@@ -1538,4 +1526,5 @@ get_header(); ?>
 </script>
 
 
-<?php get_footer(); ?>
+</main>
+ ?>

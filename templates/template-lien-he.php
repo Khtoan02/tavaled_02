@@ -6,13 +6,7 @@
 get_header(); ?>
 
 <style>
-  .page-template-template-lien-he-php *,
-  .page-template-template-lien-he-php *::before,
-  .page-template-template-lien-he-php *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  .tava-lien-he-page * { box-sizing: border-box; }
 
 
   :root {
@@ -35,14 +29,7 @@ get_header(); ?>
     scroll-behavior: smooth;
   }
 
-  body {
-    font-family: var(--ff);
-    background: var(--w);
-    color: var(--ink);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -webkit-font-smoothing: antialiased;
-  }
+  .tava-lien-he-page { font-family: var(--ff); background: var(--w); color: var(--ink); -webkit-font-smoothing: antialiased; }
 
   /* ══════════════════════════════
    HERO
@@ -1506,7 +1493,8 @@ get_header(); ?>
       grid-template-columns: repeat(2, 1fr);
     }
   }
-</style>
+
+<main class="tava-main-content tava-lien-he-page">
 
 <!-- ══ HERO ══ -->
 <section class="hero" aria-label="Liên hệ TavaLED">
@@ -1974,4 +1962,5 @@ get_header(); ?>
 
 
 
-<?php get_footer(); ?>
+</main>
+ ?>
