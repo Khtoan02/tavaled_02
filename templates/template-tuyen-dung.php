@@ -151,6 +151,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 @media(max-width:1100px){.hero__body,.why-grid{grid-template-columns:1fr}.culture-grid{grid-template-columns:repeat(2,1fr)}.cult-cell--wide{grid-column:span 1}.steps-row{grid-template-columns:repeat(2,1fr)}.steps-row::before{display:none}}
 @media(max-width:768px){.hero__body,.inner,.cta__inner{padding-left:20px;padding-right:20px}.why-grid{grid-template-columns:1fr}.culture-grid{grid-template-columns:1fr 1fr}.steps-row{grid-template-columns:1fr}.job-card{flex-wrap:wrap;gap:12px}}
 
+</style>
 <main class="tava-main-content tava-tuyen-dung-page">
 <div id="cur-d"></div>
 <div id="cur-r"></div>

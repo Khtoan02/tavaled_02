@@ -178,6 +178,7 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:50px;height:50px;bo
 @media(max-width:1100px){.hero__inner{grid-template-columns:1fr;gap:40px}.score-grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(3,1fr)}.timeline::before{display:none}.partner-grid{grid-template-columns:1fr 1fr}.commit-strip{grid-template-columns:repeat(2,1fr)}.pillars{grid-template-columns:1fr}}
 @media(max-width:768px){.hero__inner,.inner,.statement__inner,.cta__inner{padding-left:20px;padding-right:20px}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}.criteria-layout{grid-template-columns:1fr}.partner-grid{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}.commit-strip{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}.statement__inner{grid-template-columns:1fr;gap:20px}}
 
+</style>
 <main class="tava-main-content tava-tieu-chi-page">
 
 

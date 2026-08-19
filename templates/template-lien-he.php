@@ -1494,6 +1494,7 @@ get_header(); ?>
     }
   }
 
+</style>
 <main class="tava-main-content tava-lien-he-page">
 
 <!-- ══ HERO ══ -->

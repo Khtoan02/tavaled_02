@@ -691,10 +691,11 @@ main { padding-top: 120px; } /* Tạo khoảng trống an toàn với Header */
   .project-row .card .card__thumb, .project-row3 .card .card__thumb, .grid-3 .card .card__thumb { height: 110px; }
 }
 
+</style>
 <main class="tava-main-content tava-blog-page">
 
 
-<main><div class="wrap">
+<div class="wrap">
 
 
 <?php get_template_part('template-parts/blog-sections', null, ['theme' => 'light']); ?>

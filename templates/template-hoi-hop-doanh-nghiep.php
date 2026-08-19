@@ -1165,6 +1165,7 @@ get_header(); ?>
     }
   }
 
+</style>
 <main class="tava-main-content tava-hoi-hop-page">
 <div id="cd"></div>
 <div id="cr"></div>

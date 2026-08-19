@@ -142,6 +142,7 @@ body:has(a:hover) #cr,body:has(button:hover) #cr{width:50px;height:50px;border-c
 @media(max-width:1100px){.hero__inner{grid-template-columns:1fr}.hero__nums{max-width:480px}.proof-grid{grid-template-columns:1fr 1fr}.cap-layout{grid-template-columns:1fr}.partners-wall{grid-template-columns:repeat(3,1fr)}.regions{grid-template-columns:1fr}.finance-grid{grid-template-columns:repeat(2,1fr)}.verify-cta__inner{grid-template-columns:1fr;gap:40px}}
 @media(max-width:768px){.inner,.verify-cta__inner{padding-left:20px;padding-right:20px}.proof-grid{grid-template-columns:1fr}.partners-wall{grid-template-columns:repeat(2,1fr)}.sec-head{flex-direction:column;gap:16px;margin-bottom:32px}.hero__nums{grid-template-columns:1fr 1fr}.finance-grid{grid-template-columns:1fr 1fr}}
 
+</style>
 <main class="tava-main-content tava-nang-luc-page">
 <div id="cd"></div>
 <div id="cr"></div>

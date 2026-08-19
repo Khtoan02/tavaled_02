@@ -700,6 +700,7 @@ get_header(); ?>
     }
   }
 
+</style>
 <main class="tava-main-content tava-chuyen-gia-page">
 <div id="cd"></div>
 <div id="cr"></div>
